@@ -182,7 +182,7 @@
 	<xs:complexType name="City">
 		<xs:sequence>
 			<xs:element name="Name" type="ti:string"/>
-			<xs:element name="Airports" type="ti:Airports" minOccurs="0"/>
+			<xs:element name="Airports" type="ti:Airports"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="Airports">

@@ -1,5 +1,6 @@
 package com.ttc.ch2.cucumber.ccapisecurity.getbrochure;
 
+import org.junit.Ignore;
 import org.junit.runner.RunWith;
 
 import cucumber.api.CucumberOptions;

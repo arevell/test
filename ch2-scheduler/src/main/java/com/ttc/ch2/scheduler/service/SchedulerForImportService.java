@@ -3,15 +3,19 @@ package com.ttc.ch2.scheduler.service;
 import java.util.Date;
 import java.util.List;
 
+import org.quartz.Scheduler;
 import org.quartz.SchedulerException;
 
+import com.ttc.ch2.common.enums.CronExpresion;
+
 public interface SchedulerForImportService {	
-	public static String jobGroupName="import-job-group-ch2";											
+	public static String jobGroupName="import-job-group-ch2";										
+	public static String jobImportName="DepartureSynchronizeJob";
 	public static String triggerGroupName="import-trigger-group-ch2";
 	public static String triggerImportName="import-trigger-ch2";
 
 	
-
+	public static String SCHEDULER_USER="System";
 	
 	public static String JOB_DESC="Departure Import Job %s";
 	
@@ -52,9 +56,13 @@ public interface SchedulerForImportService {
 	/**
 	 * @return true or false  - this process need or need not  reset semafor and status 
 	 * */
-	public boolean checkResetForImportWithEx(String brandCode);
+	public boolean checkResetForImport(String brandCode);
 	
 	public boolean resetAllowed(String brandCode) throws SchedulerServiceException;
 	
 	public boolean resetNeed(String brandCode);
+	
+	public void setupNewCronExpression(CronExpresion expresion) throws SchedulerServiceException;
+	
+	public CronExpresion setupInconsistentCronExpresionIfNecessary() throws SchedulerServiceException;
 }

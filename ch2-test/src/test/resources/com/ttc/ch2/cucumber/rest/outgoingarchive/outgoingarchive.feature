@@ -1,4 +1,3 @@
-@Rest_Service
 Feature: Rest to get file from outgoing archive  
 	
 Scenario Outline: Rest to get file from outgoing archive  

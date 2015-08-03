@@ -23,7 +23,6 @@ import com.ttc.ch2.common.DateHelper;
 import com.ttc.ch2.common.enums.ProcessName;
 import com.ttc.ch2.search.export.IndexSynchronizerService;
 import com.ttc.ch2.search.export.IndexSynchronizerServiceException;
-import com.ttc.ch2.search.export.IndexSynchronizerVO;
 
 @Ignore
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -94,7 +93,7 @@ public class ESIndexThreadTest {
 		public void run() {			
 			try {
 				uploadStatusService.initalizeNewProccess(brandCode);
-				indexSynchronizerService.synchronize(processName, brandCode,new IndexSynchronizerVO());
+				indexSynchronizerService.synchronize(processName, brandCode);
 				uploadStatusService.clearProccess(brandCode);
 			} catch (Exception e) {
 				logger.error(String.format("Error for brand:%s and process name:%s",brandCode,processName),e);

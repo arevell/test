@@ -79,13 +79,16 @@ public class GetContinentsAndCountriesVisitedTest {
 		
 		switch (checkTypeAsser) {
 		case EQUALS:
-		case CONTAINS:			 
-			AssertMessage.assertContains(message, response.getMessageContext());			
-			break;	
+            AssertMessage.assertContains(message, response.getMessageContext());
+			break;
+		case CONTAINS:
+            AssertMessage.assertContains(message, response.getMessageContext());
+			break;
 		default:
 			Assert.assertTrue("Unsupported checkTypeAssert:"+checkTypeAsser.toString(),false);
 			break;
-		}		
+		}
+		
 	}
 
 	

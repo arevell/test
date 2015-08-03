@@ -26,175 +26,15 @@ public class ObjectFactory {
 
     private final static QName _Description_QNAME = new QName("http://www.ttsl.com/MarketLocalisedTourData/2010/11/1.0", "Description");
     private final static QName _Strong_QNAME = new QName("http://www.ttsl.com/MarketLocalisedTourData/2010/11/1.0", "strong");
-    private final static QName _Title_QNAME = new QName("http://www.ttsl.com/MarketLocalisedTourData/2010/11/1.0", "Title");
-    private final static QName _TourName_QNAME = new QName("http://www.ttsl.com/MarketLocalisedTourData/2010/11/1.0", "TourName");
     private final static QName _Accommodation_QNAME = new QName("http://www.ttsl.com/MarketLocalisedTourData/2010/11/1.0", "Accommodation");
+    private final static QName _TourName_QNAME = new QName("http://www.ttsl.com/MarketLocalisedTourData/2010/11/1.0", "TourName");
+    private final static QName _Title_QNAME = new QName("http://www.ttsl.com/MarketLocalisedTourData/2010/11/1.0", "Title");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: com.ttsl.marketlocalisedtourdata._2010._11._1
      * 
      */
     public ObjectFactory() {
-    }
-
-    /**
-     * Create an instance of {@link A }
-     * 
-     */
-    public A createA() {
-        return new A();
-    }
-
-    /**
-     * Create an instance of {@link TourCategory }
-     * 
-     */
-    public TourCategory createTourCategory() {
-        return new TourCategory();
-    }
-
-    /**
-     * Create an instance of {@link Location }
-     * 
-     */
-    public Location createLocation() {
-        return new Location();
-    }
-
-    /**
-     * Create an instance of {@link ContinentsVisited }
-     * 
-     */
-    public ContinentsVisited createContinentsVisited() {
-        return new ContinentsVisited();
-    }
-
-    /**
-     * Create an instance of {@link AirportTransfers }
-     * 
-     */
-    public AirportTransfers createAirportTransfers() {
-        return new AirportTransfers();
-    }
-
-    /**
-     * Create an instance of {@link Continent }
-     * 
-     */
-    public Continent createContinent() {
-        return new Continent();
-    }
-
-    /**
-     * Create an instance of {@link ItinerarySegment }
-     * 
-     */
-    public ItinerarySegment createItinerarySegment() {
-        return new ItinerarySegment();
-    }
-
-    /**
-     * Create an instance of {@link Surcharge }
-     * 
-     */
-    public Surcharge createSurcharge() {
-        return new Surcharge();
-    }
-
-    /**
-     * Create an instance of {@link MandatoryProducts }
-     * 
-     */
-    public MandatoryProducts createMandatoryProducts() {
-        return new MandatoryProducts();
-    }
-
-    /**
-     * Create an instance of {@link Departures }
-     * 
-     */
-    public Departures createDepartures() {
-        return new Departures();
-    }
-
-    /**
-     * Create an instance of {@link Notes }
-     * 
-     */
-    public Notes createNotes() {
-        return new Notes();
-    }
-
-    /**
-     * Create an instance of {@link TourInfo }
-     * 
-     */
-    public TourInfo createTourInfo() {
-        return new TourInfo();
-    }
-
-    /**
-     * Create an instance of {@link Section }
-     * 
-     */
-    public Section createSection() {
-        return new Section();
-    }
-
-    /**
-     * Create an instance of {@link LocationsVisited }
-     * 
-     */
-    public LocationsVisited createLocationsVisited() {
-        return new LocationsVisited();
-    }
-
-    /**
-     * Create an instance of {@link WhatsIncluded }
-     * 
-     */
-    public WhatsIncluded createWhatsIncluded() {
-        return new WhatsIncluded();
-    }
-
-    /**
-     * Create an instance of {@link Surcharges }
-     * 
-     */
-    public Surcharges createSurcharges() {
-        return new Surcharges();
-    }
-
-    /**
-     * Create an instance of {@link Assets }
-     * 
-     */
-    public Assets createAssets() {
-        return new Assets();
-    }
-
-    /**
-     * Create an instance of {@link Brochure }
-     * 
-     */
-    public Brochure createBrochure() {
-        return new Brochure();
-    }
-
-    /**
-     * Create an instance of {@link Country }
-     * 
-     */
-    public Country createCountry() {
-        return new Country();
-    }
-
-    /**
-     * Create an instance of {@link Image }
-     * 
-     */
-    public Image createImage() {
-        return new Image();
     }
 
     /**
@@ -206,6 +46,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link Section }
+     * 
+     */
+    public Section createSection() {
+        return new Section();
+    }
+
+    /**
      * Create an instance of {@link TourCategories }
      * 
      */
@@ -214,67 +62,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link CategoryValue }
+     * Create an instance of {@link Surcharge }
      * 
      */
-    public CategoryValue createCategoryValue() {
-        return new CategoryValue();
+    public Surcharge createSurcharge() {
+        return new Surcharge();
     }
 
     /**
-     * Create an instance of {@link Metadata }
+     * Create an instance of {@link AirportTransfers }
      * 
      */
-    public Metadata createMetadata() {
-        return new Metadata();
-    }
-
-    /**
-     * Create an instance of {@link CountriesVisited }
-     * 
-     */
-    public CountriesVisited createCountriesVisited() {
-        return new CountriesVisited();
-    }
-
-    /**
-     * Create an instance of {@link Brochures }
-     * 
-     */
-    public Brochures createBrochures() {
-        return new Brochures();
-    }
-
-    /**
-     * Create an instance of {@link DepartureInfo }
-     * 
-     */
-    public DepartureInfo createDepartureInfo() {
-        return new DepartureInfo();
-    }
-
-    /**
-     * Create an instance of {@link Li }
-     * 
-     */
-    public Li createLi() {
-        return new Li();
-    }
-
-    /**
-     * Create an instance of {@link Text }
-     * 
-     */
-    public Text createText() {
-        return new Text();
-    }
-
-    /**
-     * Create an instance of {@link TourSeriesPricing }
-     * 
-     */
-    public TourSeriesPricing createTourSeriesPricing() {
-        return new TourSeriesPricing();
+    public AirportTransfers createAirportTransfers() {
+        return new AirportTransfers();
     }
 
     /**
@@ -286,19 +86,43 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link MandatoryProduct }
+     * Create an instance of {@link Itinerary }
      * 
      */
-    public MandatoryProduct createMandatoryProduct() {
-        return new MandatoryProduct();
+    public Itinerary createItinerary() {
+        return new Itinerary();
     }
 
     /**
-     * Create an instance of {@link MarketLocalisedTourData }
+     * Create an instance of {@link TourInfo }
      * 
      */
-    public MarketLocalisedTourData createMarketLocalisedTourData() {
-        return new MarketLocalisedTourData();
+    public TourInfo createTourInfo() {
+        return new TourInfo();
+    }
+
+    /**
+     * Create an instance of {@link Metadata }
+     * 
+     */
+    public Metadata createMetadata() {
+        return new Metadata();
+    }
+
+    /**
+     * Create an instance of {@link Image }
+     * 
+     */
+    public Image createImage() {
+        return new Image();
+    }
+
+    /**
+     * Create an instance of {@link CountriesVisited }
+     * 
+     */
+    public CountriesVisited createCountriesVisited() {
+        return new CountriesVisited();
     }
 
     /**
@@ -310,19 +134,27 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link DeparturePricing }
+     * Create an instance of {@link TourSeriesPricing }
      * 
      */
-    public DeparturePricing createDeparturePricing() {
-        return new DeparturePricing();
+    public TourSeriesPricing createTourSeriesPricing() {
+        return new TourSeriesPricing();
     }
 
     /**
-     * Create an instance of {@link Itinerary }
+     * Create an instance of {@link LocationsVisited }
      * 
      */
-    public Itinerary createItinerary() {
-        return new Itinerary();
+    public LocationsVisited createLocationsVisited() {
+        return new LocationsVisited();
+    }
+
+    /**
+     * Create an instance of {@link Li }
+     * 
+     */
+    public Li createLi() {
+        return new Li();
     }
 
     /**
@@ -331,6 +163,174 @@ public class ObjectFactory {
      */
     public Br createBr() {
         return new Br();
+    }
+
+    /**
+     * Create an instance of {@link Brochures }
+     * 
+     */
+    public Brochures createBrochures() {
+        return new Brochures();
+    }
+
+    /**
+     * Create an instance of {@link Surcharges }
+     * 
+     */
+    public Surcharges createSurcharges() {
+        return new Surcharges();
+    }
+
+    /**
+     * Create an instance of {@link Continent }
+     * 
+     */
+    public Continent createContinent() {
+        return new Continent();
+    }
+
+    /**
+     * Create an instance of {@link MandatoryProducts }
+     * 
+     */
+    public MandatoryProducts createMandatoryProducts() {
+        return new MandatoryProducts();
+    }
+
+    /**
+     * Create an instance of {@link WhatsIncluded }
+     * 
+     */
+    public WhatsIncluded createWhatsIncluded() {
+        return new WhatsIncluded();
+    }
+
+    /**
+     * Create an instance of {@link A }
+     * 
+     */
+    public A createA() {
+        return new A();
+    }
+
+    /**
+     * Create an instance of {@link Country }
+     * 
+     */
+    public Country createCountry() {
+        return new Country();
+    }
+
+    /**
+     * Create an instance of {@link Location }
+     * 
+     */
+    public Location createLocation() {
+        return new Location();
+    }
+
+    /**
+     * Create an instance of {@link Brochure }
+     * 
+     */
+    public Brochure createBrochure() {
+        return new Brochure();
+    }
+
+    /**
+     * Create an instance of {@link MandatoryProduct }
+     * 
+     */
+    public MandatoryProduct createMandatoryProduct() {
+        return new MandatoryProduct();
+    }
+
+    /**
+     * Create an instance of {@link Notes }
+     * 
+     */
+    public Notes createNotes() {
+        return new Notes();
+    }
+
+    /**
+     * Create an instance of {@link Departures }
+     * 
+     */
+    public Departures createDepartures() {
+        return new Departures();
+    }
+
+    /**
+     * Create an instance of {@link ContinentsVisited }
+     * 
+     */
+    public ContinentsVisited createContinentsVisited() {
+        return new ContinentsVisited();
+    }
+
+    /**
+     * Create an instance of {@link Assets }
+     * 
+     */
+    public Assets createAssets() {
+        return new Assets();
+    }
+
+    /**
+     * Create an instance of {@link Text }
+     * 
+     */
+    public Text createText() {
+        return new Text();
+    }
+
+    /**
+     * Create an instance of {@link DepartureInfo }
+     * 
+     */
+    public DepartureInfo createDepartureInfo() {
+        return new DepartureInfo();
+    }
+
+    /**
+     * Create an instance of {@link TourCategory }
+     * 
+     */
+    public TourCategory createTourCategory() {
+        return new TourCategory();
+    }
+
+    /**
+     * Create an instance of {@link MarketLocalisedTourData }
+     * 
+     */
+    public MarketLocalisedTourData createMarketLocalisedTourData() {
+        return new MarketLocalisedTourData();
+    }
+
+    /**
+     * Create an instance of {@link CategoryValue }
+     * 
+     */
+    public CategoryValue createCategoryValue() {
+        return new CategoryValue();
+    }
+
+    /**
+     * Create an instance of {@link DeparturePricing }
+     * 
+     */
+    public DeparturePricing createDeparturePricing() {
+        return new DeparturePricing();
+    }
+
+    /**
+     * Create an instance of {@link ItinerarySegment }
+     * 
+     */
+    public ItinerarySegment createItinerarySegment() {
+        return new ItinerarySegment();
     }
 
     /**
@@ -355,9 +355,9 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://www.ttsl.com/MarketLocalisedTourData/2010/11/1.0", name = "Title")
-    public JAXBElement<String> createTitle(String value) {
-        return new JAXBElement<String>(_Title_QNAME, String.class, null, value);
+    @XmlElementDecl(namespace = "http://www.ttsl.com/MarketLocalisedTourData/2010/11/1.0", name = "Accommodation")
+    public JAXBElement<String> createAccommodation(String value) {
+        return new JAXBElement<String>(_Accommodation_QNAME, String.class, null, value);
     }
 
     /**
@@ -373,9 +373,9 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://www.ttsl.com/MarketLocalisedTourData/2010/11/1.0", name = "Accommodation")
-    public JAXBElement<String> createAccommodation(String value) {
-        return new JAXBElement<String>(_Accommodation_QNAME, String.class, null, value);
+    @XmlElementDecl(namespace = "http://www.ttsl.com/MarketLocalisedTourData/2010/11/1.0", name = "Title")
+    public JAXBElement<String> createTitle(String value) {
+        return new JAXBElement<String>(_Title_QNAME, String.class, null, value);
     }
 
 }

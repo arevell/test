@@ -7,11 +7,14 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.googlecode.genericdao.search.Search;
+import com.ttc.ch2.common.BaseDao;
 import com.ttc.ch2.dao.comment.TDCommentDAO;
 import com.ttc.ch2.domain.Brand;
 import com.ttc.ch2.domain.comment.Comment;
 import com.ttc.ch2.domain.comment.TDComment;
+import com.ttc.ch2.domain.comment.TIComment;
 import com.ttc.ch2.domain.common.QueryCondition;
+import com.ttc.ch2.domain.common.SortCondition;
 
 @Repository
 @Transactional(readOnly=false,propagation=Propagation.REQUIRED)

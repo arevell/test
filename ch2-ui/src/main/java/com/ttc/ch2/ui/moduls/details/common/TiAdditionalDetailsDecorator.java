@@ -3,10 +3,10 @@ package com.ttc.ch2.ui.moduls.details.common;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.StringReader;
+import java.util.regex.Pattern;
 
 import org.apache.ecs.html.Span;
 
-import com.google.common.base.Preconditions;
 import com.ttc.ch2.domain.comment.Comment;
 import com.ttc.ch2.ui.common.exceptions.CH2Exception;
 
@@ -16,12 +16,7 @@ public class TiAdditionalDetailsDecorator extends BaseCommentDecorator{
 		
 	@Override
 	public String decorateContent(Comment comment) {
-		Preconditions.checkArgument(comment!=null,"TiAdditionalDetailsDecorator->decorateContent comment is null");		
-		return this.decorateContent(comment.getContent());		
-	}
-		
-	public String decorateContent(String txt){		
-		String content=super.decorateContent(txt);	
+		String content=super.decorateContent(comment);
 		content=content.replace("Additional information:", "<b>Additional information:</b>");
 		StringBuilder sb=new StringBuilder();
 		BufferedReader reader = new BufferedReader(new StringReader(content));
@@ -45,4 +40,6 @@ public class TiAdditionalDetailsDecorator extends BaseCommentDecorator{
 		}		
 		return sb.toString();
 	}
+	
+	
 }

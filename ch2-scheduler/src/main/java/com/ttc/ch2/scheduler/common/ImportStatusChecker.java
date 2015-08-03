@@ -23,12 +23,8 @@ public class ImportStatusChecker implements JobStatusChecker{
 	public ImportStatusChecker(String brandCode,ApplicationContext ctx) {
 		super();
 		this.brandCode = brandCode;
+//		this.sessionFactory=ctx.getBean("dataSource", SessionFactory.class);
 		this.quartzJobDAO = SpringContext.getApplicationContext().getBean(QuartzJobDAO.class);
-	}
-	
-	public ImportStatusChecker(String brandCode) {
-		this(brandCode, SpringContext.getApplicationContext());
-		this.brandCode = brandCode;
 	}
 	
 	@Override
@@ -59,7 +55,7 @@ public class ImportStatusChecker implements JobStatusChecker{
 	
 	private QuartzJob getJob(){
 		QuartzJob eJob=new QuartzJob();
-		eJob.setJobName(QuartzJob.JobName.DepartureSynchronizeJob.toString());
+		eJob.setJobName(SchedulerForImportService.jobImportName);
 		eJob.setBrandCode(brandCode);
 		QuartzJob resultJob=quartzJobDAO.findByExample(eJob);
 		quartzJobDAO.refresh(resultJob);

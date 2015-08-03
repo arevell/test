@@ -55,20 +55,20 @@ public class TiZipStreamValidator {
 	public void validZipStream(OperationStatus opStatus,UploadTourInfoFile uploadTourInfoFile, InputStream inputStream)
 	{
 		// calculate brand code
-//		String brandCode="[not finded]";
-//		if(uploadTourInfoFile.getName().charAt(2)=='-'){
-//			brandCode=Splitter.on("-").split(uploadTourInfoFile.getName()).iterator().next();	
-//			Brand brand=brandDAO.findByBrandCode(brandCode);
-//			if(brand == null) {
-//				LogOperationHelper.logMessage(logger, opStatus, TourInfoMessages.BRAND_DONT_EXIST,brandCode,uploadTourInfoFile.getName());	
-//				throw new UploadServiceException(TourInfoMessages.getMessage(TourInfoMessages.BRAND_DONT_EXIST, uploadTourInfoFile.getName()));
-//			}
-//			else{
-//				uploadTourInfoFile.setBrand(brand);	// to remove after correction in batch	
-//				opStatus.setBrandCode(brandCode);
-//			}
-//		}
-//		
+		String brandCode="[not finded]";
+		if(uploadTourInfoFile.getName().charAt(2)=='-'){
+			brandCode=Splitter.on("-").split(uploadTourInfoFile.getName()).iterator().next();	
+			Brand brand=brandDAO.findByBrandCode(brandCode);
+			if(brand == null) {
+				LogOperationHelper.logMessage(logger, opStatus, TourInfoMessages.BRAND_DONT_EXIST,brandCode,uploadTourInfoFile.getName());	
+				throw new UploadServiceException(TourInfoMessages.getMessage(TourInfoMessages.BRAND_DONT_EXIST, uploadTourInfoFile.getName()));
+			}
+			else{
+				uploadTourInfoFile.setBrand(brand);		
+				opStatus.setBrandCode(brandCode);
+			}
+		}
+		
 		if(uploadTourInfoFile.getName().length()!=27)
 		{
 			LogOperationHelper.logMessage(logger, opStatus, TourInfoMessages.INCORRECT_FILE_NAME_LENGHT, uploadTourInfoFile.getName());
@@ -90,8 +90,8 @@ public class TiZipStreamValidator {
 		{				
 			if(opStatus.getExtraPermissionChecker().checkBrandPermission()==false)
 			{
-				LogOperationHelper.logMessage(logger, opStatus, TourInfoMessages.PERMISSION_DENIED_INVALID_BRANDIN_ZIP_FILE,opStatus.getBrandCode(), uploadTourInfoFile.getName());
-				throw new UploadServiceException(TourInfoMessages.getMessage(TourInfoMessages.PERMISSION_DENIED_INVALID_BRANDIN_ZIP_FILE,opStatus.getBrandCode(), uploadTourInfoFile.getName()));
+				LogOperationHelper.logMessage(logger, opStatus, TourInfoMessages.PERMISSION_DENIED_INVALID_BRANDIN_ZIP_FILE,brandCode, uploadTourInfoFile.getName());
+				throw new UploadServiceException(TourInfoMessages.getMessage(TourInfoMessages.PERMISSION_DENIED_INVALID_BRANDIN_ZIP_FILE,brandCode, uploadTourInfoFile.getName()));
 			}
 		}	
 	}
@@ -111,20 +111,19 @@ public class TiZipStreamValidator {
 	public void validZipExcludeZipBomb(InputStream zipStream) {
 	
         long filesInZip=0l; 
-        try(ZipInputStream stream = new ZipInputStream(zipStream)) {                	
+        try(ZipInputStream stream = new ZipInputStream(zipStream)) {
             ZipEntry entry;
             while((entry = stream.getNextEntry())!=null)
             {
             	filesInZip++;
                 long xmlSize = entry.getSize();
-                
                 if(filesInZip > zipMaxFiles) {
                 	throw new UploadServiceException(TourInfoMessages.getMessage(TourInfoMessages.ZIP_MAX_FILES_EXCEEDED, zipMaxFiles));
                 }
                 if(xmlSize > zipFileMaxSize || xmlSize < 0) {
-                	String name=entry.getName();
-                	throw new UploadServiceException(TourInfoMessages.getMessage(TourInfoMessages.ZIP_XML_SIZE_EXCEEDED, zipFileMaxSize,name));
-                } 
+                	throw new UploadServiceException(TourInfoMessages.getMessage(TourInfoMessages.ZIP_XML_SIZE_EXCEEDED, zipFileMaxSize));
+                }
+ 
             }
         } catch (IOException e) {
 			throw new UploadServiceException(e);
@@ -134,7 +133,7 @@ public class TiZipStreamValidator {
 	
 	public void validateZipUplodPermission(UploadTourInfoFile uploadTourInfoFile) {
 		Brand brand;
-		if(uploadTourInfoFile.getName().length()>2 && uploadTourInfoFile.getName().charAt(2)=='-'){
+		if(uploadTourInfoFile.getName().charAt(2)=='-'){
 			String brandCode=Splitter.on("-").split(uploadTourInfoFile.getName()).iterator().next();	
 			brand=brandDAO.findByBrandCode(brandCode);
 			if(brand == null) {	
@@ -151,10 +150,8 @@ public class TiZipStreamValidator {
 			}
 		}
 		else {
-			throw new UploadServiceException(TourInfoMessages.getMessage(TourInfoMessages.INCORRECT_FILE_NAME, uploadTourInfoFile.getName(), " filename is too short or is inappropriate"));
+			throw new UploadServiceException(TourInfoMessages.getMessage(TourInfoMessages.INCORRECT_FILE_NAME, uploadTourInfoFile.getName()));
 		}
 		
 	}
-	
-	
 }

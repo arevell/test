@@ -1,32 +1,27 @@
 package com.ttc.ch2.ui.moduls.details;
 
-import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 
-import org.apache.commons.lang.RandomStringUtils;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
-import org.zkoss.bind.annotation.Command;
 import org.zkoss.bind.annotation.Init;
 import org.zkoss.util.resource.Labels;
 import org.zkoss.zk.ui.Executions;
-import org.zkoss.zul.Filedownload;
 
 import com.google.common.base.Preconditions;
-import com.google.common.base.Splitter;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.ttc.ch2.bl.message.CommentsService;
 import com.ttc.ch2.dao.comment.TypeComment;
 import com.ttc.ch2.domain.comment.Comment;
 import com.ttc.ch2.ui.common.config.Ch2URIs;
-import com.ttc.ch2.ui.common.exceptions.CH2Exception;
 import com.ttc.ch2.ui.moduls.details.common.CommentContentDecorator;
 import com.ttc.ch2.ui.moduls.details.common.DefaultCommentDecorator;
 import com.ttc.ch2.ui.moduls.details.common.TdBrandDetailsDecorator;
@@ -42,10 +37,11 @@ public class CommentDetails {
 
 	private static final Logger logger = LoggerFactory.getLogger(CommentDetails.class);
 	
-	private static final int MAX_LINE_IN_COMMENTS=1000;
-	
 	private Map<String,CommentContentDecorator> decorators;
-		
+	
+
+	private static final int MAX_LENGHT=1000;
+	
 	@Inject
 	private CommentsService service;
 	
@@ -55,8 +51,10 @@ public class CommentDetails {
 	private boolean showError;
 	private String returnPath;
 	
-	private String allContent;
-		
+	
+	private List<String> parts=Lists.newArrayList();
+	private int activePage=0;
+	
 	@PostConstruct
 	private void springInit(){
 		Map<String,CommentContentDecorator> localDecorators=Maps.newHashMap();
@@ -88,22 +86,31 @@ public class CommentDetails {
 		
 		comment=service.getCommentById(Long.valueOf(paramId), TypeComment.valueOf(paramType));
 		if (StringUtils.isNotBlank(comment.getContent())) {			
-			allContent=getDecorateComment(commentDecorator,comment.getContent());
-			comment.setContent(getDecorateComment(commentDecorator,resizeContent(comment.getContent())));
+			String content="";
+			if(StringUtils.isNotEmpty(commentDecorator) && decorators.containsKey(commentDecorator)){
+				content=decorators.get(commentDecorator).decorateContent(comment);
+			}
+			else{
+				content=decorators.get(DefaultCommentDecorator.name).decorateContent(comment);
+			}		
+//			parts=Lists.newArrayList(Splitter.fixedLength(MAX_LENGHT).split(content));			
+//			comment.setContent(parts.get(activePage));
+			comment.setContent(content);
 			showContent=true;
 		}
 		
-		if(StringUtils.isNotBlank(comment.getStackTrace())){
-			comment.setStackTrace(comment.getStackTrace().replace("\n", "<br/>\n"));
+		if(StringUtils.isNotBlank(comment.getStackTrace()))
+		{
+			comment.setStackTrace(comment.getStackTrace().replace("\n", "<br/>"));
 			showError=true;
 		}
 		panelTitle=Labels.getLabel("messages.comments_list.col.details")+" - "+comment.getMessage();
-		
 		logger.trace("CommentDetails:init-end");
 	}
 	
 	
-	private void calculateReturnPath(String paramRpath,String paramRid){
+	private void calculateReturnPath(String paramRpath,String paramRid)
+	{
 		String queryPath="";
 		if(StringUtils.isNotBlank(paramRid)){
 		 queryPath="?param="+ParamsUtils.encodeOneParam("id", paramRid);
@@ -111,55 +118,17 @@ public class CommentDetails {
 		returnPath=Ch2URIs.valueOf(paramRpath).getPath()+queryPath;
 	}
 	
-	@Command("downloadContent")
-	public void downloadContent()
-	{
-	    try {	    	
-	    	String fileName="MessageDetails_"+RandomStringUtils.random(5, true, true)+".html";	    	
-	    	Filedownload.save(allContent, "html/text",fileName);		
-		} catch (Exception e) {
-			throw new CH2Exception(e);
-		}
-	}
+//	@Command("onPagingList")
+//	@NotifyChange({"comment","parts"})
+//	public void onPagingList(BindContext ctx) {				
+//		PagingEvent event = (PagingEvent) ctx.getTriggerEvent();			    	
+//		String content=comment.getContent().replace("\n", "<br/>");			
+//		parts=Lists.newArrayList(Splitter.fixedLength(MAX_LENGHT).split(content));			
+//		activePage=event.getActivePage();		
+//		comment.setContent(parts.get(activePage));				
+//	}
 	
-	@Command("downloadStackError")
-	public void downloadStackError()
-	{
-		try {			
-			String fileName="StackErrorDetails_"+RandomStringUtils.random(5, true, true)+".html";	    	
-			Filedownload.save(comment.getStackTrace(), "html/text",fileName);		
-		} catch (Exception e) {
-			throw new CH2Exception(e);
-		}
-	}
-	
-	private String getDecorateComment(String commentDecorator,String content){		
-		String localContent="";
-		if(StringUtils.isNotEmpty(commentDecorator) && decorators.containsKey(commentDecorator)){
-			localContent=decorators.get(commentDecorator).decorateContent(content);
-		}
-		else{
-			localContent=decorators.get(DefaultCommentDecorator.name).decorateContent(content);
-		}
-		return localContent;
-	}
 		
-	private String resizeContent(String content){		
-		StringBuilder sb=new StringBuilder();
-		Iterable<String> iContent=Splitter.on("\n").split(content);
-				
-		Iterator<String> itr=iContent.iterator();
-		int c=0;
-		for (Iterator<String> iterator = itr; iterator.hasNext();) {
-			c++;
-			sb.append(iterator.next()).append("\n");
-			if(c==MAX_LINE_IN_COMMENTS-1){
-				sb.append(".......\n");
-				break;			
-			}		
-		}			
-		return sb.toString();
-	}
 
 	public Comment getComment() {
 		return comment;

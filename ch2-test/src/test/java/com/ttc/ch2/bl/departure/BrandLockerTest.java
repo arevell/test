@@ -2,12 +2,9 @@ package com.ttc.ch2.bl.departure;
 
 import javax.inject.Inject;
 
-import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.powermock.reflect.Whitebox;
-import org.springframework.context.ApplicationContext;
 import org.springframework.core.task.TaskExecutor;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -17,9 +14,7 @@ import com.ttc.ch2.bl.lock.LockBrandService;
 import com.ttc.ch2.common.BaseTest;
 import com.ttc.ch2.common.enums.ProcessName;
 
-import facade.itropics.webservice.tropics.com.itropicsbuildws.ITropicsBuildWS;
-import facade.itropics.webservice.tropics.com.itropicsbuildws.WsDeparturesVO;
-
+@Ignore
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations={"classpath:/META-INF/spring/blCtx.xml", "classpath:/META-INF/spring/testCtx.xml", "classpath:/META-INF/spring/testThreadsCtx.xml"})
 @TransactionConfiguration(transactionManager="transactionManager", defaultRollback=true)
@@ -55,7 +50,7 @@ public class BrandLockerTest extends BaseTest{
 	
 	private boolean workMutex=true;
 	
-	@Ignore
+
 	@Test
 	public void generateLocksTest() throws InterruptedException 
 	{

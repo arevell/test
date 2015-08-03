@@ -22,10 +22,9 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;choice maxOccurs="unbounded" minOccurs="0">
- *         &lt;element name="values" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="a" type="{http://www.ttc.com/ch2/api/ccapi/v3/TourInfo/2014/01/3.0}a"/>
  *         &lt;element ref="{http://www.ttc.com/ch2/api/ccapi/v3/TourInfo/2014/01/3.0}br"/>
- *         &lt;element name="strong" type="{http://www.ttc.com/ch2/api/ccapi/v3/TourInfo/2014/01/3.0}strong"/>
+ *         &lt;element name="strong" type="{http://www.ttc.com/ch2/api/ccapi/v3/TourInfo/2014/01/3.0}string"/>
  *         &lt;element name="ul" type="{http://www.ttc.com/ch2/api/ccapi/v3/TourInfo/2014/01/3.0}ul"/>
  *       &lt;/choice>
  *     &lt;/restriction>
@@ -42,11 +41,10 @@ import javax.xml.bind.annotation.XmlType;
 public class Text {
 
     @XmlElementRefs({
+        @XmlElementRef(name = "strong", namespace = "http://www.ttc.com/ch2/api/ccapi/v3/TourInfo/2014/01/3.0", type = JAXBElement.class),
         @XmlElementRef(name = "a", namespace = "http://www.ttc.com/ch2/api/ccapi/v3/TourInfo/2014/01/3.0", type = JAXBElement.class),
         @XmlElementRef(name = "ul", namespace = "http://www.ttc.com/ch2/api/ccapi/v3/TourInfo/2014/01/3.0", type = JAXBElement.class),
-        @XmlElementRef(name = "values", namespace = "http://www.ttc.com/ch2/api/ccapi/v3/TourInfo/2014/01/3.0", type = JAXBElement.class),
-        @XmlElementRef(name = "br", namespace = "http://www.ttc.com/ch2/api/ccapi/v3/TourInfo/2014/01/3.0", type = Br.class),
-        @XmlElementRef(name = "strong", namespace = "http://www.ttc.com/ch2/api/ccapi/v3/TourInfo/2014/01/3.0", type = JAXBElement.class)
+        @XmlElementRef(name = "br", namespace = "http://www.ttc.com/ch2/api/ccapi/v3/TourInfo/2014/01/3.0", type = Br.class)
     })
     @XmlMixed
     protected List<Object> content;
@@ -70,11 +68,10 @@ public class Text {
      * <p>
      * Objects of the following type(s) are allowed in the list
      * {@link JAXBElement }{@code <}{@link A }{@code >}
-     * {@link Br }
-     * {@link JAXBElement }{@code <}{@link Strong }{@code >}
-     * {@link JAXBElement }{@code <}{@link Ul }{@code >}
      * {@link String }
+     * {@link JAXBElement }{@code <}{@link Ul }{@code >}
      * {@link JAXBElement }{@code <}{@link String }{@code >}
+     * {@link Br }
      * 
      * 
      */

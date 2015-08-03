@@ -13,10 +13,8 @@
         <mapping class="com.ttc.ch2.domain.common.EntityBase" />    
         <mapping class="com.ttc.ch2.domain.SellingCompany" />
         <mapping class="com.ttc.ch2.domain.Function" />
-        <mapping class="com.ttc.ch2.domain.Ch2ConfigValue" />
         <mapping class="com.ttc.ch2.domain.Brand" />
         <mapping class="com.ttc.ch2.domain.BrandLock" />
-        <mapping class="com.ttc.ch2.domain.RecReportData" />
         <mapping class="com.ttc.ch2.domain.user.User" />
         <mapping class="com.ttc.ch2.domain.user.UserCCAPI" />
         <mapping class="com.ttc.ch2.domain.user.UserGui" />

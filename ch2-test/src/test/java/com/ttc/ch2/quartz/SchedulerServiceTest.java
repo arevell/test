@@ -9,7 +9,6 @@ import javax.inject.Inject;
 import org.apache.commons.lang.time.DateUtils;
 import org.elasticsearch.common.collect.Sets;
 import org.junit.Assert;
-import org.junit.Assume;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -33,9 +32,6 @@ import com.ttc.ch2.common.AuthenticatedExecutionPreparer;
 import com.ttc.ch2.common.BaseTest;
 import com.ttc.ch2.dao.BrandDAO;
 import com.ttc.ch2.domain.Brand;
-import com.ttc.ch2.domain.jobs.QuartzJob;
-import com.ttc.ch2.quartz.executionlisteners.InitializeImportDepartureJob;
-import com.ttc.ch2.quartz.executionlisteners.ScheduleInstancePreparer;
 import com.ttc.ch2.scheduler.service.JobVO;
 import com.ttc.ch2.scheduler.service.QuartzJobCh2Service;
 import com.ttc.ch2.scheduler.service.SchedulerForImportService;
@@ -43,15 +39,17 @@ import com.ttc.ch2.scheduler.service.SchedulerForImportServiceImpl;
 import com.ttc.ch2.scheduler.service.SchedulerServiceException;
 import com.ttc.ch2.scheduler.service.SchedulerVO;
 
-@Ignore ("test need enviroment with quartz turn off") 
+@Ignore // test need enviroment with quartz turn off 
 @RunWith(SpringJUnit4ClassRunner.class)
-@TestExecutionListeners(listeners = {DependencyInjectionTestExecutionListener.class, ScheduleInstancePreparer.class,InitializeImportDepartureJob.class,AuthenticatedExecutionPreparer.class})
+@TestExecutionListeners(listeners = {DependencyInjectionTestExecutionListener.class, ScheduleInstancePreparer.class,AuthenticatedExecutionPreparer.class})
 @ContextConfiguration(locations={"classpath:/META-INF/spring/blCtx.xml","classpath:/META-INF/spring/quartzTestCtx.xml"})
 @TransactionConfiguration(transactionManager="transactionManager", defaultRollback=true)
 public class SchedulerServiceTest extends BaseTest {
 
 	public static String brandCode="BV";
-	public static String jobName=QuartzJob.JobName.DepartureSynchronizeJob.toString()+"_"+brandCode;
+	public static String jobName="DepartureSynchronizeJob_"+brandCode;
+	
+	
 	
 	@Inject
 	@Qualifier("schedulerFactoryBean")
@@ -118,9 +116,6 @@ public class SchedulerServiceTest extends BaseTest {
 	public void positiveChangeJobTime() throws SchedulerServiceException, SchedulerException
 	{		
 		//prevalidation
-		Assume.assumeFalse("BV need reset inconsistency data in DB",schedulerServiceToTest.resetNeed(brandCode));
-
-		
 		checkSchedulerConfigure();
 		Assert.assertFalse(schedulerFactory.isRunning());
 		
@@ -133,8 +128,8 @@ public class SchedulerServiceTest extends BaseTest {
 		Assert.assertTrue(triggers.length==1);
 		Assert.assertTrue((triggers[0] instanceof SimpleTrigger));
 		Assert.assertTrue(triggers[0].getNextFireTime().getTime()==time.getTime());
-		Assert.assertNotNull(quartzJobCh2Service.findByName(QuartzJob.JobName.DepartureSynchronizeJob.toString(),brandCode).getNextFiringTime());
-		Assert.assertTrue(quartzJobCh2Service.findByName(QuartzJob.JobName.DepartureSynchronizeJob.toString(),brandCode).getNextFiringTime().getTime()==time.getTime());	
+		Assert.assertNotNull(quartzJobCh2Service.findByName(SchedulerForImportServiceImpl.jobImportName,brandCode).getNextFiringTime());
+		Assert.assertTrue(quartzJobCh2Service.findByName(SchedulerForImportServiceImpl.jobImportName,brandCode).getNextFiringTime().getTime()==time.getTime());	
 	}
 	
 	@Test

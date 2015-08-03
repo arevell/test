@@ -13,7 +13,6 @@ import org.zkoss.util.resource.Labels;
 import com.google.common.base.Preconditions;
 import com.ttc.ch2.bl.departure.common.TropicSynchronizeMessages;
 import com.ttc.ch2.common.DateHelper;
-import com.ttc.ch2.domain.comment.QHComment;
 import com.ttc.ch2.domain.comment.TDComment;
 import com.ttc.ch2.domain.jobs.QuartzJobHistory;
 import com.ttc.ch2.scheduler.service.QuartzJobCh2Service;
@@ -43,7 +42,7 @@ public class JobDetailsCtrl extends AbstractEncryptedParamHandelComp {
 		String paramId= params.get("id");		
 		Preconditions.checkArgument(StringUtils.isNotBlank(paramId),"Request need param id");
 		jobHistory=quartzJobCh2Service.getFullDataQuartzJobHistory(Long.parseLong(paramId));
-		showQJComments=(jobHistory!=null && jobHistory.getComments()!=null) ?jobHistory.getComments().size()>0 : false;		
+		showQJComments=(jobHistory!=null && jobHistory.getComments()!=null) ?jobHistory.getComments().size()>0 : false;
 		showTDHistory=jobHistory.getTourDepartureHistory()!=null;
 		panelTitle=Labels.getLabel("jobs.job_details.main_panel_title")+" "+DateHelper.dateTimeToString(jobHistory.getStartDate());
 		logger.trace("CommentDetails:init-end");
@@ -64,15 +63,6 @@ public class JobDetailsCtrl extends AbstractEncryptedParamHandelComp {
 			logger.error("",e);
 		}
 		return result;
-	}
-	
-	public String decorateQHistoryComments(QHComment  comment){	
-		if(StringUtils.isNotBlank(comment.getMessage())){
-			DefaultCommentDecorator defaultDecorator=new DefaultCommentDecorator();
-			String message=defaultDecorator.decorateContent(comment.getMessage());
-			return message;
-		}
-		return "";
 	}
 
 	public QuartzJobHistory getJobHistory() {

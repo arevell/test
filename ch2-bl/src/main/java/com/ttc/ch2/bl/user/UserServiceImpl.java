@@ -248,14 +248,14 @@ public class UserServiceImpl implements UserService {
 	public void deleteUserGui(Long id) throws UserServiceException {
 		try {
 			UserGui u=userGuiDAO.find(id);
-			setupUserNameforDel(u);			
+			setupUserNameforDel(u);
 			u.setDelFlag(true);
 			u.setEnabled(false);
-			userGuiDAO.save(u);
-			
 //			u.getBrands().clear();
 //			u.getGroups().clear();
 //			userGuiDAO.remove(u);
+			userGuiDAO.save(u);
+			
 		} catch (Exception e) {
 			throw new UserServiceException(e);
 		}
@@ -283,9 +283,9 @@ public class UserServiceImpl implements UserService {
 	public void deleteUserCCAPI(Long id) throws UserServiceException {
 		try {
 			Session session=sessionFactory.getCurrentSession();
-			UserCCAPI u=userCCAPIDAO.find(id);			
-			setupUserNameforDel(u);
+			UserCCAPI u=userCCAPIDAO.find(id);
 			u.setDelFlag(true);
+			setupUserNameforDel(u);
 			u.setEnabled(false);
 			userCCAPIDAO.save(u);
 			
@@ -397,12 +397,11 @@ public class UserServiceImpl implements UserService {
 		return (User) q.uniqueResult();
 	}
 	
-	private void setupUserNameforDel(User u){
-		
-		SimpleDateFormat sdf = new SimpleDateFormat("yyMMddHHmmss");			
-		if(u.getUsername().length() > 28)
-			u.setUsername(u.getUsername().substring(0, 28)+sdf.format(new Date()));
-		else
-			u.setUsername(u.getUsername()+sdf.format(new Date()));		
-	}
+	 private void setupUserNameforDel(User u){
+		  SimpleDateFormat sdf = new SimpleDateFormat("yyMMddHHmmss");   
+		  if(u.getUsername().length() > 28)
+		   u.setUsername(u.getUsername().substring(0, 28)+sdf.format(new Date()));
+		  else
+		   u.setUsername(u.getUsername()+sdf.format(new Date()));  
+		 }
 }

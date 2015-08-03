@@ -24,8 +24,6 @@ import com.ttc.ch2.domain.common.SortCondition;
 @Transactional(readOnly=true,propagation=Propagation.REQUIRED)
 public class BaseDao<T, ID extends Serializable> extends  GenericDAOImpl<T, ID> {
 
-	public static final int MAX_ELEMENTS_INSIDE_SQL_IN_CLAUSE = 999;
-	
 	@Inject
 	protected SessionFactory sessionFactory;
 	

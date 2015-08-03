@@ -1,4 +1,3 @@
-@CH2_API
 Feature: Get brochures 
 	
 Scenario Outline: Tour categories are searched for the following parameters

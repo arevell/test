@@ -125,24 +125,15 @@ public class UriBuilder {
 			else if(uri.contains("tour_departure"))
 					rsToFind=RepositoryStatus.TourDepartureOnly;
 			
-			ContentRepository filter=new ContentRepository();
-//			filter.setTourCode("LA3SN10");			
-			List<ContentRepository> lCr=contentRepositoryService.getContentRepositoriesList(new QueryCondition(0, 1),filter ,RepositoryStatus.TIandTD,rsToFind);
-			
-				if (lCr.size() > 0) {
-					ContentRepository cr=null;
-					try{
-					cr=lCr.get(0);
-					brand=cr.getBrands().iterator().next().getCode();
-					file=cr.getTourCode()+".xml";
-					}catch(Exception e){
-						throw new UnsupportedOperationException("Test has problem with extract data for rest URI tourCode:"+ cr!=null ? cr.getTourCode() : "[not available]");							
-					}
-				}
-				else{
-					throw new UnsupportedOperationException("Test need data in DB brand related with content repository");
-				}
-			
+			List<ContentRepository> lCr=contentRepositoryService.getContentRepositoriesList(new QueryCondition(0, 1),new ContentRepository() ,RepositoryStatus.TIandTD,rsToFind);
+			if (lCr.size() > 0) {
+				ContentRepository cr=lCr.get(0);
+				brand=cr.getBrands().iterator().next().getCode();
+				file=cr.getTourCode()+".xml";
+			}
+			else{
+				throw new UnsupportedOperationException("Test need data in DB brand related with content repository");
+			}
 		}	
 	}
 	

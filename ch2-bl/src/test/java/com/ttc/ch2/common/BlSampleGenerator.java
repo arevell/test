@@ -95,7 +95,7 @@ public class BlSampleGenerator {
 		return s;
 	}
 	
-	public static EmailHistory generateEmailHistory(int index,Brand brand)
+	public static EmailHistory generateEmailHistory(int index)
 	{
 		EmailHistory emailHistory=new EmailHistory();
 		emailHistory.setProccessName(ProcessName.UPLOAD);
@@ -104,8 +104,7 @@ public class BlSampleGenerator {
 		emailHistory.setMessage("content messages:"+index);
 		emailHistory.setStatus(EmailStatus.Success);
 		emailHistory.setMessageDeliveryTime(new Date());
-		emailHistory.setTo("xxxTo-"+index+"@op.pl");
-		emailHistory.setBrand(brand);
+		emailHistory.setTo("xxxTo-"+index+"@op.pl");	
 		return emailHistory;
 	}
 	

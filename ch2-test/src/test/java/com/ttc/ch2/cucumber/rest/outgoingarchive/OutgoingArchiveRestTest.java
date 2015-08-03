@@ -1,20 +1,17 @@
 package com.ttc.ch2.cucumber.rest.outgoingarchive;
 
 import java.io.IOException;
-import java.util.Properties;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.http.HttpEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
-import org.apache.http.util.EntityUtils;
 import org.junit.Assert;
+import org.junit.Assume;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.core.io.ClassPathResource;
-import org.springframework.core.io.Resource;
-import org.springframework.core.io.support.PropertiesLoaderUtils;
 
 import com.ttc.ch2.bl.upload.common.ZipHelper;
 import com.ttc.test.helpservice.UriBuilder;
@@ -57,7 +54,11 @@ public class OutgoingArchiveRestTest {
 			uriLocal=uriBuilder.getUriOutgoingArchive(path,token,version);	
 		}
 		catch (UnsupportedOperationException e) {
-			Assert.assertTrue(e.getMessage(),false);
+			if(StringUtils.isNotEmpty(e.getMessage()) && e.getMessage().contains("Test need data in outgoing")){
+				Assume.assumeTrue(e.getMessage(),false);
+			}				
+			else
+				Assert.assertTrue(e.getMessage(),false);
 		}
 		
 		

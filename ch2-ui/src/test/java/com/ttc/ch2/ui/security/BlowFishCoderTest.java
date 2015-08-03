@@ -28,7 +28,7 @@ public class BlowFishCoderTest {
 		BlowfishCoder bfc = new BlowfishCoder(request);
 		try {
 			String out = bfc.encode("test");
-			bfc.decode(out.substring(0,out.length()-3)+"AAA");
+			bfc.decode(out.substring(0,out.length()-1)+"A");
 			fail("Test failed");
 		}catch(Exception e) {
 			//e.printStackTrace();

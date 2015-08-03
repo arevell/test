@@ -6,7 +6,6 @@ import java.io.StringReader;
 
 import org.apache.ecs.html.Span;
 
-import com.google.common.base.Preconditions;
 import com.ttc.ch2.domain.comment.Comment;
 import com.ttc.ch2.ui.common.exceptions.CH2Exception;
 
@@ -16,13 +15,8 @@ public class TdBrandDetailsDecorator extends BaseCommentDecorator {
 
 	@Override
 	public String decorateContent(Comment comment) {
-		Preconditions.checkArgument(comment!=null,"TdBrandDetailsDecorator->decorateContent comment is null");
-		return this.decorateContent(comment.getContent());
-	}
 
-	@Override
-	public String decorateContent(String txt) {
-		String content = super.decorateContent(txt);
+		String content = super.decorateContent(comment);
 
 		content = content.replace("Brands information:", "<b>Brands information:</b>");
 		content = content.replace("Details sellingCompany:", "<b>Details sellingCompany:</b>");
@@ -47,17 +41,6 @@ public class TdBrandDetailsDecorator extends BaseCommentDecorator {
 					startError = false;
 					startWarning = true;
 				} else if (line.trim().startsWith("INF-") || line.trim().contains("File name:")) {
-					startError = false;
-					startWarning = false;
-				}else if (line.trim().contains("Brands information:")) {
-					startError = false;
-					startWarning = false;
-				}
-				else if (line.trim().contains("Details sellingCompany:")) {
-					startError = false;
-					startWarning = false;
-				}
-				else if (line.trim().contains("Product Details:")) {
 					startError = false;
 					startWarning = false;
 				}

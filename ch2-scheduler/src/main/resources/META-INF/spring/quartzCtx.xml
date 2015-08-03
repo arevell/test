@@ -26,15 +26,6 @@
 		    </map>
 		  </property>
 	</bean>
-	
-	<bean name="DepartureExtendedSynchronizeJob" class="org.springframework.scheduling.quartz.JobDetailBean" scope="prototype">
-  		  <property name="jobClass" value="com.ttc.ch2.scheduler.jobs.departuresynch.DepartureExtendedSynchronizeJob"/>
-  		  <property name="jobDataAsMap">
-		    <map>
-
-		    </map>
-		  </property>
-	</bean>
 	 
  	 <bean name="UploadTourInfoJob" class="org.springframework.scheduling.quartz.JobDetailBean" scope="prototype">
   		  <property name="jobClass" value="com.ttc.ch2.scheduler.jobs.upload.UploadTourInfoJob"/>
@@ -71,7 +62,7 @@
             <entry key="org.quartz.scheduler.instanceId" value="${scheduler.id}" />                          
             <entry key="org.quartz.scheduler.rmi.export" value="false" />            
             <entry key="org.quartz.scheduler.rmi.proxy" value="false" />         
-            <entry key="org.quartz.scheduler.skipUpdateCheck" value="true" />         
+            <!-- <entry key="org.quartz.scheduler.skipUpdateCheck" value="true" /> -->         
             
            <!--  Configure ThreadPool   -->
             <entry key="org.quartz.threadPool.class" value="org.quartz.simpl.SimpleThreadPool" />

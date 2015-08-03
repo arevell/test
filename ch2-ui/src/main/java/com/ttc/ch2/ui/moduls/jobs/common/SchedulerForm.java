@@ -6,6 +6,7 @@ import java.util.List;
 import org.zkoss.util.resource.Labels;
 
 import com.google.common.collect.Lists;
+import com.ttc.ch2.common.enums.CronExpresion;
 import com.ttc.ch2.domain.Brand;
 
 public class SchedulerForm {
@@ -21,10 +22,20 @@ public class SchedulerForm {
 	private Date chgTime;	
 	private List<Brand> brands;
 	private Brand selectedBrand;
+	
+	private List<CronTimeVO> cronTimes=null;
+	private CronTimeVO selectedCronTimeVO=null;
 
-	public SchedulerForm(List<Brand> brands){
+	public SchedulerForm(List<Brand> brands,CronExpresion ce){
 		buildBrands(brands);
 		selectedBrand=this.brands.get(0);
+		cronTimes=CronTimeVO.getList();
+		
+		for (CronTimeVO vo : cronTimes) {
+			if(vo.getExpresion().equals(ce)){
+				selectedCronTimeVO=vo;		
+			}
+		}
 	}
 	
 	public Date getChgTime() {
@@ -57,5 +68,21 @@ public class SchedulerForm {
 		this.brands=Lists.newArrayList();
 		this.brands.add(emptyBrand);
 		this.brands.addAll(brands);
+	}
+	
+	public List<CronTimeVO> getCronTimes() {
+		return cronTimes;
+	}
+
+	public void setCronTimes(List<CronTimeVO> cronTimes) {
+		this.cronTimes = cronTimes;
+	}
+
+	public CronTimeVO getSelectedCronTimeVO() {
+		return selectedCronTimeVO;
+	}
+
+	public void setSelectedCronTimeVO(CronTimeVO selectedCronTimeVO) {
+		this.selectedCronTimeVO = selectedCronTimeVO;
 	}
 }

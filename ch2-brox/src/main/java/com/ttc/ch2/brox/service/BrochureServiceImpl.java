@@ -38,7 +38,6 @@ import org.apache.commons.lang.StringUtils;
 import org.apache.fop.apps.FOUserAgent;
 import org.apache.fop.apps.FopFactory;
 import org.apache.fop.apps.MimeConstants;
-import org.jdom.Content;
 import org.jdom.Document;
 import org.jdom.Element;
 import org.jdom.IllegalDataException;
@@ -71,7 +70,6 @@ import com.ttc.util.validation.Validator;
 import com.ttc.util.ws.MessagesUtil;
 import com.ttsl.marketvariationdepartureinfo._2010._09._1.ArrayOfMarketVariationPricing;
 import com.ttsl.marketvariationdepartureinfo._2010._09._1.MarketVariationPricing;
-import com.ttsl.tourinfo._2010._08._2.Itinerary;
 import com.ttsl.tourinfo._2010._08._2.SellingCompanies;
 import com.ttsl.tourinfo._2010._08._2.SellingCompany;
 
@@ -87,8 +85,6 @@ public class BrochureServiceImpl implements BrochureService {
 
 	private static final int BUFFER_SIZE = 1024;
 
-	private static final String CONTIKI_BRAND = "CH";
-
 	private static final String ELEMENT_SELLING_COMPANIES_TI = "SellingCompanies";
 	private static final String ELEMENT_SELLING_COMPANY_TI = "SellingCompany";
 	private static final String ELEMENT_SELLING_COMPANIES_TD = "MarketVariationPricings";
@@ -98,15 +94,11 @@ public class BrochureServiceImpl implements BrochureService {
 	private static final String ELEMENT_AGENT = "agent";
 	private static final String ELEMENT_IMAGE = "image";
 	private static final String ELEMENT_TEXT = "text";
-	private static final String ELEMENT_ITINERARY_SEGMENT = "ItinerarySegment";
-	private static final String ELEMENT_ITINERARY_SEGMENT_MEALS = "Meals";
 	private static final String ATTRIBUTE_SELLING_COMPANY_CODE_TI = "Code";
 	private static final String ATTRIBUTE_SELLING_COMPANY_CODE_TD = "SellingCompanyCode";
 	private static final String ATTRIBUTE_SELLING_COMPANY = "SellingCompany";
 	private static final String ATTRIBUTE_CURRENT_DATE = "currentDate";
 	private static final String ATTRIBUTE_CURRENT_DATE_NUMERICAL = "currentDateNumerical";
-	private static final String ATTRIBUTE_ITINERARY_SEGMENT_DURATION = "Duration";
-	private static final String ATTRIBUTE_ITINERARY_SEGMENT_STARTDAY = "StartDay";
 	private static final String PATH_TERMS = "/bookend/%s/terms.%s.xml";
 	private static final String PATH_FRONTISPIECE = "/bookend/%s/frontispiece.%s.xml";
 	private static final String PATH_STYLESHEETS = "/stylesheets/%s/stylesheet.xsl";
@@ -253,7 +245,7 @@ public class BrochureServiceImpl implements BrochureService {
 
 			Element elementAgent = new Element(ELEMENT_AGENT);
 
-			if (StringUtils.isNotBlank(agentImage)) { elementAgent.addContent(new Element(ELEMENT_IMAGE).addContent(agentImage)); }
+			if (StringUtils.isNotBlank(agentText)) { elementAgent.addContent(new Element(ELEMENT_IMAGE).addContent(agentImage)); }
 			if (StringUtils.isNotBlank(agentText)) { elementAgent.addContent(new Element(ELEMENT_TEXT).addContent(agentText)); }
 
 			documentBrochure.getRootElement().addContent(elementAgent);
@@ -290,10 +282,6 @@ public class BrochureServiceImpl implements BrochureService {
 
 			if (!checkSellingCompany(documentTourInfo, ELEMENT_SELLING_COMPANY_TI, ATTRIBUTE_SELLING_COMPANY_CODE_TI, sellingCompanyCode)) {
 				throw new BrochureServiceException(String.format(ERROR_NO_TOUR_INFO_SELLING_COMPANY, tourCode));
-			}
-
-			if (sellingCompanyCode.startsWith(CONTIKI_BRAND) && StringUtils.isNotBlank(contentRepository.getXmlContentRepository().get(0).getTourInfoXML())) {
-				addMeals(documentTourInfo, builder.build(new StringReader(contentRepository.getXmlContentRepository().get(0).getTourInfoXML())));
 			}
 
 			documentBrochure.getRootElement().addContent(documentTourInfo.getRootElement().detach());
@@ -416,41 +404,5 @@ public class BrochureServiceImpl implements BrochureService {
 		}
 
 		throw new BrochureServiceException(String.format(ERROR_NO_COMMON_SELLING_COMPANY, tourCode));
-	}
-
-	@SuppressWarnings("unchecked")
-	private void addMeals(Document documentTourInfoV1, Document documentTourInfoV3) {
-
-		List<Element> itinerarySegmentListV1 = new ArrayList<Element>();
-		List<Element> itinerarySegmentListV3 = new ArrayList<Element>();
-
-		Iterator<Element> iteratorV1 = documentTourInfoV1.getDescendants(new ElementFilter(ELEMENT_ITINERARY_SEGMENT));
-		Iterator<Element> iteratorV3 = documentTourInfoV3.getDescendants(new ElementFilter(ELEMENT_ITINERARY_SEGMENT));
-
-		while (iteratorV1 != null && iteratorV1.hasNext()) {
-			itinerarySegmentListV1.add(iteratorV1.next());
-		}
-
-		while (iteratorV3 != null && iteratorV3.hasNext()) {
-			itinerarySegmentListV3.add(iteratorV3.next());
-		}
-
-		for (Element elementV1 : itinerarySegmentListV1) {
-
-			for (Element elementV3 : itinerarySegmentListV3) {
-
-				if (elementV1.getAttributeValue(ATTRIBUTE_ITINERARY_SEGMENT_DURATION).equals(elementV3.getAttributeValue(ATTRIBUTE_ITINERARY_SEGMENT_DURATION)) &&
-					elementV1.getAttributeValue(ATTRIBUTE_ITINERARY_SEGMENT_STARTDAY).equals(elementV3.getAttributeValue(ATTRIBUTE_ITINERARY_SEGMENT_STARTDAY))) {
-
-					Iterator<Element> iteratorMeals = elementV3.getDescendants(new ElementFilter(ELEMENT_ITINERARY_SEGMENT_MEALS));
-
-					while (iteratorMeals.hasNext()) {
-						elementV1.addContent(((Element) iteratorMeals.next().clone()).setNamespace(elementV1.getNamespace()));
-					}
-
-					break;
-				}
-			}
-		}
 	}
 }

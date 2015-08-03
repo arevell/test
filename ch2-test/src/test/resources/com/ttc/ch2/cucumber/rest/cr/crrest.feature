@@ -1,4 +1,3 @@
-@Rest_Service
 Feature: Rest to get file from Content repository   
 	
 Scenario Outline: Rest to get file from Content repository  

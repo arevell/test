@@ -30,9 +30,9 @@
 			</fo:flow>
 		</fo:page-sequence>
 	</xsl:template>
-	<!--  margin top from 3 to 0 -->
+	
 	<xsl:template match="block">
-		<fo:block font-size="8.5pt" font-family="FuturaStd-Bold" margin-top="0mm">
+		<fo:block font-size="8.5pt" font-family="FuturaStd-Bold" margin-top="3mm">
 			<xsl:value-of select="title"/>
 		</fo:block>
 		

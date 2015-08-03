@@ -17,7 +17,6 @@
 	
     <context:component-scan base-package="com.ttc.ch2.hibernate" />
     <context:component-scan base-package="com.ttc.ch2.dao" />
-    
     <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
     	<property name="driverClassName" value="${datasource.driver}"/>
     	<property name="url" value="${datasource.url}"/>
@@ -30,11 +29,11 @@
 		<property name="maxIdle" value="${datasource.maxIdle}" />
 		<property name="maxWaitMillis" value="${datasource.maxWait}" />
 		<property name="minIdle" value="${datasource.minIdle}" />
-		<property name="testOnBorrow" value="true" />
+		<property name="testOnBorrow" value="false" />
 		<property name="testOnReturn" value="false" />
 		<property name="testWhileIdle" value="true" />
 		<property name="timeBetweenEvictionRunsMillis" value="300000" />
-		<property name="validationQuery" value="select sysdate from dual" />
+		<property name="validationQuery" value="select 1 from dual" />
 		<property name="jmxName" value="Catalina:name=DataSource.main" />
 		<!-- <property name="removeAbandoned" value="true" /> -->
     	  <!-- <property name="connectionProperties">
@@ -54,7 +53,7 @@
                 <prop key="hibernate.dialect">${datasource.dialect}</prop>
                 <prop key="hibernate.show_sql">false</prop>
         		<prop key="hibernate.format_sql">false</prop>
-        		<prop key="hibernate.use_sql_comments">false</prop>        
+        		<prop key="hibernate.use_sql_comments">true</prop>        
                 
                 <!-- <prop key="hibernate.c3p0.timeout">3500</prop>
                 <prop key="hibernate.c3p0.idle_test_period">3000</prop>

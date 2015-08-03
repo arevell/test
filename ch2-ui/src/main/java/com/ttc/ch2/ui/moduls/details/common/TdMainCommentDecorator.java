@@ -10,7 +10,6 @@ public class TdMainCommentDecorator extends DefaultCommentDecorator {
 	public String decorateContent(Comment comment) {
 	String content=super.decorateContent(comment);
 	content=content.replace("Main information:", "<b>Main information:</b>");
-	content=content.replace("Additional information:", "<b>Additional information:</b>");
 	
 	return content;
 	}

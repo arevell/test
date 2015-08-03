@@ -2,13 +2,10 @@ package com.ttc.ch2.cucumber.ccapisecurity.getbrochure;
 
 import static org.junit.Assert.assertEquals;
 
-import java.util.Properties;
-
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.junit.Assert;
-import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.google.common.collect.Sets;
@@ -64,9 +61,10 @@ public class GetBrochureTest {
 	}
 	
 	@When("^Check permision for request")
-	public void mainTest() {
-			request.getTour().add("n/a");
-			response = wsClient.port.getBrochure(request);
+	public void mainTest() {			
+//		request.getTour().add("ASAD1504");
+		request.getTour().add("xxxx");
+		response = wsClient.port.getBrochure(request);
 	}
 	
 	@Then("^Response has flag (.*)")

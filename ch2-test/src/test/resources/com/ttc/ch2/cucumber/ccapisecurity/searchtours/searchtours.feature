@@ -1,4 +1,3 @@
-@CCAPI_Security
 Feature: Search Tours: Authentication CCAPI 
 	
 Scenario Outline: Check Authentication for CCAPI searchtoursaggregated

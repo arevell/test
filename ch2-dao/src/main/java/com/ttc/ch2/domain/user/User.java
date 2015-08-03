@@ -28,6 +28,7 @@ import com.ttc.ch2.domain.common.EntityBase;
 @Table(name="USERS")
 @Inheritance(strategy=InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name="type", discriminatorType=DiscriminatorType.STRING)
+//@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 public class User extends EntityBase {
 	
 	private static final long serialVersionUID = -1516998998557232567L;
@@ -41,6 +42,9 @@ public class User extends EntityBase {
 	@Column(name="EMAIL",length=200)
 	private String email;
 	
+	@Column(name="DELFLAG", nullable=false)
+	private Boolean delFlag; 
+	
 	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy="user")
 	private Set <Authority> authorities;
 	
@@ -50,11 +54,9 @@ public class User extends EntityBase {
 			inverseJoinColumns = { @JoinColumn(name = "GROUP_ID",nullable = false, updatable = false) })
 	private Set<Group> groups;
 	
-	@Column(name="DELFLAG", nullable=false)
-	private Boolean delFlag; 
 	
 	public User() {
-			this.delFlag = false;
+		this.delFlag = false;
 	}
 
 	public String getEmail() {
@@ -100,7 +102,7 @@ public class User extends EntityBase {
 	public void setGroups(Set<Group> groups) {
 		this.groups = groups;
 	}
-
+	
 	public Boolean getDelFlag() {
 		return delFlag;
 	}
@@ -108,4 +110,5 @@ public class User extends EntityBase {
 	public void setDelFlag(Boolean delFlag) {
 		this.delFlag = delFlag;
 	}
+
 }

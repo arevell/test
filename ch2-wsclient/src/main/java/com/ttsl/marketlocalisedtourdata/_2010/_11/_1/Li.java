@@ -67,9 +67,9 @@ public class Li {
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link A }
-     * {@link JAXBElement }{@code <}{@link String }{@code >}
      * {@link String }
+     * {@link JAXBElement }{@code <}{@link String }{@code >}
+     * {@link A }
      * 
      * 
      */

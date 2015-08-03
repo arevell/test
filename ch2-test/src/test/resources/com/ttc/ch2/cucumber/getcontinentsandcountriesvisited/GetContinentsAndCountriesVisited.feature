@@ -1,4 +1,3 @@
-@CH2_API
 Feature: Get continents and countries visited
 	
 Scenario Outline: Continents are searched for the following parameters

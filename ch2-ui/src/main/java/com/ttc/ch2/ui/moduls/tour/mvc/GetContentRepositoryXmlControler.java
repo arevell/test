@@ -53,7 +53,7 @@ public class GetContentRepositoryXmlControler extends BaseRest {
 			@PathVariable("TOUR_CODE") String tourCode,
 			@PathVariable("VERSION") String version,
 			@RequestParam(value = "token") String token ) {
-					
+				
 		if(StringUtils.isNotEmpty(version)){
 			if(version.equals("V3")){
 				service.getTourInfoFileNew(request, response, brand, tourCode, token);
@@ -101,7 +101,7 @@ public class GetContentRepositoryXmlControler extends BaseRest {
 		try {
 			
 			String content=new ExceptionXmlConverter().convertToXmlByJaxb(HttpServletResponse.SC_NOT_FOUND,e.getMessage(),Severity.ERROR);
-			writeOutput(response,content,HttpServletResponse.SC_NOT_FOUND);		
+			writeOutput(response,content);		
 		} catch (Exception e1) {
 			throw new CH2Exception(e);
 		}

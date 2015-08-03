@@ -12,7 +12,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 import com.ttc.ch2.bl.departure.ImportStatusService;
@@ -80,18 +79,17 @@ public class ContentRepositoryServiceImpl implements ContentRepositoryService  {
 
 	public List<Long> getContentRepositoryIDsList(List<String> tourCodes, String brandCode) {
 
-		List<Long> contentRepositoryIDsList = new ArrayList<Long>();		
-		Iterable<List<String>> paggedLists=Iterables.paddedPartition(tourCodes, 800);		
-		for (List<String> list : paggedLists) {
-			
-			List<ContentRepository> contentRepositoriesList = findByTourCodes(list, brandCode);
-			if (contentRepositoriesList != null && !contentRepositoriesList.isEmpty()) {
+		List<Long> contentRepositoryIDsList = new ArrayList<Long>();
 
-				for (ContentRepository contentRepository : contentRepositoriesList) {
-					contentRepositoryIDsList.add(contentRepository.getId());
-				}
+		List<ContentRepository> contentRepositoriesList = findByTourCodes(tourCodes, brandCode);
+
+		if (contentRepositoriesList != null && !contentRepositoriesList.isEmpty()) {
+
+			for (ContentRepository contentRepository : contentRepositoriesList) {
+				contentRepositoryIDsList.add(contentRepository.getId());
 			}
 		}
+
 		return contentRepositoryIDsList;
 	}
 
@@ -248,10 +246,5 @@ public class ContentRepositoryServiceImpl implements ContentRepositoryService  {
 		if(cr!=null)
 			cr.getXmlContentRepository().get(0);
 		return cr;
-	}
-
-	@Override
-	public List<Long> getExtendedCRIdsforSearchToursAggregated(List<Long> ids, String brandCode) {
-		return contentRepositoryDAO.getExtendedCRIdsforSearchToursAggregated(ids, brandCode);
 	}
 }

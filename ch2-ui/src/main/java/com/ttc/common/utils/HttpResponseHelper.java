@@ -15,9 +15,4 @@ public class HttpResponseHelper {
 		out.flush();
 		out.close();
 	}
-	
-	public static void writeOutput(int statusCode,HttpServletResponse response,String content,String cType) throws IOException{
-		response.setStatus(statusCode);
-		writeOutput(response, content, cType);
-	}
 }

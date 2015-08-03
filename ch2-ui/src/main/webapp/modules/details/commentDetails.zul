@@ -3,28 +3,23 @@
 	        <panel  border="rounded+"  width="100%" height="100%" self="@{define(mainContent)}" 
 	        apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init(CommentDetails)"   xmlns:h="native">
 	         <caption label="${vm.panelTitle}" sclass="panel_title" />	       
-		        <panelchildren style="overflow: auto;padding:10px">		        	
-		          	<separator />		
-		          	<!--<paging id="paginTable" onPaging="@command('onPagingList')" totalSize="@bind(vm.parts.size)" pageSize="1" activePage="@bind(vm.activePage)" />-->
-		          	
-		          			          	
+		        <panelchildren style="overflow: auto;padding:10px">
+		          	<separator />
+		          	<!--<paging id="paginTable" onPaging="@command('onPagingList')" totalSize="@bind(vm.parts.size)" pageSize="1" activePage="@bind(vm.activePage)" />-->		
 		        	<groupbox width="100%" mold="3d" title="${labels.details.content.container_title}" if="${vm.showContent}">		        	
 		        		<html style="font-family: arial, sans-serif;font-size: 12px;font-weight: normal;">
 			        	 <![CDATA[						 		        	 
 			        	  	${vm.comment.content}		        	  
 			        	  ]]>		        	  
-		        	   </html>
-		        	   <button  label="Get Content" onClick="@command('downloadContent')" mold="trendy" autodisable="self" if="${vm.showContent}"/>               
+		        	   </html>               
 			         </groupbox>			         
-			         <separator />
-			         			         
+			         <separator />			         
 			         <groupbox width="100%" mold="3d" title="${labels.details.error.container_title}" if="${vm.showError}">	
 			         <html style="font-family: arial, sans-serif;font-size: 12px;font-weight: normal;">
 			        	 <![CDATA[						 		        	 
 			        	  	${vm.comment.stackTrace}		        	  
 			        	  ]]>		        	  
 		        	   </html>
-		        	   <button  label="Get Stack error" onClick="@command('downloadStackError')" mold="trendy" autodisable="self" if="${vm.showError}"/>
 			         </groupbox>
 			         <separator />		
 			         

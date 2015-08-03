@@ -24,22 +24,14 @@ import javax.xml.namespace.QName;
 @XmlRegistry
 public class ObjectFactory {
 
-    private final static QName _TourDetailsFullResponse_QNAME = new QName("http://contenthub.travcorp.com/tour_data/2010/11/1.0", "tourDetailsFullResponse");
     private final static QName _TourDetailsFull_QNAME = new QName("http://contenthub.travcorp.com/tour_data/2010/11/1.0", "TourDetailsFull");
+    private final static QName _TourDetailsFullResponse_QNAME = new QName("http://contenthub.travcorp.com/tour_data/2010/11/1.0", "tourDetailsFullResponse");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: com.travcorp.contenthub.tour_data._2010._11._1
      * 
      */
     public ObjectFactory() {
-    }
-
-    /**
-     * Create an instance of {@link TourDetailsFull }
-     * 
-     */
-    public TourDetailsFull createTourDetailsFull() {
-        return new TourDetailsFull();
     }
 
     /**
@@ -51,12 +43,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link TourDetailsFullResponse }{@code >}}
+     * Create an instance of {@link TourDetailsFull }
      * 
      */
-    @XmlElementDecl(namespace = "http://contenthub.travcorp.com/tour_data/2010/11/1.0", name = "tourDetailsFullResponse")
-    public JAXBElement<TourDetailsFullResponse> createTourDetailsFullResponse(TourDetailsFullResponse value) {
-        return new JAXBElement<TourDetailsFullResponse>(_TourDetailsFullResponse_QNAME, TourDetailsFullResponse.class, null, value);
+    public TourDetailsFull createTourDetailsFull() {
+        return new TourDetailsFull();
     }
 
     /**
@@ -66,6 +57,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://contenthub.travcorp.com/tour_data/2010/11/1.0", name = "TourDetailsFull")
     public JAXBElement<TourDetailsFull> createTourDetailsFull(TourDetailsFull value) {
         return new JAXBElement<TourDetailsFull>(_TourDetailsFull_QNAME, TourDetailsFull.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link TourDetailsFullResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://contenthub.travcorp.com/tour_data/2010/11/1.0", name = "tourDetailsFullResponse")
+    public JAXBElement<TourDetailsFullResponse> createTourDetailsFullResponse(TourDetailsFullResponse value) {
+        return new JAXBElement<TourDetailsFullResponse>(_TourDetailsFullResponse_QNAME, TourDetailsFullResponse.class, null, value);
     }
 
 }

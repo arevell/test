@@ -99,7 +99,6 @@ public class Ch1UploadServiceImpl implements Ch1UploadService {
 				zos.close();
 				
 				int brandIdx=ch1UploadBrandCodes.indexOf(brandCode);
-				boolean isUploadError = false;
 				String uploadErrorMessage=null;
 				CredentialsProvider credsProvider = new BasicCredentialsProvider();
 		        credsProvider.setCredentials(
@@ -120,18 +119,16 @@ public class Ch1UploadServiceImpl implements Ch1UploadService {
 		            else {
 		            	uploadErrorMessage = "Error during upload, CH1 response: "+ resp;
 		            	logger.error(uploadErrorMessage);
-		            	isUploadError=true;
+		            	throw new Ch1UploadServiceException(uploadErrorMessage);
 		            }
 		            
 				}catch(Exception e) {
 					uploadErrorMessage = "Cannot transfer ZIP file to CH1"+e;
 					logger.error(uploadErrorMessage,e);
-					isUploadError=true;
+					throw new Ch1UploadServiceException("Error during upload ZIP file to CH1, please check log file for details...",e);
+					
 				}finally {
 					response.close();
-				}
-				if(isUploadError) {
-					throw new Ch1UploadServiceException("Error during upload ZIP file to CH1, please check log file for details...");
 				}
 			}
 			else {
@@ -145,7 +142,7 @@ public class Ch1UploadServiceImpl implements Ch1UploadService {
 				if(httpclient != null)
 					httpclient.close();
 			}catch(IOException e) {
-				logger.error("Cannot close http client: ", e);
+				logger.error("Cannot close http client: " + e);
 			}
 		}
 	}

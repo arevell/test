@@ -6,7 +6,7 @@
 
     <groupId>com.ttc.ch2</groupId>
     <artifactId>ch2-wsclient</artifactId>
-    <version>HABS.159-SNAPSHOT</version>
+    <version>TRUNK-SNAPSHOT</version>
     <name>CH2 Web Services API Client Definition</name>
     <properties>
         <project.build.sourceEncoding>ISO-8859-1</project.build.sourceEncoding>
@@ -29,7 +29,7 @@
             </activation>
             <properties>
                 <ch2.server.host>londevch02</ch2.server.host>
-                <ch2.server.port>7777</ch2.server.port>  
+                <ch2.server.port>8080</ch2.server.port>  
             </properties>
         </profile> 
     </profiles>

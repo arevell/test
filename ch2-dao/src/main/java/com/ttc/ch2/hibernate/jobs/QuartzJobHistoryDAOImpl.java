@@ -56,15 +56,6 @@ public class QuartzJobHistoryDAOImpl extends BaseDao<QuartzJobHistory, Long> imp
 			if(filter.getBrand()!=null){
 				search.addFilterEqual("brand", filter.getBrand());
 			}
-			
-			if(filter.getQuartzJob()!=null && StringUtils.isNotEmpty(filter.getQuartzJob().getUiName())) {
-				search.addFilterLike("quartzJob.uiName", "%" + filter.getQuartzJob().getUiName()+"%");
-			}
-			
-			if(filter.getQuartzJob()!=null && StringUtils.isNotEmpty(filter.getQuartzJob().getGroupName())) {
-				search.addFilterLike("quartzJob.groupName", "%" + filter.getQuartzJob().getGroupName()+"%");
-			}	
-			
 		}
 	}
 

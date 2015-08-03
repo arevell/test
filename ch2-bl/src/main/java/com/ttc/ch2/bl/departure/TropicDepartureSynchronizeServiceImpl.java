@@ -5,11 +5,9 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
-import java.util.Set;
 import java.util.TreeSet;
 
 import javax.inject.Inject;
-import javax.inject.Named;
 
 import org.apache.commons.lang.BooleanUtils;
 import org.apache.commons.lang.StringUtils;
@@ -102,7 +100,6 @@ public class TropicDepartureSynchronizeServiceImpl implements TropicDepartureSyn
 	private ApplicationContext appCtx;
 
 	@Inject
-	@Named("ReconciliationReportServiceImpl")
 	private ReconciliationReportService reconciliationReportService;
 
 	@Inject
@@ -150,7 +147,7 @@ public class TropicDepartureSynchronizeServiceImpl implements TropicDepartureSyn
 
 						// To make transaction annotation working properly, we cannot call the method directly. We have to do it that way.
 						try{
-						appCtx.getBean("TropicDepartureSynchronizeServiceImpl",TropicDepartureSynchronizeService.class).operationForBrand(opStatusPerBrand, brand); // new tx
+						appCtx.getBean(TropicDepartureSynchronizeService.class).operationForBrand(opStatusPerBrand, brand); // new tx
 						}
 						catch(Exception e){
 							// delete all rollbacked element from history 
@@ -183,30 +180,20 @@ public class TropicDepartureSynchronizeServiceImpl implements TropicDepartureSyn
 						}
 
 						// elasticsearch indexing
-						IndexSynchronizerVO indexSynchronizerVO = new IndexSynchronizerVO(true); 
+						IndexSynchronizerVO indexSynchronizerVO = null; 
+
 						if (BooleanUtils.toBoolean(elasticSearchIndexing)) {
 							try {
 								setupMessageSilent(opStatusPerBrand,  TypeMsg.INF, TropicSynchronizeMessages.INDEXING_START.createMessage(brand.getCode()),ProcessLevel.INDEXING);								
-								Date indexStart=new Date();								
+								Date indexStart=new Date();
 								LogOperationHelper.logDefaultMessage(logger, opStatus, TropicSynchronizeMessages.INDEXING_START, brand.getCode());								
-								if(tourInfoTransferDAO.isDownloadEnabled(brand.getCode())){
-									indexSynchronizerService.synchronize(ProcessName.IMPORT, brand.getCode(),indexSynchronizerVO);
-									LogOperationHelper.logDefaultMessage(logger, opStatus, TropicSynchronizeMessages.INDEX_SUCCESS);
-								}
-								else {
-									List<Long> ids = new ArrayList<Long>(opStatusPerBrand.getCrSavedOrUpdateForBrand());
-									if(ids.size() > 0) {
-										indexSynchronizerService.synchronize(ProcessName.IMPORT, brand.getCode(), ids,indexSynchronizerVO);
-										LogOperationHelper.logDefaultMessage(logger, opStatus, TropicSynchronizeMessages.SHORT_INDEX_SUCCESS,ids.size());
-									}
-									else {
-										LogOperationHelper.logDefaultMessage(logger, opStatus, TropicSynchronizeMessages.SHORT_INDEX_IGNORED);
-									}
-								}								
+								indexSynchronizerVO = indexSynchronizerService.synchronize(ProcessName.IMPORT, brand.getCode());
+								LogOperationHelper.logDefaultMessage(logger, opStatus, TropicSynchronizeMessages.INDEX_SUCCESS);
 								LogOperationHelper.logDefaultMessage(logger, opStatus, TropicSynchronizeMessages.INDEXING_END, brand.getCode(), DateHelper.calculateTime(indexStart, new Date(), defaultTimePattern));
+
 							} catch (IndexSynchronizerServiceException e) {
 								LogOperationHelper.logDefaultException(logger, opStatus, new Date(), e, TropicSynchronizeMessages.UNEXPECTED_EXCEPTION);
-							}							
+							}
 						} else {
 							LogOperationHelper.logDefaultMessage(logger, opStatus, TropicSynchronizeMessages.INDEXING_TOURN_OFF);
 						}
@@ -219,9 +206,10 @@ public class TropicDepartureSynchronizeServiceImpl implements TropicDepartureSyn
 
 						final String brandCodeLocal = brand.getCode();
 
-						FileCollectVO fileCollectVO = new FileCollectVO() ;
+						FileCollectVO fileCollectVO = null;
+
 						try {
-							 fileCollectService.createLatestVersion(ProcessName.IMPORT, brandCodeLocal,fileCollectVO);
+							fileCollectVO = fileCollectService.createLatestVersion(ProcessName.IMPORT, brandCodeLocal);
 						} catch (FileCollectServiceException e) {
 							LogOperationHelper.logDefaultException(logger, opStatusPerBrand, new Date(), e, TropicSynchronizeMessages.OUTGOING_ARCHIVE_EXCEPTION, opStatusPerBrand.getCurrentBrand());
 						}

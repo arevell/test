@@ -187,7 +187,7 @@ public class StopJobConditionTest {
 	private void setupActiveJob() throws SchedulerException{
 		   PowerMockito.when(mockJobExecutionContext.getJobDetail()).thenReturn(mockJobDetail);
 		   PowerMockito.when(mockJobDetail.getGroup()).thenReturn(SchedulerForImportServiceImpl.jobGroupName);
-		   PowerMockito.when(mockJobDetail.getName()).thenReturn(QuartzJob.JobName.DepartureSynchronizeJob.toString()+"_BV");
+		   PowerMockito.when(mockJobDetail.getName()).thenReturn(SchedulerForImportServiceImpl.jobImportName+"_BV");
 		   PowerMockito.when(mockScheduler.getCurrentlyExecutingJobs()).thenReturn(Lists.newArrayList(mockJobExecutionContext,mockJobExecutionContext,mockJobExecutionContext));	
 		   
 			QuartzJob job=getQuartzJob();

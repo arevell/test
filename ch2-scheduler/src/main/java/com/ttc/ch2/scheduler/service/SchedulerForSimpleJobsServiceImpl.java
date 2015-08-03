@@ -10,7 +10,6 @@ import org.springframework.scheduling.quartz.JobDetailBean;
 import org.springframework.stereotype.Service;
 
 import com.ttc.ch2.domain.jobs.QuartzJob;
-import com.ttc.ch2.scheduler.common.JobParams;
 
 @Service
 public class SchedulerForSimpleJobsServiceImpl extends SchedulerServiceBase  implements SchedulerForSimpleJobsService {
@@ -54,7 +53,6 @@ public class SchedulerForSimpleJobsServiceImpl extends SchedulerServiceBase  imp
             if (bean instanceof JobDetailBean) {
                 JobDetailBean jobDetails = (JobDetailBean) bean;
                 jobDetails.setName(jobName);
-                jobDetails.getJobDataMap().put(JobParams.JOB_NAME_UI.toString(), String.format(JOB_DESC));
                 jobDetails.setGroup(SIMPLE_GROUP);
                 String cronExpression = job.getCronExpresion();
                 CronTrigger trigger = createCronTrigger(jobName + "-trigger", SIMPLE_GROUP + "-trigger", cronExpression/*, CronTrigger.MISFIRE_INSTRUCTION_FIRE_ONCE_NOW*/);

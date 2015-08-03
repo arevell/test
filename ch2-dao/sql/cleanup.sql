@@ -74,14 +74,6 @@ delete from TIBLOB_DATA;
  delete from TOURDEPARTURE_CONTENT  where (CONTENT_ID) in (select ID from CONTENT_REPOSITORY where ID in ( select content_id from brand_content where brand_id=15));                   
  delete from TOURINFO_CONTENT where (CONTENT_ID) in (select ID from CONTENT_REPOSITORY where ID in ( select content_id from brand_content where brand_id=15));    
  delete from CONTENT_REPOSITORY where ID in ( select content_id from brand_content where brand_id=15);
- 
- delete from XML_CONTENT_REPOSITORY where CONTENT_REPOSITORY_ID in (SELECT id from CONTENT_REPOSITORY where REPOSITORY_STATUS='Empty');
- delete from BRAND_CONTENT where (CONTENT_ID) in ( select ID from CONTENT_REPOSITORY where ID in ( SELECT id from CONTENT_REPOSITORY where REPOSITORY_STATUS='Empty') );                             
- delete from SELLINGCOMPANY_CONTENT where (CONTENT_ID) in (select ID from CONTENT_REPOSITORY where ID in ( SELECT id from CONTENT_REPOSITORY where REPOSITORY_STATUS='Empty'));        
- delete from TOURDEPARTURE_CONTENT  where (CONTENT_ID) in (select ID from CONTENT_REPOSITORY where ID in ( SELECT id from CONTENT_REPOSITORY where REPOSITORY_STATUS='Empty'));                   
- delete from TOURINFO_CONTENT where (CONTENT_ID) in (select ID from CONTENT_REPOSITORY where ID in ( SELECT id from CONTENT_REPOSITORY where REPOSITORY_STATUS='Empty'));    
- delete from CONTENT_REPOSITORY where ID in (SELECT id from CONTENT_REPOSITORY where REPOSITORY_STATUS='Empty');
-
             
 
  -- clear CR
@@ -91,16 +83,4 @@ delete from TIBLOB_DATA;
  delete from TOURDEPARTURE_CONTENT ;                 
  delete from TOURINFO_CONTENT; 
  delete from CONTENT_REPOSITORY;
- 
-  
- -- clear users
-delete from GROUP_AUTHORITIES;
-delete from CCAPI_AUTHORITY;
-delete from GROUPS;
-
-delete from AUTHORITY;
-delete from CCAPI_AUTHORITY;
-delete from GROUP_MEMBERS;
-delete from USER_BRAND;
-delete from users;
 

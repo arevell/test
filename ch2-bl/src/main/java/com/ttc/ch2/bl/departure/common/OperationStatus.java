@@ -2,41 +2,28 @@ package com.ttc.ch2.bl.departure.common;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Set;
-import java.util.TreeSet;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.commons.lang.time.StopWatch;
 import org.elasticsearch.common.collect.Sets;
 
 import com.google.common.base.Preconditions;
-import com.ttc.ch2.bl.filecollect.FileCollectVO;
-import com.ttc.ch2.common.JobCoordinator;
-import com.ttc.ch2.common.enums.SystemDirection;
+import com.ttc.ch2.domain.comment.TDComment;
 import com.ttc.ch2.domain.departure.TourDepartureHistory;
 import com.ttc.ch2.domain.departure.TourDepartureHistory.TourDepartureStatus;
 import com.ttc.ch2.domain.export.CRExport;
-import com.ttc.ch2.domain.jobs.QuartzJob;
 import com.ttc.ch2.domain.jobs.QuartzJob.JobStatus;
 import com.ttc.ch2.domain.jobs.QuartzJobHistory;
-import com.ttc.ch2.search.export.IndexSynchronizerVO;
 
 public class OperationStatus implements Serializable {
 				
 	private static final long serialVersionUID = -7807994931476572052L;
-	
-	private QuartzJob.JobName jobName;
-		
+
 	private MessagesManager messageManager=null;
 	
 	private TourDepartureStatus status=TourDepartureStatus.OPERATION_IN_PROGESS;
 		
-	private Map<Date,IndexSynchronizerVO> indexMap;	
-	private Map<Date,FileCollectVO> fileCollectMap;
 	private JobStatusChecker jobStatusChecker;
-	private JobCoordinator jobCoordinator;
 	private TourDepartureHistory tourDepartureHistory;
 	private QuartzJobHistory quartzJobHistory;
 	private CRExport crExport;
@@ -50,19 +37,16 @@ public class OperationStatus implements Serializable {
 	private Integer updateCount=0;
 	private Integer rejectedCountMd5=0;
 	private Integer rejectedCountDeparture=0;
-	private Integer rejectedInvalidSchema=0;	
-	private Integer tourWithOutCheckSum=0;
-	
-	private  SystemDirection systemDirection;
-	
 	private Integer deletedCount=0;
-	private String currentBrand;
 	
+	
+	private String currentBrand;
+//	private String currentSellingCompanyCode;
+//	private String currentProductCode;
+		
 	private Set<Long> crSavedOrUpdateForBrand;
 	private Set<Long> crRejctedMd5ForBrand;
 	private Set<Long> crUnsavedForBrand;
-	
-	private StopWatch tropicsComunicationWatch=null;
 	
 	public OperationStatus()
 	{			
@@ -77,11 +61,32 @@ public class OperationStatus implements Serializable {
 		return tdMsg;
 	}
 	
+//	public TDMessage addException(String brandCode,String sellingCompanyCode,String productCode, Throwable e,TropicSynchronizeMessages msg,Object ... params)
+//	{
+//		return addException(brandCode, sellingCompanyCode, productCode, e, null,null, msg, params);
+//	}
+	
 	public TDMessage addException(String sellingCompanyCode,String productCode, Throwable e,Date time,long duration,TropicSynchronizeMessages msg,Object ... params)
 	{
 		Preconditions.checkState(StringUtils.isNotEmpty(currentBrand), "OperationStatus.addException-> currentBrand is emepty");
 		return addException(currentBrand, sellingCompanyCode, productCode, e, time, duration, msg, params);
 	}
+	
+//	public TDMessage addException(String productCode, Throwable e,Date time,long duration,TropicSynchronizeMessages msg,Object ... params)
+//	{
+//		Preconditions.checkState(StringUtils.isNotEmpty(currentBrand), "OperationStatus.addException-> currentBrand is emepty");
+//		Preconditions.checkState(StringUtils.isNotEmpty(currentSellingCompanyCode), "OperationStatus.addException-> currentSellingCompanyCode is emepty");
+//		return addException(currentBrand, currentSellingCompanyCode, productCode, e, time, duration, msg, params);
+//	}
+//	
+//	
+//	
+//	public TDMessage addException(String productCode, Throwable e,TropicSynchronizeMessages msg,Object ... params)
+//	{
+//		Preconditions.checkState(StringUtils.isNotEmpty(currentBrand), "OperationStatus.addException-> currentBrand is emepty");
+//		Preconditions.checkState(StringUtils.isNotEmpty(currentSellingCompanyCode), "OperationStatus.addException-> currentSellingCompanyCode is emepty");
+//		return addException(currentBrand, currentSellingCompanyCode, productCode, e, null, null, msg, params);
+//	}
 	
 	public TDMessage addMessage(String brandCode,String sellingCompanyCode,String productCode,Date time,Long duration,TropicSynchronizeMessages msg,Object ... params)
 	{
@@ -106,7 +111,13 @@ public class OperationStatus implements Serializable {
 		Preconditions.checkState(StringUtils.isNotEmpty(currentBrand), "OperationStatus.addMessage-> currentBrand is emepty");
 		return addMessage(currentBrand, sellingCompanyCode, productCode, null, null, msg, params);
 	}
-
+	
+//	public TDMessage addMessage(String productCode,TropicSynchronizeMessages msg,Object ... params)
+//	{
+//		Preconditions.checkState(StringUtils.isNotEmpty(currentBrand), "OperationStatus.addMessage-> currentBrand is emepty");
+//		Preconditions.checkState(StringUtils.isNotEmpty(currentSellingCompanyCode), "OperationStatus.addMessage-> currentSellingCompanyCode is emepty");
+//		return addMessage(currentBrand, currentSellingCompanyCode, productCode, null, null, msg, params);
+//	}
 	
 	/*Default status == SUCCESS_OPERATION_END*/
 	private void updateStatus(TropicSynchronizeMessages msg){
@@ -123,7 +134,12 @@ public class OperationStatus implements Serializable {
 		}
 	}
 	
-
+//	
+////	public TropicSynchronizeMessages getEnum(int index)
+////	{
+////		return messageManager.getMessages().get(index).getMsgEnum();
+////	}
+	
 	public void init() {		
 		this.messageManager=new MessagesManager(this);
 		this.startOperation=new Date();	
@@ -132,11 +148,12 @@ public class OperationStatus implements Serializable {
 		tourDepartureHistory.setModifiedBy(user);
 		tourDepartureHistory.setUpdatedCount(0);
 		tourDepartureHistory.setImportedCount(0);
-		tourDepartureHistory.setStatus(status);	
-		tropicsComunicationWatch=new StopWatch();
+		tourDepartureHistory.setStatus(status);		
 	}
 	
-	
+	public TDComment getCommentForBrand(String brandCode) {
+		return messageManager.createTDCommentForBrand(brandCode);
+	}
 	
 	public void finish() {
 		
@@ -149,13 +166,8 @@ public class OperationStatus implements Serializable {
 		tourDepartureHistory.setUpdatedCount(getUpdateCount()+getInsertCount());
 		tourDepartureHistory.setImportedCount(getImportCount());
 		
-//		to do create TDComments hear
-		if(jobName==QuartzJob.JobName.DepartureSynchronizeJob){
-		messageManager.createTdiReport();
-		}
-		else{
-			messageManager.createTdeReport();	
-		}
+//		to do create TDComments hear		
+		messageManager.createTDComments();
 	}
 	public void addImport() {
 		importCount++;
@@ -171,20 +183,12 @@ public class OperationStatus implements Serializable {
 		insertCount++;
 	}
 
-	public void addTourWithOutCheckSum(int count){
-		this.tourWithOutCheckSum+=count;
-	}
-	
 	public void addRejectMd5() {
 		rejectedCountMd5++;
 	}
 
 	public void addRejectedCountDeparture() {
 		rejectedCountDeparture++;
-	}
-	
-	public void addRejectedInvalidSchema() {
-		rejectedInvalidSchema++;
 	}
 
 	public void setDeletedCount(int count) {
@@ -232,6 +236,14 @@ public class OperationStatus implements Serializable {
 	public void setCurrentBrand(String currentBrand) {
 		this.currentBrand = currentBrand;
 	}
+
+//	public String getCurrentSellingCompanyCode() {
+//		return currentSellingCompanyCode;
+//	}
+
+//	public void setCurrentSellingCompanyCode(String currentSellingCompanyCode) {
+//		this.currentSellingCompanyCode = currentSellingCompanyCode;
+//	}
 
 	public MessagesManager getMessageManager() {
 		return messageManager;
@@ -347,92 +359,5 @@ public class OperationStatus implements Serializable {
 
 	public void setCrUnsavedForBrand(Set<Long> crUnsavedForBrand) {
 		this.crUnsavedForBrand = crUnsavedForBrand;
-	}
-		
-	public JobCoordinator getJobCoordinator() {
-		return jobCoordinator;
-	}
-
-	public void setJobCoordinator(JobCoordinator jobCoordinator) {
-		this.jobCoordinator = jobCoordinator;
-	}
-
-	public Map<Date, IndexSynchronizerVO> getIndexMap() {
-		if(indexMap == null)
-			indexMap = new HashMap<Date,IndexSynchronizerVO>();
-		return indexMap;
-	}
-
-	public void setIndexMap(Map<Date, IndexSynchronizerVO> indexMap) {
-		this.indexMap = indexMap;
-	}
-
-	public Map<Date, FileCollectVO> getFileCollectMap() {
-		return fileCollectMap;
-	}
-
-	public void setFileCollectMap(Map<Date, FileCollectVO> fileCollectMap) {
-		this.fileCollectMap = fileCollectMap;
-	}
-
-	public SystemDirection getSystemDirection() {
-		return systemDirection;
-	}
-
-	public void setSystemDirection(SystemDirection systemDirection) {
-		this.systemDirection = systemDirection;
-	}
-	
-	public Integer getRejectedInvalidSchema() {
-		return rejectedInvalidSchema;
-	}
-
-	public QuartzJob.JobName getJobName() {
-		return jobName;
-	}
-
-	public void setJobName(QuartzJob.JobName jobName) {
-		this.jobName = jobName;
-	}
-
-	public StopWatch getTropicsComunicationWatch() {
-		return tropicsComunicationWatch;
-	}
-
-	public Integer getTourWithOutCheckSum() {
-		return tourWithOutCheckSum;
-	}
-	
-	public boolean needClearDataFromRecReportDataForIndex(){
-					
-		 if(indexMap.isEmpty())
-			 return false;
-				
-		 if(indexMap.size()>1){
-			 // 'indexMap' has partial indexing data			 
-			 return true;
-		 }
-		 
-		 IndexSynchronizerVO vo=indexMap.values().iterator().next();
-		 if(vo.hasErrors() && vo.getIndexingAll()){
-			 return false;
-		 }else{
-			 return true;
-		 }
-	}
-	
-	public boolean needClearDataFromRecReportDataForFileCollect(){
-		
-		 if(fileCollectMap.isEmpty())
-			 return false;
-		 
-		 TreeSet<Date> keys=Sets.newTreeSet(fileCollectMap.keySet());
-		 
-		 FileCollectVO vo=fileCollectMap.get(keys.last());
-		 		 
-		 if(vo.hasErrors())
-			 return false;
-		 else
-			 return true;		
 	}
 }

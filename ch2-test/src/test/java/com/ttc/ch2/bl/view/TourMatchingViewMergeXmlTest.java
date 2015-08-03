@@ -1,17 +1,9 @@
 package com.ttc.ch2.bl.view;
 
-import java.io.StringWriter;
-import java.util.List;
-
 import javax.inject.Inject;
 import javax.xml.transform.Source;
-import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerException;
-import javax.xml.transform.TransformerFactory;
-import javax.xml.transform.stream.StreamResult;
 
-import junit.framework.Assert;
-
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.powermock.reflect.Whitebox;
@@ -21,11 +13,8 @@ import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.ttc.ch2.bl.contentrepository.ContentRepositoryService;
-import com.ttc.ch2.common.BaseTest;
 import com.ttc.ch2.common.SampleGenerator;
-import com.ttc.ch2.domain.common.QueryCondition;
 import com.ttc.ch2.domain.tour.ContentRepository;
-import com.ttc.ch2.domain.tour.ContentRepository.RepositoryStatus;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations={"classpath:/META-INF/spring/blCtx.xml", "classpath:/META-INF/spring/testCtx.xml"})

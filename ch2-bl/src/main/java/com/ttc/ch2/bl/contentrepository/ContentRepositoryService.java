@@ -59,11 +59,4 @@ public interface ContentRepositoryService {
 	 * tourDeparturexml version 3
 	 * */
 	public int deleteEmptyContentRepository(String brandCode);
-	
-	
-	/**
-	 * Get all ContentRepository id for SearchToursAggregated indexing
-	 * 
-	 */
-	public List<Long> getExtendedCRIdsforSearchToursAggregated(List<Long> ids, String brandCode);
 }

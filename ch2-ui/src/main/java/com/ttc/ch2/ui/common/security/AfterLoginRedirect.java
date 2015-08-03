@@ -60,7 +60,7 @@ public class AfterLoginRedirect extends OncePerRequestFilter{
 		try{
 		String content=new ExceptionXmlConverter().convertToXmlByJaxb(code,msg,Severity.ERROR);
 		response.setStatus(code);
-		HttpResponseHelper.writeOutput(HttpServletResponse.SC_UNAUTHORIZED,response, content,"text/xml");
+		HttpResponseHelper.writeOutput(response, content,"text/xml");
 		}
 		catch(Exception e){
 			throw new ServletException(e);

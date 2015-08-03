@@ -72,9 +72,8 @@ public class UserCCAPIDAOImpl extends BaseDao<UserCCAPI,  Long> implements UserC
 			if(StringUtils.isNotBlank(filter.getAddress())){
 				search.addFilterILike("address", "%" + filter.getAddress()+"%");
 			}
-			
-			if (filter.getDelFlag() != null) {
-				search.addFilterEqual("delFlag", filter.getDelFlag());
+			if(filter.getDelFlag()!=null){
+				search.addFilterEqual("delFlag", filter.getDelFlag() );
 			}
 		}
 	}

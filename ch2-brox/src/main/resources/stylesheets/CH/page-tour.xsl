@@ -53,12 +53,11 @@
 										font-family="FSAlbert-Light" font-size="10pt"> 
 										<xsl:apply-templates select="ancestor::ti:TourInfo/ti:Description"/>
 									</fo:block>
-									
+
 									<fo:block margin-top="7mm" font-size="12pt" font-family="FuturaStd-Bold">
 										YOU WILL VISIT
 									</fo:block>
-									<!-- marging right -->
-									<fo:block margin-top="2mm" margin-right="6mm" font-family="FSAlbert-Light" 
+									<fo:block margin-top="2mm" font-family="FSAlbert-Light" 
 										font-size="12pt" font-weight="normal">
 										<xsl:for-each select="ancestor::ti:TourInfo/ti:CountriesVisited/ti:Country">
 											<xsl:value-of select="@Name"/>
@@ -78,7 +77,7 @@
 								
 								<fo:table-cell >  <!--  TOUR PHOTO, MAP  -->
 									<fo:block>
-										<fo:external-graphic margin-left="5mm" margin-top="0mm" margin-bottom="0mm" padding-top="0mm"
+										<fo:external-graphic margin-top="0mm" margin-bottom="0mm" padding-top="0mm"
 											padding-bottom="0mm"  width="70mm" content-width="scale-to-fit"
 											content-height="scale-to-fit" scaling="uniform">
 											<xsl:attribute name="src">
@@ -119,9 +118,9 @@
 
 	</xsl:template>
 
-<!-- height from 85 to scale to fit -->
+
 	<xsl:template match="ti:TourInfo/ti:WhatsIncluded">
-		<fo:block-container height="scale-to-fit" background-color="#F8F3F3"
+		<fo:block-container height="85mm" background-color="#F8F3F3"
 		    keep-together.within-page="always">
 		    <fo:block margin-left="3mm" margin-top="5mm" margin-bottom="2mm" 
 		              font-family="FuturaStd-Bold" font-size="12pt">

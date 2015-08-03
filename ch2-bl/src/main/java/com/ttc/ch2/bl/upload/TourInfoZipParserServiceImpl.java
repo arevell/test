@@ -35,8 +35,6 @@ import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 import com.ttc.ch2.api.ccapi.v3.tourinfo._2014._01._3.TourInfo;
-import com.ttc.ch2.bl.constraints.ConstraintService;
-import com.ttc.ch2.bl.constraints.ConstraintServiceException;
 import com.ttc.ch2.bl.contentrepository.ContentRepositoryService;
 import com.ttc.ch2.bl.report.ItinerarySegmentChecker;
 import com.ttc.ch2.bl.upload.common.BrandPermissionChecker;
@@ -50,6 +48,7 @@ import com.ttc.ch2.bl.upload.common.tourinfogen.ITropicsV1TourInfoMapper;
 import com.ttc.ch2.bl.upload.common.tourinfogen.TourInfoDataConsumer;
 import com.ttc.ch2.common.DateHelper;
 import com.ttc.ch2.common.DateHelper.CalculateTimePattern;
+import com.ttc.ch2.common.EntityToIdTransform;
 import com.ttc.ch2.common.predicates.FindEntityByIdPredicate;
 import com.ttc.ch2.dao.BrandDAO;
 import com.ttc.ch2.dao.SellingCompanyDAO;
@@ -85,9 +84,6 @@ public class TourInfoZipParserServiceImpl implements TourInfoZipParserService {
 
 	@Inject
 	private UploadStatusService uploadStatusService;
-	
-	@Inject
-	private ConstraintService constraintService; 
 
 
 
@@ -126,26 +122,31 @@ public class TourInfoZipParserServiceImpl implements TourInfoZipParserService {
                 }
                 	
                 String productCodeFromFileName=StringUtils.substringBeforeLast(zipEntry.getName(), ".xml");
+//                String productCodeFromFileName=zipEntry.getName().substring(0,zipEntry.getName().toLowerCase().indexOf(".xml"));
                 
                 LogOperationHelper.logMessageForFile(logger, opStatus,productCodeFromFileName, TourInfoMessages.OPERATION_ON_FILE, zipEntry.getName(), zipEntry.getSize(), new Date(zipEntry.getTime()));
                                 
                 proccesingDescriptionSilent(opStatus.getBrandCode(),  "processing file:"+zipEntry.getName(),true);
                                 
                 readFileToString(tourInfoXMLBuffer,zipStream);              
-                TourInfo data=parseOriginalTourInfoXml(tourInfoXMLBuffer, opStatus, productCodeFromFileName,jaxbUnmarshaller,zipEntry); 
-                                                               
-                ValidatorSchemaHandler validatorSchemaHandler=(ValidatorSchemaHandler) jaxbUnmarshaller.getEventHandler();                  
-                if(data!=null){
-    				if(!validate(opStatus,data, zipEntry,validatorSchemaHandler,productCodeFromFileName)){
+                //logger.debug(tourInfoXMLBuffer.toString());
+                OriginalTourInfoParseData data=parseOriginalTourInfoXml(tourInfoXMLBuffer, opStatus, productCodeFromFileName,jaxbUnmarshaller,zipEntry,true); 
+//                if(data.valid()){
+//                	TourInfo ti=data.originalTourInfo;
+//                	if(data.valid() && validate(opStatus,ti, zipEntry,data.schemaValidatorHandler,productCodeFromFileName)==false || filesValid==false){
+//                		filesValid=false;					
+//                	}
+//                }
+                
+                if(data.valid()){
+    				if(!validate(opStatus,data.originalTourInfo, zipEntry,data.schemaValidatorHandler,productCodeFromFileName)){
     					filesValid=false;					
     				}
                 }
-                else{                	
-                	logSchemaErrors(validatorSchemaHandler, opStatus, productCodeFromFileName, zipEntry);
+                else{
                 	filesValid=false;
-                }                           
-                // clear schema validator                
-                validatorSchemaHandler.setupDefault();	                
+                }                
+				data.schemaValidatorHandler.setupDefault();								
             }// while first            
             jaxbUnmarshaller=null;
             
@@ -163,7 +164,7 @@ public class TourInfoZipParserServiceImpl implements TourInfoZipParserService {
                         
             Unmarshaller jaxbUnmarshallerWithoutSchemaValidate = uploadTourInfoJaxbCreator.createUnmarshaller(false);
             Date d1=new Date();
-            LogOperationHelper.logMessage(logger, opStatus,TourInfoMessages.START_PERSISTS);
+            LogOperationHelper.logMessage(logger, opStatus,TourInfoMessages.START_PERSISTS,crToSave.size());
             proccesingDescriptionSilent(opStatus.getBrandCode(), "Persist data",false);
            
         	fileStream2=new FileInputStream(fileZip);
@@ -174,15 +175,19 @@ public class TourInfoZipParserServiceImpl implements TourInfoZipParserService {
             	String productCodeFromFileName=StringUtils.substringBeforeLast(zipEntry.getName(), ".xml");
             	readFileToString(tourInfoXMLBuffer,zipStream2);    
             	
-            	TourInfo data=parseOriginalTourInfoXml(tourInfoXMLBuffer, opStatus, productCodeFromFileName,jaxbUnmarshallerWithoutSchemaValidate,zipEntry);
-            	if(data!=null){
-                	TourInfo ti=data;
+            	OriginalTourInfoParseData data=parseOriginalTourInfoXml(tourInfoXMLBuffer, opStatus, productCodeFromFileName,jaxbUnmarshallerWithoutSchemaValidate,zipEntry,false);
+            	if(data.valid()){
+                	TourInfo ti=data.originalTourInfo;
                   	
                 	String contentXmlTourInfoVer1=generateOldTourInfo(opStatus,ti);
 
     				ContentRepository cr = contentRepositoryDAO.findByTourCode(ti.getTourCode(),opStatus.getBrandCode());    				
     				ContentRepository toUpdateOrSaveCr = createOrUpdateContentRepository(contentXmlTourInfoVer1, tourInfoXMLBuffer, zipEntry, ti, cr, productCodeFromFileName,opStatus,now);
-    				    				
+    				
+    				// need fixed
+//    				uploadTourInfoFile.getContentRepositories().add(cr);
+    				
+    				
     				// expected null if Cr is rejected
     				if(toUpdateOrSaveCr==null){    					
     					if(cr!=null){
@@ -212,8 +217,9 @@ public class TourInfoZipParserServiceImpl implements TourInfoZipParserService {
     		        crToSave.add(toUpdateOrSaveCr.getId());
 //    		        contentRepositoryDAO.evictEntity(toUpdateOrSaveCr);
     		        contentRepositoryDAO.clearSession();        
+//    				persistAllData(crToSave, opStatus,crRejectedMd5,uploadTourInfoFile.getBrand());
     				
-    				// generate data to Itinerary report used in another part of process
+    				// generate data to Itinerary raport used in anather part of process
     		        if (!new ItinerarySegmentChecker().checkItinerarySegment(ti.getItinerary())) {
     		        	invalidToursListForItinerary.add(ti.getTourCode());
     		        }    		        
@@ -228,10 +234,7 @@ public class TourInfoZipParserServiceImpl implements TourInfoZipParserService {
 	        crRejectedMd5.clear();
 	        opStatus.setIdsCrSavedOrUpdated(crToSave);
 //	        crToSave.clear();
-	    	contentRepositoryService.clearTourInfo(crNotCleared,opStatus.getUploadTourInfoFile().getBrand());
-	    	
-	    	checkConstraint(opStatus);
-	    	
+	    	contentRepositoryService.clearTourInfo(crNotCleared,opStatus.getUploadTourInfoFile().getBrand());		
             return invalidToursListForItinerary;
         } 
         catch (TourInfoZipParserServiceException e) {
@@ -249,7 +252,43 @@ public class TourInfoZipParserServiceImpl implements TourInfoZipParserService {
 		}
 	}
 
+	@Deprecated
+	private void persistAllData(List<ContentRepository> crToSave,OperationStatus opStatus,Set<Long> crRejectedMd5,Brand brand){
 	
+			if (crToSave.size() > 0) {
+	    		Date d1=new Date();
+	        	LogOperationHelper.logMessage(logger, opStatus,TourInfoMessages.START_PERSISTS,crToSave.size());
+	        	for (ContentRepository cr : crToSave) {
+	        		
+					if (cr.getId() == null) {
+						cr.setRepositoryStatus(ContentRepository.RepositoryStatus.TourInfoOnly);
+					} else {
+	        			if(cr.getRepositoryStatus() == ContentRepository.RepositoryStatus.Initial || cr.getRepositoryStatus() == ContentRepository.RepositoryStatus.Empty)
+							cr.setRepositoryStatus(ContentRepository.RepositoryStatus.TourInfoOnly);
+						else if(cr.getRepositoryStatus() !=  ContentRepository.RepositoryStatus.TourInfoOnly )
+							cr.setRepositoryStatus(ContentRepository.RepositoryStatus.TIandTD);
+	        		}
+					proccesingDescriptionSilent(opStatus.getBrandCode(), "Persist data:"+cr.getTourCode(),false);
+	        		contentRepositoryDAO.save(cr);
+	        		contentRepositoryDAO.flush();	        		            		
+				}
+	        	LogOperationHelper.logMessage(logger, opStatus,TourInfoMessages.END_PERSISTS,DateHelper.calculateTime(d1, new Date(),CalculateTimePattern.HMS));
+	    	}
+			
+			
+			
+	    	Set<Long> crNotCleared=Sets.newHashSet((Iterables.transform(crToSave, new EntityToIdTransform())));
+	        crNotCleared.addAll(crRejectedMd5);
+	        crRejectedMd5.clear();
+	        crToSave.clear();
+	        
+	        
+	        
+	    	contentRepositoryService.clearTourInfo(crNotCleared,brand);
+	    	
+            //int deleteCount=contentRepositoryService.deleteEmptyContentRepository(opStatus.getBrandCode());
+            //opStatus.setDeleteCount(deleteCount);
+	}
 	
 	
 	private ContentRepository createOrUpdateContentRepository(String contentXmlTourInfoVer1,StringBuilder tourInfoXMLBuffer,ZipEntry zipEntry, TourInfo ti,
@@ -341,24 +380,42 @@ public class TourInfoZipParserServiceImpl implements TourInfoZipParserService {
 	}
 	
 
-	private TourInfo parseOriginalTourInfoXml(StringBuilder tourInfoXMLBuffer,OperationStatus opStatus,String productCodeFromFileName,Unmarshaller jaxbUnmarshaller,ZipEntry zipEntry){				
+	private OriginalTourInfoParseData parseOriginalTourInfoXml(StringBuilder tourInfoXMLBuffer,OperationStatus opStatus,String productCodeFromFileName,Unmarshaller jaxbUnmarshaller,ZipEntry zipEntry,boolean useSchemaHandler){		
+		OriginalTourInfoParseData data=new OriginalTourInfoParseData();		
          try{ 
-         	 return (TourInfo) jaxbUnmarshaller.unmarshal(new StringReader(tourInfoXMLBuffer.toString()));         	 
+         	 data.originalTourInfo= (TourInfo) jaxbUnmarshaller.unmarshal(new StringReader(tourInfoXMLBuffer.toString()));
+         	 if(useSchemaHandler) {
+         		 data.schemaValidatorHandler=(ValidatorSchemaHandler) jaxbUnmarshaller.getEventHandler();
+	         	 
+	         	 if(data.schemaValidatorHandler.isNoErrors()==false) {
+	         		List<String> schemaLogsError=data.schemaValidatorHandler.getLogs();
+	    			for (String xsdMsg : schemaLogsError) {
+	    				LogOperationHelper.logMessageForFile(logger, opStatus,productCodeFromFileName,  TourInfoMessages.SCHEMA_VALIDATE_ON_FILE,zipEntry.getName(),xsdMsg);	
+	    			}	
+	         	 }
+	         }
          }
          catch(UnmarshalException e){
+        	 data.parseValid=false;
          	 String detailMsg=StringUtils.defaultIfBlank(e.getMessage(), "no data");
          	 
          	 if(e.getLinkedException() instanceof XMLMarshalException){
          		 detailMsg=e.getLinkedException().getMessage();
          	 }      
          	 
-         	 LogOperationHelper.logMessageForFile(logger, opStatus,productCodeFromFileName,  TourInfoMessages.SCHEMA_VALIDATE_ON_FILE,zipEntry.getName(),detailMsg);         	 
+         	 LogOperationHelper.logMessageForFile(logger, opStatus,productCodeFromFileName,  TourInfoMessages.SCHEMA_VALIDATE_ON_FILE,zipEntry.getName(),detailMsg);
+         	 if(data.schemaValidatorHandler!=null)
+         		data.schemaValidatorHandler.setupDefault();                	 
+         	 
           }
           catch(Exception e){
+        	 data.parseValid=false;
          	 String detailMsg=StringUtils.defaultIfBlank(e.getMessage(), "no data");                	                	
-         	 LogOperationHelper.logMessageForFile(logger, opStatus,productCodeFromFileName,  TourInfoMessages.SCHEMA_VALIDATE_ON_FILE,zipEntry.getName(),detailMsg);           	          	 
-          }          
-         return null;
+         	 LogOperationHelper.logMessageForFile(logger, opStatus,productCodeFromFileName,  TourInfoMessages.SCHEMA_VALIDATE_ON_FILE,zipEntry.getName(),detailMsg);
+         	 if(data.schemaValidatorHandler!=null)
+         		data.schemaValidatorHandler.setupDefault();                	          	 
+          }
+          return data;
 	}
 	
 	private boolean validate(OperationStatus opStatus, TourInfo ti,ZipEntry zipEntry, ValidatorSchemaHandler schemaValidatorHandler, String productCodeFromFileName) throws TourInfoZipParserServiceException{
@@ -380,88 +437,74 @@ public class TourInfoZipParserServiceImpl implements TourInfoZipParserService {
 			valid&=false;
 		}
 				
-			if(schemaValidatorHandler.isNoErrors())
-			{			
-				if(!zipEntry.getName().toUpperCase().equals(ti.getTourCode() + ".XML") ) {			
-					LogOperationHelper.logMessageForFile(logger, opStatus,productCodeFromFileName, TourInfoMessages.TI_FILENAME_CHECK, ti.getTourCode(), zipEntry.getName());
-					valid&=false;
-				}	
 				
-				// valid brands
-					Brand brand=brandDAO.findByBrandCode(ti.getBrandCode());
-					if(brand == null) {
-						LogOperationHelper.logMessageForFile(logger, opStatus,productCodeFromFileName, TourInfoMessages.BRAND_DONT_EXIST,ti.getBrandCode(), ti.getTourCode());		
-						valid&=false;
-					}
-					
-					if(!opStatus.getUploadTourInfoFile().getBrand().getCode().equals(ti.getBrandCode())) {
-						LogOperationHelper.logMessageForFile(logger, opStatus,productCodeFromFileName, TourInfoMessages.DIFFERENT_BRAND,brand.getCode(),ti.getBrandCode(), ti.getTourCode());		
-						valid&=false;
-					}				
-				List<String> sclist =Lists.newArrayList(Iterables.transform(ti.getSellingCompanies().getSellingCompany(), new SellingCompanyToCodeXmlTransformer()));						
-				// check extra permision
-					if(opStatus.getExtraPermissionChecker().checkerFor()==ExtraPermissionChecker.CheckerType.BRAND)
-					{	
-						((BrandPermissionChecker)opStatus.getExtraPermissionChecker()).setBrandCode(ti.getBrandCode());
-						if(opStatus.getExtraPermissionChecker().checkPermission()==false)
-						{
-							LogOperationHelper.logMessage(logger, opStatus, TourInfoMessages.PERMISSION_DENIED_BRAND, opStatus.getUploadTourInfoFile().getBrand().getCode(),zipEntry.getName());
-							throw new  PermissionDeniedException(TourInfoMessages.getMessage(TourInfoMessages.PERMISSION_DENIED_BRAND, opStatus.getUploadTourInfoFile().getBrand().getCode(),zipEntry.getName()));
-						}
-					}
-					else if(opStatus.getExtraPermissionChecker().checkerFor()==ExtraPermissionChecker.CheckerType.SELLING_COMPANIES)
-					{
-						//setup companies for check
-						((SellingPermissionChecker)opStatus.getExtraPermissionChecker()).setSellingCompanies(Sets.newHashSet(sclist));					
-						if(opStatus.getExtraPermissionChecker().checkPermission()==false)
-						{					
-							String companies=Joiner.on(",").join(((SellingPermissionChecker)opStatus.getExtraPermissionChecker()).getListCompaniesWithoutAuthority());
-							LogOperationHelper.logMessage(logger, opStatus, TourInfoMessages.PERMISSION_DENIED_SELLING_COPANIES, companies,zipEntry.getName());
-							throw new  PermissionDeniedException(TourInfoMessages.getMessage(TourInfoMessages.PERMISSION_DENIED_SELLING_COPANIES, companies,zipEntry.getName()));
-						}
-					}
-					else
-					{
-						throw new UnsupportedOperationException("ExtraPermissionChecker has unssuported typ of check:"+opStatus.getExtraPermissionChecker().checkerFor());
-					}
-				
-				
-				
-				List<SellingCompany> sellingCompaniesList = sellingCompanyDAO.findBySellingCompanyCodes(sclist);
-				if(sellingCompaniesList.size() != sclist.size()) {
-					
-					LogOperationHelper.logMessageForFile(logger, opStatus,productCodeFromFileName, TourInfoMessages.SELLING_COMPANIES_DONT_EXIST, ti.getTourCode());
+		if(schemaValidatorHandler.isNoErrors())
+		{			
+			if(!zipEntry.getName().toUpperCase().equals(ti.getTourCode() + ".XML") ) {			
+				LogOperationHelper.logMessageForFile(logger, opStatus,productCodeFromFileName, TourInfoMessages.TI_FILENAME_CHECK, ti.getTourCode(), zipEntry.getName());
+				valid&=false;
+			}	
+			
+			// valid brands
+				Brand brand=brandDAO.findByBrandCode(ti.getBrandCode());
+				if(brand == null) {
+					LogOperationHelper.logMessageForFile(logger, opStatus,productCodeFromFileName, TourInfoMessages.BRAND_DONT_EXIST,ti.getBrandCode(), ti.getTourCode());		
 					valid&=false;
 				}
-										
-				Set<String> sellingCompanyCodeFormBrand =Sets.newHashSet(Iterables.transform(opStatus.getUploadTourInfoFile().getBrand().getSellingCompanies(), new SellingCompanyToCodeDomainTransformer()));	
-				Set<String> sellingCompaniesOutsideBrand=Sets.difference(Sets.newHashSet(sclist), sellingCompanyCodeFormBrand);						
-				if(sellingCompaniesOutsideBrand.size()>0)
+				
+				if(!opStatus.getUploadTourInfoFile().getBrand().getCode().equals(ti.getBrandCode())) {
+					LogOperationHelper.logMessageForFile(logger, opStatus,productCodeFromFileName, TourInfoMessages.DIFFERENT_BRAND,brand.getCode(),ti.getBrandCode(), ti.getTourCode());		
+					valid&=false;
+				}				
+			List<String> sclist =Lists.newArrayList(Iterables.transform(ti.getSellingCompanies().getSellingCompany(), new SellingCompanyToCodeXmlTransformer()));						
+			// check extra permision
+				if(opStatus.getExtraPermissionChecker().checkerFor()==ExtraPermissionChecker.CheckerType.BRAND)
+				{	
+					((BrandPermissionChecker)opStatus.getExtraPermissionChecker()).setBrandCode(ti.getBrandCode());
+					if(opStatus.getExtraPermissionChecker().checkPermission()==false)
+					{
+						LogOperationHelper.logMessage(logger, opStatus, TourInfoMessages.PERMISSION_DENIED_BRAND, opStatus.getUploadTourInfoFile().getBrand().getCode(),zipEntry.getName());
+						throw new  PermissionDeniedException(TourInfoMessages.getMessage(TourInfoMessages.PERMISSION_DENIED_BRAND, opStatus.getUploadTourInfoFile().getBrand().getCode(),zipEntry.getName()));
+					}
+				}
+				else if(opStatus.getExtraPermissionChecker().checkerFor()==ExtraPermissionChecker.CheckerType.SELLING_COMPANIES)
 				{
-					LogOperationHelper.logMessageForFile(logger, opStatus,productCodeFromFileName, TourInfoMessages.SELLING_COMPANIES_DONT_EXIST_IN_BRAND,Joiner.on(",").join(sellingCompaniesOutsideBrand),ti.getBrandCode());
-					valid&=false;
+					//setup companies for check
+					((SellingPermissionChecker)opStatus.getExtraPermissionChecker()).setSellingCompanies(Sets.newHashSet(sclist));					
+					if(opStatus.getExtraPermissionChecker().checkPermission()==false)
+					{					
+						String companies=Joiner.on(",").join(((SellingPermissionChecker)opStatus.getExtraPermissionChecker()).getListCompaniesWithoutAuthority());
+						LogOperationHelper.logMessage(logger, opStatus, TourInfoMessages.PERMISSION_DENIED_SELLING_COPANIES, companies,zipEntry.getName());
+						throw new  PermissionDeniedException(TourInfoMessages.getMessage(TourInfoMessages.PERMISSION_DENIED_SELLING_COPANIES, companies,zipEntry.getName()));
+					}
 				}
-			}
-			else {
-				logSchemaErrors(schemaValidatorHandler, opStatus, productCodeFromFileName, zipEntry);				
+				else
+				{
+					throw new UnsupportedOperationException("ExtraPermissionChecker has unssuported typ of check:"+opStatus.getExtraPermissionChecker().checkerFor());
+				}
+			
+			
+			
+			List<SellingCompany> sellingCompaniesList = sellingCompanyDAO.findBySellingCompanyCodes(sclist);
+			if(sellingCompaniesList.size() != sclist.size()) {
+				
+				LogOperationHelper.logMessageForFile(logger, opStatus,productCodeFromFileName, TourInfoMessages.SELLING_COMPANIES_DONT_EXIST, ti.getTourCode());
 				valid&=false;
 			}
+									
+			Set<String> sellingCompanyCodeFormBrand =Sets.newHashSet(Iterables.transform(opStatus.getUploadTourInfoFile().getBrand().getSellingCompanies(), new SellingCompanyToCodeDomainTransformer()));	
+			Set<String> sellingCompaniesOutsideBrand=Sets.difference(Sets.newHashSet(sclist), sellingCompanyCodeFormBrand);						
+			if(sellingCompaniesOutsideBrand.size()>0)
+			{
+				LogOperationHelper.logMessageForFile(logger, opStatus,productCodeFromFileName, TourInfoMessages.SELLING_COMPANIES_DONT_EXIST_IN_BRAND,Joiner.on(",").join(sellingCompaniesOutsideBrand),ti.getBrandCode());
+				valid&=false;
+			}
+		}
+		else {		
+			// Here is incorrect schema
+			valid&=false;
+		}
 		return valid;
-	}
-	
-	
-	private void logSchemaErrors(ValidatorSchemaHandler schemaValidatorHandler,OperationStatus opStatus,String productCodeFromFileName,ZipEntry zipEntry){
-		List<String> schemaLogsError=schemaValidatorHandler.getLogs();
-		int count=0;
-		for (String xsdMsg : schemaLogsError) {			
-			if(count==10)
-				break;			
-			LogOperationHelper.logMessageForFile(logger, opStatus,productCodeFromFileName,  TourInfoMessages.SCHEMA_VALIDATE_ON_FILE,zipEntry.getName(),xsdMsg);
-			count++;			
-		}
-		if(schemaLogsError.size()>10){
-			LogOperationHelper.logMessageForFile(logger, opStatus,productCodeFromFileName,  TourInfoMessages.SCHEMA_VALIDATE_NUMBER,10,schemaLogsError.size(),zipEntry.getName());		
-		}
 	}
 
 	private String generateOldTourInfo(OperationStatus opStatus,TourInfo ti) throws TourInfoZipParserServiceException
@@ -509,17 +552,6 @@ public class TourInfoZipParserServiceImpl implements TourInfoZipParserService {
 		
 	}
 	
-	private void checkConstraint(OperationStatus opStatus){
-		try{
-			Set<String> tourCodes=constraintService.getToursWithoutBrand();
-			if(tourCodes.isEmpty()==false)			
-				LogOperationHelper.logMessage(logger, opStatus, TourInfoMessages.TOURS_WITHOUT_BRAND,Joiner.on(",").join(tourCodes));
-			
-		}catch(ConstraintServiceException e){
-			logger.error("",e);
-		}
-	}
-	
 	class SellingCompanyToCodeDomainTransformer implements Function<SellingCompany, String>
 	{
 		@Override
@@ -535,6 +567,14 @@ public class TourInfoZipParserServiceImpl implements TourInfoZipParserService {
 			return input.getCode();
 		}	
 	}
-	
-	
+		
+	class OriginalTourInfoParseData{
+		TourInfo originalTourInfo;
+		boolean  parseValid=true;
+		ValidatorSchemaHandler schemaValidatorHandler=null;
+		
+		public  boolean valid(){
+			return  originalTourInfo!=null && parseValid;
+		}
+	}
 }

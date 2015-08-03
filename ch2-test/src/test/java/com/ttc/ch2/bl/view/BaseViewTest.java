@@ -11,6 +11,7 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.stream.StreamResult;
 
 import org.junit.Assert;
+import org.junit.Assume;
 
 import com.ttc.ch2.bl.contentrepository.ContentRepositoryService;
 import com.ttc.ch2.common.BaseTest;
@@ -28,7 +29,7 @@ public class BaseViewTest extends BaseTest{
 		
 		List<ContentRepository> list=contentRepositoryService.getContentRepositoriesList(new QueryCondition(0,1), new ContentRepository(), RepositoryStatus.TIandTD);		
 		if(list.size()==0)
-			Assert.assertTrue("Test need data in DB on table content repository",false);
+			Assume.assumeTrue("Test need data in DB on table content repository",false);
 		
 		ContentRepository cr=list.get(0);		
 		Assert.assertNotNull(cr);

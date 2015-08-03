@@ -24,10 +24,9 @@ import javax.xml.namespace.QName;
 @XmlRegistry
 public class ObjectFactory {
 
-    private final static QName _TextA_QNAME = new QName("http://www.ttc.com/ch2/api/ccapi/v3/TourInfo/2014/01/3.0", "a");
     private final static QName _TextStrong_QNAME = new QName("http://www.ttc.com/ch2/api/ccapi/v3/TourInfo/2014/01/3.0", "strong");
+    private final static QName _TextA_QNAME = new QName("http://www.ttc.com/ch2/api/ccapi/v3/TourInfo/2014/01/3.0", "a");
     private final static QName _TextUl_QNAME = new QName("http://www.ttc.com/ch2/api/ccapi/v3/TourInfo/2014/01/3.0", "ul");
-    private final static QName _TextValues_QNAME = new QName("http://www.ttc.com/ch2/api/ccapi/v3/TourInfo/2014/01/3.0", "values");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: com.ttc.ch2.api.ccapi.v3.tourinfo._2014._01._3
@@ -37,11 +36,107 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Brochure }
+     * Create an instance of {@link Image }
      * 
      */
-    public Brochure createBrochure() {
-        return new Brochure();
+    public Image createImage() {
+        return new Image();
+    }
+
+    /**
+     * Create an instance of {@link Video }
+     * 
+     */
+    public Video createVideo() {
+        return new Video();
+    }
+
+    /**
+     * Create an instance of {@link LocationsVisited }
+     * 
+     */
+    public LocationsVisited createLocationsVisited() {
+        return new LocationsVisited();
+    }
+
+    /**
+     * Create an instance of {@link Li }
+     * 
+     */
+    public Li createLi() {
+        return new Li();
+    }
+
+    /**
+     * Create an instance of {@link Continent }
+     * 
+     */
+    public Continent createContinent() {
+        return new Continent();
+    }
+
+    /**
+     * Create an instance of {@link Country }
+     * 
+     */
+    public Country createCountry() {
+        return new Country();
+    }
+
+    /**
+     * Create an instance of {@link Meal }
+     * 
+     */
+    public Meal createMeal() {
+        return new Meal();
+    }
+
+    /**
+     * Create an instance of {@link Highlights }
+     * 
+     */
+    public Highlights createHighlights() {
+        return new Highlights();
+    }
+
+    /**
+     * Create an instance of {@link Extra }
+     * 
+     */
+    public Extra createExtra() {
+        return new Extra();
+    }
+
+    /**
+     * Create an instance of {@link Location }
+     * 
+     */
+    public Location createLocation() {
+        return new Location();
+    }
+
+    /**
+     * Create an instance of {@link AdditionalInfo }
+     * 
+     */
+    public AdditionalInfo createAdditionalInfo() {
+        return new AdditionalInfo();
+    }
+
+    /**
+     * Create an instance of {@link Assets }
+     * 
+     */
+    public Assets createAssets() {
+        return new Assets();
+    }
+
+    /**
+     * Create an instance of {@link ItinerarySegment }
+     * 
+     */
+    public ItinerarySegment createItinerarySegment() {
+        return new ItinerarySegment();
     }
 
     /**
@@ -53,11 +148,147 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Strong }
+     * Create an instance of {@link OperatingProduct }
      * 
      */
-    public Strong createStrong() {
-        return new Strong();
+    public OperatingProduct createOperatingProduct() {
+        return new OperatingProduct();
+    }
+
+    /**
+     * Create an instance of {@link Itinerary }
+     * 
+     */
+    public Itinerary createItinerary() {
+        return new Itinerary();
+    }
+
+    /**
+     * Create an instance of {@link TourInfo }
+     * 
+     */
+    public TourInfo createTourInfo() {
+        return new TourInfo();
+    }
+
+    /**
+     * Create an instance of {@link Section }
+     * 
+     */
+    public Section createSection() {
+        return new Section();
+    }
+
+    /**
+     * Create an instance of {@link Videos }
+     * 
+     */
+    public Videos createVideos() {
+        return new Videos();
+    }
+
+    /**
+     * Create an instance of {@link A }
+     * 
+     */
+    public A createA() {
+        return new A();
+    }
+
+    /**
+     * Create an instance of {@link Price }
+     * 
+     */
+    public Price createPrice() {
+        return new Price();
+    }
+
+    /**
+     * Create an instance of {@link Text }
+     * 
+     */
+    public Text createText() {
+        return new Text();
+    }
+
+    /**
+     * Create an instance of {@link Brochure }
+     * 
+     */
+    public Brochure createBrochure() {
+        return new Brochure();
+    }
+
+    /**
+     * Create an instance of {@link SellingCompanies }
+     * 
+     */
+    public SellingCompanies createSellingCompanies() {
+        return new SellingCompanies();
+    }
+
+    /**
+     * Create an instance of {@link AirportTransfers }
+     * 
+     */
+    public AirportTransfers createAirportTransfers() {
+        return new AirportTransfers();
+    }
+
+    /**
+     * Create an instance of {@link ContinentsVisited }
+     * 
+     */
+    public ContinentsVisited createContinentsVisited() {
+        return new ContinentsVisited();
+    }
+
+    /**
+     * Create an instance of {@link IncludedSubProducts }
+     * 
+     */
+    public IncludedSubProducts createIncludedSubProducts() {
+        return new IncludedSubProducts();
+    }
+
+    /**
+     * Create an instance of {@link CountriesVisited }
+     * 
+     */
+    public CountriesVisited createCountriesVisited() {
+        return new CountriesVisited();
+    }
+
+    /**
+     * Create an instance of {@link Ul }
+     * 
+     */
+    public Ul createUl() {
+        return new Ul();
+    }
+
+    /**
+     * Create an instance of {@link City }
+     * 
+     */
+    public City createCity() {
+        return new City();
+    }
+
+    /**
+     * Create an instance of {@link Images }
+     * 
+     */
+    public Images createImages() {
+        return new Images();
+    }
+
+    /**
+     * Create an instance of {@link WhatsIncluded }
+     * 
+     */
+    public WhatsIncluded createWhatsIncluded() {
+        return new WhatsIncluded();
     }
 
     /**
@@ -77,107 +308,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link LocationsVisited }
+     * Create an instance of {@link SellingCompany }
      * 
      */
-    public LocationsVisited createLocationsVisited() {
-        return new LocationsVisited();
-    }
-
-    /**
-     * Create an instance of {@link Ul }
-     * 
-     */
-    public Ul createUl() {
-        return new Ul();
-    }
-
-    /**
-     * Create an instance of {@link Videos }
-     * 
-     */
-    public Videos createVideos() {
-        return new Videos();
-    }
-
-    /**
-     * Create an instance of {@link ItinerarySegment }
-     * 
-     */
-    public ItinerarySegment createItinerarySegment() {
-        return new ItinerarySegment();
-    }
-
-    /**
-     * Create an instance of {@link Country }
-     * 
-     */
-    public Country createCountry() {
-        return new Country();
-    }
-
-    /**
-     * Create an instance of {@link Highlights }
-     * 
-     */
-    public Highlights createHighlights() {
-        return new Highlights();
-    }
-
-    /**
-     * Create an instance of {@link Itinerary }
-     * 
-     */
-    public Itinerary createItinerary() {
-        return new Itinerary();
-    }
-
-    /**
-     * Create an instance of {@link Airports }
-     * 
-     */
-    public Airports createAirports() {
-        return new Airports();
-    }
-
-    /**
-     * Create an instance of {@link Notes }
-     * 
-     */
-    public Notes createNotes() {
-        return new Notes();
-    }
-
-    /**
-     * Create an instance of {@link Li }
-     * 
-     */
-    public Li createLi() {
-        return new Li();
-    }
-
-    /**
-     * Create an instance of {@link Video }
-     * 
-     */
-    public Video createVideo() {
-        return new Video();
-    }
-
-    /**
-     * Create an instance of {@link Section }
-     * 
-     */
-    public Section createSection() {
-        return new Section();
-    }
-
-    /**
-     * Create an instance of {@link SellingCompanies }
-     * 
-     */
-    public SellingCompanies createSellingCompanies() {
-        return new SellingCompanies();
+    public SellingCompany createSellingCompany() {
+        return new SellingCompany();
     }
 
     /**
@@ -189,131 +324,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Text }
+     * Create an instance of {@link Meals }
      * 
      */
-    public Text createText() {
-        return new Text();
+    public Meals createMeals() {
+        return new Meals();
     }
 
     /**
-     * Create an instance of {@link Image }
+     * Create an instance of {@link Airports }
      * 
      */
-    public Image createImage() {
-        return new Image();
-    }
-
-    /**
-     * Create an instance of {@link WhatsIncluded }
-     * 
-     */
-    public WhatsIncluded createWhatsIncluded() {
-        return new WhatsIncluded();
-    }
-
-    /**
-     * Create an instance of {@link Price }
-     * 
-     */
-    public Price createPrice() {
-        return new Price();
-    }
-
-    /**
-     * Create an instance of {@link Meal }
-     * 
-     */
-    public Meal createMeal() {
-        return new Meal();
-    }
-
-    /**
-     * Create an instance of {@link Assets }
-     * 
-     */
-    public Assets createAssets() {
-        return new Assets();
-    }
-
-    /**
-     * Create an instance of {@link AdditionalInfo }
-     * 
-     */
-    public AdditionalInfo createAdditionalInfo() {
-        return new AdditionalInfo();
-    }
-
-    /**
-     * Create an instance of {@link SellingCompany }
-     * 
-     */
-    public SellingCompany createSellingCompany() {
-        return new SellingCompany();
-    }
-
-    /**
-     * Create an instance of {@link Airport }
-     * 
-     */
-    public Airport createAirport() {
-        return new Airport();
-    }
-
-    /**
-     * Create an instance of {@link TourInfo }
-     * 
-     */
-    public TourInfo createTourInfo() {
-        return new TourInfo();
-    }
-
-    /**
-     * Create an instance of {@link AdditionalDefiners }
-     * 
-     */
-    public AdditionalDefiners createAdditionalDefiners() {
-        return new AdditionalDefiners();
-    }
-
-    /**
-     * Create an instance of {@link IncludedSubProduct }
-     * 
-     */
-    public IncludedSubProduct createIncludedSubProduct() {
-        return new IncludedSubProduct();
-    }
-
-    /**
-     * Create an instance of {@link TourVariationDefiners }
-     * 
-     */
-    public TourVariationDefiners createTourVariationDefiners() {
-        return new TourVariationDefiners();
-    }
-
-    /**
-     * Create an instance of {@link RoomType }
-     * 
-     */
-    public RoomType createRoomType() {
-        return new RoomType();
-    }
-
-    /**
-     * Create an instance of {@link Location }
-     * 
-     */
-    public Location createLocation() {
-        return new Location();
-    }
-
-    /**
-     * Create an instance of {@link CountriesVisited }
-     * 
-     */
-    public CountriesVisited createCountriesVisited() {
-        return new CountriesVisited();
+    public Airports createAirports() {
+        return new Airports();
     }
 
     /**
@@ -325,51 +348,35 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Images }
+     * Create an instance of {@link Br }
      * 
      */
-    public Images createImages() {
-        return new Images();
+    public Br createBr() {
+        return new Br();
     }
 
     /**
-     * Create an instance of {@link ContinentsVisited }
+     * Create an instance of {@link RoomType }
      * 
      */
-    public ContinentsVisited createContinentsVisited() {
-        return new ContinentsVisited();
+    public RoomType createRoomType() {
+        return new RoomType();
     }
 
     /**
-     * Create an instance of {@link AirportTransfers }
+     * Create an instance of {@link IncludedSubProduct }
      * 
      */
-    public AirportTransfers createAirportTransfers() {
-        return new AirportTransfers();
+    public IncludedSubProduct createIncludedSubProduct() {
+        return new IncludedSubProduct();
     }
 
     /**
-     * Create an instance of {@link OperatingProduct }
+     * Create an instance of {@link AdditionalDefiners }
      * 
      */
-    public OperatingProduct createOperatingProduct() {
-        return new OperatingProduct();
-    }
-
-    /**
-     * Create an instance of {@link Meals }
-     * 
-     */
-    public Meals createMeals() {
-        return new Meals();
-    }
-
-    /**
-     * Create an instance of {@link IncludedSubProducts }
-     * 
-     */
-    public IncludedSubProducts createIncludedSubProducts() {
-        return new IncludedSubProducts();
+    public AdditionalDefiners createAdditionalDefiners() {
+        return new AdditionalDefiners();
     }
 
     /**
@@ -381,35 +388,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link A }
+     * Create an instance of {@link Notes }
      * 
      */
-    public A createA() {
-        return new A();
+    public Notes createNotes() {
+        return new Notes();
     }
 
     /**
-     * Create an instance of {@link Continent }
+     * Create an instance of {@link Airport }
      * 
      */
-    public Continent createContinent() {
-        return new Continent();
-    }
-
-    /**
-     * Create an instance of {@link Extra }
-     * 
-     */
-    public Extra createExtra() {
-        return new Extra();
-    }
-
-    /**
-     * Create an instance of {@link Br }
-     * 
-     */
-    public Br createBr() {
-        return new Br();
+    public Airport createAirport() {
+        return new Airport();
     }
 
     /**
@@ -421,11 +412,20 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link City }
+     * Create an instance of {@link TourVariationDefiners }
      * 
      */
-    public City createCity() {
-        return new City();
+    public TourVariationDefiners createTourVariationDefiners() {
+        return new TourVariationDefiners();
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://www.ttc.com/ch2/api/ccapi/v3/TourInfo/2014/01/3.0", name = "strong", scope = Text.class)
+    public JAXBElement<String> createTextStrong(String value) {
+        return new JAXBElement<String>(_TextStrong_QNAME, String.class, Text.class, value);
     }
 
     /**
@@ -435,15 +435,6 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://www.ttc.com/ch2/api/ccapi/v3/TourInfo/2014/01/3.0", name = "a", scope = Text.class)
     public JAXBElement<A> createTextA(A value) {
         return new JAXBElement<A>(_TextA_QNAME, A.class, Text.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Strong }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://www.ttc.com/ch2/api/ccapi/v3/TourInfo/2014/01/3.0", name = "strong", scope = Text.class)
-    public JAXBElement<Strong> createTextStrong(Strong value) {
-        return new JAXBElement<Strong>(_TextStrong_QNAME, Strong.class, Text.class, value);
     }
 
     /**
@@ -459,9 +450,9 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://www.ttc.com/ch2/api/ccapi/v3/TourInfo/2014/01/3.0", name = "values", scope = Text.class)
-    public JAXBElement<String> createTextValues(String value) {
-        return new JAXBElement<String>(_TextValues_QNAME, String.class, Text.class, value);
+    @XmlElementDecl(namespace = "http://www.ttc.com/ch2/api/ccapi/v3/TourInfo/2014/01/3.0", name = "strong", scope = Li.class)
+    public JAXBElement<String> createLiStrong(String value) {
+        return new JAXBElement<String>(_TextStrong_QNAME, String.class, Li.class, value);
     }
 
     /**
@@ -471,24 +462,6 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://www.ttc.com/ch2/api/ccapi/v3/TourInfo/2014/01/3.0", name = "a", scope = Li.class)
     public JAXBElement<A> createLiA(A value) {
         return new JAXBElement<A>(_TextA_QNAME, A.class, Li.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Strong }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://www.ttc.com/ch2/api/ccapi/v3/TourInfo/2014/01/3.0", name = "strong", scope = Li.class)
-    public JAXBElement<Strong> createLiStrong(Strong value) {
-        return new JAXBElement<Strong>(_TextStrong_QNAME, Strong.class, Li.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://www.ttc.com/ch2/api/ccapi/v3/TourInfo/2014/01/3.0", name = "values", scope = Li.class)
-    public JAXBElement<String> createLiValues(String value) {
-        return new JAXBElement<String>(_TextValues_QNAME, String.class, Li.class, value);
     }
 
 }

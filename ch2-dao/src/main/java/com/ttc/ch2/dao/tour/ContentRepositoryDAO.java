@@ -46,8 +46,4 @@ public interface ContentRepositoryDAO extends GenericDAO<ContentRepository, Long
 	void clearSession();
 	
 	void evictEntity(ContentRepository entity);
-	
-	List<Long> getExtendedCRIdsforSearchToursAggregated(List<Long> ids, String brandCode);
-	
-	Long[] getCRStatistics(String brandCode);
 }

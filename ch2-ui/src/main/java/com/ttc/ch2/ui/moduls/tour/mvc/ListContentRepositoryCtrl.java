@@ -190,7 +190,7 @@ public class ListContentRepositoryCtrl extends BaseRest {
 		try {
 			
 			String content=new ExceptionXmlConverter().convertToXmlByJaxb(HttpServletResponse.SC_NOT_FOUND,e.getMessage(),Severity.ERROR);
-			writeOutput(response,content,HttpServletResponse.SC_NOT_FOUND);		
+			writeOutput(response,content);		
 		} catch (Exception e1) {
 			throw new CH2Exception(e);
 		}

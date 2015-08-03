@@ -19,7 +19,6 @@ public class HealthDetails implements Serializable{
 	
 	@Inject
 	private Diagnostic diagnostic;
-		
 	
 	private boolean isElasticSearchOK;
 	private boolean isTropicsConnectivityOK;
@@ -29,8 +28,6 @@ public class HealthDetails implements Serializable{
 	private boolean isDBCodingSetOK;
 	private boolean isClusterStateOK;
 	private long matchingTIandTD;
-	
-
 	
 	@Init
 	public void init() {
@@ -42,7 +39,6 @@ public class HealthDetails implements Serializable{
 		isDBCodingSetOK = diagnostic.isDBCodingSetOK();
 		isClusterStateOK = diagnostic.isClusterStateOK();
 		matchingTIandTD = diagnostic.getMatchingTIandTD();
-	
 	}
 
 	public boolean isElasticSearchOK() {
@@ -82,6 +78,5 @@ public class HealthDetails implements Serializable{
 		diagnostic.refreshStatus();
 		Executions.sendRedirect(Ch2URIs.HEALTH_CHECKER.getPath());
 	}
-
-
+	
 }

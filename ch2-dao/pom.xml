@@ -3,13 +3,13 @@
    <modelVersion>4.0.0</modelVersion>
    <groupId>com.ttc.ch2</groupId>
    <artifactId>ch2-dao</artifactId>
-   <version>HABS.159-SNAPSHOT</version>
+   <version>TRUNK-SNAPSHOT</version>
    <packaging>jar</packaging>
    <name>CH2 Data Access Objects</name>
    <parent>
       <groupId>com.ttc.ch2</groupId>
       <artifactId>ch2-parentPOM</artifactId>
-      <version>HABS.159-SNAPSHOT</version>
+      <version>TRUNK-SNAPSHOT</version>
       <relativePath>../ch2-parentPOM</relativePath>
    </parent>
    <profiles>
@@ -46,8 +46,8 @@
       <profile>
          <id>lonwk0411-oracle</id>
          <!-- <activation>
-        <activeByDefault>true</activeByDefault>
-      </activation>-->
+         <activeByDefault>true</activeByDefault>
+         </activation>-->
          <properties>
             <datasource.driver>oracle.jdbc.OracleDriver</datasource.driver>
             <datasource.url>jdbc:oracle:thin:@lonwk0411.corp.ttc:1521:sss</datasource.url>
@@ -64,8 +64,8 @@
       <profile>
          <id>LONDCHDB01-oracle</id>
          <!-- <activation>
-        <activeByDefault>true</activeByDefault>
-      </activation>-->
+         <activeByDefault>true</activeByDefault>
+         </activation>-->
          <properties>
             <datasource.driver>oracle.jdbc.OracleDriver</datasource.driver>
             <datasource.url>jdbc:oracle:thin:@//lonchdb01.corp.ttc:1521/CH</datasource.url>
@@ -82,8 +82,8 @@
       <profile>
          <id>localhost-mysql</id>
          <!--activation>
-      <activeByDefault>true</activeByDefault>
-    </activation-->
+         <activeByDefault>true</activeByDefault>
+         </activation-->
          <properties>
             <datasource.driver>com.mysql.jdbc.Driver</datasource.driver>
             <datasource.url>jdbc:mysql://localhost:3306/ch2_devel</datasource.url>
@@ -123,10 +123,10 @@
          <groupId>org.hibernate</groupId>
          <artifactId>hibernate-core</artifactId>
       </dependency>
-       <dependency>
-  		  <groupId>org.hibernate</groupId>
-  		  <artifactId>hibernate-ehcache</artifactId>
-		</dependency>
+      <dependency>
+         <groupId>org.hibernate</groupId>
+         <artifactId>hibernate-ehcache</artifactId>
+      </dependency>
       <dependency>
          <groupId>com.oracle</groupId>
          <artifactId>ojdbc6</artifactId>
@@ -162,16 +162,6 @@
       <dependency>
          <groupId>junit</groupId>
          <artifactId>junit</artifactId>
-         <exclusions>
-            <exclusion>
-               <groupId>org.hamcrest</groupId>
-	       <artifactId>hamcrest-core</artifactId>
-            </exclusion>
-         </exclusions>
-      </dependency>
-      <dependency>
-         <groupId>org.hamcrest</groupId>
-         <artifactId>hamcrest-all</artifactId>
       </dependency>
       <dependency>
          <groupId>org.powermock</groupId>
@@ -206,46 +196,6 @@
         <filtering>true</filtering>
       </resource>
     </resources>
-    
-   <!--  <plugins>
-      <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>hibernate3-maven-plugin</artifactId>
-        <version>2.2</version>
-          <executions>
-          <execution>
-            <phase>process-classes</phase>
-            <goals>
-              <goal>hbm2ddl</goal>
-            </goals>
-          </execution>
-        </executions>
-
-        <configuration>
-          <components>
-            <component>
-              <name>hbm2ddl</name>
-              <implementation>jdbcconfiguration</implementation>
-            </component>
-            <component>
-              <name>hbm2hbmxml</name>
-              <outputDirectory>src/main/resources</outputDirectory>
-            </component>
-          </components>
-          <componentProperties>
-            <drop>true</drop>
-            <configurationfile>/src/main/resources/hibernate.cfg.xml</configurationfile>
-               <outputfilename>schema.sql</outputfilename>
-          </componentProperties>
-          </configuration>
-         <dependencies>
-		          <dependency>
-			            <groupId>mysql</groupId>
-			            <artifactId>mysql-connector-java</artifactId>
-			     </dependency>
-        </dependencies>
-      </plugin>
-    </plugins> -->
     
   </build>
 </project>

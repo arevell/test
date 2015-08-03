@@ -46,9 +46,9 @@ public class Text {
 
     @XmlElementRefs({
         @XmlElementRef(name = "a", namespace = "http://www.ttsl.com/MarketLocalisedTourData/2010/11/1.0", type = A.class),
-        @XmlElementRef(name = "ul", namespace = "http://www.ttsl.com/MarketLocalisedTourData/2010/11/1.0", type = Ul.class),
         @XmlElementRef(name = "br", namespace = "http://www.ttsl.com/MarketLocalisedTourData/2010/11/1.0", type = Br.class),
-        @XmlElementRef(name = "strong", namespace = "http://www.ttsl.com/MarketLocalisedTourData/2010/11/1.0", type = JAXBElement.class)
+        @XmlElementRef(name = "strong", namespace = "http://www.ttsl.com/MarketLocalisedTourData/2010/11/1.0", type = JAXBElement.class),
+        @XmlElementRef(name = "ul", namespace = "http://www.ttsl.com/MarketLocalisedTourData/2010/11/1.0", type = Ul.class)
     })
     @XmlMixed
     protected List<Object> content;
@@ -72,10 +72,10 @@ public class Text {
      * <p>
      * Objects of the following type(s) are allowed in the list
      * {@link A }
-     * {@link Ul }
      * {@link Br }
-     * {@link JAXBElement }{@code <}{@link String }{@code >}
      * {@link String }
+     * {@link JAXBElement }{@code <}{@link String }{@code >}
+     * {@link Ul }
      * 
      * 
      */

@@ -63,8 +63,8 @@ import javax.xml.bind.annotation.XmlType;
     "orderDirection"
 })
 @XmlSeeAlso({
-    SearchToursAggregatedRequest.class,
-    SearchToursRequest.class
+    SearchToursRequest.class,
+    SearchToursAggregatedRequest.class
 })
 public class SearchToursBaseRequest {
 

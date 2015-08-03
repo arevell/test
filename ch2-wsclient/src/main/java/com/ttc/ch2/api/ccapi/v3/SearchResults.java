@@ -47,9 +47,9 @@ import com.ttc.ch2.api.ccapi.v3.tourinfo._2014._01._3.RoomTypes;
  *         &lt;element name="duration" type="{http://www.w3.org/2001/XMLSchema}integer"/>
  *         &lt;element name="accommodations" type="{http://www.w3.org/2001/XMLSchema}string" maxOccurs="unbounded" minOccurs="0"/>
  *         &lt;element name="startCity" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="airportsStartCity" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="airportsStartCity" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="endCity" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="airportsEndCity" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="airportsEndCity" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="sellableRoomTypes" type="{http://www.ttc.com/ch2/api/ccapi/v3/TourInfo/2014/01/3.0}RoomTypes"/>
  *         &lt;element name="operatingProductCode" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="contractingSeason" type="{http://www.w3.org/2001/XMLSchema}string"/>
@@ -125,9 +125,11 @@ public class SearchResults {
     protected List<String> accommodations;
     @XmlElement(required = true)
     protected String startCity;
+    @XmlElement(required = true)
     protected String airportsStartCity;
     @XmlElement(required = true)
     protected String endCity;
+    @XmlElement(required = true)
     protected String airportsEndCity;
     @XmlElement(required = true)
     protected RoomTypes sellableRoomTypes;

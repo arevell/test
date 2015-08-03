@@ -55,7 +55,7 @@ public class UploadStatusChecker implements JobStatusChecker{
 	
 	private QuartzJob getJob(){
 		QuartzJob eJob=new QuartzJob();
-		eJob.setJobName(QuartzJob.JobName.UploadTourInfoJob.toString());
+		eJob.setJobName(SchedulerForUploadService.jobUploadName);
 		eJob.setBrandCode(brandCode);
 		QuartzJob resultJob=quartzJobDAO.findByExample(eJob);
 		quartzJobDAO.refresh(resultJob);

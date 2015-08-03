@@ -3,13 +3,13 @@
    <modelVersion>4.0.0</modelVersion>
    <groupId>com.ttc.ch2</groupId>
    <artifactId>ch2-scheduler</artifactId>
-   <version>HABS.159-SNAPSHOT</version>
+   <version>TRUNK-SNAPSHOT</version>
    <packaging>jar</packaging>
    <name>CH2 Scheduler</name>
    <parent>
       <groupId>com.ttc.ch2</groupId>
       <artifactId>ch2-parentPOM</artifactId>
-      <version>HABS.159-SNAPSHOT</version>
+      <version>TRUNK-SNAPSHOT</version>
       <relativePath>../ch2-parentPOM</relativePath>
    </parent>
    <dependencies>
@@ -18,9 +18,9 @@
          <artifactId>quartz</artifactId>
       </dependency>
       <dependency>
-	        <groupId>org.quartz-scheduler</groupId>
-	        <artifactId>quartz-oracle</artifactId>
-	  </dependency>
+         <groupId>org.quartz-scheduler</groupId>
+	 <artifactId>quartz-oracle</artifactId>
+      </dependency>
       <dependency>
          <groupId>com.ttc.ch2</groupId>
          <artifactId>ch2-bl</artifactId>
@@ -28,20 +28,14 @@
       <dependency>
          <groupId>com.ttc.ch2</groupId>
          <artifactId>ch2-search</artifactId>
-      </dependency>
-      
-      	<dependency>
-			<groupId>xstream</groupId>
-			<artifactId>xstream</artifactId>
-		</dependency>
-      
-        <dependency>
+      </dependency>   
+      <dependency>
          <groupId>junit</groupId>
          <artifactId>junit</artifactId>
          <exclusions>
             <exclusion>
-        <groupId>org.hamcrest</groupId>
-        <artifactId>hamcrest-core</artifactId>
+               <groupId>org.hamcrest</groupId>
+               <artifactId>hamcrest-core</artifactId>
             </exclusion>
          </exclusions>
       </dependency>
@@ -73,11 +67,9 @@
          <groupId>org.powermock</groupId>
          <artifactId>powermock-module-junit4-rule-agent</artifactId>
       </dependency>
-    <dependency>
-        <groupId>org.hamcrest</groupId>
-        <artifactId>hamcrest-all</artifactId>
-    </dependency>
-      
-      
+      <dependency>
+         <groupId>org.hamcrest</groupId>
+         <artifactId>hamcrest-all</artifactId>
+      </dependency>   
    </dependencies>
 </project>

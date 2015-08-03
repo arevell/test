@@ -13,7 +13,6 @@
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
   
     <context:component-scan base-package="com.ttc.ch2.hibernate" />
-    
     <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
     	<property name="driverClassName" value="${datasource.driver}"/>
     	<property name="url" value="${datasource.url}"/>
@@ -44,7 +43,7 @@
                 <prop key="hibernate.show_sql">true</prop>    
         		<prop key="hibernate.format_sql">true</prop>
         		<prop key="hibernate.use_sql_comments">false</prop>                 
-				<!-- <prop key="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory</prop> -->
+				<prop key="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory</prop>
             </props> 
         </property>
     </bean>

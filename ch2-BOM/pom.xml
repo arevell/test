@@ -1,19 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" 
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
    <modelVersion>4.0.0</modelVersion>
+   
+   <parent>
+      <groupId>com.ttc.ch2</groupId>
+      <artifactId>ch2</artifactId>
+      <version>TRUNK-SNAPSHOT</version>
+      <relativePath>../</relativePath>
+   </parent>
+   
    <groupId>com.ttc.ch2</groupId>
    <artifactId>ch2-BOM</artifactId>
-   <version>HABS.159-SNAPSHOT</version>
+   <version>TRUNK-SNAPSHOT</version>
    <packaging>pom</packaging>
    <name>CH2 Project BOM</name>
    <properties>
-      <ch2.version.scheduler>HABS.159-SNAPSHOT</ch2.version.scheduler>
-      <ch2.version.dao>HABS.159-SNAPSHOT</ch2.version.dao>
-      <ch2.version.bl>HABS.159-SNAPSHOT</ch2.version.bl>
-      <ch2.version.api>HABS.159-SNAPSHOT</ch2.version.api>
-      <ch2.version.brox>HABS.159-SNAPSHOT</ch2.version.brox>
-      <ch2.version.search>HABS.159-SNAPSHOT</ch2.version.search>
-      <ch2.version.ui>HABS.159-SNAPSHOT</ch2.version.ui>
+      <ch2.version.scheduler>TRUNK-SNAPSHOT</ch2.version.scheduler>
+      <ch2.version.dao>TRUNK-SNAPSHOT</ch2.version.dao>
+      <ch2.version.bl>TRUNK-SNAPSHOT</ch2.version.bl>
+      <ch2.version.api>TRUNK-SNAPSHOT</ch2.version.api>
+      <ch2.version.brox>TRUNK-SNAPSHOT</ch2.version.brox>
+      <ch2.version.search>TRUNK-SNAPSHOT</ch2.version.search>
+      <ch2.version.ui>TRUNK-SNAPSHOT</ch2.version.ui>
    </properties>
    <dependencyManagement>
       <dependencies>

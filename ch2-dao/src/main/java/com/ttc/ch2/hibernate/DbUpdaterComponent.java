@@ -17,19 +17,13 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.DigestUtils;
 
-import com.google.common.base.Optional;
-import com.google.common.collect.Iterables;
 import com.ttc.ch2.common.FunctionType;
-import com.ttc.ch2.common.enums.SystemDirection;
-import com.ttc.ch2.common.predicates.Ch2ConfigValueFinder;
 import com.ttc.ch2.dao.BrandDAO;
-import com.ttc.ch2.dao.Ch2ConfigValueDAO;
 import com.ttc.ch2.dao.messages.EmailAddressDAO;
 import com.ttc.ch2.dao.security.UserCCAPIDAO;
 import com.ttc.ch2.dao.security.UserGuiDAO;
 import com.ttc.ch2.dao.transfer.TourInfoTransferDAO;
 import com.ttc.ch2.domain.Brand;
-import com.ttc.ch2.domain.Ch2ConfigValue;
 import com.ttc.ch2.domain.Function;
 import com.ttc.ch2.domain.SellingCompany;
 import com.ttc.ch2.domain.auth.Authority;
@@ -65,47 +59,25 @@ public class DbUpdaterComponent {
 
 	@Inject
 	private EmailAddressDAO emailAddressDAO;
-	
-	@Inject
-	private Ch2ConfigValueDAO ch2ConfigValueDAO;
 
 	@Inject
 	@Named("dataSource")
 	private DataSource ds;
 
 
-	public void updateStart(boolean production) throws UnsupportedEncodingException
+	public void updateStart() throws UnsupportedEncodingException
 	{		
-		initConfiguration();
 		initFunction();
 		initBrandAndSellingCompanies();
 		initTourInfoTransfer();
 		initEmailAddresses();
 		initGroupAuthority();
-		
+		initExternalUserCH();
+		initExternalUserBV();
+		initExternalUserAllAuth();
+		initUserGui();
+		initUserGuiAllBrands();
 		initUserAdm();		
-		if(production==false){		
-			initExternalUserCH();
-			initExternalUserBV();
-			initExternalUserAllAuth();
-			initUserGui();
-			initUserGuiAllBrands();				
-		}
-	}
-	
-	private void initConfiguration()
-	{
-		List<Ch2ConfigValue> cfg=ch2ConfigValueDAO.findAll();
-		
-		Optional<Ch2ConfigValue> result=Iterables.tryFind(cfg, new Ch2ConfigValueFinder(Ch2ConfigValue.PropName.SystemDirection));
-		if(result.isPresent()==false){
-			Ch2ConfigValue value=new Ch2ConfigValue();
-			value.setPropertyName(Ch2ConfigValue.PropName.SystemDirection.toString());
-			value.setPropertyValue(SystemDirection.HABS.toString());
-			ch2ConfigValueDAO.save(value);
-		}
-		
-		
 	}
 
 	private void initFunction()
@@ -175,7 +147,7 @@ public class DbUpdaterComponent {
 	{						
 		Session session = sessionFactory.getCurrentSession();
 		
-		Query q1=session.createQuery(" from UserCCAPI u  where u.username like 'ccapi-usr%' or u.token='token-usr' ");
+		Query q1=session.createQuery(" from UserCCAPI u  where u.username='ccapi-usr'");
 		q1.setMaxResults(10);
 		if(q1.list().size()>0)
 			return;
@@ -206,7 +178,9 @@ public class DbUpdaterComponent {
 				auth.setUserCcapi(u);
 				u.getCcapiAuthorities().add(auth);				
 			}
-		}						
+		}
+				
+		
 		userCCAPIDAO.save(u);
 	}
 
@@ -214,7 +188,7 @@ public class DbUpdaterComponent {
 	{						
 		Session session = sessionFactory.getCurrentSession();
 		
-		Query q1=session.createQuery(" from UserCCAPI u  where u.username like 'ccapi-usr-bv%' or u.token='token-bv'");
+		Query q1=session.createQuery(" from UserCCAPI u  where u.username='ccapi-usr-bv'");
 		q1.setMaxResults(10);
 		if(q1.list().size()>0)
 			return;
@@ -246,6 +220,8 @@ public class DbUpdaterComponent {
 				u.getCcapiAuthorities().add(auth);				
 			}
 		}
+		
+		
 		userCCAPIDAO.save(u);
 	}
 
@@ -253,7 +229,7 @@ public class DbUpdaterComponent {
 	{						
 		Session session = sessionFactory.getCurrentSession();
 		
-		Query q1=session.createQuery(" from UserCCAPI u  where u.username like 'ccapi-usr-all%' or u.token='token-xxx'");
+		Query q1=session.createQuery(" from UserCCAPI u  where u.username='ccapi-usr-all'");
 		q1.setMaxResults(10);
 		if(q1.list().size()>0)
 			return;
@@ -283,6 +259,8 @@ public class DbUpdaterComponent {
 				u.getCcapiAuthorities().add(auth);				
 			}
 		}
+				
+		
 		userCCAPIDAO.save(u);
 	}
 
@@ -290,7 +268,7 @@ public class DbUpdaterComponent {
 	{						
 		Session session = sessionFactory.getCurrentSession();
 		
-		Query q1=session.createQuery(" from UserGui u where u.username like 'gui-usr-brand%'");
+		Query q1=session.createQuery(" from UserGui u where u.username='gui-usr-brand'");
 		q1.setMaxResults(10);
 		if(q1.list().size()>0)
 			return;
@@ -323,7 +301,7 @@ public class DbUpdaterComponent {
 	{						
 		Session session = sessionFactory.getCurrentSession();
 		
-		Query q1=session.createQuery(" from UserGui u where u.username like 'gui-usr-all-brand%'");
+		Query q1=session.createQuery(" from UserGui u where u.username='gui-usr-all-brand'");
 		q1.setMaxResults(10);
 		if(q1.list().size()>0)
 			return;
@@ -356,7 +334,7 @@ public class DbUpdaterComponent {
 	{						
 		Session session = sessionFactory.getCurrentSession();
 		
-		Query q1=session.createQuery(" from UserGui u where u.username like 'gui-usr-adm%'");
+		Query q1=session.createQuery(" from UserGui u where u.username='gui-usr-adm'");
 		q1.setMaxResults(10);
 		if(q1.list().size()>0)
 			return;
@@ -369,8 +347,8 @@ public class DbUpdaterComponent {
 		u.setFirstLog(true);
 		u.setCountInvalidLog(0);
 				
-//		List<Brand> listBrand=session.createQuery("from Brand").list();
-//		u.getBrands().addAll(listBrand);
+		List<Brand> listBrand=session.createQuery("from Brand").list();
+		u.getBrands().addAll(listBrand);
 		
 		Authority authority=new Authority();
 		authority.setAuthority(Role.ADMINISTRATOR.getName());		
@@ -568,9 +546,5 @@ public class DbUpdaterComponent {
 		g.setGroupName(name);
 		return g;
 	}
-	
-	
-	
-	
 }
 

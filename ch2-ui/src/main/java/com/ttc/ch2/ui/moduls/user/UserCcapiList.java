@@ -50,7 +50,7 @@ public class UserCcapiList extends AbstractEncryptedParamHandelComp {
 	@Init(superclass=true)
 	public void init() { // Initialize
 		logger.trace("UserCcapiList:init-start");
-		filter=new UserCCAPI();	
+		filter=new UserCCAPI();
 		filter.setDelFlag(false);
 		QueryCondition condition=new QueryCondition(0, PagingUserGuiModel.PAGE_SIZE,new SortCondition("username", Direction.ASC));		
 		SessionHelper.putAttributeToUserContext(UserContextStaticName.SORT_CONDITION_USER, condition);

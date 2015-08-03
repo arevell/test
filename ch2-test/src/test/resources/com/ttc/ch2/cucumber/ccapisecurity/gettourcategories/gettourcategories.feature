@@ -1,4 +1,3 @@
-@CCAPI_Security
 Feature: Get Tour Categories: Authentication CCAPI 
 	
 Scenario Outline: Check Authentication for CCAPI gettourcategories

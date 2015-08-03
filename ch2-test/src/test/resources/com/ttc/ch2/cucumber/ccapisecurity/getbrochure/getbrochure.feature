@@ -1,4 +1,3 @@
-@CCAPI_Security
 Feature: Authentication CCAPI: Get Brochure\ 
 (GetBrochureTest)	
 Scenario Outline: Check Authentication for CCAPI getbrochure

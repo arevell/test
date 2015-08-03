@@ -1,12 +1,6 @@
 package com.ttc.ch2.search.export;
 
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
 import com.ttc.ch2.common.enums.ProcessName;
-import com.ttc.ch2.domain.Brand;
 
 public interface IndexSynchronizerService {
 
@@ -18,17 +12,6 @@ public interface IndexSynchronizerService {
 	public static final String AG_TL_TAG = "ToursList";
 	public static final String AG_CTC_TAG = "CataloguedTourCode";
 	public static final String AG_CTN_TAG = "CataloguedTourName";
-	public static final String ES_EXCEPTION_MSG = "Some tours were indexed incorrectly, check Reconciliation report for details";
-	
-	//full indexation
-	public void synchronize(ProcessName processName, String brandCode, IndexSynchronizerVO syncOut) throws IndexSynchronizerServiceException;
-	
-	//partial indexation
-	public void synchronize(ProcessName processName, String brandCode, List<Long> tourIds,IndexSynchronizerVO indexSynchronizerVO) throws IndexSynchronizerServiceException;
-	public void synchronize_delete(ProcessName processName, Brand brand, Set<Long> tourIds,IndexSynchronizerVO indexSynchronizerVO) throws IndexSynchronizerServiceException;
-	
-	public IndexSynchronizerVO getStateOfIndex(Map<Date, IndexSynchronizerVO> map,String brandCode);
-	
-	public IndexSynchronizerVO margeForShortIndexsynchronizeVO(Map<Date, IndexSynchronizerVO> map);
-	
+
+	public IndexSynchronizerVO synchronize(ProcessName processName, String brandCode) throws IndexSynchronizerServiceException;
 }

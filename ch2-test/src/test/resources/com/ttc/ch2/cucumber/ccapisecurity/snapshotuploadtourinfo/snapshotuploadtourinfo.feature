@@ -1,4 +1,3 @@
-@CCAPI_Security
 Feature: Snapshot Upload Tour Info: Authentication CCAPI 
 	
 Scenario Outline: Check Authentication for CCAPI GetTourDataUploadStatus

@@ -92,18 +92,8 @@ public class ExceptionHandlingCtrl
 		ModelAndView mav=new ModelAndView(JspCh2URIs.REST_ERROR.getName());
 		Map<String,Object> data=Maps.newHashMap();
 		data.put("description",  messageSource.getMessage("errorCtrl.resterrortitle",new Object[]{}, Locale.getDefault()));
-		String code=ObjectUtils.toString(request.getAttribute("javax.servlet.error.status_code"), String.valueOf(HttpServletResponse.SC_INTERNAL_SERVER_ERROR));
-		
-		try{
-			response.setStatus(Integer.parseInt(code));
-		}
-		catch(Exception e){
-			logger.error("",e);
-		}
-		
-		data.put("code",  code);		
-		data.put("exception_msg",  ThrowablesHelper.getAllMessages((Throwable) request.getAttribute("javax.servlet.error.exception")));
-		
+		data.put("code",  ObjectUtils.toString(request.getAttribute("javax.servlet.error.status_code"), "500"));		
+		data.put("exception_msg",  ThrowablesHelper.getAllMessages((Throwable) request.getAttribute("javax.servlet.error.exception")));	
 				
 		String content=new ExceptionXmlConverter().convert(data);
 		mav.addObject(Param.REST_CONTENT.toString(), content);			

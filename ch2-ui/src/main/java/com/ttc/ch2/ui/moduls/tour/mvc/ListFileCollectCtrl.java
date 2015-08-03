@@ -1,5 +1,6 @@
 package com.ttc.ch2.ui.moduls.tour.mvc;
 
+import java.io.IOException;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.ttc.ch2.bl.filecollect.FileCollectService;
 import com.ttc.ch2.bl.filecollect.FileCollectService.FileCollectVersion;
+import com.ttc.ch2.bl.filecollect.FileCollectServiceException;
 import com.ttc.ch2.bl.filecollect.FileCollectVO;
 import com.ttc.ch2.common.SecurityHelper;
 import com.ttc.ch2.dao.BrandDAO;
@@ -103,7 +105,7 @@ public class ListFileCollectCtrl extends BaseRest {
 	public String sourceNoExist(HttpServletResponse response,Exception e) {	
 		try {			
 			String content=new ExceptionXmlConverter().convertToXmlByJaxb(HttpServletResponse.SC_NOT_FOUND,e.getMessage(),Severity.ERROR);
-			writeOutput(response,content,HttpServletResponse.SC_NOT_FOUND);		
+			writeOutput(response,content);		
 		} catch (Exception e1) {
 			throw new CH2Exception(e);
 		}

@@ -8,7 +8,7 @@ import com.google.common.base.Preconditions;
 
 public enum CronExpresion {
 	
-	TDE_HOUR02("TDExtended","0 {0} 0/2 * * ?"),
+	TDE_HOUR02("TDExtend","0 {0} 0/2 * * ?"),
 	
 	TDI_HOUR06("TDImport","0 {0} 0/6 * * ?"),
 	TDI_HOUR12("TDImport","0 {0} 0/12 * * ?"),

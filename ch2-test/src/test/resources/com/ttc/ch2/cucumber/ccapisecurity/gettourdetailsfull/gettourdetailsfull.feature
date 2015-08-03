@@ -1,4 +1,3 @@
-@CCAPI_Security
 Feature: Get tour Details Full: Authentication CCAPI 
 	
 Scenario Outline: Check Authentication for CCAPI gettourdetailsfull

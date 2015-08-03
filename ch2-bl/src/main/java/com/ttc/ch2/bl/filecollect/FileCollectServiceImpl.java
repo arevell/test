@@ -39,7 +39,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.ttc.ch2.bl.contentrepository.ContentRepositoryService;
 import com.ttc.ch2.bl.departure.ImportStatusService;
-import com.ttc.ch2.bl.filecollect.FileCollectVO.StatusOperation;
 import com.ttc.ch2.bl.upload.PermissionDeniedException;
 import com.ttc.ch2.bl.upload.UploadStatusService;
 import com.ttc.ch2.common.AuthorityHelper;
@@ -113,6 +112,9 @@ public class FileCollectServiceImpl implements FileCollectService {
 
 	@Inject
 	private FileCollectDAO fileCollectDAO;
+
+	@Inject
+	private ContentRepositoryService contentRepositoryService;
 
 	@Inject
 	private ContentRepositoryDAO contentRepositoryDAO;
@@ -251,30 +253,31 @@ public class FileCollectServiceImpl implements FileCollectService {
 
 	@Override
 	@Transactional(readOnly = true, propagation = Propagation.REQUIRED)
-	public void createLatestVersion(ProcessName processName, String brandCode,FileCollectVO fileCollectVO) throws FileCollectServiceException {
-				
+	public FileCollectVO createLatestVersion(ProcessName processName, String brandCode) throws FileCollectServiceException {
+
+		FileCollectVO fileCollectVO = new FileCollectVO();
+
 		ContentRepository filter = new ContentRepository();
 
 		Brand brand = brandDAO.findByBrandCode(brandCode);
 
 		filter.getBrands().add(brand);
 
+//		List<ContentRepository> contentRepositoryList = contentRepositoryService.getContentRepositoriesList(new QueryCondition(), filter, RepositoryStatus.TIandTD);
 		List<Long> ids=contentRepositoryDAO.getContentRepositoriesIdsList(new QueryCondition(), filter,Lists.newArrayList(RepositoryStatus.TIandTD));
 		
 		Map<String, ZipStreamVO> brandZipMapV1 = new HashMap<String, ZipStreamVO>();
 		Map<String, ZipStreamVO> brandZipMapV3 = new HashMap<String, ZipStreamVO>();
 
-		if (ids == null || ids.size() == 0) {	
-			try {				
-					fileCollectService.saveLatestVersion(processName, brand, brandZipMapV1, brandZipMapV3, fileCollectVO);
-					fileCollectVO.setStatusOperation(StatusOperation.Cleared);	
-			} catch (Exception e) {
-				fileCollectVO.setStatusOperation(StatusOperation.ExceptionAppeared);
-				throw new FileCollectServiceException(e);
-			}
+		if (ids == null || ids.size() == 0) {
+
+			fileCollectService.saveLatestVersion(processName, brand, brandZipMapV1, brandZipMapV3, fileCollectVO);
+
+			return null;
 		}
 
 		int index = 0;
+
 		for (Long id : ids) {
 			ContentRepository contentRepository = contentRepositoryDAO.find(id);
 			try {
@@ -294,24 +297,25 @@ public class FileCollectServiceImpl implements FileCollectService {
 				contentRepositoryDAO.clearSession();
 
 			} catch (Exception e) {
+
 				fileCollectVO.getToursListNotAdded().add(contentRepository.getTourCode());
-				fileCollectVO.setStatusOperation(StatusOperation.ExceptionAppeared);
-				logger.error(String.format(ERROR_CREATE_ZIP_TOUR, brandCode, contentRepository.getTourCode()), e);				
-//				throw new FileCollectServiceException(e);
+
+				logger.error(String.format(ERROR_CREATE_ZIP_TOUR, brandCode, contentRepository.getTourCode()), e);
+				throw new FileCollectServiceException(e);
 			}
 		}
 
 		try {
+
 			fileCollectService.saveLatestVersion(processName, brand, brandZipMapV1, brandZipMapV3, fileCollectVO);
+
 		} catch (Exception e) {
-			fileCollectVO.setStatusOperation(StatusOperation.ExceptionAppeared);
+
 			throw new FileCollectServiceException(e);
 		}
+
+		return fileCollectVO;
 	}
-	
-	
-	
-	
 
 	@Transactional(readOnly = false, propagation = Propagation.REQUIRES_NEW)
 	public void saveLatestVersion(ProcessName processName, Brand brand, Map<String, ZipStreamVO> brandZipMapV1, Map<String, ZipStreamVO> brandZipMapV3, FileCollectVO fileCollectVO) {

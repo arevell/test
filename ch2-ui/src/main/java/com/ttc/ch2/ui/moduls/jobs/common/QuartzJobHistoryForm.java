@@ -14,12 +14,9 @@ public class QuartzJobHistoryForm {
 	private String statusSelectedValue;
 	private List<String> statusItems;
 	private Date startDate;
-	private String executedBy;
-	private String uiName;
-
-	private String jobGrName;
 	
-	public QuartzJobHistoryForm(){
+	public QuartzJobHistoryForm()
+	{
 		
 		statusItems=Lists.newArrayList();
 		statusItems.add(Labels.getLabel("common.combobox.empty_value"));
@@ -57,31 +54,4 @@ public class QuartzJobHistoryForm {
 	public void setStatusItems(List<String> statusItems) {
 		this.statusItems = statusItems;
 	}
-	
-	public String getExecutedBy() {
-		return executedBy;
-	}
-
-	public void setExecutedBy(String executedBy) {
-		this.executedBy = executedBy;
-	}
-
-	
-
-	public String getJobGrName() {
-		return jobGrName;
-	}
-
-	public void setJobGrName(String jobGrName) {
-		this.jobGrName = jobGrName;
-	}
-	
-	public String getUiName() {
-		return uiName;
-	}
-
-	public void setUiName(String uiName) {
-		this.uiName = uiName;
-	}
-
 }

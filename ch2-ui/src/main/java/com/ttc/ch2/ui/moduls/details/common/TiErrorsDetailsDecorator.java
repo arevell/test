@@ -7,7 +7,6 @@ import java.util.regex.Pattern;
 
 import org.apache.ecs.html.Span;
 
-import com.google.common.base.Preconditions;
 import com.ttc.ch2.domain.comment.Comment;
 import com.ttc.ch2.ui.common.exceptions.CH2Exception;
 
@@ -43,13 +42,7 @@ public class TiErrorsDetailsDecorator extends BaseCommentDecorator{
 	
 	@Override
 	public String decorateContent(Comment comment) {
-		Preconditions.checkArgument(comment!=null,"TiErrorsDetailsDecorator->decorateContent comment is null");
-		return this.decorateContent(comment.getContent()); 
-	}
-
-	@Override
-	public String decorateContent(String txt) {
-		String content=super.decorateContent(txt);
+		String content=super.decorateContent(comment);
 		content=content.replace("Error information:", "<b>Error information:</b>");
 		
 		StringBuilder sb=new StringBuilder();
@@ -65,10 +58,6 @@ public class TiErrorsDetailsDecorator extends BaseCommentDecorator{
 				}else if(line.trim().startsWith("INF-") || line.trim().startsWith("WRN-")  || line.trim().contains("File Name:")){
 					startError=false;					
 				}
-				else if (line.trim().contains("Error information:")) {
-					startError = false;
-				}
-				
 								
 				if(startError==true){
 					Span span=new Span();

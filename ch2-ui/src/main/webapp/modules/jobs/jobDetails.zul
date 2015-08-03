@@ -12,8 +12,8 @@
 		        <panelchildren style="overflow: auto;padding:10px" class="job_details">
 		          	<separator />				          	
 		          		        		        		        				
-		        	<groupbox width="100%" mold="3d" title="Job Comments" vflex="false" >		        	
-		        	<grid model="@load(vm.jobHistory.comments)" emptyMessage="${labels.common.empty_result_list}" vflex="false"  >							                    				        				        				        				        
+		        	<groupbox width="100%" mold="3d" title="Job Comments" >		        	
+		        	<grid   model="@load(vm.jobHistory.comments)" emptyMessage="${labels.common.empty_result_list}" vflex="true" >							                    				        				        				        				        
 					        		<columns>
 										<column hflex="min">${labels.common.col.no}</column>
 										<column hflex="1">Date</column>
@@ -24,15 +24,8 @@
 				                <row>
 				                	<label value="${forEachStatus.index + 1}" />			                    
 				                    <label value="@load(each.modifiedTime) @converter('formatedDate',format={default_date_time_format})" />			                    
-				                    <label value="@load(each.messageCode)"/>				               			                                                  		                   				                    
-				                    	<zscript><![CDATA[	 				                     
-										String msg=vm.decorateQHistoryComments(each);										                  										                  
-										]]></zscript>	
-				                     <html style="font-family: arial, sans-serif;font-size: 12px;font-weight: normal;">
-							        	 <![CDATA[						 		        	 
-							        	  	${msg}		        	  
-							        	  ]]>		        	  
-		        	   				</html>			               			                                                  		                   
+				                    <label value="@load(each.messageCode)"/>				               			                                                  		                   
+				                    <label value="@load(each.message)"/>				               			                                                  		                   
 				                </row>
 	            			</template>				     
 					    </grid>		                 
@@ -40,7 +33,7 @@
 			         
 			         <separator />
 			         <groupbox width="100%" mold="3d" title="${labels.jobs.job_details.component.groupbox_title}" >				         
-			         	<grid   model="@load(vm.jobHistory.tourDepartureHistory.comments)" emptyMessage="${labels.common.empty_result_list}" vflex="false">							                    				        				        				        				        
+			         	<grid   model="@load(vm.jobHistory.tourDepartureHistory.comments)" emptyMessage="${labels.common.empty_result_list}" vflex="true">							                    				        				        				        				        
 					        		<columns>
 										<column hflex="min">${labels.common.col.no}</column>
 										<column hflex="1">Date</column>

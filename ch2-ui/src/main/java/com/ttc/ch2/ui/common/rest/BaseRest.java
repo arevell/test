@@ -30,7 +30,7 @@ public class BaseRest {
 		try {
 			logger.error("",e);						
 			String content=new ExceptionXmlConverter().convertToXmlByJaxb(e);
-			writeOutput(response,content,HttpServletResponse.SC_INTERNAL_SERVER_ERROR);			
+			writeOutput(response,content);			
 		} catch (IOException e1) {
 				throw new CH2Exception(e);
 		} catch (Exception e1) {
@@ -44,7 +44,7 @@ public class BaseRest {
 		try {
 			logger.error("",e);			
 			String content=new ExceptionXmlConverter().convertToXmlByJaxb(HttpServletResponse.SC_UNAUTHORIZED,"Access denied",Severity.ERROR);
-			writeOutput(response,content,HttpServletResponse.SC_UNAUTHORIZED);			
+			writeOutput(response,content);			
 		} catch (IOException e1) {
 				throw new CH2Exception(e);
 		} catch (Exception e1) {
@@ -58,7 +58,7 @@ public class BaseRest {
 		try {
 			logger.error("",e);
 			String content=new ExceptionXmlConverter().convertToXmlByJaxb(HttpServletResponse.SC_INTERNAL_SERVER_ERROR,"Invalid Session",Severity.ERROR);
-			writeOutput(response,content,HttpServletResponse.SC_INTERNAL_SERVER_ERROR);		
+			writeOutput(response,content);		
 		} catch (IOException e1) {
 				throw new CH2Exception(e);
 		} catch (Exception e1) {
@@ -68,11 +68,7 @@ public class BaseRest {
 	}
 	
 	
-	protected void writeOutputx(HttpServletResponse response,String content) throws IOException{
+	protected void writeOutput(HttpServletResponse response,String content) throws IOException{
 		HttpResponseHelper.writeOutput(response, content,"text/xml");
-	}
-	
-	protected void writeOutput(HttpServletResponse response,String content,int statusCode) throws IOException{
-		HttpResponseHelper.writeOutput(statusCode,response, content,"text/xml");
 	}
 }

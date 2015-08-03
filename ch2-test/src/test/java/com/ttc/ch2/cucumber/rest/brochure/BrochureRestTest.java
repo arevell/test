@@ -12,11 +12,13 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.junit.Assert;
+import org.junit.Assume;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.util.StringUtils;
+
 
 
 
@@ -75,7 +77,7 @@ public class BrochureRestTest {
 		
 		    NamedParameterJdbcTemplate jdbcTemplate = SearchLib.prepareTemplate();		    
 		    List<Map<String,Object>> result = jdbcTemplate.queryForList(SearchLib.sqlForGetBrouchureRest, new MapSqlParameterSource());		    
-		    Assert.assertTrue("No data in Db to test eBrouchure rest",result.size()>0);
+		    Assume.assumeTrue("No data in Db to test eBrouchure rest",result.size()>0);
 
 		    BrochureHelper bHelper=applicationContext.getBean(BrochureHelper.class);
 		    for(Map<String, Object> row: result) {	
@@ -88,7 +90,7 @@ public class BrochureRestTest {
 			    	break;	
 		    	}		    	
 		    }		    
-		    Assert.assertTrue("No found common selling company in Db to test eBrouchure rest",StringUtils.hasText(companieCode));
+		    Assume.assumeTrue("No found common selling company in Db to test eBrouchure rest",StringUtils.hasText(companieCode));
 		
 		StringBuilder sb=new StringBuilder();
 		sb.append(uriBuilder.getHostApp());

@@ -15,6 +15,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import com.ttc.ch2.domain.common.EntityBase;
+import com.ttc.ch2.domain.filecollect.ZIPFileCollect;
 import com.ttc.ch2.domain.user.User;
 
 @Entity
@@ -25,10 +26,6 @@ public class QuartzJob extends EntityBase {
 		Inactive,
 		Cancelled,
 	};
-	
-	public static enum JobName{
-		DepartureSynchronizeJob,UploadTourInfoJob,DepartureExtendedSynchronizeJob,AuditPurgeJob
-	}
 		
 	@OneToOne(fetch = FetchType.EAGER, cascade = { CascadeType.DETACH,CascadeType.REFRESH })
 	@JoinColumn(name = "USER_ID", nullable = true)
@@ -37,9 +34,6 @@ public class QuartzJob extends EntityBase {
 	@Column(name="JOB_NAME", length=60, nullable=false)
 	private String jobName;
 	
-	@Column(name="UI_NAME", length=60)
-	private String uiName;
-
 	@Column(name="GROUP_NAME", length=60)
 	private String groupName;
 	
@@ -98,11 +92,5 @@ public class QuartzJob extends EntityBase {
 	}
 	public void setUser(User user) {
 		this.user = user;
-	}
-	public String getUiName() {
-		return uiName;
-	}
-	public void setUiName(String uiName) {
-		this.uiName = uiName;
 	}
 }

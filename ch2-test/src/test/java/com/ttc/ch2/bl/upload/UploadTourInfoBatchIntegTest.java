@@ -15,6 +15,7 @@ import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.powermock.api.mockito.PowerMockito;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
@@ -25,6 +26,7 @@ import org.springframework.test.context.support.DependencyInjectionTestExecution
 import org.springframework.test.context.transaction.TransactionConfiguration;
 
 import com.google.common.collect.Iterables;
+import com.ttc.ch2.bl.upload.common.JobExecutor;
 import com.ttc.ch2.bl.upload.common.MessageFinder;
 import com.ttc.ch2.bl.upload.common.OperationStatus;
 import com.ttc.ch2.bl.upload.common.TourInfoMessages;
@@ -37,7 +39,6 @@ import com.ttc.ch2.domain.upload.UploadTourInfoFile;
 import com.ttc.ch2.domain.upload.UploadTourInfoFileStatus;
 import com.ttc.ch2.domain.user.User;
 import com.ttc.ch2.domain.user.UserGui;
-import com.ttc.ch2.scheduler.service.upload.UploadTourInfoBatchService;
 import com.ttc.test.common.UploadHelper;
 import com.ttc.test.common.ZipHelper;
 
@@ -98,7 +99,7 @@ public class UploadTourInfoBatchIntegTest extends BaseTest{
 		//test
 		exceptionExist=false;
 		try{
-			batchTest.invokeProcess("CH");
+			batchTest.invokeProcess("CH",PowerMockito.mock(JobExecutor.class));
 		}catch(UploadServiceException e){
 			exceptionExist=true;
 			Assert.assertTrue(e.getOperationStatus().getStatus()==UploadTourInfoFileStatus.FAIL);
@@ -140,7 +141,7 @@ public class UploadTourInfoBatchIntegTest extends BaseTest{
 		//test
 		exceptionExist=false;
 		try{
-			batchTest.invokeProcess("CH");
+			batchTest.invokeProcess("CH",PowerMockito.mock(JobExecutor.class));
 		}catch(UploadServiceException e){
 			exceptionExist=true;
 			Assert.assertTrue(e.getOperationStatus().getStatus()==UploadTourInfoFileStatus.FAIL);
@@ -179,7 +180,7 @@ public class UploadTourInfoBatchIntegTest extends BaseTest{
 		UploadTourInfoBatchService batchTest=ctx.getBean(UploadTourInfoBatchService.class);
 		boolean exceptionExist=false;
 		try{
-			batchTest.invokeProcess("BV");
+			batchTest.invokeProcess("BV",PowerMockito.mock(JobExecutor.class));
 		}catch(UploadServiceException e){
 			logger.error("",e);
 			exceptionExist=true;
@@ -222,7 +223,7 @@ public class UploadTourInfoBatchIntegTest extends BaseTest{
 		UploadTourInfoBatchService batchTest=ctx.getBean(UploadTourInfoBatchService.class);
 		boolean exceptionExist=false;
 		try{
-					batchTest.invokeProcess("BV");
+					batchTest.invokeProcess("BV",PowerMockito.mock(JobExecutor.class));
 				}catch(UploadServiceException e){
 					logger.error("",e);
 					exceptionExist=true;
@@ -250,7 +251,7 @@ public class UploadTourInfoBatchIntegTest extends BaseTest{
 		//test warning
 		exceptionExist=false;
 		try{
-					batchTest.invokeProcess("BV");
+					batchTest.invokeProcess("BV",PowerMockito.mock(JobExecutor.class));
 				}catch(UploadServiceException e){
 					logger.error("",e);
 					exceptionExist=true;

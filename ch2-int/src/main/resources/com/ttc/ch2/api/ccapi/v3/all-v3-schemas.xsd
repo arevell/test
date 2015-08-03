@@ -8,7 +8,7 @@
 	<xs:include schemaLocation="SearchTours.xsd" />
 	<xs:include schemaLocation="SearchToursAggregated.xsd"  />
 	<xs:include schemaLocation="GetTourDetailsFull.xsd"  />
-	<xs:include schemaLocation="UploadTourInfoSimpleValidation.xsd"  />
+	<xs:include schemaLocation="UploadTourInfo.xsd"  />
 	<xs:include schemaLocation="GetBrochure.xsd"  />
 	<xs:include schemaLocation="GetContinentsAndCountriesVisited.xsd"  />
 	<xs:include schemaLocation="GetTourCategories.xsd"  />

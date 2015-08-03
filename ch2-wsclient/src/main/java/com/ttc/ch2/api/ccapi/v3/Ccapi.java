@@ -19,8 +19,8 @@ import javax.xml.bind.annotation.XmlSeeAlso;
 @SOAPBinding(parameterStyle = SOAPBinding.ParameterStyle.BARE)
 @XmlSeeAlso({
     com.ttc.ch2.api.ccapi.v3.tourdepartures._2013._09._2_5.ObjectFactory.class,
-    com.ttc.ch2.api.ccapi.v3.ObjectFactory.class,
-    com.ttc.ch2.api.ccapi.v3.tourinfo._2014._01._3.ObjectFactory.class
+    com.ttc.ch2.api.ccapi.v3.tourinfo._2014._01._3.ObjectFactory.class,
+    com.ttc.ch2.api.ccapi.v3.ObjectFactory.class
 })
 public interface Ccapi {
 

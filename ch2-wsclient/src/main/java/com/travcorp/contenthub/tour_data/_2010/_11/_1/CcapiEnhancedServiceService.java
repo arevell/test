@@ -17,7 +17,7 @@ import javax.xml.ws.WebServiceFeature;
  * Generated source version: 2.1
  * 
  */
-@WebServiceClient(name = "CcapiEnhancedServiceService", targetNamespace = "http://contenthub.travcorp.com/tour_data/2010/11/1.0", wsdlLocation = "http://lonwk0412:7777/ch2-ui/ccapi/v1/CCAPIv1.wsdl")
+@WebServiceClient(name = "CcapiEnhancedServiceService", targetNamespace = "http://contenthub.travcorp.com/tour_data/2010/11/1.0", wsdlLocation = "https://content-dev.corp.ttc:443/ccapi/v1/CCAPIv1.wsdl")
 public class CcapiEnhancedServiceService
     extends Service
 {
@@ -30,9 +30,9 @@ public class CcapiEnhancedServiceService
         try {
             URL baseUrl;
             baseUrl = com.travcorp.contenthub.tour_data._2010._11._1.CcapiEnhancedServiceService.class.getResource(".");
-            url = new URL(baseUrl, "http://lonwk0412:7777/ch2-ui/ccapi/v1/CCAPIv1.wsdl");
+            url = new URL(baseUrl, "https://content-dev.corp.ttc:443/ccapi/v1/CCAPIv1.wsdl");
         } catch (MalformedURLException e) {
-            logger.warning("Failed to create URL for the wsdl Location: 'http://lonwk0412:7777/ch2-ui/ccapi/v1/CCAPIv1.wsdl', retrying as a local file");
+            logger.warning("Failed to create URL for the wsdl Location: 'https://content-dev.corp.ttc:443/ccapi/v1/CCAPIv1.wsdl', retrying as a local file");
             logger.warning(e.getMessage());
         }
         CCAPIENHANCEDSERVICESERVICE_WSDL_LOCATION = url;

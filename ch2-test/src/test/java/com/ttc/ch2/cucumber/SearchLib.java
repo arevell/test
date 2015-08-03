@@ -1,7 +1,6 @@
 package com.ttc.ch2.cucumber;
 
 import java.io.IOException;
-import java.util.Properties;
 
 import javax.sql.DataSource;
 
@@ -10,9 +9,6 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 
 public class SearchLib {
-	
-			public static final String testConfigProperties = "/META-INF/spring/ch2mainTest.properties";
-	
 			public static final String sqlForContinentsCodes = "SELECT x1.continentcode, x2.sellingcompanycode                                                              " +
 		       " FROM xml_content_repository t, content_repository r,                                                                                                         " +
 		       "      XMLTABLE (XMLNAMESPACES( DEFAULT 'http://www.ttc.com/ch2/api/ccapi/v3/TourInfo/2014/01/3.0' ), '/TourInfo/ContinentsVisited/Continent'                  " +
@@ -175,21 +171,5 @@ public class SearchLib {
 				}
 				return aplicationContextForSearch;
 			
-			}
-			
-			public static  boolean isElasticSearchTurnedOn() {
-				boolean ret=false;
-				try {
-					Properties props = new Properties();
-					props.load(SearchLib.class.getResourceAsStream(testConfigProperties));
-					String val = props.getProperty("elastic.search.indexing");
-					if(val != null) {
-						ret = Boolean.parseBoolean(val);
-					}
-				}catch(Exception e) {
-					e.printStackTrace();
-				}
-				
-				return ret;
 			}
 }

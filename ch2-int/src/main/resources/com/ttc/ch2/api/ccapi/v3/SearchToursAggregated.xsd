@@ -57,9 +57,9 @@
 			<xs:element name="duration" type="xs:integer" />
 			<xs:element name="accommodations" type="xs:string" minOccurs="0" maxOccurs="unbounded" />
 			<xs:element name="startCity" type="xs:string" />
-			<xs:element name="airportsStartCity" type="xs:string" minOccurs="0"/>
+			<xs:element name="airportsStartCity" type="xs:string" />
 			<xs:element name="endCity" type="xs:string" />
-			<xs:element name="airportsEndCity" type="xs:string" minOccurs="0"/>
+			<xs:element name="airportsEndCity" type="xs:string" />
 			<xs:element name="sellableRoomTypes" type="ti:RoomTypes"  />
 			<xs:element name="operatingProductCode" type="xs:string" />
 			<xs:element name="contractingSeason" type="xs:string" />

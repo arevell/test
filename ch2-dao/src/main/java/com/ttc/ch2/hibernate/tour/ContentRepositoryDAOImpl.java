@@ -1,6 +1,5 @@
 package com.ttc.ch2.hibernate.tour;
 
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
@@ -45,7 +44,6 @@ import com.ttc.ch2.domain.user.UserCCAPI;
 @Transactional(readOnly=false,propagation=Propagation.REQUIRED)
 public class ContentRepositoryDAOImpl extends BaseDao<ContentRepository, Long> implements ContentRepositoryDAO {
 
-	private static final int MAX_ELEMENTS_INSIDE_SQL_IN_CLAUSE = 999;
 	private static final Logger logger = LoggerFactory.getLogger(ContentRepositoryDAOImpl.class);
 	@Inject
 	private BrandDAO brandDAO;
@@ -202,20 +200,12 @@ public class ContentRepositoryDAOImpl extends BaseDao<ContentRepository, Long> i
 	@Override
 	public List<ContentRepository> findByTourCodes(List<String> tourCodes, String brandCode) {
 
-		List<ContentRepository> result = new ArrayList<>();
-		
-		for (int i = 0; i < tourCodes.size(); i += MAX_ELEMENTS_INSIDE_SQL_IN_CLAUSE ) {
-			List<String> sub = new ArrayList<String>(tourCodes.subList(i, Math.min(tourCodes.size(), i + MAX_ELEMENTS_INSIDE_SQL_IN_CLAUSE)));
-			
-			Search search = new Search();
-			search.addFilterIn("tourCode", sub);
-			search.addFilterEqual("brands.code", brandCode);
-			
-			List<ContentRepository> subResult = search(search);
-			result.addAll(subResult);
-		}
-		
-		return result;
+		Search search = new Search();
+
+		search.addFilterIn("tourCode", tourCodes);
+		search.addFilterEqual("brands.code", brandCode);
+
+		return search(search);
 	}
 
 	@Override
@@ -432,70 +422,6 @@ public class ContentRepositoryDAOImpl extends BaseDao<ContentRepository, Long> i
 		return result;
 	}
 
-    public List<Long> getExtendedCRIdsforSearchToursAggregated(List<Long> ids, String brandCode) {
-    	
-    	Session session = sessionFactory.getCurrentSession();
-		StringBuilder sb=new StringBuilder();
-		sb.append("select r.id from ContentRepository r inner join r.brands as B where");		
-		sb.append(" B.code=:brandCode and r.repositoryStatus=:status ");		
-		sb.append(" and r.cataloguedTourCode in (select r0.cataloguedTourCode from ");
-		sb.append(" ContentRepository r0 inner join r0.brands as B0 where");
-		sb.append(" B0.code=:brandCode and r0.repositoryStatus=:status and (");
-		for(int i=0; i < ids.size(); i+= MAX_ELEMENTS_INSIDE_SQL_IN_CLAUSE) {
-			if(i==0){
-				sb.append(" r0.id in (:ids"+i+") ");
-			}
-			else {
-				sb.append(" or r0.id in (:ids"+i+")");
-			}
-		}
-		
-		sb.append(")) order by r.cataloguedTourCode");
-		Query query = session.createQuery(sb.toString());		
-		query.setParameter("brandCode", brandCode);
-		query.setParameter("status", ContentRepository.RepositoryStatus.TIandTD);
-		for(int i=0; i < ids.size(); i+= MAX_ELEMENTS_INSIDE_SQL_IN_CLAUSE) {
-			List<Long> subList;
-			if (ids.size() > i + MAX_ELEMENTS_INSIDE_SQL_IN_CLAUSE) {
-                subList = ids.subList(i, (i + MAX_ELEMENTS_INSIDE_SQL_IN_CLAUSE));
-            } else {
-                subList = ids.subList(i, ids.size());
-            }
-			query.setParameterList("ids"+i, subList);
-		}
-		List<Long> idsToreturn=query.list();
-    	return idsToreturn;
-    }
     
-    @Override
-    public Long[] getCRStatistics(String brandCode) {
-    	StringBuilder hqlSbTI=new StringBuilder();
-    	hqlSbTI.append("select count(*), sum(r.tourInfoXMLSize) from ContentRepository r inner join r.brands as b ");
-    	hqlSbTI.append("where r.repositoryStatus in (:repoTIStatuses) and b.code=:brandCode");
- 
-    	StringBuilder hqlSbTD=new StringBuilder();
-    	hqlSbTD.append("select count(*), sum(r.tourDepartureXMLSize) from ContentRepository r inner join r.brands as b ");
-    	hqlSbTD.append("where r.repositoryStatus in (:repoTDStatuses) and b.code=:brandCode");
- 
-		Session session = sessionFactory.getCurrentSession();
-		Query queryTI = session.createQuery(hqlSbTI.toString());
-		queryTI.setParameter("brandCode", brandCode);
-		queryTI.setParameterList("repoTIStatuses", new Object[] {ContentRepository.RepositoryStatus.TIandTD, ContentRepository.RepositoryStatus.TourInfoOnly});
-		queryTI.setMaxResults(1);
-		
-		Query queryTD = session.createQuery(hqlSbTD.toString());
-		queryTD.setParameter("brandCode", brandCode);
-		queryTD.setParameterList("repoTDStatuses", new Object[] {ContentRepository.RepositoryStatus.TIandTD, ContentRepository.RepositoryStatus.TourDepartureOnly});
-		queryTD.setMaxResults(1);
-		List<Object[]> tiL = (List<Object[]>) queryTI.list();
-		List<Object[]> tdL = (List<Object[]>) queryTD.list();
-		Long[] resp = new Long[tiL.get(0).length + tdL.get(0).length];
-		resp[0] = (Long)tiL.get(0)[0];
-		resp[1] = (Long)tdL.get(0)[0];
-		resp[2] = (Long)tiL.get(0)[1];
-		resp[3] = (Long)tdL.get(0)[1];
-    	return resp;
-    	
-    }
     
 }

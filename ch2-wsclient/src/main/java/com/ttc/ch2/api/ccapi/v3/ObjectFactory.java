@@ -30,75 +30,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link GetTourCategoriesRequest }
+     * Create an instance of {@link GetTourDataUploadStatusResponse }
      * 
      */
-    public GetTourCategoriesRequest createGetTourCategoriesRequest() {
-        return new GetTourCategoriesRequest();
-    }
-
-    /**
-     * Create an instance of {@link GetBrochureResponse }
-     * 
-     */
-    public GetBrochureResponse createGetBrochureResponse() {
-        return new GetBrochureResponse();
-    }
-
-    /**
-     * Create an instance of {@link GetTourCategoriesResponse }
-     * 
-     */
-    public GetTourCategoriesResponse createGetTourCategoriesResponse() {
-        return new GetTourCategoriesResponse();
-    }
-
-    /**
-     * Create an instance of {@link TourCategories }
-     * 
-     */
-    public TourCategories createTourCategories() {
-        return new TourCategories();
-    }
-
-    /**
-     * Create an instance of {@link GetBrochureRequest }
-     * 
-     */
-    public GetBrochureRequest createGetBrochureRequest() {
-        return new GetBrochureRequest();
-    }
-
-    /**
-     * Create an instance of {@link UploadFileStatusType }
-     * 
-     */
-    public UploadFileStatusType createUploadFileStatusType() {
-        return new UploadFileStatusType();
-    }
-
-    /**
-     * Create an instance of {@link GetTourDataUploadStatusRequest }
-     * 
-     */
-    public GetTourDataUploadStatusRequest createGetTourDataUploadStatusRequest() {
-        return new GetTourDataUploadStatusRequest();
-    }
-
-    /**
-     * Create an instance of {@link SearchToursResponse }
-     * 
-     */
-    public SearchToursResponse createSearchToursResponse() {
-        return new SearchToursResponse();
-    }
-
-    /**
-     * Create an instance of {@link ContinentAndCountries }
-     * 
-     */
-    public ContinentAndCountries createContinentAndCountries() {
-        return new ContinentAndCountries();
+    public GetTourDataUploadStatusResponse createGetTourDataUploadStatusResponse() {
+        return new GetTourDataUploadStatusResponse();
     }
 
     /**
@@ -110,43 +46,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link SearchResults }
+     * Create an instance of {@link UploadFileStatusType }
      * 
      */
-    public SearchResults createSearchResults() {
-        return new SearchResults();
+    public UploadFileStatusType createUploadFileStatusType() {
+        return new UploadFileStatusType();
     }
 
     /**
-     * Create an instance of {@link SnapshotType }
+     * Create an instance of {@link GetContinentsAndCountriesVisitedRequest }
      * 
      */
-    public SnapshotType createSnapshotType() {
-        return new SnapshotType();
-    }
-
-    /**
-     * Create an instance of {@link SearchToursBaseRequest }
-     * 
-     */
-    public SearchToursBaseRequest createSearchToursBaseRequest() {
-        return new SearchToursBaseRequest();
-    }
-
-    /**
-     * Create an instance of {@link GetTourDetailsFullRequest }
-     * 
-     */
-    public GetTourDetailsFullRequest createGetTourDetailsFullRequest() {
-        return new GetTourDetailsFullRequest();
-    }
-
-    /**
-     * Create an instance of {@link SearchAggregatedSubResults }
-     * 
-     */
-    public SearchAggregatedSubResults createSearchAggregatedSubResults() {
-        return new SearchAggregatedSubResults();
+    public GetContinentsAndCountriesVisitedRequest createGetContinentsAndCountriesVisitedRequest() {
+        return new GetContinentsAndCountriesVisitedRequest();
     }
 
     /**
@@ -158,11 +70,43 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link MessageType }
+     * 
+     */
+    public MessageType createMessageType() {
+        return new MessageType();
+    }
+
+    /**
+     * Create an instance of {@link SnapshotType }
+     * 
+     */
+    public SnapshotType createSnapshotType() {
+        return new SnapshotType();
+    }
+
+    /**
      * Create an instance of {@link UploadTourInfoRequest }
      * 
      */
     public UploadTourInfoRequest createUploadTourInfoRequest() {
         return new UploadTourInfoRequest();
+    }
+
+    /**
+     * Create an instance of {@link ContinentAndCountries }
+     * 
+     */
+    public ContinentAndCountries createContinentAndCountries() {
+        return new ContinentAndCountries();
+    }
+
+    /**
+     * Create an instance of {@link CurrentBrandStatusType }
+     * 
+     */
+    public CurrentBrandStatusType createCurrentBrandStatusType() {
+        return new CurrentBrandStatusType();
     }
 
     /**
@@ -174,51 +118,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link MessageContext }
+     * Create an instance of {@link SearchResults }
      * 
      */
-    public MessageContext createMessageContext() {
-        return new MessageContext();
-    }
-
-    /**
-     * Create an instance of {@link SearchToursAggregatedRequest }
-     * 
-     */
-    public SearchToursAggregatedRequest createSearchToursAggregatedRequest() {
-        return new SearchToursAggregatedRequest();
-    }
-
-    /**
-     * Create an instance of {@link SearchToursAggregatedResponse }
-     * 
-     */
-    public SearchToursAggregatedResponse createSearchToursAggregatedResponse() {
-        return new SearchToursAggregatedResponse();
-    }
-
-    /**
-     * Create an instance of {@link SearchToursRequest }
-     * 
-     */
-    public SearchToursRequest createSearchToursRequest() {
-        return new SearchToursRequest();
-    }
-
-    /**
-     * Create an instance of {@link MessageType }
-     * 
-     */
-    public MessageType createMessageType() {
-        return new MessageType();
-    }
-
-    /**
-     * Create an instance of {@link CurrentBrandStatusType }
-     * 
-     */
-    public CurrentBrandStatusType createCurrentBrandStatusType() {
-        return new CurrentBrandStatusType();
+    public SearchResults createSearchResults() {
+        return new SearchResults();
     }
 
     /**
@@ -238,19 +142,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link GetTourDataUploadStatusResponse }
+     * Create an instance of {@link TourCategories }
      * 
      */
-    public GetTourDataUploadStatusResponse createGetTourDataUploadStatusResponse() {
-        return new GetTourDataUploadStatusResponse();
-    }
-
-    /**
-     * Create an instance of {@link MessageSubject }
-     * 
-     */
-    public MessageSubject createMessageSubject() {
-        return new MessageSubject();
+    public TourCategories createTourCategories() {
+        return new TourCategories();
     }
 
     /**
@@ -262,11 +158,115 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link GetContinentsAndCountriesVisitedRequest }
+     * Create an instance of {@link GetBrochureRequest }
      * 
      */
-    public GetContinentsAndCountriesVisitedRequest createGetContinentsAndCountriesVisitedRequest() {
-        return new GetContinentsAndCountriesVisitedRequest();
+    public GetBrochureRequest createGetBrochureRequest() {
+        return new GetBrochureRequest();
+    }
+
+    /**
+     * Create an instance of {@link GetTourCategoriesResponse }
+     * 
+     */
+    public GetTourCategoriesResponse createGetTourCategoriesResponse() {
+        return new GetTourCategoriesResponse();
+    }
+
+    /**
+     * Create an instance of {@link SearchToursRequest }
+     * 
+     */
+    public SearchToursRequest createSearchToursRequest() {
+        return new SearchToursRequest();
+    }
+
+    /**
+     * Create an instance of {@link SearchToursBaseRequest }
+     * 
+     */
+    public SearchToursBaseRequest createSearchToursBaseRequest() {
+        return new SearchToursBaseRequest();
+    }
+
+    /**
+     * Create an instance of {@link MessageSubject }
+     * 
+     */
+    public MessageSubject createMessageSubject() {
+        return new MessageSubject();
+    }
+
+    /**
+     * Create an instance of {@link MessageContext }
+     * 
+     */
+    public MessageContext createMessageContext() {
+        return new MessageContext();
+    }
+
+    /**
+     * Create an instance of {@link SearchAggregatedSubResults }
+     * 
+     */
+    public SearchAggregatedSubResults createSearchAggregatedSubResults() {
+        return new SearchAggregatedSubResults();
+    }
+
+    /**
+     * Create an instance of {@link GetBrochureResponse }
+     * 
+     */
+    public GetBrochureResponse createGetBrochureResponse() {
+        return new GetBrochureResponse();
+    }
+
+    /**
+     * Create an instance of {@link SearchToursAggregatedRequest }
+     * 
+     */
+    public SearchToursAggregatedRequest createSearchToursAggregatedRequest() {
+        return new SearchToursAggregatedRequest();
+    }
+
+    /**
+     * Create an instance of {@link GetTourCategoriesRequest }
+     * 
+     */
+    public GetTourCategoriesRequest createGetTourCategoriesRequest() {
+        return new GetTourCategoriesRequest();
+    }
+
+    /**
+     * Create an instance of {@link SearchToursAggregatedResponse }
+     * 
+     */
+    public SearchToursAggregatedResponse createSearchToursAggregatedResponse() {
+        return new SearchToursAggregatedResponse();
+    }
+
+    /**
+     * Create an instance of {@link SearchToursResponse }
+     * 
+     */
+    public SearchToursResponse createSearchToursResponse() {
+        return new SearchToursResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetTourDataUploadStatusRequest }
+     * 
+     */
+    public GetTourDataUploadStatusRequest createGetTourDataUploadStatusRequest() {
+        return new GetTourDataUploadStatusRequest();
+    }
+
+    /**
+     * Create an instance of {@link GetTourDetailsFullRequest }
+     * 
+     */
+    public GetTourDetailsFullRequest createGetTourDetailsFullRequest() {
+        return new GetTourDetailsFullRequest();
     }
 
 }

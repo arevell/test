@@ -3,52 +3,15 @@
    <modelVersion>4.0.0</modelVersion>
    <groupId>com.ttc.ch2</groupId>
    <artifactId>ch2-test</artifactId>
-   <version>HABS.159-SNAPSHOT</version>
+   <version>TRUNK-SNAPSHOT</version>
    <packaging>jar</packaging>
    <name>CH2 Automated Tests</name>
    <parent>
       <groupId>com.ttc.ch2</groupId>
       <artifactId>ch2-parentPOM</artifactId>
-      <version>HABS.159-SNAPSHOT</version>
-      <relativePath>../ch2-parentPOM</relativePath>
+      <version>TRUNK-SNAPSHOT</version>
    </parent>
-   <properties>
-    	<prod-serv-int.version>HABS.159-SNAPSHOT</prod-serv-int.version> 
-   </properties>
    <dependencies>
-   
-     	<!-- <dependency>
-            <groupId>com.ttc.prodserv</groupId>
-            <artifactId>prod-serv-int</artifactId>
-            <version>${prod-serv-int.version}</version>
-         </dependency> -->
-   
-   
-		<!-- <dependency>
-			<groupId>com.sun.jersey</groupId>
-			<artifactId>jersey-client</artifactId>
-		</dependency> -->
-
-		<dependency>
-			<groupId>joda-time</groupId>
-			<artifactId>joda-time</artifactId>
-		</dependency>
-			
-			   
-   
-   		<dependency>
-			<groupId>org.mongodb</groupId>
-			<artifactId>mongo-java-driver</artifactId>		
-		</dependency>
-		
-		<!-- Spring data mongodb -->
-		<dependency>
-			<groupId>org.springframework.data</groupId>
-			<artifactId>spring-data-mongodb</artifactId>
-		</dependency>
-         
-   
-   
       <dependency>
          <groupId>com.ttc.ch2</groupId>
          <artifactId>ch2-dao</artifactId>
@@ -81,16 +44,6 @@
       <dependency>
          <groupId>junit</groupId>
          <artifactId>junit</artifactId>
-         <exclusions>
-            <exclusion>
-               <groupId>org.hamcrest</groupId>
-	       <artifactId>hamcrest-core</artifactId>
-            </exclusion>
-         </exclusions>
-      </dependency>
-      <dependency>
-         <groupId>org.hamcrest</groupId>
-         <artifactId>hamcrest-all</artifactId>
       </dependency>
       <dependency>
          <groupId>org.powermock</groupId>
@@ -128,11 +81,11 @@
          <groupId>ecs</groupId>
          <artifactId>ecs</artifactId>
       </dependency>
-      <!-- dependency>
+      <dependency>
 		<groupId>org.slf4j</groupId>
 		<artifactId>slf4j-simple</artifactId>
 		<version>1.7.5</version>
-	  </dependency-->
+	  </dependency>
 	  <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
@@ -160,10 +113,10 @@
         <version>1.1.5</version>
         <type>pom</type>
     </dependency>
-        <dependency>
+    <dependency>
          <groupId>com.ttc.ch2</groupId>
          <artifactId>ch2-wsclient</artifactId>
-         <version>HABS.159-SNAPSHOT</version>   
+         <version>TRUNK-SNAPSHOT</version>   
       </dependency>     
 	<dependency>
 			<groupId>com.github.springtestdbunit</groupId>
@@ -269,18 +222,23 @@
             <artifactId>maven-surefire-plugin</artifactId>
             <version>2.16</version>
              <configuration>
-                          <argLine>-Xms2048m -Xmx2048m -XX:MaxPermSize=512m</argLine>
               <!-- <skipTests>true</skipTests> -->
 		          <excludes>
 		          <!-- suites are excluded -->
 		          <include>**/cucumber/ccapisecurity/TestAllCucumberCCAPI.java</include>
 		          <include>**/cucumber/rest/TestAllCucumberRest.java</include> 
-         		         		         		          				          		         		         
-							<include>**/cucumber/getbrochure/**.java</include> 							
-							<!-- this test frozen proccess -->
-							<include>**/cucumber/getcontinentsandcountriesvisited/**.java</include>					     					 				    				     		          		          		         		       
+		          		          		         		         
+		          		          		         		         
+		          			<include>**/cucumber/getcontinentsandcountriesvisited/**.java</include>		          		         		         
+							<include>**/cucumber/getbrochure/**.java</include> 
+							<include>**/cucumber/gettourcategories/**.java</include>
+				     		<include>**/cucumber/gettourdetailsfull/**.java</include>			 				     
+				     		<include>**/cucumber/searchtours/**.java</include>					     
+				     		<include>**/cucumber/searchtoursaggregated/**.java</include>		          		          		         		         
 		          </excludes> 
 		          <includes>		           
+		           	
+					 
 		           	 <!-- 
 		           	 <include>**/dao/**.java</include> 		 
 		             <include>**/dao/*/**.java</include>
@@ -290,13 +248,13 @@
 		             <include>**/cucumber/ccapisecurity/*/**.java</include>
 		             <include>**/cucumber/rest/*/**.java</include>	 
 		             
-		             	<include>**/cucumber/ccapisecurity/*/**.java</include>               	
+		             	               	
 		             <include>**/cucumber/tourdeparturegen/**.java</include>				  
-      					   <include>**/cucumber/systemcompare/*/**.java</include>
 		             --> 		
+		             
+		             
 		        <!-- 
-		        	 <include>**/cucumber/getbrochure/**.java</include>
-		        	 <include>**/cucumber/gettourcategories/**.java</include> 
+		        	 <include>**/cucumber/getbrochure/**.java</include> 
 				     <include>**/cucumber/gettourdetailsfull/**.java</include>			 				     
 				     <include>**/cucumber/searchtours/**.java</include>					     
 				     <include>**/cucumber/searchtoursaggregated/**.java</include>           	 
@@ -331,6 +289,21 @@
 	        </overlays>
 	      </configuration>
 	    </plugin>
+	    <plugin>
+	      <artifactId>maven-war-plugin</artifactId>
+	      <version>2.1-beta-1</version>
+	      <configuration>
+	        <attachClasses>true</attachClasses>
+	      </configuration>
+	    </plugin>	    
+	    <plugin>
+		    <groupId>org.apache.maven.plugins</groupId>
+		    <artifactId>maven-surefire-plugin</artifactId>
+		    <version>2.9</version>
+		    <configuration>
+		        <argLine>-Xms2048m -Xmx2048m -XX:MaxPermSize=512m</argLine>
+		    </configuration>
+		</plugin>
     </plugins>
 </build>
 </project>

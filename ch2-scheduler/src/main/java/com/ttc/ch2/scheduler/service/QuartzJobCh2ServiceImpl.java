@@ -84,7 +84,7 @@ public class QuartzJobCh2ServiceImpl implements QuartzJobCh2Service{
 		try {			
 			QuartzJobHistory localHistory=quartzJobHistoryDAO.find(quartzJobHistory.getId());			
 			for (QHComment comment : quartzJobHistory.getComments()) {
-				if (comment.getId() == null) {					
+				if (comment.getId() == null) {
 					localHistory.getComments().add(comment);
 					comment.setQuartzJobHistory(localHistory);
 				}
@@ -98,7 +98,6 @@ public class QuartzJobCh2ServiceImpl implements QuartzJobCh2Service{
 			quartzJobHistoryDAO.flush();			
 		} catch (Exception e) {
 			logger.trace("QuartzJobCh2ServiceImpl:addNewQuartzJobHistory-end");
-			logger.error("",e);
 			throw new QuartzJobCh2ServiceException(e);
 		}
 		logger.trace("QuartzJobCh2ServiceImpl:addNewQuartzJobHistory-end");
@@ -109,7 +108,7 @@ public class QuartzJobCh2ServiceImpl implements QuartzJobCh2Service{
 	{
 		logger.trace("QuartzJobCh2ServiceImpl:findByName-start");
 		try{
-			if(StringUtils.isBlank(name))
+			if(StringUtils.isBlank(name) || StringUtils.isBlank(brandCode))
 				return null;
 
 		QuartzJob eJob=new QuartzJob();

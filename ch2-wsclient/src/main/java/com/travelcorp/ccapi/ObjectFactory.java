@@ -24,8 +24,8 @@ import javax.xml.namespace.QName;
 @XmlRegistry
 public class ObjectFactory {
 
-    private final static QName _SearchTours_QNAME = new QName("http://CCAPI.TravelCorp.com/", "SearchTours");
     private final static QName _SearchToursResponse_QNAME = new QName("http://CCAPI.TravelCorp.com/", "SearchToursResponse");
+    private final static QName _SearchTours_QNAME = new QName("http://CCAPI.TravelCorp.com/", "SearchTours");
     private final static QName _SearchToursEnhanced_QNAME = new QName("http://CCAPI.TravelCorp.com/", "SearchToursEnhanced");
 
     /**
@@ -36,43 +36,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ArrayOfString }
-     * 
-     */
-    public ArrayOfString createArrayOfString() {
-        return new ArrayOfString();
-    }
-
-    /**
-     * Create an instance of {@link SearchToursResponse }
-     * 
-     */
-    public SearchToursResponse createSearchToursResponse() {
-        return new SearchToursResponse();
-    }
-
-    /**
      * Create an instance of {@link SearchTourResultsItem }
      * 
      */
     public SearchTourResultsItem createSearchTourResultsItem() {
         return new SearchTourResultsItem();
-    }
-
-    /**
-     * Create an instance of {@link ArrayOfSearchTourResultsItem }
-     * 
-     */
-    public ArrayOfSearchTourResultsItem createArrayOfSearchTourResultsItem() {
-        return new ArrayOfSearchTourResultsItem();
-    }
-
-    /**
-     * Create an instance of {@link SearchTourResults }
-     * 
-     */
-    public SearchTourResults createSearchTourResults() {
-        return new SearchTourResults();
     }
 
     /**
@@ -92,12 +60,35 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link SearchToursEnhanced }{@code >}}
+     * Create an instance of {@link SearchToursResponse }
      * 
      */
-    @XmlElementDecl(namespace = "http://CCAPI.TravelCorp.com/", name = "SearchTours")
-    public JAXBElement<SearchToursEnhanced> createSearchTours(SearchToursEnhanced value) {
-        return new JAXBElement<SearchToursEnhanced>(_SearchTours_QNAME, SearchToursEnhanced.class, null, value);
+    public SearchToursResponse createSearchToursResponse() {
+        return new SearchToursResponse();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfSearchTourResultsItem }
+     * 
+     */
+    public ArrayOfSearchTourResultsItem createArrayOfSearchTourResultsItem() {
+        return new ArrayOfSearchTourResultsItem();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfString }
+     * 
+     */
+    public ArrayOfString createArrayOfString() {
+        return new ArrayOfString();
+    }
+
+    /**
+     * Create an instance of {@link SearchTourResults }
+     * 
+     */
+    public SearchTourResults createSearchTourResults() {
+        return new SearchTourResults();
     }
 
     /**
@@ -107,6 +98,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://CCAPI.TravelCorp.com/", name = "SearchToursResponse")
     public JAXBElement<SearchToursResponse> createSearchToursResponse(SearchToursResponse value) {
         return new JAXBElement<SearchToursResponse>(_SearchToursResponse_QNAME, SearchToursResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link SearchToursEnhanced }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://CCAPI.TravelCorp.com/", name = "SearchTours")
+    public JAXBElement<SearchToursEnhanced> createSearchTours(SearchToursEnhanced value) {
+        return new JAXBElement<SearchToursEnhanced>(_SearchTours_QNAME, SearchToursEnhanced.class, null, value);
     }
 
     /**

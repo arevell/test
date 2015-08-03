@@ -2,11 +2,13 @@ package com.ttc.ch2.scheduler.service;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 import javax.inject.Inject;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.time.DateUtils;
+import org.elasticsearch.common.collect.Sets;
 import org.quartz.CronTrigger;
 import org.quartz.JobDetail;
 import org.quartz.Scheduler;
@@ -30,6 +32,7 @@ import com.ttc.ch2.bl.lock.ExecutorException;
 import com.ttc.ch2.bl.lock.LockBrandService;
 import com.ttc.ch2.bl.upload.UploadStatusService;
 import com.ttc.ch2.common.SecurityHelper;
+import com.ttc.ch2.common.enums.CronExpresion;
 import com.ttc.ch2.common.enums.ProcessName;
 import com.ttc.ch2.dao.BrandDAO;
 import com.ttc.ch2.dao.departure.ImportStatusDAO;
@@ -48,7 +51,8 @@ import com.ttc.ch2.domain.jobs.QuartzJobHistory.JobHistoryStatus;
 import com.ttc.ch2.domain.upload.UploadStatus;
 import com.ttc.ch2.domain.upload.UploadTourInfoFile;
 import com.ttc.ch2.domain.upload.UploadTourInfoFileStatus;
-import com.ttc.ch2.scheduler.common.JobParams;
+import com.ttc.ch2.scheduler.common.ActiveJobException;
+import com.ttc.ch2.scheduler.jobs.departuresynch.DepartureSynchronizeJob;
 
 
 @Service
@@ -124,9 +128,9 @@ public class SchedulerForImportServiceImpl extends SchedulerServiceBase implemen
 						  nextFireTime = triggers[0].getNextFireTime();
 					  }
 					  
-					  String brandCode=(String) schedulerLocal.getJobDetail(jobName, jobGroupName).getJobDataMap().get(JobParams.BRAND_CODE.toString());
-					  String name=(String) schedulerLocal.getJobDetail(jobName, jobGroupName).getJobDataMap().get(JobParams.JOB_NAME_UI.toString());
-					  QuartzJob job=quartzJobCh2Service.findByName(QuartzJob.JobName.DepartureSynchronizeJob.toString(),brandCode);
+					  String brandCode=(String) schedulerLocal.getJobDetail(jobName, jobGroupName).getJobDataMap().get(DepartureSynchronizeJob.JobParams.BRAND_CODE.toString());
+					  String name=(String) schedulerLocal.getJobDetail(jobName, jobGroupName).getJobDataMap().get(DepartureSynchronizeJob.JobParams.JOB_NAME_UI.toString());
+					  QuartzJob job=quartzJobCh2Service.findByName(SchedulerForImportServiceImpl.jobImportName,brandCode);
 					  					   
 					  String user=job.getUser()!=null ? job.getUser().getUsername() : SCHEDULER_USER;					  
 					  boolean needReset=resetNeed(brandCode);
@@ -193,46 +197,8 @@ public class SchedulerForImportServiceImpl extends SchedulerServiceBase implemen
 					throw new SchedulerServiceException("System cannot change scheduled time of execution job till job  it needs to be reset. Please click 'reset' button for Departure Import Job "+localBrandCode);
 				}
 			}
-					DbLocker dbLocer=appCtx.getBean(DbLocker.class);										
-					dbLocer.executeOperationWithWaitThread(new Executor() {						
-						@Override
-						public void execute() throws ExecutorException {
-							try {								
-								for (String brandCodeLoc : brandsCode) {
-									final Scheduler schedulerLocal=schedulerFactory.getScheduler();
-									QuartzJob job=quartzJobCh2Service.findByName(QuartzJob.JobName.DepartureSynchronizeJob.toString(),brandCodeLoc);
-									Trigger trigger = createSimpleTrigger(getImportTriggerName(brandCodeLoc), triggerGroupName, startTime, job.getUser()!=null ? job.getUser().getUsername() : SCHEDULER_USER);	
-									trigger.setJobName(getImportJobName(brandCodeLoc));
-									trigger.setJobGroup(jobGroupName);									
-									job.setNextFiringTime(startTime);
-									job.setBrandCode(brandCodeLoc);
-									job.setUser(SecurityHelper.getUserGuiPrincipal().getUserDb());									
-									quartzJobCh2Service.saveQuartzJob(job);															
-									interruptJob(brandCodeLoc);									
-									JobDetail detailJob=schedulerLocal.getJobDetail(trigger.getJobName(), trigger.getJobGroup());									
-									if(detailJob!=null)	{
-										Trigger [] triggers=schedulerLocal.getTriggersOfJob(detailJob.getName(), detailJob.getGroup());
-										if(triggers!=null && triggers.length==1 && triggers[0].getName().equals(getImportTriggerName(brandCodeLoc))){
-										detailJob.getJobDataMap().put(JobParams.USER.toString(), SecurityHelper.getUserGuiPrincipal().getUserDb().getUsername());
-										schedulerLocal.rescheduleJob(getImportTriggerName(brandCodeLoc), SchedulerForImportServiceImpl.triggerGroupName, trigger);
-										}
-										else{
-											schedulerLocal.deleteJob(detailJob.getName(), detailJob.getGroup());
-											schedulerLocal.scheduleJob(detailJob,trigger);	
-										}
-									}
-									else{
-										setupJobFromDbForImport(brandCodeLoc);
-									}			
-								}
-							} catch (SchedulerException e) {
-								throw new ExecutorException(e);
-							}		
-							catch( SchedulerServiceException e){
-								throw new ExecutorException(e);
-							}
-						}
-					}, DbLocker.LockSql.SCHEDULER_LOCK, WaitHelper.sleepTime);					
+			DbLocker dbLocer=appCtx.getBean(DbLocker.class);										
+			dbLocer.executeOperationWithWaitThread(new ChangeJobExecutor(startTime,brandsCode),DbLocker.LockSql.SCHEDULER_LOCK, WaitHelper.sleepTime);				
 		} catch (ExecutorException e) {
 			throw new SchedulerServiceException(e);
 		}			
@@ -242,7 +208,7 @@ public class SchedulerForImportServiceImpl extends SchedulerServiceBase implemen
 	private void interruptJob(String brandCode) throws SchedulerException {
 		logger.trace("SchedulerServiceImpl:interruptJob-start");		
 		if(isActiveJob(brandCode)){			
-			QuartzJob job=quartzJobCh2Service.findByName(QuartzJob.JobName.DepartureSynchronizeJob.toString(),brandCode);
+			QuartzJob job=quartzJobCh2Service.findByName(SchedulerForImportServiceImpl.jobImportName,brandCode);
 			job.setJobStatus(JobStatus.Cancelled);
 			quartzJobCh2Service.saveQuartzJob(job);			
 		}
@@ -259,34 +225,7 @@ public class SchedulerForImportServiceImpl extends SchedulerServiceBase implemen
 				DbLocker dbLocer=appCtx.getBean(DbLocker.class);										
 				dbLocer.executeOperationWithWaitThread(new Executor() {		
 					public void execute() throws ExecutorException {
-					try{
-						QuartzJob job=quartzJobCh2Service.findByName(QuartzJob.JobName.DepartureSynchronizeJob.toString(),brandCode);				
-						Scheduler schedulerLocal=schedulerFactory.getScheduler();
-						Trigger trigger = createCronTrigger(getImportTriggerName(brandCode), triggerGroupName, job.getCronExpresion(), job.getUser()!=null ? job.getUser().getUsername() : SCHEDULER_USER);	
-						trigger.setJobName(getImportJobName(job.getBrandCode()));
-						trigger.setJobGroup(jobGroupName);					
-								if(interrupt){
-								interruptJob(brandCode);
-								}
-								
-								JobDetail detailJob=schedulerLocal.getJobDetail(trigger.getJobName(), trigger.getJobGroup());
-								if(detailJob!=null)	{
-									Trigger [] triggers=schedulerLocal.getTriggersOfJob(detailJob.getName(), detailJob.getGroup());
-									if(triggers!=null && triggers.length==1 && triggers[0].getName().equals(getImportTriggerName(job.getBrandCode()))){
-									detailJob.getJobDataMap().put(JobParams.USER.toString(), SCHEDULER_USER);
-									schedulerLocal.rescheduleJob(getImportTriggerName(brandCode), SchedulerForImportServiceImpl.triggerGroupName, trigger);
-									}
-									else{
-										schedulerLocal.deleteJob(detailJob.getName(), detailJob.getGroup());
-										schedulerLocal.scheduleJob(detailJob,trigger);	
-									}									
-								}
-								else{
-									setupJobFromDbForImport(brandCode);
-								}
-						}catch(Exception e){
-							throw new ExecutorException(e);
-						}
+						setupCronJobWithoutTx(interrupt, brandCode);
 					}
 				},DbLocker.LockSql.SCHEDULER_LOCK, WaitHelper.sleepTime);					
 			}	
@@ -296,10 +235,78 @@ public class SchedulerForImportServiceImpl extends SchedulerServiceBase implemen
 		logger.trace("SchedulerServiceImpl.changeJobTime-end");
 	}
 	
+	private void setupCronJobWithoutTx(final boolean interrupt,final String brandCode) throws  ExecutorException{
+		try{
+			QuartzJob job=quartzJobCh2Service.findByName(jobImportName,brandCode);				
+			Scheduler schedulerLocal=schedulerFactory.getScheduler();
+			Trigger trigger = createCronTrigger(getImportTriggerName(brandCode), triggerGroupName, job.getCronExpresion(), job.getUser()!=null ? job.getUser().getUsername() : SCHEDULER_USER);	
+			trigger.setJobName(getImportJobName(job.getBrandCode()));
+			trigger.setJobGroup(jobGroupName);					
+					if(interrupt){
+						interruptJob(brandCode);
+					}
+					
+					JobDetail detailJob=schedulerLocal.getJobDetail(trigger.getJobName(), trigger.getJobGroup());
+					if(detailJob!=null)	{
+						Trigger [] triggers=schedulerLocal.getTriggersOfJob(detailJob.getName(), detailJob.getGroup());
+						if(triggers!=null && triggers.length==1 && triggers[0].getName().equals(getImportTriggerName(job.getBrandCode()))){
+						detailJob.getJobDataMap().put(DepartureSynchronizeJob.JobParams.USER.toString(), SCHEDULER_USER);
+						schedulerLocal.rescheduleJob(getImportTriggerName(brandCode), SchedulerForImportServiceImpl.triggerGroupName, trigger);
+						}
+						else{
+							schedulerLocal.deleteJob(detailJob.getName(), detailJob.getGroup());
+							schedulerLocal.scheduleJob(detailJob,trigger);	
+						}
+						
+					}
+					else{
+						setupJobFromDbForImport(brandCode);
+					}
+			}catch(Exception e){
+				throw new ExecutorException(e);
+			}
+	}
+	
+   public void setupNewCronExpression(CronExpresion expresion) throws SchedulerServiceException{
+		
+		try{
+			DbLocker dbLocer=appCtx.getBean(DbLocker.class);										
+			dbLocer.executeOperationWithWaitThread(new SetupNewCronExecutor(expresion),DbLocker.LockSql.SCHEDULER_LOCK, WaitHelper.sleepTime);					
+		}	
+		catch (ExecutorException e) {			
+			if(e.getClass()!=null && e.getCause() instanceof ActiveJobException)
+				throw new SchedulerServiceException(e.getCause());
+			else
+				throw new SchedulerServiceException();
+		}	
+	}
+   
+   public CronExpresion setupInconsistentCronExpresionIfNecessary() throws SchedulerServiceException{
+	   
+	   List<Brand> brands=brandDAO.findAll();
+	   Set<CronExpresion> expresions=Sets.newLinkedHashSet();
+	   for (Brand brand : brands) {
+		   QuartzJob job=quartzJobCh2Service.findByName(jobImportName,brand.getCode());
+		   CronExpresion calculatedCronExpresion=CronExpresion.findByExpresion(CronExpresion.TDI_HOUR06.getName(), job.getCronExpresion().substring(4));	
+		   expresions.add(calculatedCronExpresion);
+	   }
+	   
+	   if(expresions.size()==0)
+		   throw new IllegalStateException("Incorrect cron time configuration for job Tour Departure Import");
+	   
+	   CronExpresion ce=expresions.iterator().next();
+	   if(expresions.size()>1){		   	
+		   setupNewCronExpression(ce);
+	   }
+	   
+	   return ce;	   
+   }
+	
+	
 	private Trigger createCronTrigger(String triggerName, String triggerGroupName, String cronExpression,String user) throws SchedulerServiceException{
 		logger.trace("SchedulerServiceImpl:createCronTrigger-start");
 		CronTrigger trigger = super.createCronTrigger(triggerName, triggerGroupName, cronExpression);
-		trigger.getJobDataMap().put(JobParams.USER.toString(),user);
+		trigger.getJobDataMap().put(DepartureSynchronizeJob.JobParams.USER.toString(),user);
 		logger.trace("SchedulerServiceImpl:createCronTrigger-start");
 		return trigger;
 	}
@@ -308,7 +315,7 @@ public class SchedulerForImportServiceImpl extends SchedulerServiceBase implemen
 	private Trigger createSimpleTrigger(String triggerName, String triggerGroupName, Date startTime,String user) throws SchedulerServiceException{
 		logger.trace("SchedulerServiceImpl:createSimpleTrigger-start");
 		SimpleTrigger trigger = super.createSimpleTrigger(triggerName, triggerGroupName, startTime);		
-		trigger.getJobDataMap().put(JobParams.USER.toString(),user);		
+		trigger.getJobDataMap().put(DepartureSynchronizeJob.JobParams.USER.toString(),user);		
 		logger.trace("SchedulerServiceImpl:createSimpleTrigger-end");
 		return trigger;
 	}
@@ -324,14 +331,14 @@ public class SchedulerForImportServiceImpl extends SchedulerServiceBase implemen
 	private void setupJobFromDbForImport(String brandCode) throws SchedulerException, SchedulerServiceException{
 		logger.trace("SchedulerServiceImpl:setupJobFromDb-start");
 			Scheduler schedulerLocal=schedulerFactory.getScheduler();
-			QuartzJob job=quartzJobCh2Service.findByName(QuartzJob.JobName.DepartureSynchronizeJob.toString(), brandCode);
+			QuartzJob job=quartzJobCh2Service.findByName(jobImportName, brandCode);
 			JobDetail jobDetail=schedulerLocal.getJobDetail(getImportJobName(brandCode), jobGroupName);			
 			if(jobDetail==null){
-				JobDetailBean jobDetails= appCtx.getBean(QuartzJob.JobName.DepartureSynchronizeJob.toString(),JobDetailBean.class);
+				JobDetailBean jobDetails= appCtx.getBean(jobImportName,JobDetailBean.class);
 				jobDetails.setName(getImportJobName(brandCode));	
-				jobDetails.getJobDataMap().put(JobParams.BRAND_CODE.toString(), brandCode);
-				jobDetails.getJobDataMap().put(JobParams.JOB_NAME_UI.toString(), String.format(JOB_DESC, brandCode));
-				jobDetails.getJobDataMap().put(JobParams.USER.toString(), job.getUser()!=null ? job.getUser().getUsername() : SCHEDULER_USER);
+				jobDetails.getJobDataMap().put(DepartureSynchronizeJob.JobParams.BRAND_CODE.toString(), brandCode);
+				jobDetails.getJobDataMap().put(DepartureSynchronizeJob.JobParams.JOB_NAME_UI.toString(), String.format(JOB_DESC, brandCode));
+				jobDetails.getJobDataMap().put(DepartureSynchronizeJob.JobParams.USER.toString(), job.getUser()!=null ? job.getUser().getUsername() : SCHEDULER_USER);
 				jobDetails.setRequestsRecovery(false);
 				jobDetails.setDurability(true);
 				jobDetails.setGroup(jobGroupName);
@@ -394,88 +401,10 @@ public class SchedulerForImportServiceImpl extends SchedulerServiceBase implemen
 		try{
 				if(resetAllowed(brandCode)==false){
 					throw new SchedulerServiceException("System can not be reset at the current state. Probably process import or upload just activated.");
-				}
-						
+				}						
 				// send interrupt event 		
-				DbLocker dbLocer=appCtx.getBean(DbLocker.class);										
-				dbLocer.executeOperation(new Executor() {		
-					public void execute() throws ExecutorException {
-					try{
-							QuartzJob job=quartzJobCh2Service.findByName(QuartzJob.JobName.DepartureSynchronizeJob.toString(),brandCode);				
-							Scheduler schedulerLocal=schedulerFactory.getScheduler();		
-							interruptJob(brandCode);
-							
-							Thread.sleep(WaitHelper.sleepTime);
-							
-							//clear data uplod
-							Brand brand=brandDAO.findByBrandCode(brandCode);				
-							uploadStatusService.clearProccess(brandCode);
-							UploadTourInfoFile eFilterTI=new UploadTourInfoFile();
-							eFilterTI.setBrand(brand);
-							eFilterTI.setStatus(UploadTourInfoFileStatus.PROCESSING);
-							List<UploadTourInfoFile> listUplod=uploadTourInfoDAO.getUploadTourInfoList(null, eFilterTI);
-							if(listUplod.size()>0){
-								for (UploadTourInfoFile uploadTourInfoFile : listUplod) {
-									uploadTourInfoFile.setStatus(UploadTourInfoFileStatus.FAIL);
-								}
-							}
-							
-							//clear data import
-							QuartzJobHistory eFilter=new QuartzJobHistory();
-							eFilter.setStatus(JobHistoryStatus.Processing);	
-							eFilter.setBrand(brand);
-							List<QuartzJobHistory> historyProcessingRows=quartzJobCh2Service.getJobsHistoryList(null, eFilter);
-							if(historyProcessingRows.size()>0){
-								for (QuartzJobHistory quartzJobHistory : historyProcessingRows) {
-									quartzJobHistory.setStatus(JobHistoryStatus.Cancelled);				
-								}
-							}
-							
-							TourDepartureHistory eFilterTD=new TourDepartureHistory(); 
-							eFilterTD.setStatus(TourDepartureStatus.OPERATION_IN_PROGESS);
-							eFilterTD.setBrand(brand);
-							List<TourDepartureHistory> list=tourDepartureHistoryDAO.getTourDepartureHistoryByExemple(eFilterTD);
-							if(list.size()>0){
-								for (TourDepartureHistory tourDepartureHistory : list) {
-									tourDepartureHistory.setStatus(TourDepartureStatus.ERROR_OPERATION_END);
-									tourDepartureHistoryDAO.save(tourDepartureHistory);
-								}
-							}
-					
-							job.setUser(null);
-							job.setJobStatus(JobStatus.Inactive);
-							quartzJobCh2Service.saveQuartzJob(job);	
-							
-							{
-								QuartzJob job2=quartzJobCh2Service.findByName(QuartzJob.JobName.DepartureExtendedSynchronizeJob.toString(),brandCode);
-								job2.setJobStatus(JobStatus.Inactive);
-								quartzJobCh2Service.saveQuartzJob(job2);
-							}
-							
-							importStatusService.clearStatus(brandCode);
-																		
-							try{
-								String jobName=getImportJobName(brandCode);							
-								boolean isDeleted=schedulerLocal.deleteJob(jobName, jobGroupName);	
-								Thread.sleep(WaitHelper.sleepTime);
-							}
-							catch(Exception e)
-							{
-								logger.error("",e);
-							}
-							setupJobFromDbForImport(brandCode);
-							
-							// release lock on brand
-							lockBrandService.releaseLockBrand(brandCode);
-							
-						}catch(Exception e){
-							throw new ExecutorException(e);
-						}
-					}
-				},DbLocker.LockSql.SCHEDULER_LOCK);
-				
-				
-			
+				DbLocker dbLocer=appCtx.getBean(DbLocker.class);
+				dbLocer.executeOperation(new ResetStateExecutor(brandCode), DbLocker.LockSql.SCHEDULER_LOCK);
 		}
 		catch (Exception e){
 			throw new SchedulerServiceException(e);
@@ -490,7 +419,7 @@ public class SchedulerForImportServiceImpl extends SchedulerServiceBase implemen
 		Date current=new Date();
 		boolean jobActive=isActiveJob(brandCode);
 		
-		boolean lockExist=lockBrandService.isLockBrand(brandCode,ProcessName.IMPORT) || lockBrandService.isLockBrand(brandCode,ProcessName.EXTENDED);		
+		boolean lockExist=lockBrandService.isLockBrand(brandCode,ProcessName.IMPORT);		
 		ImportStatus importStatus=importStatusDAO.getImportStatusByBrandCode(brandCode);
 		
 		QuartzJobHistory eHistory=new QuartzJobHistory();
@@ -510,7 +439,7 @@ public class SchedulerForImportServiceImpl extends SchedulerServiceBase implemen
 		Preconditions.checkArgument(StringUtils.isNotBlank(brandCode),"SchedulerServiceImpl:uploadActive arg brand code is null");	
 		boolean result=false;
 		Date current=new Date();
-		boolean lockExist=lockBrandService.isLockBrand(brandCode,ProcessName.UPLOAD);
+		boolean lockExist=lockBrandService.isLockBrand(brandCode,ProcessName.IMPORT);
 		UploadStatus uploadStatus=uploadStatusDAO.getUploadStatusByBrandCode(brandCode);
 		
 		UploadTourInfoFile eUploadTourInfoFile=new UploadTourInfoFile();
@@ -563,13 +492,13 @@ public class SchedulerForImportServiceImpl extends SchedulerServiceBase implemen
 		return result;		
 	}
 	
-	public boolean checkResetForImportWithEx(String brandCode){
+	public boolean checkResetForImport(String brandCode){
 		logger.trace("SchedulerServiceImpl:resetPermissionForImport-start");
 		
 		Preconditions.checkArgument(StringUtils.isNotBlank(brandCode),"SchedulerServiceImpl:resetPermissionForImport arg brand code is null");
 		boolean result=false;	
 		Date current=new Date();
-		boolean lockExist=lockBrandService.isLockBrand(brandCode,ProcessName.IMPORT) || lockBrandService.isLockBrand(brandCode,ProcessName.EXTENDED);	
+		boolean lockExist=lockBrandService.isLockBrand(brandCode,ProcessName.IMPORT);	
 		ImportStatus importStatus=importStatusDAO.getImportStatusByBrandCode(brandCode);
 		
 		if(lockExist){
@@ -596,7 +525,7 @@ public class SchedulerForImportServiceImpl extends SchedulerServiceBase implemen
 				result= true;
 			}			
 			
-			QuartzJob job=quartzJobCh2Service.findByName(QuartzJob.JobName.DepartureSynchronizeJob.toString(),brandCode);
+			QuartzJob job=quartzJobCh2Service.findByName(jobImportName,brandCode);
 			if(JobStatus.Active==job.getJobStatus() || JobStatus.Cancelled==job.getJobStatus()){
 				logger.info("Reset needed Lock not exist but status job is incorrect");
 				result= true;
@@ -617,7 +546,7 @@ public class SchedulerForImportServiceImpl extends SchedulerServiceBase implemen
  public boolean resetNeed(String brandCode){
 	logger.trace("SchedulerServiceImpl:resetNeed-start");
 	 
-	boolean needResetImport=checkResetForImportWithEx(brandCode);
+	boolean needResetImport=checkResetForImport(brandCode);
 	boolean needResetUpload=checkResetForUpload(brandCode);
 		
 	logger.trace("SchedulerServiceImpl:resetNeed-end");
@@ -633,7 +562,7 @@ public class SchedulerForImportServiceImpl extends SchedulerServiceBase implemen
 		
 		try{
 			boolean result=false;			
-			boolean needResetImport=checkResetForImportWithEx(brandCode);
+			boolean needResetImport=checkResetForImport(brandCode);
 			boolean needResetUpload=checkResetForUpload(brandCode);
 			
 			if(needResetUpload || needResetImport){
@@ -661,7 +590,7 @@ public class SchedulerForImportServiceImpl extends SchedulerServiceBase implemen
 	}
 		
 	private String getImportJobName(String brandCode){
-		return QuartzJob.JobName.DepartureSynchronizeJob.toString()+"_"+brandCode;
+		return jobImportName+"_"+brandCode;
 	}
 	
 	private String getImportTriggerName(String brandCode){
@@ -670,13 +599,197 @@ public class SchedulerForImportServiceImpl extends SchedulerServiceBase implemen
 	
 	private boolean isActiveJob(String brandCode)
 	{
-		QuartzJob job=quartzJobCh2Service.findByName(QuartzJob.JobName.DepartureSynchronizeJob.toString(),brandCode);
+		QuartzJob job=quartzJobCh2Service.findByName(SchedulerForImportServiceImpl.jobImportName,brandCode);
 		return JobStatus.Active==job.getJobStatus();
 	}
 	
 	private boolean isActiveOrCancelledJob(String brandCode)
 	{
-		QuartzJob job=quartzJobCh2Service.findByName(QuartzJob.JobName.DepartureSynchronizeJob.toString(),brandCode);
+		QuartzJob job=quartzJobCh2Service.findByName(SchedulerForImportServiceImpl.jobImportName,brandCode);
 		return JobStatus.Active==job.getJobStatus() || JobStatus.Cancelled==job.getJobStatus();
+	}
+	
+	
+	class SetupNewCronExecutor extends Executor{
+
+		private CronExpresion localExpresion;
+		
+		public SetupNewCronExecutor(CronExpresion localExpresion) {
+			super();
+			this.localExpresion = localExpresion;
+		}
+
+		@Override
+		public void execute() throws ExecutorException {
+			try{
+				List<Brand> brands=brandDAO.findAll();
+				String activeJob=null;
+				for (Brand brand : brands) {
+						if (isActiveJob(brand.getCode())) {
+						activeJob=brand.getCode();
+						break;
+					}
+				}
+				
+				if(StringUtils.isNotEmpty(activeJob)){
+					throw new ActiveJobException("Job for brand:"+activeJob+" is active");
+				}																	
+				int minute= 0;
+				boolean changed=false;
+				for (Brand brand : brands) {						
+					String brandCode=brand.getCode();
+					QuartzJob job=quartzJobCh2Service.findByName(jobImportName,brandCode);
+					CronExpresion calculatedCronExpresion=CronExpresion.findByExpresion(CronExpresion.TDI_HOUR06.getName(), job.getCronExpresion().substring(4));						
+					if(calculatedCronExpresion.equals(localExpresion)==false){							
+						job.setCronExpresion(localExpresion.getExpresion(minute));
+						job.setUser(null);
+						job.setNextFiringTime(null);
+						quartzJobCh2Service.saveQuartzJob(job);
+						changed=true;
+					}											
+					minute=minute+5;
+				}
+				
+				if(changed){
+					for (Brand brand : brands) {
+						setupCronJobWithoutTx(false, brand.getCode());
+					}
+				}
+				
+			}catch(Exception e){
+				throw new ExecutorException(e);
+			}
+			
+		}		
+	}
+	
+	class ResetStateExecutor extends Executor{
+
+		private String brandCode;
+		
+		public ResetStateExecutor(String brandCode) {
+			super();
+			this.brandCode = brandCode;
+		}
+
+		@Override
+		public void execute() throws ExecutorException {
+			try{
+				QuartzJob job=quartzJobCh2Service.findByName(jobImportName,brandCode);				
+				Scheduler schedulerLocal=schedulerFactory.getScheduler();		
+				interruptJob(brandCode);
+				
+				Thread.sleep(WaitHelper.sleepTime);
+				
+				//clear data uplod
+				Brand brand=brandDAO.findByBrandCode(brandCode);				
+				uploadStatusService.clearProccess(brandCode);
+				UploadTourInfoFile eFilterTI=new UploadTourInfoFile();
+				eFilterTI.setBrand(brand);
+				eFilterTI.setStatus(UploadTourInfoFileStatus.PROCESSING);
+				List<UploadTourInfoFile> listUplod=uploadTourInfoDAO.getUploadTourInfoList(null, eFilterTI);
+				if(listUplod.size()>0){
+					for (UploadTourInfoFile uploadTourInfoFile : listUplod) {
+						uploadTourInfoFile.setStatus(UploadTourInfoFileStatus.FAIL);
+					}
+				}
+				
+				//clear data import
+				QuartzJobHistory eFilter=new QuartzJobHistory();
+				eFilter.setStatus(JobHistoryStatus.Processing);	
+				eFilter.setBrand(brand);
+				List<QuartzJobHistory> historyProcessingRows=quartzJobCh2Service.getJobsHistoryList(null, eFilter);
+				if(historyProcessingRows.size()>0){
+					for (QuartzJobHistory quartzJobHistory : historyProcessingRows) {
+						quartzJobHistory.setStatus(JobHistoryStatus.Cancelled);				
+					}
+				}
+				
+				TourDepartureHistory eFilterTD=new TourDepartureHistory(); 
+				eFilterTD.setStatus(TourDepartureStatus.OPERATION_IN_PROGESS);
+				eFilterTD.setBrand(brand);
+				List<TourDepartureHistory> list=tourDepartureHistoryDAO.getTourDepartureHistoryByExemple(eFilterTD);
+				if(list.size()>0){
+					for (TourDepartureHistory tourDepartureHistory : list) {
+						tourDepartureHistory.setStatus(TourDepartureStatus.ERROR_OPERATION_END);
+						tourDepartureHistoryDAO.save(tourDepartureHistory);
+					}
+				}
+		
+				job.setUser(null);
+				job.setJobStatus(JobStatus.Inactive);
+				quartzJobCh2Service.saveQuartzJob(job);		
+				
+				importStatusService.clearStatus(brandCode);
+															
+				try{
+					String jobName=getImportJobName(brandCode);							
+					boolean isDeleted=schedulerLocal.deleteJob(jobName, jobGroupName);	
+					Thread.sleep(WaitHelper.sleepTime);
+				}
+				catch(Exception e)
+				{
+					logger.error("",e);
+				}
+				setupJobFromDbForImport(brandCode);
+				
+				// release lock on brand
+				lockBrandService.releaseLockBrand(brandCode);
+				
+			}catch(Exception e){
+				throw new ExecutorException(e);
+			}			
+		}		
+	}
+	
+	class ChangeJobExecutor extends Executor{
+
+		private Date startTime;
+		private List<String> brandsCode;
+		
+		public ChangeJobExecutor(Date startTime, List<String> brandsCode) {
+			super();
+			this.startTime = startTime;
+			this.brandsCode = brandsCode;
+		}
+
+		@Override
+		public void execute() throws ExecutorException {
+			try {								
+				for (String brandCodeLoc : brandsCode) {
+					final Scheduler schedulerLocal=schedulerFactory.getScheduler();
+					QuartzJob job=quartzJobCh2Service.findByName(SchedulerForImportServiceImpl.jobImportName,brandCodeLoc);
+					Trigger trigger = createSimpleTrigger(getImportTriggerName(brandCodeLoc), triggerGroupName, startTime, job.getUser()!=null ? job.getUser().getUsername() : SCHEDULER_USER);	
+					trigger.setJobName(getImportJobName(brandCodeLoc));
+					trigger.setJobGroup(jobGroupName);									
+					job.setNextFiringTime(startTime);
+					job.setBrandCode(brandCodeLoc);
+					job.setUser(SecurityHelper.getUserGuiPrincipal().getUserDb());									
+					quartzJobCh2Service.saveQuartzJob(job);															
+					interruptJob(brandCodeLoc);									
+					JobDetail detailJob=schedulerLocal.getJobDetail(trigger.getJobName(), trigger.getJobGroup());									
+					if(detailJob!=null)	{
+						Trigger [] triggers=schedulerLocal.getTriggersOfJob(detailJob.getName(), detailJob.getGroup());
+						if(triggers!=null && triggers.length==1 && triggers[0].getName().equals(getImportTriggerName(brandCodeLoc))){
+						detailJob.getJobDataMap().put(DepartureSynchronizeJob.JobParams.USER.toString(), SecurityHelper.getUserGuiPrincipal().getUserDb().getUsername());
+						schedulerLocal.rescheduleJob(getImportTriggerName(brandCodeLoc), SchedulerForImportServiceImpl.triggerGroupName, trigger);
+						}
+						else{
+							schedulerLocal.deleteJob(detailJob.getName(), detailJob.getGroup());
+							schedulerLocal.scheduleJob(detailJob,trigger);	
+						}
+					}
+					else{
+						setupJobFromDbForImport(brandCodeLoc);
+					}			
+				}
+			} catch (SchedulerException e) {
+				throw new ExecutorException(e);
+			}		
+			catch( SchedulerServiceException e){
+				throw new ExecutorException(e);
+			}
+			
+		}		
 	}
 }

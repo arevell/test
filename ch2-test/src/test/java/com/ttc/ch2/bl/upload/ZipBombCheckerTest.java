@@ -5,10 +5,8 @@ import java.util.Date;
 
 import javax.inject.Inject;
 
+import junit.framework.Assert;
 
-
-
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Value;
@@ -79,8 +77,8 @@ public class ZipBombCheckerTest extends BaseTest {
 		try {
 			tiZipStreamValidator.validZipExcludeZipBomb(is);
 			Assert.fail("Validator failed");
-		}catch(Exception e) {			
-			Assert.assertEquals(e.getMessage(), TourInfoMessages.getMessage(TourInfoMessages.ZIP_XML_SIZE_EXCEEDED, zipFileMaxSize,"NAAD13M03.xml"));
+		}catch(Exception e) {
+			Assert.assertEquals(e.getMessage(), TourInfoMessages.getMessage(TourInfoMessages.ZIP_XML_SIZE_EXCEEDED, zipFileMaxSize));
 		}
 	}
 	

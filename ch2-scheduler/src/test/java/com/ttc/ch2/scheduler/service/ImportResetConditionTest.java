@@ -76,7 +76,7 @@ public class ImportResetConditionTest {
 			ImportStatus importStatus=getImportStatus();
 			importStatus.setDateUpdate(DateUtils.addMinutes(new Date(), -20));	
 			PowerMockito.when(mockImportStatusDAO.getImportStatusByBrandCode(any(String.class))).thenReturn(importStatus);
-			Assert.assertTrue(schedulerServiceToTest.checkResetForImportWithEx("BV"));			
+			Assert.assertTrue(schedulerServiceToTest.checkResetForImport("BV"));			
 	}
 		
 		// active lock - false
@@ -89,7 +89,7 @@ public class ImportResetConditionTest {
 			QuartzJob job=getQuartzJob();			
 			PowerMockito.when(mockQuartzJobCh2Service.findByName(any(String.class),any(String.class))).thenReturn(job);
 			PowerMockito.when(mockQuartzJobCh2Service.getJobsHistoryList(any(QueryCondition.class),any(QuartzJobHistory.class))).thenReturn(Lists.newArrayList(new QuartzJobHistory()));
-			Assert.assertTrue(schedulerServiceToTest.checkResetForImportWithEx("BV"));			
+			Assert.assertTrue(schedulerServiceToTest.checkResetForImport("BV"));			
 	}
 		
 		// active lock - true
@@ -98,7 +98,7 @@ public class ImportResetConditionTest {
 	public void resetPermisionPositiveVer003() throws Exception
 	{										
 			PowerMockito.when(mockLockBrandService.isLockBrand("BV", ProcessName.IMPORT)).thenReturn(true);
-			Assert.assertTrue(schedulerServiceToTest.checkResetForImportWithEx("BV"));			
+			Assert.assertTrue(schedulerServiceToTest.checkResetForImport("BV"));			
 	}
 		
 	
@@ -109,7 +109,7 @@ public class ImportResetConditionTest {
 	   boolean exceptionExist=true;
 	   //test
 		try{
-			schedulerServiceToTest.checkResetForImportWithEx(null);			
+			schedulerServiceToTest.checkResetForImport(null);			
 			exceptionExist=false;
 		}
 		catch (IllegalArgumentException e) {
@@ -127,7 +127,7 @@ public class ImportResetConditionTest {
 			PowerMockito.when(mockLockBrandService.isLockBrand("BV", ProcessName.IMPORT)).thenReturn(false);
 			QuartzJob job=getQuartzJob();			
 			PowerMockito.when(mockQuartzJobCh2Service.findByName(any(String.class),any(String.class))).thenReturn(job);
-			Assert.assertFalse(schedulerServiceToTest.checkResetForImportWithEx("BV"));			
+			Assert.assertFalse(schedulerServiceToTest.checkResetForImport("BV"));			
 	}
 	
 	// active lock - true
@@ -139,7 +139,7 @@ public class ImportResetConditionTest {
 		ImportStatus importStatus=getImportStatus();
 		importStatus.setDateUpdate(DateUtils.addMinutes(new Date(), -10));	
 		PowerMockito.when(mockImportStatusDAO.getImportStatusByBrandCode(any(String.class))).thenReturn(importStatus);
-		Assert.assertFalse(schedulerServiceToTest.checkResetForImportWithEx("BV"));			
+		Assert.assertFalse(schedulerServiceToTest.checkResetForImport("BV"));			
 	}
 	
 	private ImportStatus getImportStatus(){

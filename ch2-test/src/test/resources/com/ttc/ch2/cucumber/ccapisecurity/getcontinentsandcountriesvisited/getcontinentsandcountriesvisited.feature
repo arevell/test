@@ -1,4 +1,3 @@
-@CCAPI_Security
 Feature: Authentication CCAPI: Get Continents and Countries Visited\
 (GetContinentsAndCountriesVisitedTest)  
 	

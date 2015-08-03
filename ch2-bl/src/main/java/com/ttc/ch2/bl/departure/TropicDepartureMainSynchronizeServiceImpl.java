@@ -3,7 +3,6 @@ package com.ttc.ch2.bl.departure;
 import java.util.Date;
 
 import javax.inject.Inject;
-import javax.inject.Named;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,7 +14,6 @@ import com.google.common.base.Throwables;
 import com.ttc.ch2.bl.departure.common.LogOperationHelper;
 import com.ttc.ch2.bl.departure.common.OperationStatus;
 import com.ttc.ch2.bl.departure.common.TropicSynchronizeMessages;
-import com.ttc.ch2.bl.departure.habs.HabsDepartureSynchronizeService;
 import com.ttc.ch2.common.DateHelper;
 import com.ttc.ch2.common.DateHelper.CalculateTimePattern;
 import com.ttc.ch2.domain.comment.QHComment;
@@ -32,12 +30,7 @@ public class TropicDepartureMainSynchronizeServiceImpl implements TropicDepartur
 	private static final Logger logger = LoggerFactory.getLogger(TropicDepartureMainSynchronizeServiceImpl.class);
 
 	@Inject
-	@Named("TropicDepartureSynchronizeServiceImpl")
 	private TropicDepartureSynchronizeService tropicDepartureSynchronizeService;
-	
-	@Inject
-	@Named("HabsDepartureSynchronizeServiceImpl")
-	private HabsDepartureSynchronizeService habsDepartureSynchronizeService;
 
 	@Inject
 	private TourDepartureHistoryService tourDepartureHistoryService;
@@ -51,10 +44,8 @@ public class TropicDepartureMainSynchronizeServiceImpl implements TropicDepartur
 		
 		try {
 			LogOperationHelper.logDefaultMessage(logger, opStatus, TropicSynchronizeMessages.SYNCHRONIZE_START);			
-			initialTourDepartureHistory(opStatus);		// new tx
-			
-//			tropicDepartureSynchronizeService.departureSynchronize(opStatus);
-			habsDepartureSynchronizeService.departureSynchronize(opStatus);
+			initialTourDepartureHistory(opStatus);		// new tx	
+			tropicDepartureSynchronizeService.departureSynchronize(opStatus);
 		}
 		catch (TropicSynchronizeServiceException e) {
 			if(opStatus.isCancelOrInactiveProcess()==false)

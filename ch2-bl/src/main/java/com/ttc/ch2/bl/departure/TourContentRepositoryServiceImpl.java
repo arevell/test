@@ -21,7 +21,6 @@ import com.ttc.ch2.bl.departure.common.OperationStatus;
 import com.ttc.ch2.bl.departure.common.TourDepartureData;
 import com.ttc.ch2.bl.departure.common.TropicSynchronizeMessages;
 import com.ttc.ch2.common.TypeMsg;
-import com.ttc.ch2.common.enums.SystemDirection;
 import com.ttc.ch2.common.predicates.FindEntityByIdPredicate;
 import com.ttc.ch2.common.predicates.FindeSellingCompanyByCodePredicate;
 import com.ttc.ch2.dao.BrandDAO;
@@ -73,7 +72,7 @@ public class TourContentRepositoryServiceImpl implements TourContentRepositorySe
 				cr.setRepositoryStatus(RepositoryStatus.TourDepartureOnly);				
 				savedEntity = true;
 
-			} else if (opStatus.getSystemDirection()==SystemDirection.TROPICS && tourDepartureData.getCheckSum().equals(cr.getTourDepartureXMLMD5())) {
+			} else if (tourDepartureData.getCheckSum().equals(cr.getTourDepartureXMLMD5())) {
 
 				opStatus.getCrRejctedMd5ForBrand().add(cr.getId());
 				opStatus.addRejectMd5();

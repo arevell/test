@@ -185,7 +185,6 @@ public class Ch1DownloadServiceImpl implements Ch1DownloadService {
 		if (!Boolean.parseBoolean(ch1DownloadEnabled)) {			
 			logger.warn(WARNING_DOWNLOAD_DISABLED);
 			logger.trace("Ch1DownloadServiceImpl:downloadTIfromCH1-end");			
-			return;			
 		}		
 		
 		CloseableHttpClient httpClient = null;		

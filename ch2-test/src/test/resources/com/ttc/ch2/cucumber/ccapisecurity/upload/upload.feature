@@ -1,4 +1,3 @@
-@CCAPI_Security
 Feature: Upload: Authentication CCAPI 
 	
 Scenario Outline: Check Authentication for CCAPI upload tour info

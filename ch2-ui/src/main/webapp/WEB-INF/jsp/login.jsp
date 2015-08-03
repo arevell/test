@@ -171,7 +171,7 @@
 										         <div id="hH6Qr-chdex" class="z-vlayout-inner" style="padding-bottom:0.3em"><span id="hH6Qr" class="z-label">Version: ${version}</span></div>
 										         <div id="hH6Qs-chdex" class="z-vlayout-inner" style="padding-bottom:0.3em"><span id="hH6Qs" class="z-label">Environment: ${enviroment}</span></div>
 										         <div id="hH6Qt-chdex" class="z-vlayout-inner" style="padding-bottom:0.3em"><span id="hH6Qt" class="z-label">Date: ${currentDate}</span></div>
-										         <div id="hH6Qu-chdex" class="z-vlayout-inner" style=""><span id="hH6Qu" class="z-label">Deploy Date:${deployDate}</span></div>
+										         <div id="hH6Qu-chdex" class="z-vlayout-inner" style=""><span id="hH6Qu" class="z-label">Deploy Date: ${deployDate}</span></div>
 									         </div>
 									         </div>
 								         </div>

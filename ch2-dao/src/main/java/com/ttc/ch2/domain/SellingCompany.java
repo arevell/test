@@ -15,6 +15,7 @@ import com.ttc.ch2.domain.common.EntityBase;
 
 @Entity
 @Table(name="SELLING_COMPANY")
+@Cache(usage = CacheConcurrencyStrategy.READ_ONLY)
 public class SellingCompany extends EntityBase {
 
 	private static final long serialVersionUID = -4576000141319805477L;
@@ -27,6 +28,7 @@ public class SellingCompany extends EntityBase {
 			
 	@ManyToOne(fetch=FetchType.EAGER, cascade = {CascadeType.DETACH,CascadeType.REFRESH})
 	@JoinColumn(name="BRAND_ID")
+	@Cache(usage=CacheConcurrencyStrategy.READ_ONLY,region="NoModifiedDataRegion")
 	private Brand brand;
 	
 	public String getName() {

@@ -36,17 +36,12 @@ import javax.xml.transform.stream.StreamSource;
 
 
 
-
-
-
 import org.apache.commons.lang.ObjectUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.math.NumberUtils;
 import org.codehaus.jackson.JsonNode;
 import org.codehaus.jackson.JsonProcessingException;
 import org.codehaus.jackson.map.ObjectMapper;
-import org.elasticsearch.action.count.CountRequestBuilder;
-import org.elasticsearch.action.count.CountResponse;
 import org.elasticsearch.action.search.SearchRequestBuilder;
 import org.elasticsearch.action.search.SearchResponse;
 import org.elasticsearch.client.Client;
@@ -134,7 +129,6 @@ public class SearchServiceImpl implements SearchService {
 	private static final String ST_PATH_SELLING_COMPANY_CODE = "TourDeparturesSimp.SellingCompany.Code";
 	private static final String ST_PATH_AVAILABILITY_STATUS = "TourDeparturesSimp.SellingCompany.Departures.Departure.AvailabilityStatus";
 	private static final String ST_PATH_STARTDATETIME = "TourDeparturesSimp.SellingCompany.Departures.Departure.StartDateTime";
-	private static final String ST_PATH_BRANDCODE = "TourInfoSimp.BrandCode";
 	private static final String DEP_NOT_CANCELED = "NOT Canceled";
 	private static final String DEP_CANCELED = "Canceled";  
 	private static final String SUBSET_EMPTY_V1 = "1-0";
@@ -1050,12 +1044,9 @@ public class SearchServiceImpl implements SearchService {
 			logger.trace("Processing tour: " + elem.getTourCode());
 			
 			JsonNode tourVariationDefinersJson = tiJson.path("TourVariationDefiners");
-			if(tourVariationDefinersJson.path("EndCity").has("Airports")) {
-				elem.setAirportsEndCity(tourVariationDefinersJson.path("EndCity").path("Airports").path("Airport").getElements().next().path("City").getTextValue());
-			}
-			if(tourVariationDefinersJson.path("StartCity").has("Airports")) {
-				elem.setAirportsStartCity(tourVariationDefinersJson.path("StartCity").path("Airports").path("Airport").getElements().next().path("City").getTextValue());
-			}
+			
+			elem.setAirportsEndCity(tourVariationDefinersJson.path("EndCity").path("Airports").path("Airport").getElements().next().path("City").getTextValue());
+			elem.setAirportsStartCity(tourVariationDefinersJson.path("StartCity").path("Airports").path("Airport").getElements().next().path("City").getTextValue());
 			elem.setContractingSeason(tourVariationDefinersJson.path("OperatingProduct").path("ContractingSeason").getTextValue());
 			JsonNode departuresJson = tdJson.path("SellingCompany").path("Departures").path("Departure");
 			Iterator<JsonNode> departuresIt = departuresJson.getElements();
@@ -1291,12 +1282,8 @@ public class SearchServiceImpl implements SearchService {
 			elem.setTourCode(tiJson.path("TourCode").getTextValue());
 			logger.trace("Processing tour: " + elem.getTourCode());
 			
-			if(tourVariationDefinersJson.path("EndCity").has("Airports")) {
-				elem.setAirportsEndCity(tourVariationDefinersJson.path("EndCity").path("Airports").path("Airport").getElements().next().path("City").getTextValue());
-			}
-			if(tourVariationDefinersJson.path("StartCity").has("Airports")) {
-				elem.setAirportsStartCity(tourVariationDefinersJson.path("StartCity").path("Airports").path("Airport").getElements().next().path("City").getTextValue());
-			}
+			elem.setAirportsEndCity(tourVariationDefinersJson.path("EndCity").path("Airports").path("Airport").getElements().next().path("City").getTextValue());
+			elem.setAirportsStartCity(tourVariationDefinersJson.path("StartCity").path("Airports").path("Airport").getElements().next().path("City").getTextValue());
 			elem.setContractingSeason(tourVariationDefinersJson.path("OperatingProduct").path("ContractingSeason").getTextValue());
 			
 			JsonNode departuresJson = tdJson.path("SellingCompany").path("Departures").path("Departure");
@@ -1439,42 +1426,5 @@ public class SearchServiceImpl implements SearchService {
 		}
 		result.setSuccessful(true);
 		return result;
-	}
-
-	@Override
-	public int countIndexedSearchToursDocuments(String brandCode) {
-		try {
-			Client client = node.client();
-			
-			CountRequestBuilder crb = client.prepareCount(IndexSynchronizerService.ES_INDEX_NAME).setTypes(IndexSynchronizerService.ES_TOURS_ANS_SC_TYPE).
-				setQuery(QueryBuilders.queryString(brandCode).field(ST_PATH_BRANDCODE));
-		
-			CountResponse cntresp =  crb.execute().actionGet();
-			
-			return (int)cntresp.getCount();
-			
-		}catch(Exception e) {
-			 logger.error("ElasticSearch error", e);
-			 throw e;
-		}
-		
-	}
-
-	@Override
-	public int countIndexedSearchToursAggregatedDocuments(String brandCode) {
-		try {
-			Client client = node.client();
-			
-			CountRequestBuilder crb = client.prepareCount(IndexSynchronizerService.ES_INDEX_NAME).setTypes(IndexSynchronizerService.ES_AGGREGATED_TOURS_TYPE).
-				setQuery( QueryBuilders.nestedQuery(STA_PREFIX.replace(".", ""), QueryBuilders.queryString(brandCode).field(STA_PREFIX+ST_PATH_BRANDCODE)));
-		
-			CountResponse cntresp =  crb.execute().actionGet();
-			
-			return (int)cntresp.getCount();
-			
-		}catch(Exception e) {
-			 logger.error("ElasticSearch error", e);
-			 throw e;
-		}
 	}
 }

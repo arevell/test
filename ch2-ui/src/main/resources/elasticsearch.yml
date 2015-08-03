@@ -16,4 +16,5 @@ indices.fielddata.cache.size: 512mb
 discovery.zen.ping.unicast.hosts: ["lonwk0411:9313"]
 #discovery.zen.ping.unicast.hosts: ["localhost:9313"]
 discovery.zen.ping.multicast.enabled: false
-
+index.number_of_shards: 1
+index.number_of_replicas: 0

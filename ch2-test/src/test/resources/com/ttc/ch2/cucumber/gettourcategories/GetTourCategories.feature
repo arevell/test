@@ -1,4 +1,3 @@
-@CH2_API
 Feature: Get tour categories 
 	
 Scenario Outline: Tour categories are searched for the following parameters

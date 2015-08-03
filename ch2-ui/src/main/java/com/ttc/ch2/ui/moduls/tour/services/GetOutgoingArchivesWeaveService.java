@@ -22,7 +22,7 @@ import com.ttc.ch2.ui.common.exceptions.PermissionException;
 @Service
 public class GetOutgoingArchivesWeaveService {
 
-	private static final String ERROR_NO_VERSION = "Could not find File Collect for the version: [%s]";
+	private static final String ERROR_NO_VERSION = "Could not found outgoing archives for the version: [%s]";
 
 	private static final Logger activityLogger = LoggerFactory.getLogger("ch2.activity.GetOutgoingArchivesController");
 

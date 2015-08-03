@@ -22,7 +22,5 @@ public interface SearchService {
 	com.travelcorp.ccapi.SearchToursResponse searchTours(com.travelcorp.ccapi.SearchTours param) throws SearchServiceException, JsonProcessingException, IOException, JAXBException, TransformerException, DatatypeConfigurationException;
 	com.ttc.ch2.api.ccapi.v3.SearchToursResponse searchTours(com.ttc.ch2.api.ccapi.v3.SearchToursRequest param3);
 	SearchToursAggregatedResponse searchToursAggregated(SearchToursAggregatedRequest param);
-	int countIndexedSearchToursDocuments(String brandCode);
-	int countIndexedSearchToursAggregatedDocuments(String brandCode);
 	
 }

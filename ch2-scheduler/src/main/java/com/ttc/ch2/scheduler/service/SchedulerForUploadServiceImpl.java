@@ -10,7 +10,7 @@ import org.springframework.scheduling.quartz.JobDetailBean;
 import org.springframework.stereotype.Service;
 
 import com.ttc.ch2.domain.jobs.QuartzJob;
-import com.ttc.ch2.scheduler.common.JobParams;
+import com.ttc.ch2.scheduler.jobs.departuresynch.DepartureSynchronizeJob;
 
 @Service
 public class SchedulerForUploadServiceImpl extends SchedulerServiceBase implements SchedulerForUploadService{
@@ -43,10 +43,9 @@ public class SchedulerForUploadServiceImpl extends SchedulerServiceBase implemen
 			String brandCode=job.getBrandCode();
 			JobDetail jobDetail=schedulerLocal.getJobDetail(getUploadJobName(brandCode), jobGroupName);
 			if(jobDetail==null){
-				JobDetailBean jobDetails= appCtx.getBean(QuartzJob.JobName.UploadTourInfoJob.toString(),JobDetailBean.class);
+				JobDetailBean jobDetails= appCtx.getBean(jobUploadName,JobDetailBean.class);
 				jobDetails.setName(getUploadJobName(brandCode));	
-				jobDetails.getJobDataMap().put(JobParams.BRAND_CODE.toString(), brandCode);
-				jobDetails.getJobDataMap().put(JobParams.JOB_NAME_UI.toString(), String.format(JOB_DESC, brandCode));
+				jobDetails.getJobDataMap().put(DepartureSynchronizeJob.JobParams.BRAND_CODE.toString(), brandCode);						
 				jobDetails.setRequestsRecovery(false);
 				jobDetails.setDurability(true);	
 				jobDetails.setGroup(jobGroupName);								
@@ -58,7 +57,7 @@ public class SchedulerForUploadServiceImpl extends SchedulerServiceBase implemen
 	}
 
 	private String getUploadJobName(String brandCode){
-		return QuartzJob.JobName.UploadTourInfoJob.toString()+"_"+brandCode;
+		return jobUploadName+"_"+brandCode;
 	}
 	
 	private String getUploadTriggerName(String brandCode){

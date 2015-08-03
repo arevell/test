@@ -30,21 +30,19 @@ import com.ttc.ch2.domain.jobs.QuartzJob.JobStatus;
 //import com.ttc.ch2.bl.departure.common.TDMessage;
 import com.ttc.ch2.domain.jobs.QuartzJobHistory;
 import com.ttc.ch2.domain.jobs.QuartzJobHistory.JobHistoryStatus;
-import com.ttc.ch2.scheduler.common.DepartureExtendedCoordinator;
 import com.ttc.ch2.scheduler.common.DepartureSynchronizeMessage;
 import com.ttc.ch2.scheduler.common.ImportStatusChecker;
-import com.ttc.ch2.scheduler.common.JobParams;
 import com.ttc.ch2.scheduler.service.QuartzJobCh2Service;
 import com.ttc.ch2.scheduler.service.SchedulerForImportService;
-import com.ttc.ch2.scheduler.service.SchedulerForImportServiceImpl;
 import com.ttc.ch2.scheduler.service.SchedulerServiceException;
-import com.ttc.ch2.statistics.BrandInfo;
-import com.ttc.ch2.statistics.StatisticsBean;
+import com.ttc.ch2.scheduler.service.SchedulerForImportServiceImpl;
 
 public class DepartureSynchronizeJob extends QuartzJobBean{
 
 	private static final Logger logger=LoggerFactory.getLogger(TropicDepartureSynchronizeServiceImpl.class);
-		
+	
+	public static enum JobParams{BRAND_CODE,USER,JOB_NAME_UI};
+	
 	private static final int MAX_WAITING_COUNT = 60;
 	private static final long MINUTE=1000*10*6; 
 	
@@ -67,14 +65,12 @@ public class DepartureSynchronizeJob extends QuartzJobBean{
 						
 			LockBrandService lockBrandService  = null;
 			ImportStatusChecker jobChecker =null;
-			StatisticsBean statisticsBean = SpringContext.getApplicationContext().getBean(StatisticsBean.class);
-			long statsSerial=BrandInfo.SERIAL_WAITING;
 			try {				
 				
 			 //prepare beans	
 			 lockBrandService  = SpringContext.getApplicationContext().getBean(LockBrandService.class);
 			 TropicDepartureMainSynchronizeService tropicDepartureMainSynchronizeService = SpringContext.getApplicationContext().getBean(TropicDepartureMainSynchronizeService.class);
-			 QuartzJobCh2Service quartzJobCh2Service = SpringContext.getApplicationContext().getBean(QuartzJobCh2Service.class);			 
+			 QuartzJobCh2Service quartzJobCh2Service = SpringContext.getApplicationContext().getBean(QuartzJobCh2Service.class);
 			 BrandDAO brandDAO = SpringContext.getApplicationContext().getBean(BrandDAO.class);			
 			 
 			
@@ -87,7 +83,7 @@ public class DepartureSynchronizeJob extends QuartzJobBean{
 			 if(lockBrand(jobChecker,lockBrandService,brandCode)==false){
 				return;
 			 }
-			 statsSerial = statisticsBean.registerStartTDImport(brandCode);	
+				
 			 // prepare data to invoke operation
 			 	Brand brand=brandDAO.findByBrandCode(brandCode);			 
 			 	Date start=new Date();
@@ -111,14 +107,9 @@ public class DepartureSynchronizeJob extends QuartzJobBean{
 				operationStatus.setQuartzJobHistory(history);
 				operationStatus.setUser(localUser);				
 				operationStatus.setJobStatusChecker(jobChecker);
-				operationStatus.setJobCoordinator(new DepartureExtendedCoordinator(brandCode));
-				operationStatus.setJobName(QuartzJob.JobName.DepartureSynchronizeJob);
-				
-				
-				
 				// main operation on synchronize tourdeparture
 								try {									
-									setupMessageSilent(TypeMsg.INF, "Start operation 'import tour departure' for brand:"+brandCode, ProcessLevel.PREPARE);
+									setupMessageSilent(TypeMsg.INF, "Start operation import tour departure:"+brandCode, ProcessLevel.PREPARE);
 									tropicDepartureMainSynchronizeService.departureSynchronizeOperation(operationStatus);
 								}				
 								catch (TropicSynchronizeServiceException e) {
@@ -154,8 +145,11 @@ public class DepartureSynchronizeJob extends QuartzJobBean{
 				}
 				
 				// setup next job
-					try {						
-						manageNextJob(lockBrandService);
+					try {
+						if(processingByAnotherThread==false){
+							manageNextJob();
+							clearStatusSilent(brandCode);
+						}
 					} catch (SchedulerServiceException e) {
 						logger.error("",e);
 					}
@@ -168,8 +162,7 @@ public class DepartureSynchronizeJob extends QuartzJobBean{
 					}
 					catch(Exception e){
 						logger.error("",e);
-					}
-				statisticsBean.registerStopTDImport(brandCode, statsSerial);
+					}				
 			}
 		logger.trace("DepartureSynchronizeJob:executeInternal-end");			
 	}
@@ -223,7 +216,7 @@ public class DepartureSynchronizeJob extends QuartzJobBean{
 		history.setStartDate(new Date());
 		history.setExecutionTime(0l);
 		history.setBrand(brand);
-		history.setStatus(JobHistoryStatus.Cancelled);	
+		history.setStatus(JobHistoryStatus.Fail);	
 				
 		QHComment comment=new QHComment();
 		comment.setMessage(DepartureSynchronizeMessage.REGISTRED_PROCESS_EXCEPTION.getMessage());
@@ -237,33 +230,17 @@ public class DepartureSynchronizeJob extends QuartzJobBean{
 		quartzJobCh2Service.saveNewQuartzJobHistory(history);
 	}
 	
-	private void manageNextJob(LockBrandService lockBrandService) throws SchedulerServiceException{
+	private void manageNextJob() throws SchedulerServiceException{
 		
 		QuartzJobCh2Service quartzJobCh2Service = SpringContext.getApplicationContext().getBean(QuartzJobCh2Service.class);
 		SchedulerForImportService schedulerService = SpringContext.getApplicationContext().getBean(SchedulerForImportService.class);
-		
-		if(processingByAnotherThread==false){		
-			// Currently job are finished and configure cron job
-			QuartzJob job= quartzJobCh2Service.findByName(QuartzJob.JobName.DepartureSynchronizeJob.toString(),brandCode);
-			job.setNextFiringTime(null);
-			job.setUser(null);
-			job.setJobStatus(JobStatus.Inactive);
-			quartzJobCh2Service.saveQuartzJob(job);	
-			schedulerService.setupCronJob(false,brandCode);
-			clearStatusSilent(brandCode);
-			
-		}
-		else if(processingByAnotherThread==true && lockBrandService.isLockBrand(brandCode, ProcessName.IMPORT)==false){
-			
-			QuartzJob job= quartzJobCh2Service.findByName(QuartzJob.JobName.DepartureSynchronizeJob.toString(),brandCode);
-			if(job.getNextFiringTime()==null || job.getNextFiringTime().before(new Date())){
-				job.setNextFiringTime(null);
-				job.setUser(null);
-				job.setJobStatus(JobStatus.Inactive);
-				quartzJobCh2Service.saveQuartzJob(job);	
-				schedulerService.setupCronJob(false,brandCode);				
-			}			
-		}
+		QuartzJob job= quartzJobCh2Service.findByName(SchedulerForImportServiceImpl.jobImportName,brandCode);
+		job.setJobStatus(JobStatus.Inactive);
+		job.setNextFiringTime(null);
+		job.setUser(null);
+		job.setJobStatus(JobStatus.Inactive);
+		quartzJobCh2Service.saveQuartzJob(job);	
+		schedulerService.setupCronJob(false,brandCode);
 	}
 	
 	private void saveError(Exception e,OperationStatus opStatus){
@@ -313,12 +290,8 @@ public class DepartureSynchronizeJob extends QuartzJobBean{
 			sb.append("tour departure id-"+opStatus.getTourDepartureHistory().getId()).append(" ");
 			buildComment=true;
 		}
-		if(opStatus.getQuartzJobHistory()!=null && opStatus.getQuartzJobHistory().getId()!=null){
-			sb.append("quartz job id-"+opStatus.getQuartzJobHistory().getId()).append(" ");
-			buildComment=true;
-		}
 		if(opStatus.getCrExport()!=null && opStatus.getCrExport().getId()!=null){
-			sb.append("CRExport id-"+opStatus.getCrExport().getId()).append(" ");
+			sb.append("CRExport id-"+opStatus.getTourDepartureHistory().getId()).append(" ");
 			buildComment=true;
 		}
 		
@@ -345,11 +318,11 @@ public class DepartureSynchronizeJob extends QuartzJobBean{
 			if(lockBrandService.lockBrand(brandCode, ProcessName.IMPORT)){
 				lock=true;
 				processingByAnotherThread=false;
-				setupMessageSilent(TypeMsg.INF, "Locked brand Code:"+brandCode, ProcessLevel.PREPARE);
+				setupMessageSilent(TypeMsg.INF, "Loked brand Code:"+brandCode, ProcessLevel.PREPARE);
 				break;
 			}
 			else{					
-				if(jobChecker.isCancelProcess() || lockBrandService.isLockBrand(brandCode, ProcessName.IMPORT) || lockBrandService.isLockBrand(brandCode, ProcessName.EXTENDED))
+				if(jobChecker.isCancelProcess() || lockBrandService.isLockBrand(brandCode, ProcessName.IMPORT))
 					break;
 				else{
 					setupMessageSilent(TypeMsg.INF, "Wait for semaphore release:"+brandCode, ProcessLevel.PREPARE);
@@ -391,12 +364,8 @@ public class DepartureSynchronizeJob extends QuartzJobBean{
 	private String getUser(QuartzJobCh2Service quartzJobCh2Service){
 		if(StringUtils.isBlank(this.user)){
 		QuartzJob job=quartzJobCh2Service.findByName("DepartureSynchronizeJob",brandCode);
-	 	user=job.getUser()!=null ? job.getUser().getUsername() : SchedulerForImportServiceImpl.SCHEDULER_USER;
+	 	user=job.getUser()!=null ? job.getUser().getUsername() : SchedulerForImportService.SCHEDULER_USER;
 		}
 		return this.user;
 	}
-	
-	
-	
-	
 }

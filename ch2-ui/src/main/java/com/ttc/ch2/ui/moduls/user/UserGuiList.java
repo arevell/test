@@ -39,7 +39,7 @@ public class UserGuiList  extends AbstractEncryptedParamHandelComp  {
 	@Init(superclass=true)
 	public void init() { // Initialize
 		logger.trace("OperatorList:init-start");	
-		filter=new UserGui();
+		filter=new UserGui();	
 		filter.setDelFlag(false);
 		QueryCondition condition=new QueryCondition(0, PagingUserGuiModel.PAGE_SIZE,new SortCondition("username", Direction.ASC));		
 		SessionHelper.putAttributeToUserContext(UserContextStaticName.SORT_CONDITION_USER, condition);

@@ -382,8 +382,11 @@ public class ITropicsV3TourInfoMapper {
 
 							A contentLiADst = new A();
 
-							contentLiADst.setHref(((com.ttsl.tourinfo._2010._08._2.A) contentSrc).getHref());
-							contentLiADst.setValue(((com.ttsl.tourinfo._2010._08._2.A) contentSrc).getValue());
+//							contentLiADst.setHref(((com.ttsl.tourinfo._2010._08._2.A) contentSrc).getHref());
+//							contentLiADst.setValue(((com.ttsl.tourinfo._2010._08._2.A) contentSrc).getValue());
+							
+							contentLiADst.setHref(((com.ttsl.tourinfo._2010._08._2.A) contentLiSrc).getHref());
+							contentLiADst.setValue(((com.ttsl.tourinfo._2010._08._2.A) contentLiSrc).getValue());
 
 							liDst.getContent().add(objectFactoryV3.createLiA(contentLiADst));
 

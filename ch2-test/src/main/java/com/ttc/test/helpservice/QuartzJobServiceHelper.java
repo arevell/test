@@ -6,8 +6,10 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.ttc.ch2.dao.BrandDAO;
 import com.ttc.ch2.dao.jobs.QuartzJobDAO;
 import com.ttc.ch2.domain.jobs.QuartzJob;
+import com.ttc.ch2.scheduler.service.SchedulerForImportService;
 
 
 @Component
@@ -21,7 +23,7 @@ public class QuartzJobServiceHelper {
 	public QuartzJob getQuartzJob(String brandCode)
 	{
 		QuartzJob job=new QuartzJob();
-		job.setJobName(QuartzJob.JobName.DepartureSynchronizeJob.toString());
+		job.setJobName(SchedulerForImportService.jobImportName);
 		job.setBrandCode(brandCode);
 		QuartzJob srcJob=daoJob.findByExample(job);
 		return srcJob;

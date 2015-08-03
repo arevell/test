@@ -1,7 +1,5 @@
 package com.ttc.ch2.search.export;
 
-import org.springframework.context.annotation.Role;
-
 import com.ttc.ch2.domain.export.CRExport;
 
 public class IndexSynchronizerServiceException extends Exception {

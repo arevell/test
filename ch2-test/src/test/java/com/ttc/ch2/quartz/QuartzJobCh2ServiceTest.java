@@ -18,23 +18,23 @@ import com.ttc.ch2.common.SampleGenerator;
 import com.ttc.ch2.dao.BrandDAO;
 import com.ttc.ch2.dao.departure.TourDepartureHistoryDAO;
 import com.ttc.ch2.dao.jobs.QuartzJobHistoryDAO;
-import com.ttc.ch2.domain.Brand;
 import com.ttc.ch2.domain.jobs.QuartzJob;
 import com.ttc.ch2.domain.jobs.QuartzJobHistory;
 import com.ttc.ch2.domain.jobs.QuartzJobHistory.JobHistoryStatus;
 import com.ttc.ch2.scheduler.service.QuartzJobCh2Service;
 import com.ttc.ch2.scheduler.service.QuartzJobCh2ServiceException;
+import com.ttc.ch2.scheduler.service.SchedulerForImportService;
+import com.ttc.ch2.scheduler.service.SchedulerForImportServiceImpl;
 import com.ttc.test.helpservice.QuartzJobServiceHelper;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations={"classpath:/META-INF/spring/blCtx.xml","classpath:/META-INF/spring/quartzTestCtx.xml"})
+@ContextConfiguration(locations={"classpath:/META-INF/spring/blCtx.xml","classpath:/META-INF/spring/quartzTestCtx.xml", "classpath:/META-INF/spring/testCtx.xml"})
 @TransactionConfiguration(transactionManager="transactionManager", defaultRollback=true)
 public class QuartzJobCh2ServiceTest extends BaseTest {
 
 	
 	public static String brandCode="BV";
-	
-	public static String jobName=QuartzJob.JobName.DepartureSynchronizeJob.toString()+"_"+brandCode;
+	public static String jobName="DepartureSynchronizeJob_"+brandCode;
 	
 	@Inject
 	private QuartzJobCh2Service serviceToTest;
@@ -52,15 +52,12 @@ public class QuartzJobCh2ServiceTest extends BaseTest {
 	private BrandDAO brandDAO;
 	
 	
-	private QuartzJobHistory prepare(){
-		Brand b=brandDAO.findByBrandCode(brandCode);
+	private QuartzJobHistory prepare()
+	{
 		QuartzJobHistory qh=SampleGenerator.generateSampleQuartzJobHistory(1);	
-		qh.setBrand(b);
-		qh.getTourDepartureHistory().setBrand(b);
-		qh.setQuartzJob(getQuartzJob());
+		qh.setBrand(brandDAO.findByBrandCode(brandCode));
 		daoHistory.save(qh);
 		tdhDao.save(qh.getTourDepartureHistory());
-		tdhDao.flush();
 		
 		QuartzJobHistory result=daoHistory.find(qh.getId());		
 		Assert.assertNotNull(result);
@@ -77,7 +74,6 @@ public class QuartzJobCh2ServiceTest extends BaseTest {
 		//prepare
 		QuartzJobHistory h=prepare();
 		
-		try{
 		//test
 		QuartzJobHistory result=serviceToTest.getFullDataQuartzJobHistory(h.getId());
 		//check
@@ -85,12 +81,6 @@ public class QuartzJobCh2ServiceTest extends BaseTest {
 			Assert.assertTrue(result.getComments().size()>0);
 			Assert.assertNotNull(result.getTourDepartureHistory());
 			Assert.assertTrue(result.getTourDepartureHistory().getComments().size()>0);
-		}
-		finally{
-			daoHistory.remove(h);
-			tdhDao.remove(h.getTourDepartureHistory());
-		}
-		
 	}
 	
 	@Test
@@ -121,7 +111,7 @@ public class QuartzJobCh2ServiceTest extends BaseTest {
 	@Test
 	public void positiveFindByName() {
 		//test
-		QuartzJob job=serviceToTest.findByName(QuartzJob.JobName.DepartureSynchronizeJob.toString(),"BV");		
+		QuartzJob job=serviceToTest.findByName(SchedulerForImportServiceImpl.jobImportName,"BV");		
 		//check
 		Assert.assertNotNull(job);
 	}
@@ -197,18 +187,11 @@ public class QuartzJobCh2ServiceTest extends BaseTest {
 	public void positiveMergeQuartzJobHistory() {
 		//prepare
 		QuartzJobHistory h=prepare();
-		h.setQuartzJob(getQuartzJob());
-		try{
 		h.setStatus(JobHistoryStatus.Fail);
 		//test
 		serviceToTest.mergeQuartzJobHistory(h);
 		//check
 		Assert.assertTrue(daoHistory.find(h.getId()).getStatus()==JobHistoryStatus.Fail);
-		}
-		finally{
-			daoHistory.remove(h);
-			tdhDao.remove(h.getTourDepartureHistory());			
-		}
 	}
 	
 	@Test
@@ -223,7 +206,7 @@ public class QuartzJobCh2ServiceTest extends BaseTest {
 		//check
 		Assert.assertNotNull(daoHistory.find(h.getId()));
 		Assert.assertNotNull(daoHistory.find(h.getId()).getQuartzJob());
-		Assert.assertTrue(daoHistory.find(h.getId()).getQuartzJob().getJobName().equals(QuartzJob.JobName.DepartureSynchronizeJob.toString()));		
+		Assert.assertTrue(daoHistory.find(h.getId()).getQuartzJob().getJobName().equals(SchedulerForImportService.jobImportName));		
 	}
 	
 	public QuartzJob getQuartzJob()

@@ -21,9 +21,9 @@ import com.travelcorp.ccapi.SearchTourResults;
  */
 @WebService(name = "tour_content_api", targetNamespace = "http://contenthub.travcorp.com/tour_data/2010/11/1.0")
 @XmlSeeAlso({
+    com.travelcorp.ccapi.ObjectFactory.class,
     com.ttsl.marketlocalisedtourdata._2010._11._1.ObjectFactory.class,
-    com.travcorp.contenthub.tour_data._2010._11._1.ObjectFactory.class,
-    com.travelcorp.ccapi.ObjectFactory.class
+    com.travcorp.contenthub.tour_data._2010._11._1.ObjectFactory.class
 })
 public interface TourContentApi {
 
@@ -44,16 +44,16 @@ public interface TourContentApi {
     /**
      * 
      * @param sellingCompanyCodes
-     * @param continent
-     * @param duration
-     * @param country
-     * @param months
-     * @param keywords
-     * @param firstRecordNumber
-     * @param numberOfRecords
-     * @param orderBy
      * @param orderDirection
+     * @param months
+     * @param duration
      * @param securityKey
+     * @param numberOfRecords
+     * @param keywords
+     * @param orderBy
+     * @param continent
+     * @param firstRecordNumber
+     * @param country
      * @return
      *     returns com.travelcorp.ccapi.SearchTourResults
      */

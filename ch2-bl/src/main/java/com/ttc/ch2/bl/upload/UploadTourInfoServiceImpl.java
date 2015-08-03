@@ -27,7 +27,6 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.DigestUtils;
 
 import com.google.common.base.Preconditions;
-import com.google.common.base.Splitter;
 import com.google.common.collect.Iterables;
 import com.google.common.io.ByteStreams;
 import com.ttc.ch2.api.ccapi.v3.UploadTourInfoRequest;
@@ -46,7 +45,6 @@ import com.ttc.ch2.common.DateHelper;
 import com.ttc.ch2.common.DateHelper.CalculateTimePattern;
 import com.ttc.ch2.common.TypeMsg;
 import com.ttc.ch2.common.predicates.FindEntityByIdPredicate;
-import com.ttc.ch2.dao.BrandDAO;
 import com.ttc.ch2.dao.security.UserCCAPIDAO;
 import com.ttc.ch2.dao.tour.ContentRepositoryDAO;
 import com.ttc.ch2.domain.Brand;
@@ -88,9 +86,6 @@ public class UploadTourInfoServiceImpl implements UploadTourInfoService{
 		
 	@Inject 
 	private UserCCAPIDAO userCCAPIDAO;
-	
-	@Inject
-	private BrandDAO brandDAO;
 	
 	private Validator<Object> validator;
 	{
@@ -201,9 +196,7 @@ public class UploadTourInfoServiceImpl implements UploadTourInfoService{
 		tiValidator.validateZipUplodPermission(uploadTourInfoFile);
 		LogOperationHelper.logMessage(logger, opStatus, TourInfoMessages.PRE_UPLOAD_START);
 		File temp=null;
-		try {					
-			setupBrandToUploadFile(opStatus, uploadTourInfoFile);
-			
+		try {		
 			temp = File.createTempFile("upload_tmp_file", ".tmp");
 			FileOutputStream output=null;
 			try{
@@ -216,12 +209,7 @@ public class UploadTourInfoServiceImpl implements UploadTourInfoService{
 				}
 			}
 			
-			byte data[]=FileUtils.readFileToByteArray(temp);
-			
-			TIBlobData zipData=new TIBlobData();
-			zipData.setData(data);
-			uploadTourInfoFile.setZipData(zipData);	
-			
+			byte data[]=FileUtils.readFileToByteArray(temp);	
 			ByteArrayInputStream validStream=null;
 			try{
 				tiValidator.validZipExcludeZipBomb(new ByteArrayInputStream(data));
@@ -231,7 +219,9 @@ public class UploadTourInfoServiceImpl implements UploadTourInfoService{
 			finally{
 				IOUtils.closeQuietly(validStream);				
 			}			
-		
+			TIBlobData zipData=new TIBlobData();
+			zipData.setData(data);
+			uploadTourInfoFile.setZipData(zipData);			
 		}				
 		catch (UploadServiceException e) {
 			logger.error("",e);			
@@ -263,9 +253,8 @@ public class UploadTourInfoServiceImpl implements UploadTourInfoService{
 			opStatus.finish();			
 			// if brand not exist this entity will not present on upload page because there is default brand filter on data 
 			// uploadTourInfoFile is not saved to databases if brand is null  
-			if(opStatus.getStatus()==UploadTourInfoFileStatus.PRE_PROCESSING && uploadTourInfoFile.getBrand()!=null){				
+			if(opStatus.getStatus()==UploadTourInfoFileStatus.PRE_PROCESSING)
 				uploadService.addPreProcesingUploadTourInfo(uploadTourInfoFile);
-			}
 		}
 		catch(Exception e){			
 //			last chance to release resource 
@@ -395,28 +384,6 @@ public class UploadTourInfoServiceImpl implements UploadTourInfoService{
 		logger.trace("UploadTourInfoServiceImpl:addTourInfoV1OnSynchronizationTDLevel-end");
 		return true;
 	}	
-	
-	
-	private void setupBrandToUploadFile(OperationStatus opStatus,UploadTourInfoFile uploadTourInfoFile){
-		// calculate brand code
-				String brandCode="[not finded]";
-				if(uploadTourInfoFile.getName().length()>2 && uploadTourInfoFile.getName().charAt(2)=='-'){
-					brandCode=Splitter.on("-").split(uploadTourInfoFile.getName()).iterator().next();	
-					Brand brand=brandDAO.findByBrandCode(brandCode);
-					if(brand == null) {
-						LogOperationHelper.logMessage(logger, opStatus, TourInfoMessages.BRAND_DONT_EXIST,brandCode,uploadTourInfoFile.getName());	
-						throw new UploadServiceException(TourInfoMessages.getMessage(TourInfoMessages.BRAND_DONT_EXIST, uploadTourInfoFile.getName()));
-					}
-					else{
-						uploadTourInfoFile.setBrand(brand);		
-						opStatus.setBrandCode(brandCode);
-					}
-				}
-				else{
-					LogOperationHelper.logMessage(logger, opStatus, TourInfoMessages.INCORRECT_FILE_NAME_LENGHT, uploadTourInfoFile.getName());
-		        	throw new UploadServiceException(TourInfoMessages.getMessage(TourInfoMessages.INCORRECT_FILE_NAME_LENGHT, uploadTourInfoFile.getName()," filename is too short or is inappropriate"));
-				}
-	}
 }
 
 

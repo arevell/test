@@ -7,7 +7,6 @@ import org.elasticsearch.common.collect.Sets;
 
 import com.google.common.base.Preconditions;
 import com.ttc.ch2.bl.departure.common.JobStatusChecker;
-import com.ttc.ch2.common.JobCoordinator;
 import com.ttc.ch2.domain.jobs.QuartzJob.JobStatus;
 import com.ttc.ch2.domain.upload.UploadTourInfoFile;
 import com.ttc.ch2.domain.upload.UploadTourInfoFileStatus;
@@ -36,7 +35,6 @@ public class OperationStatus {
 			
 	private TIMessage lastError=null;
 	private Set<Long> idsCrSavedOrUpdated=Sets.newTreeSet(); // used in mergeUplodTourInfo
-		
 		
 	public OperationStatus(UploadTourInfoFile tourInfoHistory,ExtraPermissionChecker extraPermissionChecker){	
 		Preconditions.checkArgument(tourInfoHistory.getStatus()!=null);
@@ -76,7 +74,7 @@ public class OperationStatus {
 	public void init() {
 		this.messageManager = new MessageManager(this);
 		this.startOperation = new Date();
-		this.status=uploadTourInfoFile.getStatus();		
+		this.status=uploadTourInfoFile.getStatus();
 	}
 	
 
@@ -231,5 +229,5 @@ public class OperationStatus {
 
 	public void setIdsCrSavedOrUpdated(Set<Long> idsCrSavedOrUpdated) {
 		this.idsCrSavedOrUpdated = idsCrSavedOrUpdated;
-	}
+	}	
 }

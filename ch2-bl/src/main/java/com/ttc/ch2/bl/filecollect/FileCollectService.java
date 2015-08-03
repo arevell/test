@@ -17,7 +17,7 @@ public interface FileCollectService {
 
 	public byte[] getLatestVersion(String sellingCompanyCode, FileCollectVersion fileCollectVersion) throws FileCollectServiceException;
 
-	public void createLatestVersion(ProcessName processName, String brandCode,FileCollectVO fileCollectVO) throws FileCollectServiceException;
+	public FileCollectVO createLatestVersion(ProcessName processName, String brandCode) throws FileCollectServiceException;
 
 	public void saveLatestVersion(ProcessName processName, Brand brand, Map<String, ZipStreamVO> brandZipMapV1, Map<String, ZipStreamVO> brandZipMapV3, FileCollectVO fileCollectVO);
 }

@@ -26,20 +26,6 @@
 		    </map>
 		  </property>
 	</bean> 
-	
-		<bean name="DepartureExtendedSynchronizeJob" class="org.springframework.scheduling.quartz.JobDetailBean" scope="prototype">
-  		  <property name="jobClass" value="com.ttc.ch2.scheduler.jobs.departuresynch.DepartureExtendedSynchronizeJob"/>
-  		  <property name="name" value="QuickDepartureSynchronizeJob"/>
-  		  <property name="jobDataAsMap">
-		    <map>
-
-		    </map>
-		  </property>
-	</bean>
-	
-	
-	
-	
  	<bean id="schedulerFactoryBean" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
  	  <property name="schedulerName" value="${scheduler.name}"/>
  	  <property name="autoStartup" value="${scheduler.autostart}"/>

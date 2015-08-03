@@ -1,4 +1,3 @@
-@CH2_API
 Feature: Search for tours
 	
 Scenario Outline: Tours are searched for the following parameters

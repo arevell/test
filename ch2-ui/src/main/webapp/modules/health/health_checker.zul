@@ -63,13 +63,12 @@
 			        								<label value="${labels.health.label.tours.desc}" />   									        								        						
 			        							</row>
 			        						</rows>
-			        				</grid>			        						        		        						        				
+			        				</grid>
+			        							        		        						        				
 			        				</hlayout>
 			        				<hbox  align="left" width="100%">									        		        						        				    			        									        						
 				        				<button id="pbRefresh" label="${labels.health.label.button}" onClick="@command('refreshStatus')" />
 				        			</hbox>
-				        			<h:br/>
-				        			<h:br/>				        						        			
 		        				</div>		        						        						        				
 					</vlayout>				        			
 		         </panelchildren>

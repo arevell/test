@@ -1,4 +1,3 @@
-@Rest_Service
 Feature: Rest to get brochure file  
 	
 Scenario Outline: Rest to get brochure file  

@@ -36,123 +36,27 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ProductRoomType }
+     * Create an instance of {@link Notes.Br }
      * 
      */
-    public ProductRoomType createProductRoomType() {
-        return new ProductRoomType();
+    public Notes.Br createNotesBr() {
+        return new Notes.Br();
     }
 
     /**
-     * Create an instance of {@link FoodFundType }
+     * Create an instance of {@link DepartureType }
      * 
      */
-    public FoodFundType createFoodFundType() {
-        return new FoodFundType();
+    public DepartureType createDepartureType() {
+        return new DepartureType();
     }
 
     /**
-     * Create an instance of {@link TourRulesType }
+     * Create an instance of {@link RoomPriceType.Adult }
      * 
      */
-    public TourRulesType createTourRulesType() {
-        return new TourRulesType();
-    }
-
-    /**
-     * Create an instance of {@link SellingCompaniesType }
-     * 
-     */
-    public SellingCompaniesType createSellingCompaniesType() {
-        return new SellingCompaniesType();
-    }
-
-    /**
-     * Create an instance of {@link SurchargesType }
-     * 
-     */
-    public SurchargesType createSurchargesType() {
-        return new SurchargesType();
-    }
-
-    /**
-     * Create an instance of {@link RoomPriceType.Child }
-     * 
-     */
-    public RoomPriceType.Child createRoomPriceTypeChild() {
-        return new RoomPriceType.Child();
-    }
-
-    /**
-     * Create an instance of {@link CombinedIncludedChargesType }
-     * 
-     */
-    public CombinedIncludedChargesType createCombinedIncludedChargesType() {
-        return new CombinedIncludedChargesType();
-    }
-
-    /**
-     * Create an instance of {@link AssociatedProductsType }
-     * 
-     */
-    public AssociatedProductsType createAssociatedProductsType() {
-        return new AssociatedProductsType();
-    }
-
-    /**
-     * Create an instance of {@link SurchargeType }
-     * 
-     */
-    public SurchargeType createSurchargeType() {
-        return new SurchargeType();
-    }
-
-    /**
-     * Create an instance of {@link RoomsType }
-     * 
-     */
-    public RoomsType createRoomsType() {
-        return new RoomsType();
-    }
-
-    /**
-     * Create an instance of {@link DiscountType }
-     * 
-     */
-    public DiscountType createDiscountType() {
-        return new DiscountType();
-    }
-
-    /**
-     * Create an instance of {@link PassengersType }
-     * 
-     */
-    public PassengersType createPassengersType() {
-        return new PassengersType();
-    }
-
-    /**
-     * Create an instance of {@link MiscellaneousProductsType }
-     * 
-     */
-    public MiscellaneousProductsType createMiscellaneousProductsType() {
-        return new MiscellaneousProductsType();
-    }
-
-    /**
-     * Create an instance of {@link MiscellaneousProductType }
-     * 
-     */
-    public MiscellaneousProductType createMiscellaneousProductType() {
-        return new MiscellaneousProductType();
-    }
-
-    /**
-     * Create an instance of {@link Notes }
-     * 
-     */
-    public Notes createNotes() {
-        return new Notes();
+    public RoomPriceType.Adult createRoomPriceTypeAdult() {
+        return new RoomPriceType.Adult();
     }
 
     /**
@@ -164,27 +68,83 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link PriceType }
+     * Create an instance of {@link SurchargesType }
      * 
      */
-    public PriceType createPriceType() {
-        return new PriceType();
+    public SurchargesType createSurchargesType() {
+        return new SurchargesType();
     }
 
     /**
-     * Create an instance of {@link DeparturesType }
+     * Create an instance of {@link MiscellaneousProductsType }
      * 
      */
-    public DeparturesType createDeparturesType() {
-        return new DeparturesType();
+    public MiscellaneousProductsType createMiscellaneousProductsType() {
+        return new MiscellaneousProductsType();
     }
 
     /**
-     * Create an instance of {@link DepartureType }
+     * Create an instance of {@link DiscountsType }
      * 
      */
-    public DepartureType createDepartureType() {
-        return new DepartureType();
+    public DiscountsType createDiscountsType() {
+        return new DiscountsType();
+    }
+
+    /**
+     * Create an instance of {@link TourRulesType }
+     * 
+     */
+    public TourRulesType createTourRulesType() {
+        return new TourRulesType();
+    }
+
+    /**
+     * Create an instance of {@link PortTaxType }
+     * 
+     */
+    public PortTaxType createPortTaxType() {
+        return new PortTaxType();
+    }
+
+    /**
+     * Create an instance of {@link FoodFundType }
+     * 
+     */
+    public FoodFundType createFoodFundType() {
+        return new FoodFundType();
+    }
+
+    /**
+     * Create an instance of {@link AccommodationProductType }
+     * 
+     */
+    public AccommodationProductType createAccommodationProductType() {
+        return new AccommodationProductType();
+    }
+
+    /**
+     * Create an instance of {@link SurchargeType }
+     * 
+     */
+    public SurchargeType createSurchargeType() {
+        return new SurchargeType();
+    }
+
+    /**
+     * Create an instance of {@link AddressType }
+     * 
+     */
+    public AddressType createAddressType() {
+        return new AddressType();
+    }
+
+    /**
+     * Create an instance of {@link CombinedIncludedChargesType }
+     * 
+     */
+    public CombinedIncludedChargesType createCombinedIncludedChargesType() {
+        return new CombinedIncludedChargesType();
     }
 
     /**
@@ -204,35 +164,43 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link RoomPriceType.Adult }
+     * Create an instance of {@link PassengersType }
      * 
      */
-    public RoomPriceType.Adult createRoomPriceTypeAdult() {
-        return new RoomPriceType.Adult();
+    public PassengersType createPassengersType() {
+        return new PassengersType();
     }
 
     /**
-     * Create an instance of {@link DiscountsType }
+     * Create an instance of {@link ProductRoomType }
      * 
      */
-    public DiscountsType createDiscountsType() {
-        return new DiscountsType();
+    public ProductRoomType createProductRoomType() {
+        return new ProductRoomType();
     }
 
     /**
-     * Create an instance of {@link OccupancyRuleType }
+     * Create an instance of {@link AssociatedProductsType }
      * 
      */
-    public OccupancyRuleType createOccupancyRuleType() {
-        return new OccupancyRuleType();
+    public AssociatedProductsType createAssociatedProductsType() {
+        return new AssociatedProductsType();
     }
 
     /**
-     * Create an instance of {@link AddressType }
+     * Create an instance of {@link PriceType }
      * 
      */
-    public AddressType createAddressType() {
-        return new AddressType();
+    public PriceType createPriceType() {
+        return new PriceType();
+    }
+
+    /**
+     * Create an instance of {@link Notes }
+     * 
+     */
+    public Notes createNotes() {
+        return new Notes();
     }
 
     /**
@@ -244,43 +212,35 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ProductRoomsType }
+     * Create an instance of {@link RoomsType }
      * 
      */
-    public ProductRoomsType createProductRoomsType() {
-        return new ProductRoomsType();
+    public RoomsType createRoomsType() {
+        return new RoomsType();
     }
 
     /**
-     * Create an instance of {@link AccommodationProductType }
+     * Create an instance of {@link SellingCompaniesType }
      * 
      */
-    public AccommodationProductType createAccommodationProductType() {
-        return new AccommodationProductType();
+    public SellingCompaniesType createSellingCompaniesType() {
+        return new SellingCompaniesType();
     }
 
     /**
-     * Create an instance of {@link Notes.Br }
+     * Create an instance of {@link OccupancyRuleType }
      * 
      */
-    public Notes.Br createNotesBr() {
-        return new Notes.Br();
+    public OccupancyRuleType createOccupancyRuleType() {
+        return new OccupancyRuleType();
     }
 
     /**
-     * Create an instance of {@link PortTaxType }
+     * Create an instance of {@link MiscellaneousProductType }
      * 
      */
-    public PortTaxType createPortTaxType() {
-        return new PortTaxType();
-    }
-
-    /**
-     * Create an instance of {@link MandatoryMiscellaneousProductsType }
-     * 
-     */
-    public MandatoryMiscellaneousProductsType createMandatoryMiscellaneousProductsType() {
-        return new MandatoryMiscellaneousProductsType();
+    public MiscellaneousProductType createMiscellaneousProductType() {
+        return new MiscellaneousProductType();
     }
 
     /**
@@ -292,11 +252,51 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link RoomPriceType.Child }
+     * 
+     */
+    public RoomPriceType.Child createRoomPriceTypeChild() {
+        return new RoomPriceType.Child();
+    }
+
+    /**
      * Create an instance of {@link SellingCompanyType }
      * 
      */
     public SellingCompanyType createSellingCompanyType() {
         return new SellingCompanyType();
+    }
+
+    /**
+     * Create an instance of {@link DeparturesType }
+     * 
+     */
+    public DeparturesType createDeparturesType() {
+        return new DeparturesType();
+    }
+
+    /**
+     * Create an instance of {@link DiscountType }
+     * 
+     */
+    public DiscountType createDiscountType() {
+        return new DiscountType();
+    }
+
+    /**
+     * Create an instance of {@link ProductRoomsType }
+     * 
+     */
+    public ProductRoomsType createProductRoomsType() {
+        return new ProductRoomsType();
+    }
+
+    /**
+     * Create an instance of {@link MandatoryMiscellaneousProductsType }
+     * 
+     */
+    public MandatoryMiscellaneousProductsType createMandatoryMiscellaneousProductsType() {
+        return new MandatoryMiscellaneousProductsType();
     }
 
     /**

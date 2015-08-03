@@ -1,5 +1,7 @@
 package com.ttc.ch2.ui.common.security.redirects;
 
+import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -20,12 +22,17 @@ public abstract class BaseRedirectOperation implements AfterLoginRedirectOperati
 		return Lists.newLinkedList(Splitter.on("/").split(uri)).getLast();
 	}
 	
+	
+	protected void writeOutput(HttpServletResponse response,String content) throws IOException{
+		HttpResponseHelper.writeOutput(response, content,"text/xml");
+	}
+	
 	protected void sendError(HttpServletResponse response,int code,String msg) throws ServletException{
 		
 		try{
 		String content=new ExceptionXmlConverter().convertToXmlByJaxb(code,msg,Severity.ERROR);
 		response.setStatus(code);
-		HttpResponseHelper.writeOutput(response, content,"text/xml");	
+		writeOutput(response, content);
 		}
 		catch(Exception e){
 			throw new ServletException(e);

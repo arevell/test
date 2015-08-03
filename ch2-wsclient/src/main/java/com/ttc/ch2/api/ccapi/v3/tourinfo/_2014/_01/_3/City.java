@@ -18,7 +18,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
  *         &lt;element name="Name" type="{http://www.ttc.com/ch2/api/ccapi/v3/TourInfo/2014/01/3.0}string"/>
- *         &lt;element name="Airports" type="{http://www.ttc.com/ch2/api/ccapi/v3/TourInfo/2014/01/3.0}Airports" minOccurs="0"/>
+ *         &lt;element name="Airports" type="{http://www.ttc.com/ch2/api/ccapi/v3/TourInfo/2014/01/3.0}Airports"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -36,7 +36,7 @@ public class City {
 
     @XmlElement(name = "Name", required = true)
     protected String name;
-    @XmlElement(name = "Airports")
+    @XmlElement(name = "Airports", required = true)
     protected Airports airports;
 
     /**

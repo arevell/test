@@ -20,10 +20,11 @@ import com.ttc.ch2.domain.common.EntityBase;
 
 
 @NamedQueries({
-	@NamedQuery( name = "Brand.findByBrandCode", query = "select b from Brand b where b.code=:code")
+	@NamedQuery( name = "Brand.findByBrandCode", query = "select b from Brand b where b.code=:code",cacheable=true,cacheRegion="NoModifiedDataRegion")
 })
 @Entity
 @Table(name="BRAND")
+@Cache(usage = CacheConcurrencyStrategy.READ_ONLY)
 public class Brand extends EntityBase{
 
 	private static final long serialVersionUID = -124774390441289351L;
@@ -39,6 +40,7 @@ public class Brand extends EntityBase{
 	private String code;
 	
 	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy="brand")
+	@Cache(usage=CacheConcurrencyStrategy.READ_ONLY,region="NoModifiedDataRegion")
 	private Set<SellingCompany> sellingCompanies;
 	
 	public String getBrandName() {

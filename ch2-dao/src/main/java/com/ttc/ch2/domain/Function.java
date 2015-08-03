@@ -12,6 +12,7 @@ import com.ttc.ch2.domain.common.EntityBase;
 
 @Entity
 @Table(name="FUNCTION")
+@Cache(usage = CacheConcurrencyStrategy.READ_ONLY)
 public class Function extends EntityBase {
 	
 	private static final long serialVersionUID = 239558918835119044L;

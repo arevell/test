@@ -6,13 +6,12 @@ public enum DepartureSynchronizeMessage {
 
 	
 	//errors
-	UNEXPECTED_EXCEPTION("ERR-1000","Unexpected problem occured"),	
+	UNEXPECTED_EXCEPTION("ERR-1000","Unexpected problem occured"),
+	REGISTRED_PROCESS_EXCEPTION("ERR-1001","Tour Departure Import process has found an another process with status: Processing"),
 	COMMON_EXCEPTION("ERR-1002","Process has error:{0}"),
 
 	//WRN
 	LOCK_BY_ANOTHER_PROCESS("WRN-2006","Brand is lock process can't import tours for brand:{0}"),
-	REGISTRED_PROCESS_EXCEPTION("WRN-2007","Tour Departure Import process has found an another process with status: Processing"),
-	REGISTRED_PROCESS_EXCEPTION_V2("WRN-2008","Tour Departure Extended Job process has found an another process with status: Processing"),
 	
 	//info
 	CANCEL_PROCESS("INF-4000","Process was cancelled"),

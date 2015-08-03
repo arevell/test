@@ -58,7 +58,7 @@ import com.ttc.ch2.search.export.IndexSynchronizerVO;
 import facade.itropics.webservice.tropics.com.itropicsbuildws.WsTourWithSCVO;
 import facade.itropics.webservice.tropics.com.itropicsbuildws.WsToursWithSCListVO;
 
-@Service("ReconciliationReportServiceImpl")
+@Service
 @Transactional(readOnly = true, propagation = Propagation.REQUIRED)
 public class ReconciliationReportServiceImpl implements ReconciliationReportService {
 
@@ -238,7 +238,9 @@ public class ReconciliationReportServiceImpl implements ReconciliationReportServ
 			List<String> toursListTourDeparture = new ArrayList<String>();
 			List<String> toursListBoth = new ArrayList<String>();
 
-			int index = 0;		
+			int index = 0;
+
+//			for (ContentRepository contentRepository : contentRepositoryList) {				
 			for (Long idCr: ids) {				
 				ContentRepository contentRepository=contentRepositoryDAO.find(idCr);
 				if (ProcessName.IMPORT.equals(processName)) {

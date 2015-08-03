@@ -70,7 +70,7 @@ public class GetBrochureController{
 				throw e;
 			}else{			
 				String content=new ExceptionXmlConverter().convertToXmlByJaxb(e);
-				writeOutput(response,content,HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+				writeOutput(response,content);
 			}
 		} catch (IOException e1) {
 				throw new CH2Exception(e);
@@ -82,8 +82,8 @@ public class GetBrochureController{
 	
 	
 		
-	protected void writeOutput(HttpServletResponse response,String content,int statusCode) throws IOException{
-		HttpResponseHelper.writeOutput(statusCode,response, content,"text/xml");
+	protected void writeOutput(HttpServletResponse response,String content) throws IOException{
+		HttpResponseHelper.writeOutput(response, content,"text/xml");
 	}
 	
 }

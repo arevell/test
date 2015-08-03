@@ -62,9 +62,8 @@ public class UserGuiDAOImpl extends BaseDao< UserGui,  Long> implements UserGuiD
 			if(StringUtils.isNotBlank(filter.getEmail())){
 				search.addFilterILike("email", "%" + filter.getEmail() +"%");
 			}
-			
-			if (filter.getDelFlag() != null) {
-				search.addFilterEqual("delFlag", filter.getDelFlag());
+			if(filter.getDelFlag()!=null){
+				search.addFilterEqual("delFlag", filter.getDelFlag() );
 			}
 		}
 	}
