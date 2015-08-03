@@ -1,8 +1,0 @@
-<orion-web-app>
-    <session-tracking
-        autoencode-absolute-urls="false"
-        autoencode-urls="true"
-        autojoin-sessions="false"
-        cookie-max-age="in memory only"
-        cookies="enabled" />
-</orion-web-app>
