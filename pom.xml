@@ -1,4 +1,3 @@
-test line on habs
 <?xml version="1.0" encoding="UTF-8"?>
 
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -7,7 +6,7 @@ test line on habs
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.ttc.ch2</groupId>
 	<artifactId>ch2</artifactId>
-	<version>TRUNK-SNAPSHOT</version>
+	<version>HABS.159-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
 	<name>Content Hub</name>
@@ -33,9 +32,9 @@ test line on habs
 
 	<modules>
 		<!-- Bill of materials -->
-		<module>ch2-thirdpartyBOM</module>
+		<module>ch2-thirdPartyBOM</module>
 		<module>ch2-BOM</module>
-
+		
 		<!-- Parent POM for all modules -->
 		<module>ch2-parentPOM</module>
 
@@ -50,11 +49,11 @@ test line on habs
 		<module>ch2-scheduler</module>
 		<module>ch2-api</module>
 
-		<!-- Web Service Modules -->
-		<module>ch2-wsclient</module>
-
 		<!-- Original Model -->
 		<module>ch2-ui</module>
+		
+		<!-- Web Service Modules needed for test -->
+		<module>ch2-wsclient</module>
 		<module>ch2-test</module>
 	</modules>
 
