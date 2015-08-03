@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:mvdi="http://www.ttsl.com/MarketVariationDepartureInfo/2010/09/1.1"
+	targetNamespace="http://www.ttsl.com/MarketVariationDepartureInfo/2010/09/1.1"
+	elementFormDefault="qualified"
+	version="1.0">
+
+	<xs:element name="MarketVariationDepartureInfo" type="mvdi:MarketVariationDepartureInfo" />
+
+	<xs:complexType name="ArrayOfDeparture">
+		<xs:sequence>
+			<xs:element name="Departure" type="mvdi:Departure" nillable="true" minOccurs="0" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="Departure">
+		<xs:sequence>
+			<xs:element name="DeparturePricings" type="mvdi:ArrayOfDeparturePricing" minOccurs="0" />
+		</xs:sequence>
+		<xs:attribute name="AvailabilityStatus" type="xs:string" />
+		<xs:attribute name="DefiniteDeparture" type="xs:boolean" />
+		<xs:attribute name="DepartureCode" type="xs:string" />
+		<xs:attribute name="EndDate" type="xs:date" />
+		<xs:attribute name="StartDate" type="xs:date" />
+	</xs:complexType>
+
+	<xs:complexType name="ArrayOfDeparturePricing">
+		<xs:sequence>
+			<xs:element name="DeparturePricing" type="mvdi:DeparturePricing" nillable="true" minOccurs="0" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="DeparturePricing">
+		<xs:sequence>
+			<xs:element name="MandatoryProducts" type="mvdi:ArrayOfMandatoryProduct" nillable="true" minOccurs="0" />
+			<xs:element name="Surcharges" type="mvdi:ArrayOfSurcharge" nillable="true" minOccurs="0" />
+		</xs:sequence>
+		<xs:attribute name="SellingCompanyCode" type="xs:string" />
+		<xs:attribute name="AdultQuadRoomPrice" type="xs:decimal" />
+		<xs:attribute name="AdultQuadRoomPriceCombined" type="xs:decimal" />
+		<xs:attribute name="AdultSingleRoomPrice" type="xs:decimal" />
+		<xs:attribute name="AdultSingleRoomPriceCombined" type="xs:decimal" />
+		<xs:attribute name="AdultTripleRoomPrice" type="xs:decimal" />
+		<xs:attribute name="AdultTripleRoomPriceCombined" type="xs:decimal" />
+		<xs:attribute name="AdultTwinRoomPrice" type="xs:decimal" />
+		<xs:attribute name="AdultTwinRoomPriceCombined" type="xs:decimal" />
+		<xs:attribute name="ChildPrice" type="xs:decimal" />
+		<xs:attribute name="LandOnlyReduction" type="xs:decimal" />
+		<xs:attribute name="TeenagerDiscount" type="xs:decimal" />
+		<xs:attribute name="Currency" type="xs:string" />
+	</xs:complexType>
+
+	<xs:complexType name="ArrayOfMandatoryProduct">
+		<xs:sequence>
+			<xs:element name="MandatoryProduct" type="mvdi:MandatoryProduct" nillable="true" minOccurs="0" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="MandatoryProduct">
+		<xs:sequence />
+		<xs:attribute name="AdultPrice" type="xs:decimal" />
+		<xs:attribute name="ChildPrice" type="xs:decimal" />
+		<xs:attribute name="Description" type="xs:string" />
+		<xs:attribute name="ProductId" type="xs:long" />
+		<xs:attribute name="ProductType" type="xs:string" />
+	</xs:complexType>
+
+	<xs:complexType name="ArrayOfSurcharge">
+		<xs:sequence>
+			<xs:element name="Surcharge" type="mvdi:Surcharge" nillable="true" minOccurs="0" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="Surcharge">
+		<xs:sequence />
+		<xs:attribute name="AmountIsAbsolute" type="xs:boolean" />
+		<xs:attribute name="SurchargeAmount" type="xs:decimal" />
+		<xs:attribute name="SurchargeDescription" type="xs:string" />
+		<xs:attribute name="SurchargeType" type="xs:string" />
+	</xs:complexType>
+
+	<xs:complexType name="ArrayOfMarketVariationPricing">
+		<xs:sequence>
+			<xs:element name="MarketVariationPricing" type="mvdi:MarketVariationPricing" nillable="true" minOccurs="0" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="MarketVariationPricing">
+		<xs:sequence />
+		<xs:attribute name="SellingCompanyCode" type="xs:string" use="required" />
+		<xs:attribute name="AdultPortTax" type="xs:decimal" />
+		<xs:attribute name="AirPriceIncluded" type="xs:boolean" />
+		<xs:attribute name="ChildPortTax" type="xs:decimal" />
+		<xs:attribute name="FoodFundPrice" type="xs:decimal" />
+		<xs:attribute name="PriceIsIndicative" type="xs:boolean" />
+		<xs:attribute name="Currency" type="xs:string" />
+	</xs:complexType>
+
+	<xs:complexType name="AssociatedInsurance">
+		<xs:sequence>
+			<xs:element name="AdditionalPricePerFamily" type="xs:decimal" minOccurs="0" />
+			<xs:element name="AdditionalPricePerPartner" type="xs:decimal" minOccurs="0" />
+			<xs:element name="AdditionalPricePerSingle" type="xs:decimal" minOccurs="0" />
+			<xs:element name="Code" type="xs:string" nillable="true" minOccurs="0" />
+			<xs:element name="CurrencyCode" type="xs:string" nillable="true" minOccurs="0" />
+			<xs:element name="EndDate" type="xs:dateTime" minOccurs="0" />
+			<xs:element name="Id" type="xs:long" minOccurs="0" />
+			<xs:element name="IsForcedButRemovable" type="xs:boolean" minOccurs="0" />
+			<xs:element name="IsMandatory" type="xs:boolean" minOccurs="0" />
+			<xs:element name="MvAssociatedProductID" type="xs:long" minOccurs="0" />
+			<xs:element name="PricePerFamilyCoverType" type="xs:decimal" minOccurs="0" />
+			<xs:element name="PricePerPartnerCoverType" type="xs:decimal" minOccurs="0" />
+			<xs:element name="PricePerSingleCoverType" type="xs:decimal" minOccurs="0" />
+			<xs:element name="ProductDescription" type="xs:string" nillable="true" minOccurs="0" />
+			<xs:element name="ProductName" type="xs:string" nillable="true" minOccurs="0" />
+			<xs:element name="StartDate" type="xs:dateTime" minOccurs="0" />
+			<xs:element name="ValueOfTourUpTo" type="xs:decimal" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="Brochure">
+		<xs:sequence>
+			<xs:element name="BrandCode" type="xs:string" nillable="true" minOccurs="0" />
+			<xs:element name="BrochureCode" type="xs:string" nillable="true" minOccurs="0" />
+			<xs:element name="BrochureId" type="xs:long" minOccurs="0" />
+			<xs:element name="BrochureName" type="xs:string" nillable="true" minOccurs="0" />
+			<xs:element name="BrochureYear" type="xs:string" nillable="true" minOccurs="0" />
+			<xs:element name="LongDescription" type="xs:string" nillable="true" minOccurs="0" />
+			<xs:element name="NumberOfPages" type="xs:int" minOccurs="0" />
+			<xs:element name="OperatingPeriodEndDate" type="xs:dateTime" minOccurs="0" />
+			<xs:element name="OperatingPeriodStartDate" type="xs:dateTime" minOccurs="0" />
+			<xs:element name="SellingCompanyCode" type="xs:string" nillable="true" minOccurs="0" />
+			<xs:element name="SellingPeriodEndDate" type="xs:dateTime" minOccurs="0" />
+			<xs:element name="SellingPeriodStartDate" type="xs:dateTime" minOccurs="0" />
+			<xs:element name="ShortDescription" type="xs:string" nillable="true" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="CommentsForDeparture">
+		<xs:sequence>
+			<xs:element name="CommentText" type="xs:string" nillable="true" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="MarketVariationDepartureInfo">
+		<xs:sequence>
+			<xs:element name="MarketVariationPricings" type="mvdi:ArrayOfMarketVariationPricing" minOccurs="0" />
+			<xs:element name="Departures" type="mvdi:ArrayOfDeparture" nillable="true" minOccurs="0" />
+		</xs:sequence>
+		<xs:attribute name="BrochureCode" type="xs:string" />
+		<xs:attribute name="MarketVariationCode" type="xs:string" />
+		<xs:attribute name="MarketVariationId" type="xs:long" />
+		<xs:attribute name="OperatingProductCode" type="xs:string" />
+		<xs:attribute name="OperatingProductId" type="xs:long" />
+		<xs:attribute name="BookableOnline" type="xs:boolean" />
+		<xs:attribute name="TourPackage" type="xs:boolean" />
+	</xs:complexType>
+
+</xs:schema>

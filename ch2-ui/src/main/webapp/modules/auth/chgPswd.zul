@@ -1,0 +1,40 @@
+<?init class="org.zkoss.zk.ui.util.Composition" arg0="/tpl/MainTplWithOutMenu.zul"?>
+<zk>
+<style>
+		 .no-highlight tr.z-grid-odd td.z-row-inner,tr.z-grid-odd .z-cell,tr.z-grid-odd, .no-highlight tr.z-row-over > td.z-row-inner
+	      {	      
+	      background:white;	 
+	      }
+</style>
+	 <hbox class="chg_pass" width="100%" height="100%" pack="center" align="center" self="@{define(mainContent)}" apply="org.zkoss.bind.BindComposer"
+	  viewModel="@id('vm') @init(FirstLoginCtrl)"
+	  validationMessages="@id('vmsgs')"
+	  form="@id('fx') @load(vm.form) @save(vm.form, before='onSave') @validator('com.ttc.ch2.ui.moduls.auth.FirstLoginFormValidator')">	        	        	        				
+		       				<div>		        					
+		        						<vbox width="100%" pack="center">									  
+									 	<image id="image" src="/img/content_hub_2_img.png"/>									 	
+			        					<groupbox id="grp1" width="300px" closable="false" mold='3d'  height="${localPanelSize}">
+									 		 <caption label="@load(vm.groupBoxTitle)" />									 		 
+										  	<hbox widths="50%,50%" width="100%">
+										  		${labels.auth.firstlogin.lfd.oldPassword}:
+										  		<textbox  value="@bind(fx.passwordOld)"   type="password"/>
+										  	</hbox>
+										  	<hbox width="100%" pack="center">
+										  		<label class="error" value="@load(vmsgs['passwordOld'])" />
+										  	</hbox>
+										  	<hbox widths="50%,50%" width="100%" style="margin-top:10px">
+										  		${labels.auth.firstlogin.lfd.newPassword}:
+										  		<textbox  value="@bind(fx.passwordNew)"  type="password"/>	
+										  	</hbox>
+										  	<hbox width="100%" pack="center">
+										  		<label class="error" value="@load(vmsgs['passwordNew'])" />
+										  	</hbox>										  	
+										  	<hbox width="100%" pack="center" style="margin-top:10px">
+													<button id="pbCancel" label="${labels.common.pb_cancel}"  onClick="@command('onCancel')" mold="trendy" />
+													<button id="pbSave" label="${labels.common.pb_save}" onClick="@command('onSave')" mold="trendy" />
+											</hbox>														    	            
+		        						</groupbox>
+		        						</vbox>							        							         
+				</div>							         		        					         
+	 </hbox>						 	
+</zk>

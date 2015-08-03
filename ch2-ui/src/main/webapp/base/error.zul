@@ -1,0 +1,31 @@
+<zk>
+<include src="/common/init.zul"/>
+ <window  border="normal" width="100%" height="100vh"  >
+	 <hbox class="error_panel" height="100%" pack="center" align="center" >	 
+	        <panel border="rounded+" apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init(ErrorCtrl)"   xmlns:h="native" >
+	        	 <caption label="Error ${vm.statusCode} [${common:currentDateTimeAsString()}]" sclass="panel_title"/>
+		        <panelchildren style="overflow: auto">		        
+		        	 <hbox  pack="center">		        	 		        
+		        	 
+		        	 <label value="Technical break" style="font-family:arial;font-size:16px;font-weight: bold;"/>
+					</hbox>				
+					<h:table>
+						<h:tr>
+							<h:td>
+								<label value="Error occurred: ${vm.exceptionMessage}"  pre="true"/>
+							</h:td>
+						</h:tr>
+						<h:tr>
+							<h:td align="center">
+								<hlayout>
+								      <button label="Back to login page" href="${LOGIN}" autodisable="self" mold="trendy"/>
+								      <button label="Back to main page" href="${MAIN_PAGE}" autodisable="self" mold="trendy" if="${vm.showPbMain}"/>	
+								</hlayout>		
+							</h:td>
+						</h:tr>
+					</h:table>
+		         </panelchildren>
+	      </panel>	         
+	 </hbox>
+</window>
+</zk>

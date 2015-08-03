@@ -1,0 +1,6529 @@
+{
+	"TourInfoSimp" : {
+		"BrandCode" : "CH",
+		"CMSId" : "CH_WEB",
+		"CMSTourId" : "140",
+		"Duration" : 6,
+		"TourCode" : "66633SPECIAL",
+		"TourName" : "TNChampsÉlysées",
+		"CataloguedTour" : {
+			"Code" : "66633",
+			"Name" : "Aegean Classic (incl. 4 days cruising)"
+		},
+		"SellingCompanies" : {
+			"SellingCompany" : [{
+					"CurrencyCode" : "AUD",
+					"Code" : "CHSYDS",
+					"Brochure" : [{
+							"Code" : "CHEUAU13T",
+							"Name" : "Europe Brochure BRXChamps-Élysées (2015/2016)"
+						}
+					],
+					"TourCategories" : {
+						"TourCategory" : [{
+								"Name" : "TCNChampsÉlysées",
+								"CategoryValue" : ["Sailing & Cruise", "CVChampsÉlysées"]
+							}
+						]
+					}
+				}
+			]
+		},
+		"TourVariationDefiners" : {
+			"OperatingProduct" : {
+				"Code" : "CE6CGSIM10",
+				"ContractingSeason" : "Summer 2015",
+				"Category" : "Modular",
+				"Classification" : "Island Hopping & Cruising",
+				"StandardName" : "TimeoutSuperior"
+			},
+			"RoomTypes" : {
+				"RoomType" : [{
+						"Type" : "Single",
+						"Sellable" : true
+					}, {
+						"Type" : "Twin",
+						"Sellable" : true
+					}, {
+						"Type" : "TwinShare",
+						"Sellable" : true
+					}, {
+						"Type" : "Triple",
+						"Sellable" : false
+					}, {
+						"Type" : "TripleShare",
+						"Sellable" : false
+					}, {
+						"Type" : "Quad",
+						"Sellable" : true
+					}, {
+						"Type" : "QuadShare",
+						"Sellable" : true
+					}
+				]
+			},
+			"StartCity" : {
+				"Name" : "Athens",
+				"Airports" : {
+					"Airport" : [{
+							"IATACode" : "ATH",
+							"Name" : "Athens Elefther. Venizelos Apt",
+							"City" : "Athens",
+							"Region" : "Attiki",
+							"Country" : "Greece",
+							"DefaultForCity" : true
+						}, {
+							"IATACode" : "HEW",
+							"Name" : "Athens Hellinikon Airport",
+							"City" : "Athens",
+							"Region" : "Attiki",
+							"Country" : "Greece",
+							"DefaultForCity" : false
+						}
+					]
+				}
+			},
+			"EndCity" : {
+				"Name" : "Athens",
+				"Airports" : {
+					"Airport" : [{
+							"IATACode" : "ATH",
+							"Name" : "Athens Elefther. Venizelos Apt",
+							"City" : "Athens",
+							"Region" : "Attiki",
+							"Country" : "Greece",
+							"DefaultForCity" : true
+						}, {
+							"IATACode" : "HEW",
+							"Name" : "Athens Hellinikon Airport",
+							"City" : "Athens",
+							"Region" : "Attiki",
+							"Country" : "Greece",
+							"DefaultForCity" : false
+						}
+					]
+				}
+			},
+			"IsTourPackage" : false,
+			"IncludedCruiseCabinType" : "Standard inside cabin without porthole"
+		},
+		"ContinentsVisited" : {
+			"Continent" : [{
+					"Code" : "EURO",
+					"Name" : "Europe"
+				}
+			]
+		},
+		"CountriesVisited" : {
+			"Country" : [{
+					"Code" : "GR",
+					"Name" : "Greece",
+					"ContinentCode" : "EURO"
+				}, {
+					"Code" : "TR",
+					"Name" : "Turkey",
+					"ContinentCode" : "EURO"
+				}
+			]
+		},
+		"LocationsVisited" : {
+			"Location" : [{
+					"CountryCode" : "GR",
+					"Name" : "Athens"
+				}, {
+					"CountryCode" : "GR",
+					"Name" : "Mykonos"
+				}, {
+					"CountryCode" : "TR",
+					"Name" : "Kusadasi"
+				}, {
+					"CountryCode" : "GR",
+					"Name" : "Rhodes"
+				}, {
+					"CountryCode" : "GR",
+					"Name" : "Crete"
+				}, {
+					"CountryCode" : "CCChamps-Élysées",
+					"Name" : "LOCChamps-Élysées"
+				}
+			]
+		},
+		"Description" : "The Aegean Classic, DSCChamps-Élysées operated by Louis Hellenic Cruises, offers relaxation, sightseeing and fabulous Greek food not only for the young, but also the young at heart. Beginning and ending in Athens, you'll cruise for 4 days to the Cycladic islands of Mykonos, Santorini, Crete, Rhodes and Patmos, as well as a short stop in Kusadasi on the Turkish coast.  There's nothing quite like watching the sun set over the Mediterranean from the bow of your luxury cruise ship while sipping on the cocktail of the day. Paradise.",
+		"Assets" : {
+			"Images" : {
+				"Image" : [{
+						"Name" : "primary_image",
+						"Caption" : "Aegean Classic (incl. 4 days cruising)",
+						"Width" : 209,
+						"Height" : 146,
+						"Type" : "photo",
+						"Url" : "http://downloads.contiki.com/brochure-assets/europe/2015-2016/aegean-classic-incl-4-days-cruising-tour-209x146.jpg"
+					}, {
+						"Name" : "primary_image",
+						"Caption" : "Aegean Classic (incl. 4 days cruising)",
+						"Width" : 125,
+						"Height" : 125,
+						"Type" : "photo",
+						"Url" : "http://downloads.contiki.com/brochure-assets/europe/2015-2016/aegean-classic-incl-4-days-cruising-tour-125x125.jpg"
+					}, {
+						"Name" : "primary_image",
+						"Caption" : "Aegean Classic (incl. 4 days cruising)",
+						"Width" : 1400,
+						"Height" : 700,
+						"Type" : "photo",
+						"Url" : "http://downloads.contiki.com/brochure-assets/europe/2015-2016/aegean-classic-incl-4-days-cruising-tour-1400x700.jpg"
+					}, {
+						"Name" : "route_map",
+						"Caption" : "Aegean Classic (incl. 4 days cruising)",
+						"Width" : 300,
+						"Height" : 210,
+						"Type" : "map",
+						"Url" : "http://downloads.contiki.com/brochure-assets/europe/2015-2016/aegean-classic-incl-4-days-cruising-map-300x210.gif"
+					}, {
+						"Name" : "route_map",
+						"Caption" : "Aegean Classic (incl. 4 days cruising)",
+						"Width" : 600,
+						"Height" : 600,
+						"Type" : "map",
+						"Url" : "http://downloads.contiki.com/brochure-assets/europe/2015-2016/aegean-classic-incl-4-days-cruising-map-600x600.gif"
+					}
+				]
+			}
+		},
+		"Itinerary" : {
+			"ItinerarySegment" : [{
+					"Duration" : 1,
+					"StartDay" : 1,
+					"Title" : "Arrive Athens ISTChamps-Élysées",
+					"Text" : "<?xml version=\"1.0\" encoding=\"UTF-8\"?><text xmlns=\"http://www.ttc.com/ch2/api/ccapi/v3/TourInfo/2014/01/3.0\">Check-in to ISChamps-Élysées your hotel and spend the afternoon getting a sneak peek at Athens, Europe’s oldest city.  This evening meet your Trip Representative and fellow Contiki travellers.\n<br/><br/>Start your trip off with a night to remember and get to know your group at an optional dinner in the rustic district of Plaka.  Perched on the shady slopes beneath the Acropolis, Plaka is full of traditional tavernas that spill out onto the pavements.</text>",
+					"LocationsVisited" : {
+						"Location" : [{
+								"CountryCode" : "GR",
+								"Name" : "Athens"
+							}
+						]
+					}
+				}, {
+					"Duration" : 1,
+					"StartDay" : 2,
+					"Title" : "Athens to Mykonos",
+					"Text" : "<?xml version=\"1.0\" encoding=\"UTF-8\"?><text xmlns=\"http://www.ttc.com/ch2/api/ccapi/v3/TourInfo/2014/01/3.0\">Today, board a typical Greek ship to Mykonos and take advantage of the amazing views across the Aegean and of the rocky islands with your camera.\n<br/><br/>Mykonos is famous for its blissful beaches and party culture. No matter what you’re after, chances are this island has got it!  You’ll soon understand why this happening hub draws people from all walks of life, from jetsetters to backpackers. \n<br/><br/>Head into Mykonos town and wander through the maze of tiny streets lined by whitewashed cube-shaped houses.  Maybe grab a table in the village and snack on fresh local specialties, like olives, feta and tzatziki dip.  \n<br/><br/>Chill for the evening with friends on the island’s world famous beaches and cool off in the azure waters. Wrap up the day with a drink at one of Mykonos’ hip bars and watch the sun go down.  But don’t stop there, toast the start of the cruise back on board and hit the ship’s nightclub with the group.</text>",
+					"LocationsVisited" : {
+						"Location" : [{
+								"CountryCode" : "GR",
+								"Name" : "Athens"
+							}, {
+								"CountryCode" : "GR",
+								"Name" : "Mykonos"
+							}
+						]
+					}
+				}, {
+					"Duration" : 1,
+					"StartDay" : 3,
+					"Title" : "Cruising to Patmos via Kusadasi",
+					"Text" : "<?xml version=\"1.0\" encoding=\"UTF-8\"?><text xmlns=\"http://www.ttc.com/ch2/api/ccapi/v3/TourInfo/2014/01/3.0\">In the morning, wake up to the Turkish port town of Kusadasi.  Rummage through the Grand Bazaar and go local bargaining for leather goods, jewellery or local crafts. Otherwise hook up with the group and our Local Guide for an optional excursion to ancient Ephesus, a stunningly preserved city that Mark Antony and Cleopatra once visited.   \n<br/><br/>Our next port of call is Patmos, with its sacred spots and wild countryside.  Get the background from your Rep on why this island attracts both pilgrims and holiday makers.   Explore the monasteries, traditional settlements and country churches.\n<br/><br/>Get into the spirit of the island with an optional excursion that takes you to Patmos’ UNESCO World Heritage sites: the 11th century Monastery of the Apocalypse and to the Grotto of St. John – the hilltop cave where John the Apostle lived for many years.</text>",
+					"LocationsVisited" : {
+						"Location" : [{
+								"CountryCode" : "TR",
+								"Name" : "Kusadasi"
+							}
+						]
+					}
+				}, {
+					"Duration" : 1,
+					"StartDay" : 4,
+					"Title" : "Cruising to Rhodes",
+					"Text" : "<?xml version=\"1.0\" encoding=\"UTF-8\"?><text xmlns=\"http://www.ttc.com/ch2/api/ccapi/v3/TourInfo/2014/01/3.0\">Next up is Rhodes, smack in the middle of three continents, serving up a mix of relics from different civilisations. Choose to learn more about the island as the group travels through history in an optional excursion with a Local Guide. Head up to the Acropolis of Lindos and wander within the walls of Rhode’s medieval town centre, now a UNESCO World Heritage site. \n<br/><br/>Use your free afternoon to explore the modern side of Rhodes or discover more of the old town. There’s some of the best shopping in the region with great prices on local goods like honey, olive oil, leather and silver.\n<br/><br/>Relax on the awesome beaches, put your feet up with a glass of local wine and order fresh seafood or calamari (squid rings) - typically Greek food!\n<br/><br/>Back on board, we set sail to the port of Heraklion.</text>",
+					"LocationsVisited" : {
+						"Location" : [{
+								"CountryCode" : "GR",
+								"Name" : "Rhodes"
+							}
+						]
+					}
+				}, {
+					"Duration" : 1,
+					"StartDay" : 5,
+					"Title" : "Cruising to Santorini via Crete",
+					"Text" : "<?xml version=\"1.0\" encoding=\"UTF-8\"?><text xmlns=\"http://www.ttc.com/ch2/api/ccapi/v3/TourInfo/2014/01/3.0\">Today we start the day off with a visit to the biggest of the Greek Islands, Crete.\n<br/><br/>Choose an optional excursion to the Palace of Knossos where our Local Guide will tell you the story of this 4000 year old mythical Minoan Palace, where the minotaur (half-man/half-bull) was slain. \n<br/><br/>Next up: Santorini.  This island will make your jaw drop with its stunning natural beauty – the result of a massive volcanic eruption.  From the water look up at the iconic blue–domed, whitewashed churches.\n<br/><br/>Once we’re back on land, head up the cliff and the twisting stone steps, save your breath on a donkey ride or take it easy in the cable car for views of neighbouring volcanic islands.\n<br/><br/>Your Rep will fill you in on Fira – dramatically perched on the edge of the crater - as the group explores its narrow streets.  Get tips on the best places to pick up a piece of Santorini’s famous jewellery and where to try out the delicious local speciality, domatoktedes (fried tomato balls). \n<br/><br/>Otherwise head to one of the distinctive black or red sand beaches, and soak up the breathtaking scenery.  You could jump on an optional boat ride out to the active volcanic island of Nea Kamini. Cruise past lava formations and get up close to the active crater.</text>",
+					"LocationsVisited" : {
+						"Location" : [{
+								"CountryCode" : "GR",
+								"Name" : "Crete"
+							}, {
+								"CountryCode" : "GR",
+								"Name" : "Santorini"
+							}
+						]
+					}
+				}, {
+					"Duration" : 1,
+					"StartDay" : 6,
+					"Title" : "Arrival into Athens",
+					"Text" : "<?xml version=\"1.0\" encoding=\"UTF-8\"?><text xmlns=\"http://www.ttc.com/ch2/api/ccapi/v3/TourInfo/2014/01/3.0\">After breakfast and a farewell to our hosts, we disembark and head to Syntagma Square. Set right in the heart of Athens and home to Greece’s parliament, you can either end the tour here or take the opportunity for a ME Time Locally Guided tour of the Acropolis &amp; Parthenon. Take the tour and make the most of your last experience with your fellow travellers… it’s worth it.</text>",
+					"LocationsVisited" : {
+						"Location" : [{
+								"CountryCode" : "GR",
+								"Name" : "Crete"
+							}, {
+								"CountryCode" : "GR",
+								"Name" : "Athens"
+							}
+						]
+					}
+				}
+			]
+		},
+		"WhatsIncluded" : {
+			"Section" : [{
+					"Title" : "Accommodation WITChamps-Élysées",
+					"Text" : "<?xml version=\"1.0\" encoding=\"UTF-8\"?><text xmlns=\"http://www.ttc.com/ch2/api/ccapi/v3/TourInfo/2014/01/3.0\"><ul><li>5 WIChamps-Élysées nights accommodation: 1 night in a hotel, 4 nights on board a cruise ship (quad or twin-share)</li><li>Fun filled entertainment on every night of the cruise</li></ul></text>"
+				}, {
+					"Title" : "Food",
+					"Text" : "<?xml version=\"1.0\" encoding=\"UTF-8\"?><text xmlns=\"http://www.ttc.com/ch2/api/ccapi/v3/TourInfo/2014/01/3.0\"><ul><li>5 buffet breakfasts</li><li>4 lunches</li><li>4 three-course dinners</li></ul></text>"
+				}, {
+					"Title" : "Staff",
+					"Text" : "<?xml version=\"1.0\" encoding=\"UTF-8\"?><text xmlns=\"http://www.ttc.com/ch2/api/ccapi/v3/TourInfo/2014/01/3.0\"><ul><li>On-board cruise representative</li></ul></text>"
+				}
+			]
+		},
+		"Highlights" : {
+			"Section" : [{
+					"Title" : "Athens to Mykonos",
+					"Text" : "<?xml version=\"1.0\" encoding=\"UTF-8\"?><text xmlns=\"http://www.ttc.com/ch2/api/ccapi/v3/TourInfo/2014/01/3.0\"><ul><li>Visit HTChamps-Élysées Mykonos town &amp; see the traditional Cycladic-style houses</li></ul></text>"
+				}, {
+					"Title" : "Cruising to Patmos via Kusadasi",
+					"Text" : "<?xml version=\"1.0\" encoding=\"UTF-8\"?><text xmlns=\"http://www.ttc.com/ch2/api/ccapi/v3/TourInfo/2014/01/3.0\"><ul><li>Visit Kusadasi's local bazaar</li><li>See the Monastery of St. John on Patmos</li></ul></text>"
+				}, {
+					"Title" : "Cruising to Rhodes",
+					"Text" : "<?xml version=\"1.0\" encoding=\"UTF-8\"?><text xmlns=\"http://www.ttc.com/ch2/api/ccapi/v3/TourInfo/2014/01/3.0\"><ul><li>See the fortified town of Rhodes</li></ul></text>"
+				}, {
+					"Title" : "Cruising to Santorini via Crete",
+					"Text" : "<?xml version=\"1.0\" encoding=\"UTF-8\"?><text xmlns=\"http://www.ttc.com/ch2/api/ccapi/v3/TourInfo/2014/01/3.0\"><ul><li>Visit Heraklion town</li><li>Visit the main town of Fira</li><li>See the spectacular volcanic islands surrounding Santorini</li></ul></text>"
+				}
+			]
+		}
+	},
+	"TourDeparturesSimp" : {
+		"TourCode" : "66633SPECIAL",
+		"OnlineBookable" : true,
+		"OperatingProductCode" : "CE6CGSIM10",
+		"SellingCompany" : {
+			"Code" : "CHSYDS",
+			"CurrencyCode" : "AUD",
+			"InventoryBrochureCode" : "CHEUAU15T",
+			"Departures" : {
+				"Departure" : [{
+						"DepartureCode" : "29C15a",
+						"AvailabilityStatus" : "Available",
+						"StartDateTime" : "2015-03-29T00:00:00",
+						"Month" : 3,
+						"EndDateTime" : "2015-04-03T00:00:00",
+						"DateRangeIncludesTravelTime" : false,
+						"DefiniteDeparture" : true,
+						"Notes" : "",
+						"TourRules" : {
+							"Passengers" : {
+								"Passenger" : [{
+										"Type" : "Adult",
+										"AgeFrom" : 18,
+										"AgeTo" : 35
+									}
+								]
+							},
+							"Rooms" : {
+								"Room" : [{
+										"OccupancyRule" : {
+											"MaximumAdults" : 1,
+											"MaximumPassengers" : 1,
+											"MinimumAdults" : 1,
+											"MinimumPassengers" : 1,
+											"MinimumPayingAdults" : 1
+										},
+										"Price" : {
+											"Adult" : {
+												"Base" : 1280.00,
+												"Combined" : 1570.00
+											},
+											"Child" : {
+												"Base" : 1280.00,
+												"Combined" : 1280.00
+											}
+										},
+										"Type" : "Single"
+									}, {
+										"OccupancyRule" : {
+											"MaximumAdults" : 2,
+											"MaximumPassengers" : 2,
+											"MinimumAdults" : 2,
+											"MinimumPassengers" : 2,
+											"MinimumPayingAdults" : 2
+										},
+										"Price" : {
+											"Adult" : {
+												"Base" : 1095.00,
+												"Combined" : 1385.00
+											},
+											"Child" : {
+												"Base" : 1095.00,
+												"Combined" : 1095.00
+											}
+										},
+										"Type" : "Twin"
+									}, {
+										"OccupancyRule" : {
+											"MaximumAdults" : 2,
+											"MaximumPassengers" : 2,
+											"MinimumAdults" : 1,
+											"MinimumPassengers" : 1,
+											"MinimumPayingAdults" : 1
+										},
+										"Price" : {
+											"Adult" : {
+												"Base" : 1095.00,
+												"Combined" : 1385.00
+											},
+											"Child" : {
+												"Base" : 1095.00,
+												"Combined" : 1095.00
+											}
+										},
+										"Type" : "TwinShare"
+									}, {
+										"OccupancyRule" : {
+											"MaximumAdults" : 4,
+											"MaximumPassengers" : 4,
+											"MinimumAdults" : 4,
+											"MinimumPassengers" : 4,
+											"MinimumPayingAdults" : 4
+										},
+										"Price" : {
+											"Adult" : {
+												"Base" : 825.00,
+												"Combined" : 1115.00
+											},
+											"Child" : {
+												"Base" : 825.00,
+												"Combined" : 825.00
+											}
+										},
+										"Type" : "Quad"
+									}, {
+										"OccupancyRule" : {
+											"MaximumAdults" : 4,
+											"MaximumPassengers" : 4,
+											"MinimumAdults" : 1,
+											"MinimumPassengers" : 1,
+											"MinimumPayingAdults" : 1
+										},
+										"Price" : {
+											"Adult" : {
+												"Base" : 825.00,
+												"Combined" : 1115.00
+											},
+											"Child" : {
+												"Base" : 825.00,
+												"Combined" : 825.00
+											}
+										},
+										"Type" : "QuadShare"
+									}
+								]
+							},
+							"CombinedIncludedCharges" : {
+								"MandatoryMiscellaneousProducts" : {
+									"MiscellaneousProduct" : [{
+											"Code" : "CLOUISC",
+											"Category" : "Voucher Only",
+											"Name" : "Celestyal Cruise Information",
+											"Price" : {
+												"Adult" : 0.00,
+												"Child" : 0.00
+											}
+										}
+									]
+								},
+								"PortTax" : {
+									"Price" : {
+										"Adult" : 290.00,
+										"Child" : 0.00
+									}
+								}
+							},
+							"PriceIsIndicative" : false,
+							"IsEligibleForFrequentTravellerDiscount" : false,
+							"CanSearchForFlights" : false
+						},
+						"AssociatedProducts" : {
+							"AccommodationProducts" : {
+								"AccommodationProduct" : [{
+										"Type" : "PreAccommodation",
+										"Code" : "CATPRS0",
+										"Name" : "President Hotel",
+										"Address" : {
+											"Line1" : "43 Kifissias Avenue",
+											"City" : "Athens",
+											"Region" : "Attiki",
+											"Postcode" : "11523",
+											"Country" : "Greece"
+										},
+										"Rooms" : {
+											"Room" : [{
+													"Type" : "Single",
+													"Price" : {
+														"Adult" : 180.00,
+														"Child" : 180.00
+													}
+												}, {
+													"Type" : "Twin",
+													"Price" : {
+														"Adult" : 105.00,
+														"Child" : 105.00
+													}
+												}
+											]
+										}
+									}, {
+										"Type" : "PostAccommodation",
+										"Code" : "CATPRS0",
+										"Name" : "President Hotel",
+										"Address" : {
+											"Line1" : "43 Kifissias Avenue",
+											"City" : "Athens",
+											"Region" : "Attiki",
+											"Postcode" : "11523",
+											"Country" : "Greece"
+										},
+										"Rooms" : {
+											"Room" : [{
+													"Type" : "Single",
+													"Price" : {
+														"Adult" : 180.00,
+														"Child" : 180.00
+													}
+												}, {
+													"Type" : "Twin",
+													"Price" : {
+														"Adult" : 105.00,
+														"Child" : 105.00
+													}
+												}
+											]
+										}
+									}
+								]
+							},
+							"MiscellaneousProducts" : {
+								"MiscellaneousProduct" : [{
+										"Code" : "CGSPAU9",
+										"Category" : "Gold Seal Protection",
+										"Name" : "Gold Seal Protection",
+										"Price" : {
+											"Adult" : 99.00,
+											"Child" : 99.00
+										}
+									}
+								]
+							}
+						}
+					}, {
+						"DepartureCode" : "05D15a",
+						"AvailabilityStatus" : "Available",
+						"StartDateTime" : "2015-04-05T00:00:00",
+						"Month" : 4,
+						"EndDateTime" : "2015-04-10T00:00:00",
+						"DateRangeIncludesTravelTime" : false,
+						"DefiniteDeparture" : true,
+						"Notes" : "",
+						"TourRules" : {
+							"Passengers" : {
+								"Passenger" : [{
+										"Type" : "Adult",
+										"AgeFrom" : 18,
+										"AgeTo" : 35
+									}
+								]
+							},
+							"Rooms" : {
+								"Room" : [{
+										"OccupancyRule" : {
+											"MaximumAdults" : 1,
+											"MaximumPassengers" : 1,
+											"MinimumAdults" : 1,
+											"MinimumPassengers" : 1,
+											"MinimumPayingAdults" : 1
+										},
+										"Price" : {
+											"Adult" : {
+												"Base" : 1280.00,
+												"Combined" : 1570.00
+											},
+											"Child" : {
+												"Base" : 1280.00,
+												"Combined" : 1280.00
+											}
+										},
+										"Type" : "Single"
+									}, {
+										"OccupancyRule" : {
+											"MaximumAdults" : 2,
+											"MaximumPassengers" : 2,
+											"MinimumAdults" : 2,
+											"MinimumPassengers" : 2,
+											"MinimumPayingAdults" : 2
+										},
+										"Price" : {
+											"Adult" : {
+												"Base" : 1095.00,
+												"Combined" : 1385.00
+											},
+											"Child" : {
+												"Base" : 1095.00,
+												"Combined" : 1095.00
+											}
+										},
+										"Type" : "Twin"
+									}, {
+										"OccupancyRule" : {
+											"MaximumAdults" : 2,
+											"MaximumPassengers" : 2,
+											"MinimumAdults" : 1,
+											"MinimumPassengers" : 1,
+											"MinimumPayingAdults" : 1
+										},
+										"Price" : {
+											"Adult" : {
+												"Base" : 1095.00,
+												"Combined" : 1385.00
+											},
+											"Child" : {
+												"Base" : 1095.00,
+												"Combined" : 1095.00
+											}
+										},
+										"Type" : "TwinShare"
+									}, {
+										"OccupancyRule" : {
+											"MaximumAdults" : 4,
+											"MaximumPassengers" : 4,
+											"MinimumAdults" : 4,
+											"MinimumPassengers" : 4,
+											"MinimumPayingAdults" : 4
+										},
+										"Price" : {
+											"Adult" : {
+												"Base" : 825.00,
+												"Combined" : 1115.00
+											},
+											"Child" : {
+												"Base" : 825.00,
+												"Combined" : 825.00
+											}
+										},
+										"Type" : "Quad"
+									}, {
+										"OccupancyRule" : {
+											"MaximumAdults" : 4,
+											"MaximumPassengers" : 4,
+											"MinimumAdults" : 1,
+											"MinimumPassengers" : 1,
+											"MinimumPayingAdults" : 1
+										},
+										"Price" : {
+											"Adult" : {
+												"Base" : 825.00,
+												"Combined" : 1115.00
+											},
+											"Child" : {
+												"Base" : 825.00,
+												"Combined" : 825.00
+											}
+										},
+										"Type" : "QuadShare"
+									}
+								]
+							},
+							"CombinedIncludedCharges" : {
+								"MandatoryMiscellaneousProducts" : {
+									"MiscellaneousProduct" : [{
+											"Code" : "CLOUISC",
+											"Category" : "Voucher Only",
+											"Name" : "Celestyal Cruise Information",
+											"Price" : {
+												"Adult" : 0.00,
+												"Child" : 0.00
+											}
+										}
+									]
+								},
+								"PortTax" : {
+									"Price" : {
+										"Adult" : 290.00,
+										"Child" : 0.00
+									}
+								}
+							},
+							"PriceIsIndicative" : false,
+							"IsEligibleForFrequentTravellerDiscount" : false,
+							"CanSearchForFlights" : false
+						},
+						"AssociatedProducts" : {
+							"AccommodationProducts" : {
+								"AccommodationProduct" : [{
+										"Type" : "PreAccommodation",
+										"Code" : "CATPRS0",
+										"Name" : "President Hotel",
+										"Address" : {
+											"Line1" : "43 Kifissias Avenue",
+											"City" : "Athens",
+											"Region" : "Attiki",
+											"Postcode" : "11523",
+											"Country" : "Greece"
+										},
+										"Rooms" : {
+											"Room" : [{
+													"Type" : "Single",
+													"Price" : {
+														"Adult" : 180.00,
+														"Child" : 180.00
+													}
+												}, {
+													"Type" : "Twin",
+													"Price" : {
+														"Adult" : 105.00,
+														"Child" : 105.00
+													}
+												}
+											]
+										}
+									}, {
+										"Type" : "PostAccommodation",
+										"Code" : "CATPRS0",
+										"Name" : "President Hotel",
+										"Address" : {
+											"Line1" : "43 Kifissias Avenue",
+											"City" : "Athens",
+											"Region" : "Attiki",
+											"Postcode" : "11523",
+											"Country" : "Greece"
+										},
+										"Rooms" : {
+											"Room" : [{
+													"Type" : "Single",
+													"Price" : {
+														"Adult" : 180.00,
+														"Child" : 180.00
+													}
+												}, {
+													"Type" : "Twin",
+													"Price" : {
+														"Adult" : 105.00,
+														"Child" : 105.00
+													}
+												}
+											]
+										}
+									}
+								]
+							},
+							"MiscellaneousProducts" : {
+								"MiscellaneousProduct" : [{
+										"Code" : "CGSPAU9",
+										"Category" : "Gold Seal Protection",
+										"Name" : "Gold Seal Protection",
+										"Price" : {
+											"Adult" : 99.00,
+											"Child" : 99.00
+										}
+									}
+								]
+							}
+						}
+					}, {
+						"DepartureCode" : "12D15a",
+						"AvailabilityStatus" : "Available",
+						"StartDateTime" : "2015-04-12T00:00:00",
+						"Month" : 4,
+						"EndDateTime" : "2015-04-17T00:00:00",
+						"DateRangeIncludesTravelTime" : false,
+						"DefiniteDeparture" : true,
+						"Notes" : "",
+						"TourRules" : {
+							"Passengers" : {
+								"Passenger" : [{
+										"Type" : "Adult",
+										"AgeFrom" : 18,
+										"AgeTo" : 35
+									}
+								]
+							},
+							"Rooms" : {
+								"Room" : [{
+										"OccupancyRule" : {
+											"MaximumAdults" : 1,
+											"MaximumPassengers" : 1,
+											"MinimumAdults" : 1,
+											"MinimumPassengers" : 1,
+											"MinimumPayingAdults" : 1
+										},
+										"Price" : {
+											"Adult" : {
+												"Base" : 1280.00,
+												"Combined" : 1570.00
+											},
+											"Child" : {
+												"Base" : 1280.00,
+												"Combined" : 1280.00
+											}
+										},
+										"Type" : "Single"
+									}, {
+										"OccupancyRule" : {
+											"MaximumAdults" : 2,
+											"MaximumPassengers" : 2,
+											"MinimumAdults" : 2,
+											"MinimumPassengers" : 2,
+											"MinimumPayingAdults" : 2
+										},
+										"Price" : {
+											"Adult" : {
+												"Base" : 1095.00,
+												"Combined" : 1385.00
+											},
+											"Child" : {
+												"Base" : 1095.00,
+												"Combined" : 1095.00
+											}
+										},
+										"Type" : "Twin"
+									}, {
+										"OccupancyRule" : {
+											"MaximumAdults" : 2,
+											"MaximumPassengers" : 2,
+											"MinimumAdults" : 1,
+											"MinimumPassengers" : 1,
+											"MinimumPayingAdults" : 1
+										},
+										"Price" : {
+											"Adult" : {
+												"Base" : 1095.00,
+												"Combined" : 1385.00
+											},
+											"Child" : {
+												"Base" : 1095.00,
+												"Combined" : 1095.00
+											}
+										},
+										"Type" : "TwinShare"
+									}, {
+										"OccupancyRule" : {
+											"MaximumAdults" : 4,
+											"MaximumPassengers" : 4,
+											"MinimumAdults" : 4,
+											"MinimumPassengers" : 4,
+											"MinimumPayingAdults" : 4
+										},
+										"Price" : {
+											"Adult" : {
+												"Base" : 825.00,
+												"Combined" : 1115.00
+											},
+											"Child" : {
+												"Base" : 825.00,
+												"Combined" : 825.00
+											}
+										},
+										"Type" : "Quad"
+									}, {
+										"OccupancyRule" : {
+											"MaximumAdults" : 4,
+											"MaximumPassengers" : 4,
+											"MinimumAdults" : 1,
+											"MinimumPassengers" : 1,
+											"MinimumPayingAdults" : 1
+										},
+										"Price" : {
+											"Adult" : {
+												"Base" : 825.00,
+												"Combined" : 1115.00
+											},
+											"Child" : {
+												"Base" : 825.00,
+												"Combined" : 825.00
+											}
+										},
+										"Type" : "QuadShare"
+									}
+								]
+							},
+							"CombinedIncludedCharges" : {
+								"MandatoryMiscellaneousProducts" : {
+									"MiscellaneousProduct" : [{
+											"Code" : "CLOUISC",
+											"Category" : "Voucher Only",
+											"Name" : "Celestyal Cruise Information",
+											"Price" : {
+												"Adult" : 0.00,
+												"Child" : 0.00
+											}
+										}
+									]
+								},
+								"PortTax" : {
+									"Price" : {
+										"Adult" : 290.00,
+										"Child" : 0.00
+									}
+								}
+							},
+							"PriceIsIndicative" : false,
+							"IsEligibleForFrequentTravellerDiscount" : false,
+							"CanSearchForFlights" : false
+						},
+						"AssociatedProducts" : {
+							"AccommodationProducts" : {
+								"AccommodationProduct" : [{
+										"Type" : "PreAccommodation",
+										"Code" : "CATPRS0",
+										"Name" : "President Hotel",
+										"Address" : {
+											"Line1" : "43 Kifissias Avenue",
+											"City" : "Athens",
+											"Region" : "Attiki",
+											"Postcode" : "11523",
+											"Country" : "Greece"
+										},
+										"Rooms" : {
+											"Room" : [{
+													"Type" : "Single",
+													"Price" : {
+														"Adult" : 180.00,
+														"Child" : 180.00
+													}
+												}, {
+													"Type" : "Twin",
+													"Price" : {
+														"Adult" : 105.00,
+														"Child" : 105.00
+													}
+												}
+											]
+										}
+									}, {
+										"Type" : "PostAccommodation",
+										"Code" : "CATPRS0",
+										"Name" : "President Hotel",
+										"Address" : {
+											"Line1" : "43 Kifissias Avenue",
+											"City" : "Athens",
+											"Region" : "Attiki",
+											"Postcode" : "11523",
+											"Country" : "Greece"
+										},
+										"Rooms" : {
+											"Room" : [{
+													"Type" : "Single",
+													"Price" : {
+														"Adult" : 180.00,
+														"Child" : 180.00
+													}
+												}, {
+													"Type" : "Twin",
+													"Price" : {
+														"Adult" : 105.00,
+														"Child" : 105.00
+													}
+												}
+											]
+										}
+									}
+								]
+							},
+							"MiscellaneousProducts" : {
+								"MiscellaneousProduct" : [{
+										"Code" : "CGSPAU9",
+										"Category" : "Gold Seal Protection",
+										"Name" : "Gold Seal Protection",
+										"Price" : {
+											"Adult" : 99.00,
+											"Child" : 99.00
+										}
+									}
+								]
+							}
+						}
+					}, {
+						"DepartureCode" : "19D15a",
+						"AvailabilityStatus" : "Available",
+						"StartDateTime" : "2015-04-19T00:00:00",
+						"Month" : 4,
+						"EndDateTime" : "2015-04-24T00:00:00",
+						"DateRangeIncludesTravelTime" : false,
+						"DefiniteDeparture" : true,
+						"Notes" : "",
+						"TourRules" : {
+							"Passengers" : {
+								"Passenger" : [{
+										"Type" : "Adult",
+										"AgeFrom" : 18,
+										"AgeTo" : 35
+									}
+								]
+							},
+							"Rooms" : {
+								"Room" : [{
+										"OccupancyRule" : {
+											"MaximumAdults" : 1,
+											"MaximumPassengers" : 1,
+											"MinimumAdults" : 1,
+											"MinimumPassengers" : 1,
+											"MinimumPayingAdults" : 1
+										},
+										"Price" : {
+											"Adult" : {
+												"Base" : 1280.00,
+												"Combined" : 1570.00
+											},
+											"Child" : {
+												"Base" : 1280.00,
+												"Combined" : 1280.00
+											}
+										},
+										"Type" : "Single"
+									}, {
+										"OccupancyRule" : {
+											"MaximumAdults" : 2,
+											"MaximumPassengers" : 2,
+											"MinimumAdults" : 2,
+											"MinimumPassengers" : 2,
+											"MinimumPayingAdults" : 2
+										},
+										"Price" : {
+											"Adult" : {
+												"Base" : 1095.00,
+												"Combined" : 1385.00
+											},
+											"Child" : {
+												"Base" : 1095.00,
+												"Combined" : 1095.00
+											}
+										},
+										"Type" : "Twin"
+									}, {
+										"OccupancyRule" : {
+											"MaximumAdults" : 2,
+											"MaximumPassengers" : 2,
+											"MinimumAdults" : 1,
+											"MinimumPassengers" : 1,
+											"MinimumPayingAdults" : 1
+										},
+										"Price" : {
+											"Adult" : {
+												"Base" : 1095.00,
+												"Combined" : 1385.00
+											},
+											"Child" : {
+												"Base" : 1095.00,
+												"Combined" : 1095.00
+											}
+										},
+										"Type" : "TwinShare"
+									}, {
+										"OccupancyRule" : {
+											"MaximumAdults" : 4,
+											"MaximumPassengers" : 4,
+											"MinimumAdults" : 4,
+											"MinimumPassengers" : 4,
+											"MinimumPayingAdults" : 4
+										},
+										"Price" : {
+											"Adult" : {
+												"Base" : 825.00,
+												"Combined" : 1115.00
+											},
+											"Child" : {
+												"Base" : 825.00,
+												"Combined" : 825.00
+											}
+										},
+										"Type" : "Quad"
+									}, {
+										"OccupancyRule" : {
+											"MaximumAdults" : 4,
+											"MaximumPassengers" : 4,
+											"MinimumAdults" : 1,
+											"MinimumPassengers" : 1,
+											"MinimumPayingAdults" : 1
+										},
+										"Price" : {
+											"Adult" : {
+												"Base" : 825.00,
+												"Combined" : 1115.00
+											},
+											"Child" : {
+												"Base" : 825.00,
+												"Combined" : 825.00
+											}
+										},
+										"Type" : "QuadShare"
+									}
+								]
+							},
+							"CombinedIncludedCharges" : {
+								"MandatoryMiscellaneousProducts" : {
+									"MiscellaneousProduct" : [{
+											"Code" : "CLOUISC",
+											"Category" : "Voucher Only",
+											"Name" : "Celestyal Cruise Information",
+											"Price" : {
+												"Adult" : 0.00,
+												"Child" : 0.00
+											}
+										}
+									]
+								},
+								"PortTax" : {
+									"Price" : {
+										"Adult" : 290.00,
+										"Child" : 0.00
+									}
+								}
+							},
+							"PriceIsIndicative" : false,
+							"IsEligibleForFrequentTravellerDiscount" : false,
+							"CanSearchForFlights" : false
+						},
+						"AssociatedProducts" : {
+							"AccommodationProducts" : {
+								"AccommodationProduct" : [{
+										"Type" : "PreAccommodation",
+										"Code" : "CATPRS0",
+										"Name" : "President Hotel",
+										"Address" : {
+											"Line1" : "43 Kifissias Avenue",
+											"City" : "Athens",
+											"Region" : "Attiki",
+											"Postcode" : "11523",
+											"Country" : "Greece"
+										},
+										"Rooms" : {
+											"Room" : [{
+													"Type" : "Single",
+													"Price" : {
+														"Adult" : 180.00,
+														"Child" : 180.00
+													}
+												}, {
+													"Type" : "Twin",
+													"Price" : {
+														"Adult" : 105.00,
+														"Child" : 105.00
+													}
+												}
+											]
+										}
+									}, {
+										"Type" : "PostAccommodation",
+										"Code" : "CATPRS0",
+										"Name" : "President Hotel",
+										"Address" : {
+											"Line1" : "43 Kifissias Avenue",
+											"City" : "Athens",
+											"Region" : "Attiki",
+											"Postcode" : "11523",
+											"Country" : "Greece"
+										},
+										"Rooms" : {
+											"Room" : [{
+													"Type" : "Single",
+													"Price" : {
+														"Adult" : 180.00,
+														"Child" : 180.00
+													}
+												}, {
+													"Type" : "Twin",
+													"Price" : {
+														"Adult" : 105.00,
+														"Child" : 105.00
+													}
+												}
+											]
+										}
+									}
+								]
+							},
+							"MiscellaneousProducts" : {
+								"MiscellaneousProduct" : [{
+										"Code" : "CGSPAU9",
+										"Category" : "Gold Seal Protection",
+										"Name" : "Gold Seal Protection",
+										"Price" : {
+											"Adult" : 99.00,
+											"Child" : 99.00
+										}
+									}
+								]
+							}
+						}
+					}, {
+						"DepartureCode" : "26D15a",
+						"AvailabilityStatus" : "Available",
+						"StartDateTime" : "2015-04-26T00:00:00",
+						"Month" : 4,
+						"EndDateTime" : "2015-05-01T00:00:00",
+						"DateRangeIncludesTravelTime" : false,
+						"DefiniteDeparture" : true,
+						"Notes" : "",
+						"TourRules" : {
+							"Passengers" : {
+								"Passenger" : [{
+										"Type" : "Adult",
+										"AgeFrom" : 18,
+										"AgeTo" : 35
+									}
+								]
+							},
+							"Rooms" : {
+								"Room" : [{
+										"OccupancyRule" : {
+											"MaximumAdults" : 1,
+											"MaximumPassengers" : 1,
+											"MinimumAdults" : 1,
+											"MinimumPassengers" : 1,
+											"MinimumPayingAdults" : 1
+										},
+										"Price" : {
+											"Adult" : {
+												"Base" : 1280.00,
+												"Combined" : 1570.00
+											},
+											"Child" : {
+												"Base" : 1280.00,
+												"Combined" : 1280.00
+											}
+										},
+										"Type" : "Single"
+									}, {
+										"OccupancyRule" : {
+											"MaximumAdults" : 2,
+											"MaximumPassengers" : 2,
+											"MinimumAdults" : 2,
+											"MinimumPassengers" : 2,
+											"MinimumPayingAdults" : 2
+										},
+										"Price" : {
+											"Adult" : {
+												"Base" : 1095.00,
+												"Combined" : 1385.00
+											},
+											"Child" : {
+												"Base" : 1095.00,
+												"Combined" : 1095.00
+											}
+										},
+										"Type" : "Twin"
+									}, {
+										"OccupancyRule" : {
+											"MaximumAdults" : 2,
+											"MaximumPassengers" : 2,
+											"MinimumAdults" : 1,
+											"MinimumPassengers" : 1,
+											"MinimumPayingAdults" : 1
+										},
+										"Price" : {
+											"Adult" : {
+												"Base" : 1095.00,
+												"Combined" : 1385.00
+											},
+											"Child" : {
+												"Base" : 1095.00,
+												"Combined" : 1095.00
+											}
+										},
+										"Type" : "TwinShare"
+									}, {
+										"OccupancyRule" : {
+											"MaximumAdults" : 4,
+											"MaximumPassengers" : 4,
+											"MinimumAdults" : 4,
+											"MinimumPassengers" : 4,
+											"MinimumPayingAdults" : 4
+										},
+										"Price" : {
+											"Adult" : {
+												"Base" : 825.00,
+												"Combined" : 1115.00
+											},
+											"Child" : {
+												"Base" : 825.00,
+												"Combined" : 825.00
+											}
+										},
+										"Type" : "Quad"
+									}, {
+										"OccupancyRule" : {
+											"MaximumAdults" : 4,
+											"MaximumPassengers" : 4,
+											"MinimumAdults" : 1,
+											"MinimumPassengers" : 1,
+											"MinimumPayingAdults" : 1
+										},
+										"Price" : {
+											"Adult" : {
+												"Base" : 825.00,
+												"Combined" : 1115.00
+											},
+											"Child" : {
+												"Base" : 825.00,
+												"Combined" : 825.00
+											}
+										},
+										"Type" : "QuadShare"
+									}
+								]
+							},
+							"CombinedIncludedCharges" : {
+								"MandatoryMiscellaneousProducts" : {
+									"MiscellaneousProduct" : [{
+											"Code" : "CLOUISC",
+											"Category" : "Voucher Only",
+											"Name" : "Celestyal Cruise Information",
+											"Price" : {
+												"Adult" : 0.00,
+												"Child" : 0.00
+											}
+										}
+									]
+								},
+								"PortTax" : {
+									"Price" : {
+										"Adult" : 290.00,
+										"Child" : 0.00
+									}
+								}
+							},
+							"PriceIsIndicative" : false,
+							"IsEligibleForFrequentTravellerDiscount" : false,
+							"CanSearchForFlights" : false
+						},
+						"AssociatedProducts" : {
+							"AccommodationProducts" : {
+								"AccommodationProduct" : [{
+										"Type" : "PreAccommodation",
+										"Code" : "CATPRS0",
+										"Name" : "President Hotel",
+										"Address" : {
+											"Line1" : "43 Kifissias Avenue",
+											"City" : "Athens",
+											"Region" : "Attiki",
+											"Postcode" : "11523",
+											"Country" : "Greece"
+										},
+										"Rooms" : {
+											"Room" : [{
+													"Type" : "Single",
+													"Price" : {
+														"Adult" : 180.00,
+														"Child" : 180.00
+													}
+												}, {
+													"Type" : "Twin",
+													"Price" : {
+														"Adult" : 105.00,
+														"Child" : 105.00
+													}
+												}
+											]
+										}
+									}, {
+										"Type" : "PostAccommodation",
+										"Code" : "CATPRS0",
+										"Name" : "President Hotel",
+										"Address" : {
+											"Line1" : "43 Kifissias Avenue",
+											"City" : "Athens",
+											"Region" : "Attiki",
+											"Postcode" : "11523",
+											"Country" : "Greece"
+										},
+										"Rooms" : {
+											"Room" : [{
+													"Type" : "Single",
+													"Price" : {
+														"Adult" : 180.00,
+														"Child" : 180.00
+													}
+												}, {
+													"Type" : "Twin",
+													"Price" : {
+														"Adult" : 105.00,
+														"Child" : 105.00
+													}
+												}
+											]
+										}
+									}
+								]
+							},
+							"MiscellaneousProducts" : {
+								"MiscellaneousProduct" : [{
+										"Code" : "CGSPAU9",
+										"Category" : "Gold Seal Protection",
+										"Name" : "Gold Seal Protection",
+										"Price" : {
+											"Adult" : 99.00,
+											"Child" : 99.00
+										}
+									}
+								]
+							}
+						}
+					}, {
+						"DepartureCode" : "03E15a",
+						"AvailabilityStatus" : "Available",
+						"StartDateTime" : "2015-05-03T00:00:00",
+						"Month" : 5,
+						"EndDateTime" : "2015-05-08T00:00:00",
+						"DateRangeIncludesTravelTime" : false,
+						"DefiniteDeparture" : true,
+						"Notes" : "",
+						"TourRules" : {
+							"Passengers" : {
+								"Passenger" : [{
+										"Type" : "Adult",
+										"AgeFrom" : 18,
+										"AgeTo" : 35
+									}
+								]
+							},
+							"Rooms" : {
+								"Room" : [{
+										"OccupancyRule" : {
+											"MaximumAdults" : 1,
+											"MaximumPassengers" : 1,
+											"MinimumAdults" : 1,
+											"MinimumPassengers" : 1,
+											"MinimumPayingAdults" : 1
+										},
+										"Price" : {
+											"Adult" : {
+												"Base" : 1280.00,
+												"Combined" : 1570.00
+											},
+											"Child" : {
+												"Base" : 1280.00,
+												"Combined" : 1280.00
+											}
+										},
+										"Type" : "Single"
+									}, {
+										"OccupancyRule" : {
+											"MaximumAdults" : 2,
+											"MaximumPassengers" : 2,
+											"MinimumAdults" : 2,
+											"MinimumPassengers" : 2,
+											"MinimumPayingAdults" : 2
+										},
+										"Price" : {
+											"Adult" : {
+												"Base" : 1095.00,
+												"Combined" : 1385.00
+											},
+											"Child" : {
+												"Base" : 1095.00,
+												"Combined" : 1095.00
+											}
+										},
+										"Type" : "Twin"
+									}, {
+										"OccupancyRule" : {
+											"MaximumAdults" : 2,
+											"MaximumPassengers" : 2,
+											"MinimumAdults" : 1,
+											"MinimumPassengers" : 1,
+											"MinimumPayingAdults" : 1
+										},
+										"Price" : {
+											"Adult" : {
+												"Base" : 1095.00,
+												"Combined" : 1385.00
+											},
+											"Child" : {
+												"Base" : 1095.00,
+												"Combined" : 1095.00
+											}
+										},
+										"Type" : "TwinShare"
+									}, {
+										"OccupancyRule" : {
+											"MaximumAdults" : 4,
+											"MaximumPassengers" : 4,
+											"MinimumAdults" : 4,
+											"MinimumPassengers" : 4,
+											"MinimumPayingAdults" : 4
+										},
+										"Price" : {
+											"Adult" : {
+												"Base" : 825.00,
+												"Combined" : 1115.00
+											},
+											"Child" : {
+												"Base" : 825.00,
+												"Combined" : 825.00
+											}
+										},
+										"Type" : "Quad"
+									}, {
+										"OccupancyRule" : {
+											"MaximumAdults" : 4,
+											"MaximumPassengers" : 4,
+											"MinimumAdults" : 1,
+											"MinimumPassengers" : 1,
+											"MinimumPayingAdults" : 1
+										},
+										"Price" : {
+											"Adult" : {
+												"Base" : 825.00,
+												"Combined" : 1115.00
+											},
+											"Child" : {
+												"Base" : 825.00,
+												"Combined" : 825.00
+											}
+										},
+										"Type" : "QuadShare"
+									}
+								]
+							},
+							"CombinedIncludedCharges" : {
+								"MandatoryMiscellaneousProducts" : {
+									"MiscellaneousProduct" : [{
+											"Code" : "CLOUISC",
+											"Category" : "Voucher Only",
+											"Name" : "Celestyal Cruise Information",
+											"Price" : {
+												"Adult" : 0.00,
+												"Child" : 0.00
+											}
+										}
+									]
+								},
+								"PortTax" : {
+									"Price" : {
+										"Adult" : 290.00,
+										"Child" : 0.00
+									}
+								}
+							},
+							"PriceIsIndicative" : false,
+							"IsEligibleForFrequentTravellerDiscount" : false,
+							"CanSearchForFlights" : false
+						},
+						"AssociatedProducts" : {
+							"AccommodationProducts" : {
+								"AccommodationProduct" : [{
+										"Type" : "PreAccommodation",
+										"Code" : "CATPRS0",
+										"Name" : "President Hotel",
+										"Address" : {
+											"Line1" : "43 Kifissias Avenue",
+											"City" : "Athens",
+											"Region" : "Attiki",
+											"Postcode" : "11523",
+											"Country" : "Greece"
+										},
+										"Rooms" : {
+											"Room" : [{
+													"Type" : "Single",
+													"Price" : {
+														"Adult" : 180.00,
+														"Child" : 180.00
+													}
+												}, {
+													"Type" : "Twin",
+													"Price" : {
+														"Adult" : 105.00,
+														"Child" : 105.00
+													}
+												}
+											]
+										}
+									}, {
+										"Type" : "PostAccommodation",
+										"Code" : "CATPRS0",
+										"Name" : "President Hotel",
+										"Address" : {
+											"Line1" : "43 Kifissias Avenue",
+											"City" : "Athens",
+											"Region" : "Attiki",
+											"Postcode" : "11523",
+											"Country" : "Greece"
+										},
+										"Rooms" : {
+											"Room" : [{
+													"Type" : "Single",
+													"Price" : {
+														"Adult" : 180.00,
+														"Child" : 180.00
+													}
+												}, {
+													"Type" : "Twin",
+													"Price" : {
+														"Adult" : 105.00,
+														"Child" : 105.00
+													}
+												}
+											]
+										}
+									}
+								]
+							},
+							"MiscellaneousProducts" : {
+								"MiscellaneousProduct" : [{
+										"Code" : "CGSPAU9",
+										"Category" : "Gold Seal Protection",
+										"Name" : "Gold Seal Protection",
+										"Price" : {
+											"Adult" : 99.00,
+											"Child" : 99.00
+										}
+									}
+								]
+							}
+						}
+					}, {
+						"DepartureCode" : "10E15a",
+						"AvailabilityStatus" : "Available",
+						"StartDateTime" : "2015-05-10T00:00:00",
+						"Month" : 5,
+						"EndDateTime" : "2015-05-15T00:00:00",
+						"DateRangeIncludesTravelTime" : false,
+						"DefiniteDeparture" : true,
+						"Notes" : "",
+						"TourRules" : {
+							"Passengers" : {
+								"Passenger" : [{
+										"Type" : "Adult",
+										"AgeFrom" : 18,
+										"AgeTo" : 35
+									}
+								]
+							},
+							"Rooms" : {
+								"Room" : [{
+										"OccupancyRule" : {
+											"MaximumAdults" : 1,
+											"MaximumPassengers" : 1,
+											"MinimumAdults" : 1,
+											"MinimumPassengers" : 1,
+											"MinimumPayingAdults" : 1
+										},
+										"Price" : {
+											"Adult" : {
+												"Base" : 1280.00,
+												"Combined" : 1570.00
+											},
+											"Child" : {
+												"Base" : 1280.00,
+												"Combined" : 1280.00
+											}
+										},
+										"Type" : "Single"
+									}, {
+										"OccupancyRule" : {
+											"MaximumAdults" : 2,
+											"MaximumPassengers" : 2,
+											"MinimumAdults" : 2,
+											"MinimumPassengers" : 2,
+											"MinimumPayingAdults" : 2
+										},
+										"Price" : {
+											"Adult" : {
+												"Base" : 1095.00,
+												"Combined" : 1385.00
+											},
+											"Child" : {
+												"Base" : 1095.00,
+												"Combined" : 1095.00
+											}
+										},
+										"Type" : "Twin"
+									}, {
+										"OccupancyRule" : {
+											"MaximumAdults" : 2,
+											"MaximumPassengers" : 2,
+											"MinimumAdults" : 1,
+											"MinimumPassengers" : 1,
+											"MinimumPayingAdults" : 1
+										},
+										"Price" : {
+											"Adult" : {
+												"Base" : 1095.00,
+												"Combined" : 1385.00
+											},
+											"Child" : {
+												"Base" : 1095.00,
+												"Combined" : 1095.00
+											}
+										},
+										"Type" : "TwinShare"
+									}, {
+										"OccupancyRule" : {
+											"MaximumAdults" : 4,
+											"MaximumPassengers" : 4,
+											"MinimumAdults" : 4,
+											"MinimumPassengers" : 4,
+											"MinimumPayingAdults" : 4
+										},
+										"Price" : {
+											"Adult" : {
+												"Base" : 825.00,
+												"Combined" : 1115.00
+											},
+											"Child" : {
+												"Base" : 825.00,
+												"Combined" : 825.00
+											}
+										},
+										"Type" : "Quad"
+									}, {
+										"OccupancyRule" : {
+											"MaximumAdults" : 4,
+											"MaximumPassengers" : 4,
+											"MinimumAdults" : 1,
+											"MinimumPassengers" : 1,
+											"MinimumPayingAdults" : 1
+										},
+										"Price" : {
+											"Adult" : {
+												"Base" : 825.00,
+												"Combined" : 1115.00
+											},
+											"Child" : {
+												"Base" : 825.00,
+												"Combined" : 825.00
+											}
+										},
+										"Type" : "QuadShare"
+									}
+								]
+							},
+							"CombinedIncludedCharges" : {
+								"MandatoryMiscellaneousProducts" : {
+									"MiscellaneousProduct" : [{
+											"Code" : "CLOUISC",
+											"Category" : "Voucher Only",
+											"Name" : "Celestyal Cruise Information",
+											"Price" : {
+												"Adult" : 0.00,
+												"Child" : 0.00
+											}
+										}
+									]
+								},
+								"PortTax" : {
+									"Price" : {
+										"Adult" : 290.00,
+										"Child" : 0.00
+									}
+								}
+							},
+							"PriceIsIndicative" : false,
+							"IsEligibleForFrequentTravellerDiscount" : false,
+							"CanSearchForFlights" : false
+						},
+						"AssociatedProducts" : {
+							"AccommodationProducts" : {
+								"AccommodationProduct" : [{
+										"Type" : "PreAccommodation",
+										"Code" : "CATPRS0",
+										"Name" : "President Hotel",
+										"Address" : {
+											"Line1" : "43 Kifissias Avenue",
+											"City" : "Athens",
+											"Region" : "Attiki",
+											"Postcode" : "11523",
+											"Country" : "Greece"
+										},
+										"Rooms" : {
+											"Room" : [{
+													"Type" : "Single",
+													"Price" : {
+														"Adult" : 180.00,
+														"Child" : 180.00
+													}
+												}, {
+													"Type" : "Twin",
+													"Price" : {
+														"Adult" : 105.00,
+														"Child" : 105.00
+													}
+												}
+											]
+										}
+									}, {
+										"Type" : "PostAccommodation",
+										"Code" : "CATPRS0",
+										"Name" : "President Hotel",
+										"Address" : {
+											"Line1" : "43 Kifissias Avenue",
+											"City" : "Athens",
+											"Region" : "Attiki",
+											"Postcode" : "11523",
+											"Country" : "Greece"
+										},
+										"Rooms" : {
+											"Room" : [{
+													"Type" : "Single",
+													"Price" : {
+														"Adult" : 180.00,
+														"Child" : 180.00
+													}
+												}, {
+													"Type" : "Twin",
+													"Price" : {
+														"Adult" : 105.00,
+														"Child" : 105.00
+													}
+												}
+											]
+										}
+									}
+								]
+							},
+							"MiscellaneousProducts" : {
+								"MiscellaneousProduct" : [{
+										"Code" : "CGSPAU9",
+										"Category" : "Gold Seal Protection",
+										"Name" : "Gold Seal Protection",
+										"Price" : {
+											"Adult" : 99.00,
+											"Child" : 99.00
+										}
+									}
+								]
+							}
+						}
+					}, {
+						"DepartureCode" : "17E15a",
+						"AvailabilityStatus" : "Available",
+						"StartDateTime" : "2015-05-17T00:00:00",
+						"Month" : 5,
+						"EndDateTime" : "2015-05-22T00:00:00",
+						"DateRangeIncludesTravelTime" : false,
+						"DefiniteDeparture" : true,
+						"Notes" : "",
+						"TourRules" : {
+							"Passengers" : {
+								"Passenger" : [{
+										"Type" : "Adult",
+										"AgeFrom" : 18,
+										"AgeTo" : 35
+									}
+								]
+							},
+							"Rooms" : {
+								"Room" : [{
+										"OccupancyRule" : {
+											"MaximumAdults" : 1,
+											"MaximumPassengers" : 1,
+											"MinimumAdults" : 1,
+											"MinimumPassengers" : 1,
+											"MinimumPayingAdults" : 1
+										},
+										"Price" : {
+											"Adult" : {
+												"Base" : 1310.00,
+												"Combined" : 1600.00
+											},
+											"Child" : {
+												"Base" : 1310.00,
+												"Combined" : 1310.00
+											}
+										},
+										"Type" : "Single"
+									}, {
+										"OccupancyRule" : {
+											"MaximumAdults" : 2,
+											"MaximumPassengers" : 2,
+											"MinimumAdults" : 2,
+											"MinimumPassengers" : 2,
+											"MinimumPayingAdults" : 2
+										},
+										"Price" : {
+											"Adult" : {
+												"Base" : 1125.00,
+												"Combined" : 1415.00
+											},
+											"Child" : {
+												"Base" : 1125.00,
+												"Combined" : 1125.00
+											}
+										},
+										"Type" : "Twin"
+									}, {
+										"OccupancyRule" : {
+											"MaximumAdults" : 2,
+											"MaximumPassengers" : 2,
+											"MinimumAdults" : 1,
+											"MinimumPassengers" : 1,
+											"MinimumPayingAdults" : 1
+										},
+										"Price" : {
+											"Adult" : {
+												"Base" : 1125.00,
+												"Combined" : 1415.00
+											},
+											"Child" : {
+												"Base" : 1125.00,
+												"Combined" : 1125.00
+											}
+										},
+										"Type" : "TwinShare"
+									}, {
+										"OccupancyRule" : {
+											"MaximumAdults" : 4,
+											"MaximumPassengers" : 4,
+											"MinimumAdults" : 4,
+											"MinimumPassengers" : 4,
+											"MinimumPayingAdults" : 4
+										},
+										"Price" : {
+											"Adult" : {
+												"Base" : 845.00,
+												"Combined" : 1135.00
+											},
+											"Child" : {
+												"Base" : 845.00,
+												"Combined" : 845.00
+											}
+										},
+										"Type" : "Quad"
+									}, {
+										"OccupancyRule" : {
+											"MaximumAdults" : 4,
+											"MaximumPassengers" : 4,
+											"MinimumAdults" : 1,
+											"MinimumPassengers" : 1,
+											"MinimumPayingAdults" : 1
+										},
+										"Price" : {
+											"Adult" : {
+												"Base" : 845.00,
+												"Combined" : 1135.00
+											},
+											"Child" : {
+												"Base" : 845.00,
+												"Combined" : 845.00
+											}
+										},
+										"Type" : "QuadShare"
+									}
+								]
+							},
+							"CombinedIncludedCharges" : {
+								"MandatoryMiscellaneousProducts" : {
+									"MiscellaneousProduct" : [{
+											"Code" : "CLOUISC",
+											"Category" : "Voucher Only",
+											"Name" : "Celestyal Cruise Information",
+											"Price" : {
+												"Adult" : 0.00,
+												"Child" : 0.00
+											}
+										}
+									]
+								},
+								"PortTax" : {
+									"Price" : {
+										"Adult" : 290.00,
+										"Child" : 0.00
+									}
+								}
+							},
+							"PriceIsIndicative" : false,
+							"IsEligibleForFrequentTravellerDiscount" : false,
+							"CanSearchForFlights" : false
+						},
+						"AssociatedProducts" : {
+							"AccommodationProducts" : {
+								"AccommodationProduct" : [{
+										"Type" : "PreAccommodation",
+										"Code" : "CATPRS0",
+										"Name" : "President Hotel",
+										"Address" : {
+											"Line1" : "43 Kifissias Avenue",
+											"City" : "Athens",
+											"Region" : "Attiki",
+											"Postcode" : "11523",
+											"Country" : "Greece"
+										},
+										"Rooms" : {
+											"Room" : [{
+													"Type" : "Single",
+													"Price" : {
+														"Adult" : 180.00,
+														"Child" : 180.00
+													}
+												}, {
+													"Type" : "Twin",
+													"Price" : {
+														"Adult" : 105.00,
+														"Child" : 105.00
+													}
+												}
+											]
+										}
+									}, {
+										"Type" : "PostAccommodation",
+										"Code" : "CATPRS0",
+										"Name" : "President Hotel",
+										"Address" : {
+											"Line1" : "43 Kifissias Avenue",
+											"City" : "Athens",
+											"Region" : "Attiki",
+											"Postcode" : "11523",
+											"Country" : "Greece"
+										},
+										"Rooms" : {
+											"Room" : [{
+													"Type" : "Single",
+													"Price" : {
+														"Adult" : 180.00,
+														"Child" : 180.00
+													}
+												}, {
+													"Type" : "Twin",
+													"Price" : {
+														"Adult" : 105.00,
+														"Child" : 105.00
+													}
+												}
+											]
+										}
+									}
+								]
+							},
+							"MiscellaneousProducts" : {
+								"MiscellaneousProduct" : [{
+										"Code" : "CGSPAU9",
+										"Category" : "Gold Seal Protection",
+										"Name" : "Gold Seal Protection",
+										"Price" : {
+											"Adult" : 99.00,
+											"Child" : 99.00
+										}
+									}
+								]
+							}
+						}
+					}, {
+						"DepartureCode" : "24E15a",
+						"AvailabilityStatus" : "Available",
+						"StartDateTime" : "2015-05-24T00:00:00",
+						"Month" : 5,
+						"EndDateTime" : "2015-05-29T00:00:00",
+						"DateRangeIncludesTravelTime" : false,
+						"DefiniteDeparture" : true,
+						"Notes" : "",
+						"TourRules" : {
+							"Passengers" : {
+								"Passenger" : [{
+										"Type" : "Adult",
+										"AgeFrom" : 18,
+										"AgeTo" : 35
+									}
+								]
+							},
+							"Rooms" : {
+								"Room" : [{
+										"OccupancyRule" : {
+											"MaximumAdults" : 1,
+											"MaximumPassengers" : 1,
+											"MinimumAdults" : 1,
+											"MinimumPassengers" : 1,
+											"MinimumPayingAdults" : 1
+										},
+										"Price" : {
+											"Adult" : {
+												"Base" : 1310.00,
+												"Combined" : 1600.00
+											},
+											"Child" : {
+												"Base" : 1310.00,
+												"Combined" : 1310.00
+											}
+										},
+										"Type" : "Single"
+									}, {
+										"OccupancyRule" : {
+											"MaximumAdults" : 2,
+											"MaximumPassengers" : 2,
+											"MinimumAdults" : 2,
+											"MinimumPassengers" : 2,
+											"MinimumPayingAdults" : 2
+										},
+										"Price" : {
+											"Adult" : {
+												"Base" : 1125.00,
+												"Combined" : 1415.00
+											},
+											"Child" : {
+												"Base" : 1125.00,
+												"Combined" : 1125.00
+											}
+										},
+										"Type" : "Twin"
+									}, {
+										"OccupancyRule" : {
+											"MaximumAdults" : 2,
+											"MaximumPassengers" : 2,
+											"MinimumAdults" : 1,
+											"MinimumPassengers" : 1,
+											"MinimumPayingAdults" : 1
+										},
+										"Price" : {
+											"Adult" : {
+												"Base" : 1125.00,
+												"Combined" : 1415.00
+											},
+											"Child" : {
+												"Base" : 1125.00,
+												"Combined" : 1125.00
+											}
+										},
+										"Type" : "TwinShare"
+									}, {
+										"OccupancyRule" : {
+											"MaximumAdults" : 4,
+											"MaximumPassengers" : 4,
+											"MinimumAdults" : 4,
+											"MinimumPassengers" : 4,
+											"MinimumPayingAdults" : 4
+										},
+										"Price" : {
+											"Adult" : {
+												"Base" : 845.00,
+												"Combined" : 1135.00
+											},
+											"Child" : {
+												"Base" : 845.00,
+												"Combined" : 845.00
+											}
+										},
+										"Type" : "Quad"
+									}, {
+										"OccupancyRule" : {
+											"MaximumAdults" : 4,
+											"MaximumPassengers" : 4,
+											"MinimumAdults" : 1,
+											"MinimumPassengers" : 1,
+											"MinimumPayingAdults" : 1
+										},
+										"Price" : {
+											"Adult" : {
+												"Base" : 845.00,
+												"Combined" : 1135.00
+											},
+											"Child" : {
+												"Base" : 845.00,
+												"Combined" : 845.00
+											}
+										},
+										"Type" : "QuadShare"
+									}
+								]
+							},
+							"CombinedIncludedCharges" : {
+								"MandatoryMiscellaneousProducts" : {
+									"MiscellaneousProduct" : [{
+											"Code" : "CLOUISC",
+											"Category" : "Voucher Only",
+											"Name" : "Celestyal Cruise Information",
+											"Price" : {
+												"Adult" : 0.00,
+												"Child" : 0.00
+											}
+										}
+									]
+								},
+								"PortTax" : {
+									"Price" : {
+										"Adult" : 290.00,
+										"Child" : 0.00
+									}
+								}
+							},
+							"PriceIsIndicative" : false,
+							"IsEligibleForFrequentTravellerDiscount" : false,
+							"CanSearchForFlights" : false
+						},
+						"AssociatedProducts" : {
+							"AccommodationProducts" : {
+								"AccommodationProduct" : [{
+										"Type" : "PreAccommodation",
+										"Code" : "CATPRS0",
+										"Name" : "President Hotel",
+										"Address" : {
+											"Line1" : "43 Kifissias Avenue",
+											"City" : "Athens",
+											"Region" : "Attiki",
+											"Postcode" : "11523",
+											"Country" : "Greece"
+										},
+										"Rooms" : {
+											"Room" : [{
+													"Type" : "Single",
+													"Price" : {
+														"Adult" : 180.00,
+														"Child" : 180.00
+													}
+												}, {
+													"Type" : "Twin",
+													"Price" : {
+														"Adult" : 105.00,
+														"Child" : 105.00
+													}
+												}
+											]
+										}
+									}, {
+										"Type" : "PostAccommodation",
+										"Code" : "CATPRS0",
+										"Name" : "President Hotel",
+										"Address" : {
+											"Line1" : "43 Kifissias Avenue",
+											"City" : "Athens",
+											"Region" : "Attiki",
+											"Postcode" : "11523",
+											"Country" : "Greece"
+										},
+										"Rooms" : {
+											"Room" : [{
+													"Type" : "Single",
+													"Price" : {
+														"Adult" : 180.00,
+														"Child" : 180.00
+													}
+												}, {
+													"Type" : "Twin",
+													"Price" : {
+														"Adult" : 105.00,
+														"Child" : 105.00
+													}
+												}
+											]
+										}
+									}
+								]
+							},
+							"MiscellaneousProducts" : {
+								"MiscellaneousProduct" : [{
+										"Code" : "CGSPAU9",
+										"Category" : "Gold Seal Protection",
+										"Name" : "Gold Seal Protection",
+										"Price" : {
+											"Adult" : 99.00,
+											"Child" : 99.00
+										}
+									}
+								]
+							}
+						}
+					}, {
+						"DepartureCode" : "31E15a",
+						"AvailabilityStatus" : "Available",
+						"StartDateTime" : "2015-05-31T00:00:00",
+						"Month" : 5,
+						"EndDateTime" : "2015-06-05T00:00:00",
+						"DateRangeIncludesTravelTime" : false,
+						"DefiniteDeparture" : true,
+						"Notes" : "",
+						"TourRules" : {
+							"Passengers" : {
+								"Passenger" : [{
+										"Type" : "Adult",
+										"AgeFrom" : 18,
+										"AgeTo" : 35
+									}
+								]
+							},
+							"Rooms" : {
+								"Room" : [{
+										"OccupancyRule" : {
+											"MaximumAdults" : 1,
+											"MaximumPassengers" : 1,
+											"MinimumAdults" : 1,
+											"MinimumPassengers" : 1,
+											"MinimumPayingAdults" : 1
+										},
+										"Price" : {
+											"Adult" : {
+												"Base" : 1310.00,
+												"Combined" : 1600.00
+											},
+											"Child" : {
+												"Base" : 1310.00,
+												"Combined" : 1310.00
+											}
+										},
+										"Type" : "Single"
+									}, {
+										"OccupancyRule" : {
+											"MaximumAdults" : 2,
+											"MaximumPassengers" : 2,
+											"MinimumAdults" : 2,
+											"MinimumPassengers" : 2,
+											"MinimumPayingAdults" : 2
+										},
+										"Price" : {
+											"Adult" : {
+												"Base" : 1125.00,
+												"Combined" : 1415.00
+											},
+											"Child" : {
+												"Base" : 1125.00,
+												"Combined" : 1125.00
+											}
+										},
+										"Type" : "Twin"
+									}, {
+										"OccupancyRule" : {
+											"MaximumAdults" : 2,
+											"MaximumPassengers" : 2,
+											"MinimumAdults" : 1,
+											"MinimumPassengers" : 1,
+											"MinimumPayingAdults" : 1
+										},
+										"Price" : {
+											"Adult" : {
+												"Base" : 1125.00,
+												"Combined" : 1415.00
+											},
+											"Child" : {
+												"Base" : 1125.00,
+												"Combined" : 1125.00
+											}
+										},
+										"Type" : "TwinShare"
+									}, {
+										"OccupancyRule" : {
+											"MaximumAdults" : 4,
+											"MaximumPassengers" : 4,
+											"MinimumAdults" : 4,
+											"MinimumPassengers" : 4,
+											"MinimumPayingAdults" : 4
+										},
+										"Price" : {
+											"Adult" : {
+												"Base" : 845.00,
+												"Combined" : 1135.00
+											},
+											"Child" : {
+												"Base" : 845.00,
+												"Combined" : 845.00
+											}
+										},
+										"Type" : "Quad"
+									}, {
+										"OccupancyRule" : {
+											"MaximumAdults" : 4,
+											"MaximumPassengers" : 4,
+											"MinimumAdults" : 1,
+											"MinimumPassengers" : 1,
+											"MinimumPayingAdults" : 1
+										},
+										"Price" : {
+											"Adult" : {
+												"Base" : 845.00,
+												"Combined" : 1135.00
+											},
+											"Child" : {
+												"Base" : 845.00,
+												"Combined" : 845.00
+											}
+										},
+										"Type" : "QuadShare"
+									}
+								]
+							},
+							"CombinedIncludedCharges" : {
+								"MandatoryMiscellaneousProducts" : {
+									"MiscellaneousProduct" : [{
+											"Code" : "CLOUISC",
+											"Category" : "Voucher Only",
+											"Name" : "Celestyal Cruise Information",
+											"Price" : {
+												"Adult" : 0.00,
+												"Child" : 0.00
+											}
+										}
+									]
+								},
+								"PortTax" : {
+									"Price" : {
+										"Adult" : 290.00,
+										"Child" : 0.00
+									}
+								}
+							},
+							"PriceIsIndicative" : false,
+							"IsEligibleForFrequentTravellerDiscount" : false,
+							"CanSearchForFlights" : false
+						},
+						"AssociatedProducts" : {
+							"AccommodationProducts" : {
+								"AccommodationProduct" : [{
+										"Type" : "PreAccommodation",
+										"Code" : "CATPRS0",
+										"Name" : "President Hotel",
+										"Address" : {
+											"Line1" : "43 Kifissias Avenue",
+											"City" : "Athens",
+											"Region" : "Attiki",
+											"Postcode" : "11523",
+											"Country" : "Greece"
+										},
+										"Rooms" : {
+											"Room" : [{
+													"Type" : "Single",
+													"Price" : {
+														"Adult" : 180.00,
+														"Child" : 180.00
+													}
+												}, {
+													"Type" : "Twin",
+													"Price" : {
+														"Adult" : 105.00,
+														"Child" : 105.00
+													}
+												}
+											]
+										}
+									}, {
+										"Type" : "PostAccommodation",
+										"Code" : "CATPRS0",
+										"Name" : "President Hotel",
+										"Address" : {
+											"Line1" : "43 Kifissias Avenue",
+											"City" : "Athens",
+											"Region" : "Attiki",
+											"Postcode" : "11523",
+											"Country" : "Greece"
+										},
+										"Rooms" : {
+											"Room" : [{
+													"Type" : "Single",
+													"Price" : {
+														"Adult" : 180.00,
+														"Child" : 180.00
+													}
+												}, {
+													"Type" : "Twin",
+													"Price" : {
+														"Adult" : 105.00,
+														"Child" : 105.00
+													}
+												}
+											]
+										}
+									}
+								]
+							},
+							"MiscellaneousProducts" : {
+								"MiscellaneousProduct" : [{
+										"Code" : "CGSPAU9",
+										"Category" : "Gold Seal Protection",
+										"Name" : "Gold Seal Protection",
+										"Price" : {
+											"Adult" : 99.00,
+											"Child" : 99.00
+										}
+									}
+								]
+							}
+						}
+					}, {
+						"DepartureCode" : "07F15a",
+						"AvailabilityStatus" : "Available",
+						"StartDateTime" : "2015-06-07T00:00:00",
+						"Month" : 6,
+						"EndDateTime" : "2015-06-12T00:00:00",
+						"DateRangeIncludesTravelTime" : false,
+						"DefiniteDeparture" : true,
+						"Notes" : "",
+						"TourRules" : {
+							"Passengers" : {
+								"Passenger" : [{
+										"Type" : "Adult",
+										"AgeFrom" : 18,
+										"AgeTo" : 35
+									}
+								]
+							},
+							"Rooms" : {
+								"Room" : [{
+										"OccupancyRule" : {
+											"MaximumAdults" : 1,
+											"MaximumPassengers" : 1,
+											"MinimumAdults" : 1,
+											"MinimumPassengers" : 1,
+											"MinimumPayingAdults" : 1
+										},
+										"Price" : {
+											"Adult" : {
+												"Base" : 1310.00,
+												"Combined" : 1600.00
+											},
+											"Child" : {
+												"Base" : 1310.00,
+												"Combined" : 1310.00
+											}
+										},
+										"Type" : "Single"
+									}, {
+										"OccupancyRule" : {
+											"MaximumAdults" : 2,
+											"MaximumPassengers" : 2,
+											"MinimumAdults" : 2,
+											"MinimumPassengers" : 2,
+											"MinimumPayingAdults" : 2
+										},
+										"Price" : {
+											"Adult" : {
+												"Base" : 1125.00,
+												"Combined" : 1415.00
+											},
+											"Child" : {
+												"Base" : 1125.00,
+												"Combined" : 1125.00
+											}
+										},
+										"Type" : "Twin"
+									}, {
+										"OccupancyRule" : {
+											"MaximumAdults" : 2,
+											"MaximumPassengers" : 2,
+											"MinimumAdults" : 1,
+											"MinimumPassengers" : 1,
+											"MinimumPayingAdults" : 1
+										},
+										"Price" : {
+											"Adult" : {
+												"Base" : 1125.00,
+												"Combined" : 1415.00
+											},
+											"Child" : {
+												"Base" : 1125.00,
+												"Combined" : 1125.00
+											}
+										},
+										"Type" : "TwinShare"
+									}, {
+										"OccupancyRule" : {
+											"MaximumAdults" : 4,
+											"MaximumPassengers" : 4,
+											"MinimumAdults" : 4,
+											"MinimumPassengers" : 4,
+											"MinimumPayingAdults" : 4
+										},
+										"Price" : {
+											"Adult" : {
+												"Base" : 845.00,
+												"Combined" : 1135.00
+											},
+											"Child" : {
+												"Base" : 845.00,
+												"Combined" : 845.00
+											}
+										},
+										"Type" : "Quad"
+									}, {
+										"OccupancyRule" : {
+											"MaximumAdults" : 4,
+											"MaximumPassengers" : 4,
+											"MinimumAdults" : 1,
+											"MinimumPassengers" : 1,
+											"MinimumPayingAdults" : 1
+										},
+										"Price" : {
+											"Adult" : {
+												"Base" : 845.00,
+												"Combined" : 1135.00
+											},
+											"Child" : {
+												"Base" : 845.00,
+												"Combined" : 845.00
+											}
+										},
+										"Type" : "QuadShare"
+									}
+								]
+							},
+							"CombinedIncludedCharges" : {
+								"MandatoryMiscellaneousProducts" : {
+									"MiscellaneousProduct" : [{
+											"Code" : "CLOUISC",
+											"Category" : "Voucher Only",
+											"Name" : "Celestyal Cruise Information",
+											"Price" : {
+												"Adult" : 0.00,
+												"Child" : 0.00
+											}
+										}
+									]
+								},
+								"PortTax" : {
+									"Price" : {
+										"Adult" : 290.00,
+										"Child" : 0.00
+									}
+								}
+							},
+							"PriceIsIndicative" : false,
+							"IsEligibleForFrequentTravellerDiscount" : false,
+							"CanSearchForFlights" : false
+						},
+						"AssociatedProducts" : {
+							"AccommodationProducts" : {
+								"AccommodationProduct" : [{
+										"Type" : "PreAccommodation",
+										"Code" : "CATPRS0",
+										"Name" : "President Hotel",
+										"Address" : {
+											"Line1" : "43 Kifissias Avenue",
+											"City" : "Athens",
+											"Region" : "Attiki",
+											"Postcode" : "11523",
+											"Country" : "Greece"
+										},
+										"Rooms" : {
+											"Room" : [{
+													"Type" : "Single",
+													"Price" : {
+														"Adult" : 180.00,
+														"Child" : 180.00
+													}
+												}, {
+													"Type" : "Twin",
+													"Price" : {
+														"Adult" : 105.00,
+														"Child" : 105.00
+													}
+												}
+											]
+										}
+									}, {
+										"Type" : "PostAccommodation",
+										"Code" : "CATPRS0",
+										"Name" : "President Hotel",
+										"Address" : {
+											"Line1" : "43 Kifissias Avenue",
+											"City" : "Athens",
+											"Region" : "Attiki",
+											"Postcode" : "11523",
+											"Country" : "Greece"
+										},
+										"Rooms" : {
+											"Room" : [{
+													"Type" : "Single",
+													"Price" : {
+														"Adult" : 180.00,
+														"Child" : 180.00
+													}
+												}, {
+													"Type" : "Twin",
+													"Price" : {
+														"Adult" : 105.00,
+														"Child" : 105.00
+													}
+												}
+											]
+										}
+									}
+								]
+							},
+							"MiscellaneousProducts" : {
+								"MiscellaneousProduct" : [{
+										"Code" : "CGSPAU9",
+										"Category" : "Gold Seal Protection",
+										"Name" : "Gold Seal Protection",
+										"Price" : {
+											"Adult" : 99.00,
+											"Child" : 99.00
+										}
+									}
+								]
+							}
+						}
+					}, {
+						"DepartureCode" : "14F15a",
+						"AvailabilityStatus" : "Available",
+						"StartDateTime" : "2015-06-14T00:00:00",
+						"Month" : 6,
+						"EndDateTime" : "2015-06-19T00:00:00",
+						"DateRangeIncludesTravelTime" : false,
+						"DefiniteDeparture" : true,
+						"Notes" : "",
+						"TourRules" : {
+							"Passengers" : {
+								"Passenger" : [{
+										"Type" : "Adult",
+										"AgeFrom" : 18,
+										"AgeTo" : 35
+									}
+								]
+							},
+							"Rooms" : {
+								"Room" : [{
+										"OccupancyRule" : {
+											"MaximumAdults" : 1,
+											"MaximumPassengers" : 1,
+											"MinimumAdults" : 1,
+											"MinimumPassengers" : 1,
+											"MinimumPayingAdults" : 1
+										},
+										"Price" : {
+											"Adult" : {
+												"Base" : 1310.00,
+												"Combined" : 1600.00
+											},
+											"Child" : {
+												"Base" : 1310.00,
+												"Combined" : 1310.00
+											}
+										},
+										"Type" : "Single"
+									}, {
+										"OccupancyRule" : {
+											"MaximumAdults" : 2,
+											"MaximumPassengers" : 2,
+											"MinimumAdults" : 2,
+											"MinimumPassengers" : 2,
+											"MinimumPayingAdults" : 2
+										},
+										"Price" : {
+											"Adult" : {
+												"Base" : 1125.00,
+												"Combined" : 1415.00
+											},
+											"Child" : {
+												"Base" : 1125.00,
+												"Combined" : 1125.00
+											}
+										},
+										"Type" : "Twin"
+									}, {
+										"OccupancyRule" : {
+											"MaximumAdults" : 2,
+											"MaximumPassengers" : 2,
+											"MinimumAdults" : 1,
+											"MinimumPassengers" : 1,
+											"MinimumPayingAdults" : 1
+										},
+										"Price" : {
+											"Adult" : {
+												"Base" : 1125.00,
+												"Combined" : 1415.00
+											},
+											"Child" : {
+												"Base" : 1125.00,
+												"Combined" : 1125.00
+											}
+										},
+										"Type" : "TwinShare"
+									}, {
+										"OccupancyRule" : {
+											"MaximumAdults" : 4,
+											"MaximumPassengers" : 4,
+											"MinimumAdults" : 4,
+											"MinimumPassengers" : 4,
+											"MinimumPayingAdults" : 4
+										},
+										"Price" : {
+											"Adult" : {
+												"Base" : 845.00,
+												"Combined" : 1135.00
+											},
+											"Child" : {
+												"Base" : 845.00,
+												"Combined" : 845.00
+											}
+										},
+										"Type" : "Quad"
+									}, {
+										"OccupancyRule" : {
+											"MaximumAdults" : 4,
+											"MaximumPassengers" : 4,
+											"MinimumAdults" : 1,
+											"MinimumPassengers" : 1,
+											"MinimumPayingAdults" : 1
+										},
+										"Price" : {
+											"Adult" : {
+												"Base" : 845.00,
+												"Combined" : 1135.00
+											},
+											"Child" : {
+												"Base" : 845.00,
+												"Combined" : 845.00
+											}
+										},
+										"Type" : "QuadShare"
+									}
+								]
+							},
+							"CombinedIncludedCharges" : {
+								"MandatoryMiscellaneousProducts" : {
+									"MiscellaneousProduct" : [{
+											"Code" : "CLOUISC",
+											"Category" : "Voucher Only",
+											"Name" : "Celestyal Cruise Information",
+											"Price" : {
+												"Adult" : 0.00,
+												"Child" : 0.00
+											}
+										}
+									]
+								},
+								"PortTax" : {
+									"Price" : {
+										"Adult" : 290.00,
+										"Child" : 0.00
+									}
+								}
+							},
+							"PriceIsIndicative" : false,
+							"IsEligibleForFrequentTravellerDiscount" : false,
+							"CanSearchForFlights" : false
+						},
+						"AssociatedProducts" : {
+							"AccommodationProducts" : {
+								"AccommodationProduct" : [{
+										"Type" : "PreAccommodation",
+										"Code" : "CATPRS0",
+										"Name" : "President Hotel",
+										"Address" : {
+											"Line1" : "43 Kifissias Avenue",
+											"City" : "Athens",
+											"Region" : "Attiki",
+											"Postcode" : "11523",
+											"Country" : "Greece"
+										},
+										"Rooms" : {
+											"Room" : [{
+													"Type" : "Single",
+													"Price" : {
+														"Adult" : 180.00,
+														"Child" : 180.00
+													}
+												}, {
+													"Type" : "Twin",
+													"Price" : {
+														"Adult" : 105.00,
+														"Child" : 105.00
+													}
+												}
+											]
+										}
+									}, {
+										"Type" : "PostAccommodation",
+										"Code" : "CATPRS0",
+										"Name" : "President Hotel",
+										"Address" : {
+											"Line1" : "43 Kifissias Avenue",
+											"City" : "Athens",
+											"Region" : "Attiki",
+											"Postcode" : "11523",
+											"Country" : "Greece"
+										},
+										"Rooms" : {
+											"Room" : [{
+													"Type" : "Single",
+													"Price" : {
+														"Adult" : 180.00,
+														"Child" : 180.00
+													}
+												}, {
+													"Type" : "Twin",
+													"Price" : {
+														"Adult" : 105.00,
+														"Child" : 105.00
+													}
+												}
+											]
+										}
+									}
+								]
+							},
+							"MiscellaneousProducts" : {
+								"MiscellaneousProduct" : [{
+										"Code" : "CGSPAU9",
+										"Category" : "Gold Seal Protection",
+										"Name" : "Gold Seal Protection",
+										"Price" : {
+											"Adult" : 99.00,
+											"Child" : 99.00
+										}
+									}
+								]
+							}
+						}
+					}, {
+						"DepartureCode" : "21F15a",
+						"AvailabilityStatus" : "Available",
+						"StartDateTime" : "2015-06-21T00:00:00",
+						"Month" : 6,
+						"EndDateTime" : "2015-06-26T00:00:00",
+						"DateRangeIncludesTravelTime" : false,
+						"DefiniteDeparture" : true,
+						"Notes" : "",
+						"TourRules" : {
+							"Passengers" : {
+								"Passenger" : [{
+										"Type" : "Adult",
+										"AgeFrom" : 18,
+										"AgeTo" : 35
+									}
+								]
+							},
+							"Rooms" : {
+								"Room" : [{
+										"OccupancyRule" : {
+											"MaximumAdults" : 1,
+											"MaximumPassengers" : 1,
+											"MinimumAdults" : 1,
+											"MinimumPassengers" : 1,
+											"MinimumPayingAdults" : 1
+										},
+										"Price" : {
+											"Adult" : {
+												"Base" : 1310.00,
+												"Combined" : 1600.00
+											},
+											"Child" : {
+												"Base" : 1310.00,
+												"Combined" : 1310.00
+											}
+										},
+										"Type" : "Single"
+									}, {
+										"OccupancyRule" : {
+											"MaximumAdults" : 2,
+											"MaximumPassengers" : 2,
+											"MinimumAdults" : 2,
+											"MinimumPassengers" : 2,
+											"MinimumPayingAdults" : 2
+										},
+										"Price" : {
+											"Adult" : {
+												"Base" : 1125.00,
+												"Combined" : 1415.00
+											},
+											"Child" : {
+												"Base" : 1125.00,
+												"Combined" : 1125.00
+											}
+										},
+										"Type" : "Twin"
+									}, {
+										"OccupancyRule" : {
+											"MaximumAdults" : 2,
+											"MaximumPassengers" : 2,
+											"MinimumAdults" : 1,
+											"MinimumPassengers" : 1,
+											"MinimumPayingAdults" : 1
+										},
+										"Price" : {
+											"Adult" : {
+												"Base" : 1125.00,
+												"Combined" : 1415.00
+											},
+											"Child" : {
+												"Base" : 1125.00,
+												"Combined" : 1125.00
+											}
+										},
+										"Type" : "TwinShare"
+									}, {
+										"OccupancyRule" : {
+											"MaximumAdults" : 4,
+											"MaximumPassengers" : 4,
+											"MinimumAdults" : 4,
+											"MinimumPassengers" : 4,
+											"MinimumPayingAdults" : 4
+										},
+										"Price" : {
+											"Adult" : {
+												"Base" : 845.00,
+												"Combined" : 1135.00
+											},
+											"Child" : {
+												"Base" : 845.00,
+												"Combined" : 845.00
+											}
+										},
+										"Type" : "Quad"
+									}, {
+										"OccupancyRule" : {
+											"MaximumAdults" : 4,
+											"MaximumPassengers" : 4,
+											"MinimumAdults" : 1,
+											"MinimumPassengers" : 1,
+											"MinimumPayingAdults" : 1
+										},
+										"Price" : {
+											"Adult" : {
+												"Base" : 845.00,
+												"Combined" : 1135.00
+											},
+											"Child" : {
+												"Base" : 845.00,
+												"Combined" : 845.00
+											}
+										},
+										"Type" : "QuadShare"
+									}
+								]
+							},
+							"CombinedIncludedCharges" : {
+								"MandatoryMiscellaneousProducts" : {
+									"MiscellaneousProduct" : [{
+											"Code" : "CLOUISC",
+											"Category" : "Voucher Only",
+											"Name" : "Celestyal Cruise Information",
+											"Price" : {
+												"Adult" : 0.00,
+												"Child" : 0.00
+											}
+										}
+									]
+								},
+								"PortTax" : {
+									"Price" : {
+										"Adult" : 290.00,
+										"Child" : 0.00
+									}
+								}
+							},
+							"PriceIsIndicative" : false,
+							"IsEligibleForFrequentTravellerDiscount" : false,
+							"CanSearchForFlights" : false
+						},
+						"AssociatedProducts" : {
+							"AccommodationProducts" : {
+								"AccommodationProduct" : [{
+										"Type" : "PreAccommodation",
+										"Code" : "CATPRS0",
+										"Name" : "President Hotel",
+										"Address" : {
+											"Line1" : "43 Kifissias Avenue",
+											"City" : "Athens",
+											"Region" : "Attiki",
+											"Postcode" : "11523",
+											"Country" : "Greece"
+										},
+										"Rooms" : {
+											"Room" : [{
+													"Type" : "Single",
+													"Price" : {
+														"Adult" : 180.00,
+														"Child" : 180.00
+													}
+												}, {
+													"Type" : "Twin",
+													"Price" : {
+														"Adult" : 105.00,
+														"Child" : 105.00
+													}
+												}
+											]
+										}
+									}, {
+										"Type" : "PostAccommodation",
+										"Code" : "CATPRS0",
+										"Name" : "President Hotel",
+										"Address" : {
+											"Line1" : "43 Kifissias Avenue",
+											"City" : "Athens",
+											"Region" : "Attiki",
+											"Postcode" : "11523",
+											"Country" : "Greece"
+										},
+										"Rooms" : {
+											"Room" : [{
+													"Type" : "Single",
+													"Price" : {
+														"Adult" : 180.00,
+														"Child" : 180.00
+													}
+												}, {
+													"Type" : "Twin",
+													"Price" : {
+														"Adult" : 105.00,
+														"Child" : 105.00
+													}
+												}
+											]
+										}
+									}
+								]
+							},
+							"MiscellaneousProducts" : {
+								"MiscellaneousProduct" : [{
+										"Code" : "CGSPAU9",
+										"Category" : "Gold Seal Protection",
+										"Name" : "Gold Seal Protection",
+										"Price" : {
+											"Adult" : 99.00,
+											"Child" : 99.00
+										}
+									}
+								]
+							}
+						}
+					}, {
+						"DepartureCode" : "28F15a",
+						"AvailabilityStatus" : "Available",
+						"StartDateTime" : "2015-06-28T00:00:00",
+						"Month" : 6,
+						"EndDateTime" : "2015-07-03T00:00:00",
+						"DateRangeIncludesTravelTime" : false,
+						"DefiniteDeparture" : true,
+						"Notes" : "",
+						"TourRules" : {
+							"Passengers" : {
+								"Passenger" : [{
+										"Type" : "Adult",
+										"AgeFrom" : 18,
+										"AgeTo" : 35
+									}
+								]
+							},
+							"Rooms" : {
+								"Room" : [{
+										"OccupancyRule" : {
+											"MaximumAdults" : 1,
+											"MaximumPassengers" : 1,
+											"MinimumAdults" : 1,
+											"MinimumPassengers" : 1,
+											"MinimumPayingAdults" : 1
+										},
+										"Price" : {
+											"Adult" : {
+												"Base" : 1310.00,
+												"Combined" : 1600.00
+											},
+											"Child" : {
+												"Base" : 1310.00,
+												"Combined" : 1310.00
+											}
+										},
+										"Type" : "Single"
+									}, {
+										"OccupancyRule" : {
+											"MaximumAdults" : 2,
+											"MaximumPassengers" : 2,
+											"MinimumAdults" : 2,
+											"MinimumPassengers" : 2,
+											"MinimumPayingAdults" : 2
+										},
+										"Price" : {
+											"Adult" : {
+												"Base" : 1125.00,
+												"Combined" : 1415.00
+											},
+											"Child" : {
+												"Base" : 1125.00,
+												"Combined" : 1125.00
+											}
+										},
+										"Type" : "Twin"
+									}, {
+										"OccupancyRule" : {
+											"MaximumAdults" : 2,
+											"MaximumPassengers" : 2,
+											"MinimumAdults" : 1,
+											"MinimumPassengers" : 1,
+											"MinimumPayingAdults" : 1
+										},
+										"Price" : {
+											"Adult" : {
+												"Base" : 1125.00,
+												"Combined" : 1415.00
+											},
+											"Child" : {
+												"Base" : 1125.00,
+												"Combined" : 1125.00
+											}
+										},
+										"Type" : "TwinShare"
+									}, {
+										"OccupancyRule" : {
+											"MaximumAdults" : 4,
+											"MaximumPassengers" : 4,
+											"MinimumAdults" : 4,
+											"MinimumPassengers" : 4,
+											"MinimumPayingAdults" : 4
+										},
+										"Price" : {
+											"Adult" : {
+												"Base" : 845.00,
+												"Combined" : 1135.00
+											},
+											"Child" : {
+												"Base" : 845.00,
+												"Combined" : 845.00
+											}
+										},
+										"Type" : "Quad"
+									}, {
+										"OccupancyRule" : {
+											"MaximumAdults" : 4,
+											"MaximumPassengers" : 4,
+											"MinimumAdults" : 1,
+											"MinimumPassengers" : 1,
+											"MinimumPayingAdults" : 1
+										},
+										"Price" : {
+											"Adult" : {
+												"Base" : 845.00,
+												"Combined" : 1135.00
+											},
+											"Child" : {
+												"Base" : 845.00,
+												"Combined" : 845.00
+											}
+										},
+										"Type" : "QuadShare"
+									}
+								]
+							},
+							"CombinedIncludedCharges" : {
+								"MandatoryMiscellaneousProducts" : {
+									"MiscellaneousProduct" : [{
+											"Code" : "CLOUISC",
+											"Category" : "Voucher Only",
+											"Name" : "Celestyal Cruise Information",
+											"Price" : {
+												"Adult" : 0.00,
+												"Child" : 0.00
+											}
+										}
+									]
+								},
+								"PortTax" : {
+									"Price" : {
+										"Adult" : 290.00,
+										"Child" : 0.00
+									}
+								}
+							},
+							"PriceIsIndicative" : false,
+							"IsEligibleForFrequentTravellerDiscount" : false,
+							"CanSearchForFlights" : false
+						},
+						"AssociatedProducts" : {
+							"AccommodationProducts" : {
+								"AccommodationProduct" : [{
+										"Type" : "PreAccommodation",
+										"Code" : "CATPRS0",
+										"Name" : "President Hotel",
+										"Address" : {
+											"Line1" : "43 Kifissias Avenue",
+											"City" : "Athens",
+											"Region" : "Attiki",
+											"Postcode" : "11523",
+											"Country" : "Greece"
+										},
+										"Rooms" : {
+											"Room" : [{
+													"Type" : "Single",
+													"Price" : {
+														"Adult" : 180.00,
+														"Child" : 180.00
+													}
+												}, {
+													"Type" : "Twin",
+													"Price" : {
+														"Adult" : 105.00,
+														"Child" : 105.00
+													}
+												}
+											]
+										}
+									}, {
+										"Type" : "PostAccommodation",
+										"Code" : "CATPRS0",
+										"Name" : "President Hotel",
+										"Address" : {
+											"Line1" : "43 Kifissias Avenue",
+											"City" : "Athens",
+											"Region" : "Attiki",
+											"Postcode" : "11523",
+											"Country" : "Greece"
+										},
+										"Rooms" : {
+											"Room" : [{
+													"Type" : "Single",
+													"Price" : {
+														"Adult" : 180.00,
+														"Child" : 180.00
+													}
+												}, {
+													"Type" : "Twin",
+													"Price" : {
+														"Adult" : 105.00,
+														"Child" : 105.00
+													}
+												}
+											]
+										}
+									}
+								]
+							},
+							"MiscellaneousProducts" : {
+								"MiscellaneousProduct" : [{
+										"Code" : "CGSPAU9",
+										"Category" : "Gold Seal Protection",
+										"Name" : "Gold Seal Protection",
+										"Price" : {
+											"Adult" : 99.00,
+											"Child" : 99.00
+										}
+									}
+								]
+							}
+						}
+					}, {
+						"DepartureCode" : "05G15a",
+						"AvailabilityStatus" : "Available",
+						"StartDateTime" : "2015-07-05T00:00:00",
+						"Month" : 7,
+						"EndDateTime" : "2015-07-10T00:00:00",
+						"DateRangeIncludesTravelTime" : false,
+						"DefiniteDeparture" : true,
+						"Notes" : "",
+						"TourRules" : {
+							"Passengers" : {
+								"Passenger" : [{
+										"Type" : "Adult",
+										"AgeFrom" : 18,
+										"AgeTo" : 35
+									}
+								]
+							},
+							"Rooms" : {
+								"Room" : [{
+										"OccupancyRule" : {
+											"MaximumAdults" : 1,
+											"MaximumPassengers" : 1,
+											"MinimumAdults" : 1,
+											"MinimumPassengers" : 1,
+											"MinimumPayingAdults" : 1
+										},
+										"Price" : {
+											"Adult" : {
+												"Base" : 1350.00,
+												"Combined" : 1640.00
+											},
+											"Child" : {
+												"Base" : 1350.00,
+												"Combined" : 1350.00
+											}
+										},
+										"Type" : "Single"
+									}, {
+										"OccupancyRule" : {
+											"MaximumAdults" : 2,
+											"MaximumPassengers" : 2,
+											"MinimumAdults" : 2,
+											"MinimumPassengers" : 2,
+											"MinimumPayingAdults" : 2
+										},
+										"Price" : {
+											"Adult" : {
+												"Base" : 1165.00,
+												"Combined" : 1455.00
+											},
+											"Child" : {
+												"Base" : 1165.00,
+												"Combined" : 1165.00
+											}
+										},
+										"Type" : "Twin"
+									}, {
+										"OccupancyRule" : {
+											"MaximumAdults" : 2,
+											"MaximumPassengers" : 2,
+											"MinimumAdults" : 1,
+											"MinimumPassengers" : 1,
+											"MinimumPayingAdults" : 1
+										},
+										"Price" : {
+											"Adult" : {
+												"Base" : 1165.00,
+												"Combined" : 1455.00
+											},
+											"Child" : {
+												"Base" : 1165.00,
+												"Combined" : 1165.00
+											}
+										},
+										"Type" : "TwinShare"
+									}, {
+										"OccupancyRule" : {
+											"MaximumAdults" : 4,
+											"MaximumPassengers" : 4,
+											"MinimumAdults" : 4,
+											"MinimumPassengers" : 4,
+											"MinimumPayingAdults" : 4
+										},
+										"Price" : {
+											"Adult" : {
+												"Base" : 875.00,
+												"Combined" : 1165.00
+											},
+											"Child" : {
+												"Base" : 875.00,
+												"Combined" : 875.00
+											}
+										},
+										"Type" : "Quad"
+									}, {
+										"OccupancyRule" : {
+											"MaximumAdults" : 4,
+											"MaximumPassengers" : 4,
+											"MinimumAdults" : 1,
+											"MinimumPassengers" : 1,
+											"MinimumPayingAdults" : 1
+										},
+										"Price" : {
+											"Adult" : {
+												"Base" : 875.00,
+												"Combined" : 1165.00
+											},
+											"Child" : {
+												"Base" : 875.00,
+												"Combined" : 875.00
+											}
+										},
+										"Type" : "QuadShare"
+									}
+								]
+							},
+							"CombinedIncludedCharges" : {
+								"MandatoryMiscellaneousProducts" : {
+									"MiscellaneousProduct" : [{
+											"Code" : "CLOUISC",
+											"Category" : "Voucher Only",
+											"Name" : "Celestyal Cruise Information",
+											"Price" : {
+												"Adult" : 0.00,
+												"Child" : 0.00
+											}
+										}
+									]
+								},
+								"PortTax" : {
+									"Price" : {
+										"Adult" : 290.00,
+										"Child" : 0.00
+									}
+								}
+							},
+							"PriceIsIndicative" : false,
+							"IsEligibleForFrequentTravellerDiscount" : false,
+							"CanSearchForFlights" : false
+						},
+						"AssociatedProducts" : {
+							"AccommodationProducts" : {
+								"AccommodationProduct" : [{
+										"Type" : "PreAccommodation",
+										"Code" : "CATPRS0",
+										"Name" : "President Hotel",
+										"Address" : {
+											"Line1" : "43 Kifissias Avenue",
+											"City" : "Athens",
+											"Region" : "Attiki",
+											"Postcode" : "11523",
+											"Country" : "Greece"
+										},
+										"Rooms" : {
+											"Room" : [{
+													"Type" : "Single",
+													"Price" : {
+														"Adult" : 180.00,
+														"Child" : 180.00
+													}
+												}, {
+													"Type" : "Twin",
+													"Price" : {
+														"Adult" : 105.00,
+														"Child" : 105.00
+													}
+												}
+											]
+										}
+									}, {
+										"Type" : "PostAccommodation",
+										"Code" : "CATPRS0",
+										"Name" : "President Hotel",
+										"Address" : {
+											"Line1" : "43 Kifissias Avenue",
+											"City" : "Athens",
+											"Region" : "Attiki",
+											"Postcode" : "11523",
+											"Country" : "Greece"
+										},
+										"Rooms" : {
+											"Room" : [{
+													"Type" : "Single",
+													"Price" : {
+														"Adult" : 180.00,
+														"Child" : 180.00
+													}
+												}, {
+													"Type" : "Twin",
+													"Price" : {
+														"Adult" : 105.00,
+														"Child" : 105.00
+													}
+												}
+											]
+										}
+									}
+								]
+							},
+							"MiscellaneousProducts" : {
+								"MiscellaneousProduct" : [{
+										"Code" : "CGSPAU9",
+										"Category" : "Gold Seal Protection",
+										"Name" : "Gold Seal Protection",
+										"Price" : {
+											"Adult" : 99.00,
+											"Child" : 99.00
+										}
+									}
+								]
+							}
+						}
+					}, {
+						"DepartureCode" : "12G15a",
+						"AvailabilityStatus" : "Available",
+						"StartDateTime" : "2015-07-12T00:00:00",
+						"Month" : 7,
+						"EndDateTime" : "2015-07-17T00:00:00",
+						"DateRangeIncludesTravelTime" : false,
+						"DefiniteDeparture" : true,
+						"Notes" : "",
+						"TourRules" : {
+							"Passengers" : {
+								"Passenger" : [{
+										"Type" : "Adult",
+										"AgeFrom" : 18,
+										"AgeTo" : 35
+									}
+								]
+							},
+							"Rooms" : {
+								"Room" : [{
+										"OccupancyRule" : {
+											"MaximumAdults" : 1,
+											"MaximumPassengers" : 1,
+											"MinimumAdults" : 1,
+											"MinimumPassengers" : 1,
+											"MinimumPayingAdults" : 1
+										},
+										"Price" : {
+											"Adult" : {
+												"Base" : 1350.00,
+												"Combined" : 1640.00
+											},
+											"Child" : {
+												"Base" : 1350.00,
+												"Combined" : 1350.00
+											}
+										},
+										"Type" : "Single"
+									}, {
+										"OccupancyRule" : {
+											"MaximumAdults" : 2,
+											"MaximumPassengers" : 2,
+											"MinimumAdults" : 2,
+											"MinimumPassengers" : 2,
+											"MinimumPayingAdults" : 2
+										},
+										"Price" : {
+											"Adult" : {
+												"Base" : 1165.00,
+												"Combined" : 1455.00
+											},
+											"Child" : {
+												"Base" : 1165.00,
+												"Combined" : 1165.00
+											}
+										},
+										"Type" : "Twin"
+									}, {
+										"OccupancyRule" : {
+											"MaximumAdults" : 2,
+											"MaximumPassengers" : 2,
+											"MinimumAdults" : 1,
+											"MinimumPassengers" : 1,
+											"MinimumPayingAdults" : 1
+										},
+										"Price" : {
+											"Adult" : {
+												"Base" : 1165.00,
+												"Combined" : 1455.00
+											},
+											"Child" : {
+												"Base" : 1165.00,
+												"Combined" : 1165.00
+											}
+										},
+										"Type" : "TwinShare"
+									}, {
+										"OccupancyRule" : {
+											"MaximumAdults" : 4,
+											"MaximumPassengers" : 4,
+											"MinimumAdults" : 4,
+											"MinimumPassengers" : 4,
+											"MinimumPayingAdults" : 4
+										},
+										"Price" : {
+											"Adult" : {
+												"Base" : 875.00,
+												"Combined" : 1165.00
+											},
+											"Child" : {
+												"Base" : 875.00,
+												"Combined" : 875.00
+											}
+										},
+										"Type" : "Quad"
+									}, {
+										"OccupancyRule" : {
+											"MaximumAdults" : 4,
+											"MaximumPassengers" : 4,
+											"MinimumAdults" : 1,
+											"MinimumPassengers" : 1,
+											"MinimumPayingAdults" : 1
+										},
+										"Price" : {
+											"Adult" : {
+												"Base" : 875.00,
+												"Combined" : 1165.00
+											},
+											"Child" : {
+												"Base" : 875.00,
+												"Combined" : 875.00
+											}
+										},
+										"Type" : "QuadShare"
+									}
+								]
+							},
+							"CombinedIncludedCharges" : {
+								"MandatoryMiscellaneousProducts" : {
+									"MiscellaneousProduct" : [{
+											"Code" : "CLOUISC",
+											"Category" : "Voucher Only",
+											"Name" : "Celestyal Cruise Information",
+											"Price" : {
+												"Adult" : 0.00,
+												"Child" : 0.00
+											}
+										}
+									]
+								},
+								"PortTax" : {
+									"Price" : {
+										"Adult" : 290.00,
+										"Child" : 0.00
+									}
+								}
+							},
+							"PriceIsIndicative" : false,
+							"IsEligibleForFrequentTravellerDiscount" : false,
+							"CanSearchForFlights" : false
+						},
+						"AssociatedProducts" : {
+							"AccommodationProducts" : {
+								"AccommodationProduct" : [{
+										"Type" : "PreAccommodation",
+										"Code" : "CATPRS0",
+										"Name" : "President Hotel",
+										"Address" : {
+											"Line1" : "43 Kifissias Avenue",
+											"City" : "Athens",
+											"Region" : "Attiki",
+											"Postcode" : "11523",
+											"Country" : "Greece"
+										},
+										"Rooms" : {
+											"Room" : [{
+													"Type" : "Single",
+													"Price" : {
+														"Adult" : 180.00,
+														"Child" : 180.00
+													}
+												}, {
+													"Type" : "Twin",
+													"Price" : {
+														"Adult" : 105.00,
+														"Child" : 105.00
+													}
+												}
+											]
+										}
+									}, {
+										"Type" : "PostAccommodation",
+										"Code" : "CATPRS0",
+										"Name" : "President Hotel",
+										"Address" : {
+											"Line1" : "43 Kifissias Avenue",
+											"City" : "Athens",
+											"Region" : "Attiki",
+											"Postcode" : "11523",
+											"Country" : "Greece"
+										},
+										"Rooms" : {
+											"Room" : [{
+													"Type" : "Single",
+													"Price" : {
+														"Adult" : 180.00,
+														"Child" : 180.00
+													}
+												}, {
+													"Type" : "Twin",
+													"Price" : {
+														"Adult" : 105.00,
+														"Child" : 105.00
+													}
+												}
+											]
+										}
+									}
+								]
+							},
+							"MiscellaneousProducts" : {
+								"MiscellaneousProduct" : [{
+										"Code" : "CGSPAU9",
+										"Category" : "Gold Seal Protection",
+										"Name" : "Gold Seal Protection",
+										"Price" : {
+											"Adult" : 99.00,
+											"Child" : 99.00
+										}
+									}
+								]
+							}
+						}
+					}, {
+						"DepartureCode" : "19G15a",
+						"AvailabilityStatus" : "Available",
+						"StartDateTime" : "2015-07-19T00:00:00",
+						"Month" : 7,
+						"EndDateTime" : "2015-07-24T00:00:00",
+						"DateRangeIncludesTravelTime" : false,
+						"DefiniteDeparture" : true,
+						"Notes" : "",
+						"TourRules" : {
+							"Passengers" : {
+								"Passenger" : [{
+										"Type" : "Adult",
+										"AgeFrom" : 18,
+										"AgeTo" : 35
+									}
+								]
+							},
+							"Rooms" : {
+								"Room" : [{
+										"OccupancyRule" : {
+											"MaximumAdults" : 1,
+											"MaximumPassengers" : 1,
+											"MinimumAdults" : 1,
+											"MinimumPassengers" : 1,
+											"MinimumPayingAdults" : 1
+										},
+										"Price" : {
+											"Adult" : {
+												"Base" : 1350.00,
+												"Combined" : 1640.00
+											},
+											"Child" : {
+												"Base" : 1350.00,
+												"Combined" : 1350.00
+											}
+										},
+										"Type" : "Single"
+									}, {
+										"OccupancyRule" : {
+											"MaximumAdults" : 2,
+											"MaximumPassengers" : 2,
+											"MinimumAdults" : 2,
+											"MinimumPassengers" : 2,
+											"MinimumPayingAdults" : 2
+										},
+										"Price" : {
+											"Adult" : {
+												"Base" : 1165.00,
+												"Combined" : 1455.00
+											},
+											"Child" : {
+												"Base" : 1165.00,
+												"Combined" : 1165.00
+											}
+										},
+										"Type" : "Twin"
+									}, {
+										"OccupancyRule" : {
+											"MaximumAdults" : 2,
+											"MaximumPassengers" : 2,
+											"MinimumAdults" : 1,
+											"MinimumPassengers" : 1,
+											"MinimumPayingAdults" : 1
+										},
+										"Price" : {
+											"Adult" : {
+												"Base" : 1165.00,
+												"Combined" : 1455.00
+											},
+											"Child" : {
+												"Base" : 1165.00,
+												"Combined" : 1165.00
+											}
+										},
+										"Type" : "TwinShare"
+									}, {
+										"OccupancyRule" : {
+											"MaximumAdults" : 4,
+											"MaximumPassengers" : 4,
+											"MinimumAdults" : 4,
+											"MinimumPassengers" : 4,
+											"MinimumPayingAdults" : 4
+										},
+										"Price" : {
+											"Adult" : {
+												"Base" : 875.00,
+												"Combined" : 1165.00
+											},
+											"Child" : {
+												"Base" : 875.00,
+												"Combined" : 875.00
+											}
+										},
+										"Type" : "Quad"
+									}, {
+										"OccupancyRule" : {
+											"MaximumAdults" : 4,
+											"MaximumPassengers" : 4,
+											"MinimumAdults" : 1,
+											"MinimumPassengers" : 1,
+											"MinimumPayingAdults" : 1
+										},
+										"Price" : {
+											"Adult" : {
+												"Base" : 875.00,
+												"Combined" : 1165.00
+											},
+											"Child" : {
+												"Base" : 875.00,
+												"Combined" : 875.00
+											}
+										},
+										"Type" : "QuadShare"
+									}
+								]
+							},
+							"CombinedIncludedCharges" : {
+								"MandatoryMiscellaneousProducts" : {
+									"MiscellaneousProduct" : [{
+											"Code" : "CLOUISC",
+											"Category" : "Voucher Only",
+											"Name" : "Celestyal Cruise Information",
+											"Price" : {
+												"Adult" : 0.00,
+												"Child" : 0.00
+											}
+										}
+									]
+								},
+								"PortTax" : {
+									"Price" : {
+										"Adult" : 290.00,
+										"Child" : 0.00
+									}
+								}
+							},
+							"PriceIsIndicative" : false,
+							"IsEligibleForFrequentTravellerDiscount" : false,
+							"CanSearchForFlights" : false
+						},
+						"AssociatedProducts" : {
+							"AccommodationProducts" : {
+								"AccommodationProduct" : [{
+										"Type" : "PreAccommodation",
+										"Code" : "CATPRS0",
+										"Name" : "President Hotel",
+										"Address" : {
+											"Line1" : "43 Kifissias Avenue",
+											"City" : "Athens",
+											"Region" : "Attiki",
+											"Postcode" : "11523",
+											"Country" : "Greece"
+										},
+										"Rooms" : {
+											"Room" : [{
+													"Type" : "Single",
+													"Price" : {
+														"Adult" : 180.00,
+														"Child" : 180.00
+													}
+												}, {
+													"Type" : "Twin",
+													"Price" : {
+														"Adult" : 105.00,
+														"Child" : 105.00
+													}
+												}
+											]
+										}
+									}, {
+										"Type" : "PostAccommodation",
+										"Code" : "CATPRS0",
+										"Name" : "President Hotel",
+										"Address" : {
+											"Line1" : "43 Kifissias Avenue",
+											"City" : "Athens",
+											"Region" : "Attiki",
+											"Postcode" : "11523",
+											"Country" : "Greece"
+										},
+										"Rooms" : {
+											"Room" : [{
+													"Type" : "Single",
+													"Price" : {
+														"Adult" : 180.00,
+														"Child" : 180.00
+													}
+												}, {
+													"Type" : "Twin",
+													"Price" : {
+														"Adult" : 105.00,
+														"Child" : 105.00
+													}
+												}
+											]
+										}
+									}
+								]
+							},
+							"MiscellaneousProducts" : {
+								"MiscellaneousProduct" : [{
+										"Code" : "CGSPAU9",
+										"Category" : "Gold Seal Protection",
+										"Name" : "Gold Seal Protection",
+										"Price" : {
+											"Adult" : 99.00,
+											"Child" : 99.00
+										}
+									}
+								]
+							}
+						}
+					}, {
+						"DepartureCode" : "26G15a",
+						"AvailabilityStatus" : "Available",
+						"StartDateTime" : "2015-07-26T00:00:00",
+						"Month" : 7,
+						"EndDateTime" : "2015-07-31T00:00:00",
+						"DateRangeIncludesTravelTime" : false,
+						"DefiniteDeparture" : true,
+						"Notes" : "",
+						"TourRules" : {
+							"Passengers" : {
+								"Passenger" : [{
+										"Type" : "Adult",
+										"AgeFrom" : 18,
+										"AgeTo" : 35
+									}
+								]
+							},
+							"Rooms" : {
+								"Room" : [{
+										"OccupancyRule" : {
+											"MaximumAdults" : 1,
+											"MaximumPassengers" : 1,
+											"MinimumAdults" : 1,
+											"MinimumPassengers" : 1,
+											"MinimumPayingAdults" : 1
+										},
+										"Price" : {
+											"Adult" : {
+												"Base" : 1350.00,
+												"Combined" : 1640.00
+											},
+											"Child" : {
+												"Base" : 1350.00,
+												"Combined" : 1350.00
+											}
+										},
+										"Type" : "Single"
+									}, {
+										"OccupancyRule" : {
+											"MaximumAdults" : 2,
+											"MaximumPassengers" : 2,
+											"MinimumAdults" : 2,
+											"MinimumPassengers" : 2,
+											"MinimumPayingAdults" : 2
+										},
+										"Price" : {
+											"Adult" : {
+												"Base" : 1165.00,
+												"Combined" : 1455.00
+											},
+											"Child" : {
+												"Base" : 1165.00,
+												"Combined" : 1165.00
+											}
+										},
+										"Type" : "Twin"
+									}, {
+										"OccupancyRule" : {
+											"MaximumAdults" : 2,
+											"MaximumPassengers" : 2,
+											"MinimumAdults" : 1,
+											"MinimumPassengers" : 1,
+											"MinimumPayingAdults" : 1
+										},
+										"Price" : {
+											"Adult" : {
+												"Base" : 1165.00,
+												"Combined" : 1455.00
+											},
+											"Child" : {
+												"Base" : 1165.00,
+												"Combined" : 1165.00
+											}
+										},
+										"Type" : "TwinShare"
+									}, {
+										"OccupancyRule" : {
+											"MaximumAdults" : 4,
+											"MaximumPassengers" : 4,
+											"MinimumAdults" : 4,
+											"MinimumPassengers" : 4,
+											"MinimumPayingAdults" : 4
+										},
+										"Price" : {
+											"Adult" : {
+												"Base" : 875.00,
+												"Combined" : 1165.00
+											},
+											"Child" : {
+												"Base" : 875.00,
+												"Combined" : 875.00
+											}
+										},
+										"Type" : "Quad"
+									}, {
+										"OccupancyRule" : {
+											"MaximumAdults" : 4,
+											"MaximumPassengers" : 4,
+											"MinimumAdults" : 1,
+											"MinimumPassengers" : 1,
+											"MinimumPayingAdults" : 1
+										},
+										"Price" : {
+											"Adult" : {
+												"Base" : 875.00,
+												"Combined" : 1165.00
+											},
+											"Child" : {
+												"Base" : 875.00,
+												"Combined" : 875.00
+											}
+										},
+										"Type" : "QuadShare"
+									}
+								]
+							},
+							"CombinedIncludedCharges" : {
+								"MandatoryMiscellaneousProducts" : {
+									"MiscellaneousProduct" : [{
+											"Code" : "CLOUISC",
+											"Category" : "Voucher Only",
+											"Name" : "Celestyal Cruise Information",
+											"Price" : {
+												"Adult" : 0.00,
+												"Child" : 0.00
+											}
+										}
+									]
+								},
+								"PortTax" : {
+									"Price" : {
+										"Adult" : 290.00,
+										"Child" : 0.00
+									}
+								}
+							},
+							"PriceIsIndicative" : false,
+							"IsEligibleForFrequentTravellerDiscount" : false,
+							"CanSearchForFlights" : false
+						},
+						"AssociatedProducts" : {
+							"AccommodationProducts" : {
+								"AccommodationProduct" : [{
+										"Type" : "PreAccommodation",
+										"Code" : "CATPRS0",
+										"Name" : "President Hotel",
+										"Address" : {
+											"Line1" : "43 Kifissias Avenue",
+											"City" : "Athens",
+											"Region" : "Attiki",
+											"Postcode" : "11523",
+											"Country" : "Greece"
+										},
+										"Rooms" : {
+											"Room" : [{
+													"Type" : "Single",
+													"Price" : {
+														"Adult" : 180.00,
+														"Child" : 180.00
+													}
+												}, {
+													"Type" : "Twin",
+													"Price" : {
+														"Adult" : 105.00,
+														"Child" : 105.00
+													}
+												}
+											]
+										}
+									}, {
+										"Type" : "PostAccommodation",
+										"Code" : "CATPRS0",
+										"Name" : "President Hotel",
+										"Address" : {
+											"Line1" : "43 Kifissias Avenue",
+											"City" : "Athens",
+											"Region" : "Attiki",
+											"Postcode" : "11523",
+											"Country" : "Greece"
+										},
+										"Rooms" : {
+											"Room" : [{
+													"Type" : "Single",
+													"Price" : {
+														"Adult" : 180.00,
+														"Child" : 180.00
+													}
+												}, {
+													"Type" : "Twin",
+													"Price" : {
+														"Adult" : 105.00,
+														"Child" : 105.00
+													}
+												}
+											]
+										}
+									}
+								]
+							},
+							"MiscellaneousProducts" : {
+								"MiscellaneousProduct" : [{
+										"Code" : "CGSPAU9",
+										"Category" : "Gold Seal Protection",
+										"Name" : "Gold Seal Protection",
+										"Price" : {
+											"Adult" : 99.00,
+											"Child" : 99.00
+										}
+									}
+								]
+							}
+						}
+					}, {
+						"DepartureCode" : "02H15a",
+						"AvailabilityStatus" : "Available",
+						"StartDateTime" : "2015-08-02T00:00:00",
+						"Month" : 8,
+						"EndDateTime" : "2015-08-07T00:00:00",
+						"DateRangeIncludesTravelTime" : false,
+						"DefiniteDeparture" : true,
+						"Notes" : "",
+						"TourRules" : {
+							"Passengers" : {
+								"Passenger" : [{
+										"Type" : "Adult",
+										"AgeFrom" : 18,
+										"AgeTo" : 35
+									}
+								]
+							},
+							"Rooms" : {
+								"Room" : [{
+										"OccupancyRule" : {
+											"MaximumAdults" : 1,
+											"MaximumPassengers" : 1,
+											"MinimumAdults" : 1,
+											"MinimumPassengers" : 1,
+											"MinimumPayingAdults" : 1
+										},
+										"Price" : {
+											"Adult" : {
+												"Base" : 1350.00,
+												"Combined" : 1640.00
+											},
+											"Child" : {
+												"Base" : 1350.00,
+												"Combined" : 1350.00
+											}
+										},
+										"Type" : "Single"
+									}, {
+										"OccupancyRule" : {
+											"MaximumAdults" : 2,
+											"MaximumPassengers" : 2,
+											"MinimumAdults" : 2,
+											"MinimumPassengers" : 2,
+											"MinimumPayingAdults" : 2
+										},
+										"Price" : {
+											"Adult" : {
+												"Base" : 1165.00,
+												"Combined" : 1455.00
+											},
+											"Child" : {
+												"Base" : 1165.00,
+												"Combined" : 1165.00
+											}
+										},
+										"Type" : "Twin"
+									}, {
+										"OccupancyRule" : {
+											"MaximumAdults" : 2,
+											"MaximumPassengers" : 2,
+											"MinimumAdults" : 1,
+											"MinimumPassengers" : 1,
+											"MinimumPayingAdults" : 1
+										},
+										"Price" : {
+											"Adult" : {
+												"Base" : 1165.00,
+												"Combined" : 1455.00
+											},
+											"Child" : {
+												"Base" : 1165.00,
+												"Combined" : 1165.00
+											}
+										},
+										"Type" : "TwinShare"
+									}, {
+										"OccupancyRule" : {
+											"MaximumAdults" : 4,
+											"MaximumPassengers" : 4,
+											"MinimumAdults" : 4,
+											"MinimumPassengers" : 4,
+											"MinimumPayingAdults" : 4
+										},
+										"Price" : {
+											"Adult" : {
+												"Base" : 875.00,
+												"Combined" : 1165.00
+											},
+											"Child" : {
+												"Base" : 875.00,
+												"Combined" : 875.00
+											}
+										},
+										"Type" : "Quad"
+									}, {
+										"OccupancyRule" : {
+											"MaximumAdults" : 4,
+											"MaximumPassengers" : 4,
+											"MinimumAdults" : 1,
+											"MinimumPassengers" : 1,
+											"MinimumPayingAdults" : 1
+										},
+										"Price" : {
+											"Adult" : {
+												"Base" : 875.00,
+												"Combined" : 1165.00
+											},
+											"Child" : {
+												"Base" : 875.00,
+												"Combined" : 875.00
+											}
+										},
+										"Type" : "QuadShare"
+									}
+								]
+							},
+							"CombinedIncludedCharges" : {
+								"MandatoryMiscellaneousProducts" : {
+									"MiscellaneousProduct" : [{
+											"Code" : "CLOUISC",
+											"Category" : "Voucher Only",
+											"Name" : "Celestyal Cruise Information",
+											"Price" : {
+												"Adult" : 0.00,
+												"Child" : 0.00
+											}
+										}
+									]
+								},
+								"PortTax" : {
+									"Price" : {
+										"Adult" : 290.00,
+										"Child" : 0.00
+									}
+								}
+							},
+							"PriceIsIndicative" : false,
+							"IsEligibleForFrequentTravellerDiscount" : false,
+							"CanSearchForFlights" : false
+						},
+						"AssociatedProducts" : {
+							"AccommodationProducts" : {
+								"AccommodationProduct" : [{
+										"Type" : "PreAccommodation",
+										"Code" : "CATPRS0",
+										"Name" : "President Hotel",
+										"Address" : {
+											"Line1" : "43 Kifissias Avenue",
+											"City" : "Athens",
+											"Region" : "Attiki",
+											"Postcode" : "11523",
+											"Country" : "Greece"
+										},
+										"Rooms" : {
+											"Room" : [{
+													"Type" : "Single",
+													"Price" : {
+														"Adult" : 180.00,
+														"Child" : 180.00
+													}
+												}, {
+													"Type" : "Twin",
+													"Price" : {
+														"Adult" : 105.00,
+														"Child" : 105.00
+													}
+												}
+											]
+										}
+									}, {
+										"Type" : "PostAccommodation",
+										"Code" : "CATPRS0",
+										"Name" : "President Hotel",
+										"Address" : {
+											"Line1" : "43 Kifissias Avenue",
+											"City" : "Athens",
+											"Region" : "Attiki",
+											"Postcode" : "11523",
+											"Country" : "Greece"
+										},
+										"Rooms" : {
+											"Room" : [{
+													"Type" : "Single",
+													"Price" : {
+														"Adult" : 180.00,
+														"Child" : 180.00
+													}
+												}, {
+													"Type" : "Twin",
+													"Price" : {
+														"Adult" : 105.00,
+														"Child" : 105.00
+													}
+												}
+											]
+										}
+									}
+								]
+							},
+							"MiscellaneousProducts" : {
+								"MiscellaneousProduct" : [{
+										"Code" : "CGSPAU9",
+										"Category" : "Gold Seal Protection",
+										"Name" : "Gold Seal Protection",
+										"Price" : {
+											"Adult" : 99.00,
+											"Child" : 99.00
+										}
+									}
+								]
+							}
+						}
+					}, {
+						"DepartureCode" : "09H15a",
+						"AvailabilityStatus" : "Available",
+						"StartDateTime" : "2015-08-09T00:00:00",
+						"Month" : 8,
+						"EndDateTime" : "2015-08-14T00:00:00",
+						"DateRangeIncludesTravelTime" : false,
+						"DefiniteDeparture" : true,
+						"Notes" : "",
+						"TourRules" : {
+							"Passengers" : {
+								"Passenger" : [{
+										"Type" : "Adult",
+										"AgeFrom" : 18,
+										"AgeTo" : 35
+									}
+								]
+							},
+							"Rooms" : {
+								"Room" : [{
+										"OccupancyRule" : {
+											"MaximumAdults" : 1,
+											"MaximumPassengers" : 1,
+											"MinimumAdults" : 1,
+											"MinimumPassengers" : 1,
+											"MinimumPayingAdults" : 1
+										},
+										"Price" : {
+											"Adult" : {
+												"Base" : 1350.00,
+												"Combined" : 1640.00
+											},
+											"Child" : {
+												"Base" : 1350.00,
+												"Combined" : 1350.00
+											}
+										},
+										"Type" : "Single"
+									}, {
+										"OccupancyRule" : {
+											"MaximumAdults" : 2,
+											"MaximumPassengers" : 2,
+											"MinimumAdults" : 2,
+											"MinimumPassengers" : 2,
+											"MinimumPayingAdults" : 2
+										},
+										"Price" : {
+											"Adult" : {
+												"Base" : 1165.00,
+												"Combined" : 1455.00
+											},
+											"Child" : {
+												"Base" : 1165.00,
+												"Combined" : 1165.00
+											}
+										},
+										"Type" : "Twin"
+									}, {
+										"OccupancyRule" : {
+											"MaximumAdults" : 2,
+											"MaximumPassengers" : 2,
+											"MinimumAdults" : 1,
+											"MinimumPassengers" : 1,
+											"MinimumPayingAdults" : 1
+										},
+										"Price" : {
+											"Adult" : {
+												"Base" : 1165.00,
+												"Combined" : 1455.00
+											},
+											"Child" : {
+												"Base" : 1165.00,
+												"Combined" : 1165.00
+											}
+										},
+										"Type" : "TwinShare"
+									}, {
+										"OccupancyRule" : {
+											"MaximumAdults" : 4,
+											"MaximumPassengers" : 4,
+											"MinimumAdults" : 4,
+											"MinimumPassengers" : 4,
+											"MinimumPayingAdults" : 4
+										},
+										"Price" : {
+											"Adult" : {
+												"Base" : 875.00,
+												"Combined" : 1165.00
+											},
+											"Child" : {
+												"Base" : 875.00,
+												"Combined" : 875.00
+											}
+										},
+										"Type" : "Quad"
+									}, {
+										"OccupancyRule" : {
+											"MaximumAdults" : 4,
+											"MaximumPassengers" : 4,
+											"MinimumAdults" : 1,
+											"MinimumPassengers" : 1,
+											"MinimumPayingAdults" : 1
+										},
+										"Price" : {
+											"Adult" : {
+												"Base" : 875.00,
+												"Combined" : 1165.00
+											},
+											"Child" : {
+												"Base" : 875.00,
+												"Combined" : 875.00
+											}
+										},
+										"Type" : "QuadShare"
+									}
+								]
+							},
+							"CombinedIncludedCharges" : {
+								"MandatoryMiscellaneousProducts" : {
+									"MiscellaneousProduct" : [{
+											"Code" : "CLOUISC",
+											"Category" : "Voucher Only",
+											"Name" : "Celestyal Cruise Information",
+											"Price" : {
+												"Adult" : 0.00,
+												"Child" : 0.00
+											}
+										}
+									]
+								},
+								"PortTax" : {
+									"Price" : {
+										"Adult" : 290.00,
+										"Child" : 0.00
+									}
+								}
+							},
+							"PriceIsIndicative" : false,
+							"IsEligibleForFrequentTravellerDiscount" : false,
+							"CanSearchForFlights" : false
+						},
+						"AssociatedProducts" : {
+							"AccommodationProducts" : {
+								"AccommodationProduct" : [{
+										"Type" : "PreAccommodation",
+										"Code" : "CATPRS0",
+										"Name" : "President Hotel",
+										"Address" : {
+											"Line1" : "43 Kifissias Avenue",
+											"City" : "Athens",
+											"Region" : "Attiki",
+											"Postcode" : "11523",
+											"Country" : "Greece"
+										},
+										"Rooms" : {
+											"Room" : [{
+													"Type" : "Single",
+													"Price" : {
+														"Adult" : 180.00,
+														"Child" : 180.00
+													}
+												}, {
+													"Type" : "Twin",
+													"Price" : {
+														"Adult" : 105.00,
+														"Child" : 105.00
+													}
+												}
+											]
+										}
+									}, {
+										"Type" : "PostAccommodation",
+										"Code" : "CATPRS0",
+										"Name" : "President Hotel",
+										"Address" : {
+											"Line1" : "43 Kifissias Avenue",
+											"City" : "Athens",
+											"Region" : "Attiki",
+											"Postcode" : "11523",
+											"Country" : "Greece"
+										},
+										"Rooms" : {
+											"Room" : [{
+													"Type" : "Single",
+													"Price" : {
+														"Adult" : 180.00,
+														"Child" : 180.00
+													}
+												}, {
+													"Type" : "Twin",
+													"Price" : {
+														"Adult" : 105.00,
+														"Child" : 105.00
+													}
+												}
+											]
+										}
+									}
+								]
+							},
+							"MiscellaneousProducts" : {
+								"MiscellaneousProduct" : [{
+										"Code" : "CGSPAU9",
+										"Category" : "Gold Seal Protection",
+										"Name" : "Gold Seal Protection",
+										"Price" : {
+											"Adult" : 99.00,
+											"Child" : 99.00
+										}
+									}
+								]
+							}
+						}
+					}, {
+						"DepartureCode" : "16H15a",
+						"AvailabilityStatus" : "Available",
+						"StartDateTime" : "2015-08-16T00:00:00",
+						"Month" : 8,
+						"EndDateTime" : "2015-08-21T00:00:00",
+						"DateRangeIncludesTravelTime" : false,
+						"DefiniteDeparture" : true,
+						"Notes" : "",
+						"TourRules" : {
+							"Passengers" : {
+								"Passenger" : [{
+										"Type" : "Adult",
+										"AgeFrom" : 18,
+										"AgeTo" : 35
+									}
+								]
+							},
+							"Rooms" : {
+								"Room" : [{
+										"OccupancyRule" : {
+											"MaximumAdults" : 1,
+											"MaximumPassengers" : 1,
+											"MinimumAdults" : 1,
+											"MinimumPassengers" : 1,
+											"MinimumPayingAdults" : 1
+										},
+										"Price" : {
+											"Adult" : {
+												"Base" : 1310.00,
+												"Combined" : 1600.00
+											},
+											"Child" : {
+												"Base" : 1310.00,
+												"Combined" : 1310.00
+											}
+										},
+										"Type" : "Single"
+									}, {
+										"OccupancyRule" : {
+											"MaximumAdults" : 2,
+											"MaximumPassengers" : 2,
+											"MinimumAdults" : 2,
+											"MinimumPassengers" : 2,
+											"MinimumPayingAdults" : 2
+										},
+										"Price" : {
+											"Adult" : {
+												"Base" : 1125.00,
+												"Combined" : 1415.00
+											},
+											"Child" : {
+												"Base" : 1125.00,
+												"Combined" : 1125.00
+											}
+										},
+										"Type" : "Twin"
+									}, {
+										"OccupancyRule" : {
+											"MaximumAdults" : 2,
+											"MaximumPassengers" : 2,
+											"MinimumAdults" : 1,
+											"MinimumPassengers" : 1,
+											"MinimumPayingAdults" : 1
+										},
+										"Price" : {
+											"Adult" : {
+												"Base" : 1125.00,
+												"Combined" : 1415.00
+											},
+											"Child" : {
+												"Base" : 1125.00,
+												"Combined" : 1125.00
+											}
+										},
+										"Type" : "TwinShare"
+									}, {
+										"OccupancyRule" : {
+											"MaximumAdults" : 4,
+											"MaximumPassengers" : 4,
+											"MinimumAdults" : 4,
+											"MinimumPassengers" : 4,
+											"MinimumPayingAdults" : 4
+										},
+										"Price" : {
+											"Adult" : {
+												"Base" : 845.00,
+												"Combined" : 1135.00
+											},
+											"Child" : {
+												"Base" : 845.00,
+												"Combined" : 845.00
+											}
+										},
+										"Type" : "Quad"
+									}, {
+										"OccupancyRule" : {
+											"MaximumAdults" : 4,
+											"MaximumPassengers" : 4,
+											"MinimumAdults" : 1,
+											"MinimumPassengers" : 1,
+											"MinimumPayingAdults" : 1
+										},
+										"Price" : {
+											"Adult" : {
+												"Base" : 845.00,
+												"Combined" : 1135.00
+											},
+											"Child" : {
+												"Base" : 845.00,
+												"Combined" : 845.00
+											}
+										},
+										"Type" : "QuadShare"
+									}
+								]
+							},
+							"CombinedIncludedCharges" : {
+								"MandatoryMiscellaneousProducts" : {
+									"MiscellaneousProduct" : [{
+											"Code" : "CLOUISC",
+											"Category" : "Voucher Only",
+											"Name" : "Celestyal Cruise Information",
+											"Price" : {
+												"Adult" : 0.00,
+												"Child" : 0.00
+											}
+										}
+									]
+								},
+								"PortTax" : {
+									"Price" : {
+										"Adult" : 290.00,
+										"Child" : 0.00
+									}
+								}
+							},
+							"PriceIsIndicative" : false,
+							"IsEligibleForFrequentTravellerDiscount" : false,
+							"CanSearchForFlights" : false
+						},
+						"AssociatedProducts" : {
+							"AccommodationProducts" : {
+								"AccommodationProduct" : [{
+										"Type" : "PreAccommodation",
+										"Code" : "CATPRS0",
+										"Name" : "President Hotel",
+										"Address" : {
+											"Line1" : "43 Kifissias Avenue",
+											"City" : "Athens",
+											"Region" : "Attiki",
+											"Postcode" : "11523",
+											"Country" : "Greece"
+										},
+										"Rooms" : {
+											"Room" : [{
+													"Type" : "Single",
+													"Price" : {
+														"Adult" : 180.00,
+														"Child" : 180.00
+													}
+												}, {
+													"Type" : "Twin",
+													"Price" : {
+														"Adult" : 105.00,
+														"Child" : 105.00
+													}
+												}
+											]
+										}
+									}, {
+										"Type" : "PostAccommodation",
+										"Code" : "CATPRS0",
+										"Name" : "President Hotel",
+										"Address" : {
+											"Line1" : "43 Kifissias Avenue",
+											"City" : "Athens",
+											"Region" : "Attiki",
+											"Postcode" : "11523",
+											"Country" : "Greece"
+										},
+										"Rooms" : {
+											"Room" : [{
+													"Type" : "Single",
+													"Price" : {
+														"Adult" : 180.00,
+														"Child" : 180.00
+													}
+												}, {
+													"Type" : "Twin",
+													"Price" : {
+														"Adult" : 105.00,
+														"Child" : 105.00
+													}
+												}
+											]
+										}
+									}
+								]
+							},
+							"MiscellaneousProducts" : {
+								"MiscellaneousProduct" : [{
+										"Code" : "CGSPAU9",
+										"Category" : "Gold Seal Protection",
+										"Name" : "Gold Seal Protection",
+										"Price" : {
+											"Adult" : 99.00,
+											"Child" : 99.00
+										}
+									}
+								]
+							}
+						}
+					}, {
+						"DepartureCode" : "23H15a",
+						"AvailabilityStatus" : "Available",
+						"StartDateTime" : "2015-08-23T00:00:00",
+						"Month" : 8,
+						"EndDateTime" : "2015-08-28T00:00:00",
+						"DateRangeIncludesTravelTime" : false,
+						"DefiniteDeparture" : true,
+						"Notes" : "",
+						"TourRules" : {
+							"Passengers" : {
+								"Passenger" : [{
+										"Type" : "Adult",
+										"AgeFrom" : 18,
+										"AgeTo" : 35
+									}
+								]
+							},
+							"Rooms" : {
+								"Room" : [{
+										"OccupancyRule" : {
+											"MaximumAdults" : 1,
+											"MaximumPassengers" : 1,
+											"MinimumAdults" : 1,
+											"MinimumPassengers" : 1,
+											"MinimumPayingAdults" : 1
+										},
+										"Price" : {
+											"Adult" : {
+												"Base" : 1310.00,
+												"Combined" : 1600.00
+											},
+											"Child" : {
+												"Base" : 1310.00,
+												"Combined" : 1310.00
+											}
+										},
+										"Type" : "Single"
+									}, {
+										"OccupancyRule" : {
+											"MaximumAdults" : 2,
+											"MaximumPassengers" : 2,
+											"MinimumAdults" : 2,
+											"MinimumPassengers" : 2,
+											"MinimumPayingAdults" : 2
+										},
+										"Price" : {
+											"Adult" : {
+												"Base" : 1125.00,
+												"Combined" : 1415.00
+											},
+											"Child" : {
+												"Base" : 1125.00,
+												"Combined" : 1125.00
+											}
+										},
+										"Type" : "Twin"
+									}, {
+										"OccupancyRule" : {
+											"MaximumAdults" : 2,
+											"MaximumPassengers" : 2,
+											"MinimumAdults" : 1,
+											"MinimumPassengers" : 1,
+											"MinimumPayingAdults" : 1
+										},
+										"Price" : {
+											"Adult" : {
+												"Base" : 1125.00,
+												"Combined" : 1415.00
+											},
+											"Child" : {
+												"Base" : 1125.00,
+												"Combined" : 1125.00
+											}
+										},
+										"Type" : "TwinShare"
+									}, {
+										"OccupancyRule" : {
+											"MaximumAdults" : 4,
+											"MaximumPassengers" : 4,
+											"MinimumAdults" : 4,
+											"MinimumPassengers" : 4,
+											"MinimumPayingAdults" : 4
+										},
+										"Price" : {
+											"Adult" : {
+												"Base" : 845.00,
+												"Combined" : 1135.00
+											},
+											"Child" : {
+												"Base" : 845.00,
+												"Combined" : 845.00
+											}
+										},
+										"Type" : "Quad"
+									}, {
+										"OccupancyRule" : {
+											"MaximumAdults" : 4,
+											"MaximumPassengers" : 4,
+											"MinimumAdults" : 1,
+											"MinimumPassengers" : 1,
+											"MinimumPayingAdults" : 1
+										},
+										"Price" : {
+											"Adult" : {
+												"Base" : 845.00,
+												"Combined" : 1135.00
+											},
+											"Child" : {
+												"Base" : 845.00,
+												"Combined" : 845.00
+											}
+										},
+										"Type" : "QuadShare"
+									}
+								]
+							},
+							"CombinedIncludedCharges" : {
+								"MandatoryMiscellaneousProducts" : {
+									"MiscellaneousProduct" : [{
+											"Code" : "CLOUISC",
+											"Category" : "Voucher Only",
+											"Name" : "Celestyal Cruise Information",
+											"Price" : {
+												"Adult" : 0.00,
+												"Child" : 0.00
+											}
+										}
+									]
+								},
+								"PortTax" : {
+									"Price" : {
+										"Adult" : 290.00,
+										"Child" : 0.00
+									}
+								}
+							},
+							"PriceIsIndicative" : false,
+							"IsEligibleForFrequentTravellerDiscount" : false,
+							"CanSearchForFlights" : false
+						},
+						"AssociatedProducts" : {
+							"AccommodationProducts" : {
+								"AccommodationProduct" : [{
+										"Type" : "PreAccommodation",
+										"Code" : "CATPRS0",
+										"Name" : "President Hotel",
+										"Address" : {
+											"Line1" : "43 Kifissias Avenue",
+											"City" : "Athens",
+											"Region" : "Attiki",
+											"Postcode" : "11523",
+											"Country" : "Greece"
+										},
+										"Rooms" : {
+											"Room" : [{
+													"Type" : "Single",
+													"Price" : {
+														"Adult" : 180.00,
+														"Child" : 180.00
+													}
+												}, {
+													"Type" : "Twin",
+													"Price" : {
+														"Adult" : 105.00,
+														"Child" : 105.00
+													}
+												}
+											]
+										}
+									}, {
+										"Type" : "PostAccommodation",
+										"Code" : "CATPRS0",
+										"Name" : "President Hotel",
+										"Address" : {
+											"Line1" : "43 Kifissias Avenue",
+											"City" : "Athens",
+											"Region" : "Attiki",
+											"Postcode" : "11523",
+											"Country" : "Greece"
+										},
+										"Rooms" : {
+											"Room" : [{
+													"Type" : "Single",
+													"Price" : {
+														"Adult" : 180.00,
+														"Child" : 180.00
+													}
+												}, {
+													"Type" : "Twin",
+													"Price" : {
+														"Adult" : 105.00,
+														"Child" : 105.00
+													}
+												}
+											]
+										}
+									}
+								]
+							},
+							"MiscellaneousProducts" : {
+								"MiscellaneousProduct" : [{
+										"Code" : "CGSPAU9",
+										"Category" : "Gold Seal Protection",
+										"Name" : "Gold Seal Protection",
+										"Price" : {
+											"Adult" : 99.00,
+											"Child" : 99.00
+										}
+									}
+								]
+							}
+						}
+					}, {
+						"DepartureCode" : "30H15a",
+						"AvailabilityStatus" : "Available",
+						"StartDateTime" : "2015-08-30T00:00:00",
+						"Month" : 8,
+						"EndDateTime" : "2015-09-04T00:00:00",
+						"DateRangeIncludesTravelTime" : false,
+						"DefiniteDeparture" : true,
+						"Notes" : "",
+						"TourRules" : {
+							"Passengers" : {
+								"Passenger" : [{
+										"Type" : "Adult",
+										"AgeFrom" : 18,
+										"AgeTo" : 35
+									}
+								]
+							},
+							"Rooms" : {
+								"Room" : [{
+										"OccupancyRule" : {
+											"MaximumAdults" : 1,
+											"MaximumPassengers" : 1,
+											"MinimumAdults" : 1,
+											"MinimumPassengers" : 1,
+											"MinimumPayingAdults" : 1
+										},
+										"Price" : {
+											"Adult" : {
+												"Base" : 1310.00,
+												"Combined" : 1600.00
+											},
+											"Child" : {
+												"Base" : 1310.00,
+												"Combined" : 1310.00
+											}
+										},
+										"Type" : "Single"
+									}, {
+										"OccupancyRule" : {
+											"MaximumAdults" : 2,
+											"MaximumPassengers" : 2,
+											"MinimumAdults" : 2,
+											"MinimumPassengers" : 2,
+											"MinimumPayingAdults" : 2
+										},
+										"Price" : {
+											"Adult" : {
+												"Base" : 1125.00,
+												"Combined" : 1415.00
+											},
+											"Child" : {
+												"Base" : 1125.00,
+												"Combined" : 1125.00
+											}
+										},
+										"Type" : "Twin"
+									}, {
+										"OccupancyRule" : {
+											"MaximumAdults" : 2,
+											"MaximumPassengers" : 2,
+											"MinimumAdults" : 1,
+											"MinimumPassengers" : 1,
+											"MinimumPayingAdults" : 1
+										},
+										"Price" : {
+											"Adult" : {
+												"Base" : 1125.00,
+												"Combined" : 1415.00
+											},
+											"Child" : {
+												"Base" : 1125.00,
+												"Combined" : 1125.00
+											}
+										},
+										"Type" : "TwinShare"
+									}, {
+										"OccupancyRule" : {
+											"MaximumAdults" : 4,
+											"MaximumPassengers" : 4,
+											"MinimumAdults" : 4,
+											"MinimumPassengers" : 4,
+											"MinimumPayingAdults" : 4
+										},
+										"Price" : {
+											"Adult" : {
+												"Base" : 845.00,
+												"Combined" : 1135.00
+											},
+											"Child" : {
+												"Base" : 845.00,
+												"Combined" : 845.00
+											}
+										},
+										"Type" : "Quad"
+									}, {
+										"OccupancyRule" : {
+											"MaximumAdults" : 4,
+											"MaximumPassengers" : 4,
+											"MinimumAdults" : 1,
+											"MinimumPassengers" : 1,
+											"MinimumPayingAdults" : 1
+										},
+										"Price" : {
+											"Adult" : {
+												"Base" : 845.00,
+												"Combined" : 1135.00
+											},
+											"Child" : {
+												"Base" : 845.00,
+												"Combined" : 845.00
+											}
+										},
+										"Type" : "QuadShare"
+									}
+								]
+							},
+							"CombinedIncludedCharges" : {
+								"MandatoryMiscellaneousProducts" : {
+									"MiscellaneousProduct" : [{
+											"Code" : "CLOUISC",
+											"Category" : "Voucher Only",
+											"Name" : "Celestyal Cruise Information",
+											"Price" : {
+												"Adult" : 0.00,
+												"Child" : 0.00
+											}
+										}
+									]
+								},
+								"PortTax" : {
+									"Price" : {
+										"Adult" : 290.00,
+										"Child" : 0.00
+									}
+								}
+							},
+							"PriceIsIndicative" : false,
+							"IsEligibleForFrequentTravellerDiscount" : false,
+							"CanSearchForFlights" : false
+						},
+						"AssociatedProducts" : {
+							"AccommodationProducts" : {
+								"AccommodationProduct" : [{
+										"Type" : "PreAccommodation",
+										"Code" : "CATPRS0",
+										"Name" : "President Hotel",
+										"Address" : {
+											"Line1" : "43 Kifissias Avenue",
+											"City" : "Athens",
+											"Region" : "Attiki",
+											"Postcode" : "11523",
+											"Country" : "Greece"
+										},
+										"Rooms" : {
+											"Room" : [{
+													"Type" : "Single",
+													"Price" : {
+														"Adult" : 180.00,
+														"Child" : 180.00
+													}
+												}, {
+													"Type" : "Twin",
+													"Price" : {
+														"Adult" : 105.00,
+														"Child" : 105.00
+													}
+												}
+											]
+										}
+									}, {
+										"Type" : "PostAccommodation",
+										"Code" : "CATPRS0",
+										"Name" : "President Hotel",
+										"Address" : {
+											"Line1" : "43 Kifissias Avenue",
+											"City" : "Athens",
+											"Region" : "Attiki",
+											"Postcode" : "11523",
+											"Country" : "Greece"
+										},
+										"Rooms" : {
+											"Room" : [{
+													"Type" : "Single",
+													"Price" : {
+														"Adult" : 180.00,
+														"Child" : 180.00
+													}
+												}, {
+													"Type" : "Twin",
+													"Price" : {
+														"Adult" : 105.00,
+														"Child" : 105.00
+													}
+												}
+											]
+										}
+									}
+								]
+							},
+							"MiscellaneousProducts" : {
+								"MiscellaneousProduct" : [{
+										"Code" : "CGSPAU9",
+										"Category" : "Gold Seal Protection",
+										"Name" : "Gold Seal Protection",
+										"Price" : {
+											"Adult" : 99.00,
+											"Child" : 99.00
+										}
+									}
+								]
+							}
+						}
+					}, {
+						"DepartureCode" : "06I15a",
+						"AvailabilityStatus" : "Available",
+						"StartDateTime" : "2015-09-06T00:00:00",
+						"Month" : 9,
+						"EndDateTime" : "2015-09-11T00:00:00",
+						"DateRangeIncludesTravelTime" : false,
+						"DefiniteDeparture" : true,
+						"Notes" : "",
+						"TourRules" : {
+							"Passengers" : {
+								"Passenger" : [{
+										"Type" : "Adult",
+										"AgeFrom" : 18,
+										"AgeTo" : 35
+									}
+								]
+							},
+							"Rooms" : {
+								"Room" : [{
+										"OccupancyRule" : {
+											"MaximumAdults" : 1,
+											"MaximumPassengers" : 1,
+											"MinimumAdults" : 1,
+											"MinimumPassengers" : 1,
+											"MinimumPayingAdults" : 1
+										},
+										"Price" : {
+											"Adult" : {
+												"Base" : 1310.00,
+												"Combined" : 1600.00
+											},
+											"Child" : {
+												"Base" : 1310.00,
+												"Combined" : 1310.00
+											}
+										},
+										"Type" : "Single"
+									}, {
+										"OccupancyRule" : {
+											"MaximumAdults" : 2,
+											"MaximumPassengers" : 2,
+											"MinimumAdults" : 2,
+											"MinimumPassengers" : 2,
+											"MinimumPayingAdults" : 2
+										},
+										"Price" : {
+											"Adult" : {
+												"Base" : 1125.00,
+												"Combined" : 1415.00
+											},
+											"Child" : {
+												"Base" : 1125.00,
+												"Combined" : 1125.00
+											}
+										},
+										"Type" : "Twin"
+									}, {
+										"OccupancyRule" : {
+											"MaximumAdults" : 2,
+											"MaximumPassengers" : 2,
+											"MinimumAdults" : 1,
+											"MinimumPassengers" : 1,
+											"MinimumPayingAdults" : 1
+										},
+										"Price" : {
+											"Adult" : {
+												"Base" : 1125.00,
+												"Combined" : 1415.00
+											},
+											"Child" : {
+												"Base" : 1125.00,
+												"Combined" : 1125.00
+											}
+										},
+										"Type" : "TwinShare"
+									}, {
+										"OccupancyRule" : {
+											"MaximumAdults" : 4,
+											"MaximumPassengers" : 4,
+											"MinimumAdults" : 4,
+											"MinimumPassengers" : 4,
+											"MinimumPayingAdults" : 4
+										},
+										"Price" : {
+											"Adult" : {
+												"Base" : 845.00,
+												"Combined" : 1135.00
+											},
+											"Child" : {
+												"Base" : 845.00,
+												"Combined" : 845.00
+											}
+										},
+										"Type" : "Quad"
+									}, {
+										"OccupancyRule" : {
+											"MaximumAdults" : 4,
+											"MaximumPassengers" : 4,
+											"MinimumAdults" : 1,
+											"MinimumPassengers" : 1,
+											"MinimumPayingAdults" : 1
+										},
+										"Price" : {
+											"Adult" : {
+												"Base" : 845.00,
+												"Combined" : 1135.00
+											},
+											"Child" : {
+												"Base" : 845.00,
+												"Combined" : 845.00
+											}
+										},
+										"Type" : "QuadShare"
+									}
+								]
+							},
+							"CombinedIncludedCharges" : {
+								"MandatoryMiscellaneousProducts" : {
+									"MiscellaneousProduct" : [{
+											"Code" : "CLOUISC",
+											"Category" : "Voucher Only",
+											"Name" : "Celestyal Cruise Information",
+											"Price" : {
+												"Adult" : 0.00,
+												"Child" : 0.00
+											}
+										}
+									]
+								},
+								"PortTax" : {
+									"Price" : {
+										"Adult" : 290.00,
+										"Child" : 0.00
+									}
+								}
+							},
+							"PriceIsIndicative" : false,
+							"IsEligibleForFrequentTravellerDiscount" : false,
+							"CanSearchForFlights" : false
+						},
+						"AssociatedProducts" : {
+							"AccommodationProducts" : {
+								"AccommodationProduct" : [{
+										"Type" : "PreAccommodation",
+										"Code" : "CATPRS0",
+										"Name" : "President Hotel",
+										"Address" : {
+											"Line1" : "43 Kifissias Avenue",
+											"City" : "Athens",
+											"Region" : "Attiki",
+											"Postcode" : "11523",
+											"Country" : "Greece"
+										},
+										"Rooms" : {
+											"Room" : [{
+													"Type" : "Single",
+													"Price" : {
+														"Adult" : 180.00,
+														"Child" : 180.00
+													}
+												}, {
+													"Type" : "Twin",
+													"Price" : {
+														"Adult" : 105.00,
+														"Child" : 105.00
+													}
+												}
+											]
+										}
+									}, {
+										"Type" : "PostAccommodation",
+										"Code" : "CATPRS0",
+										"Name" : "President Hotel",
+										"Address" : {
+											"Line1" : "43 Kifissias Avenue",
+											"City" : "Athens",
+											"Region" : "Attiki",
+											"Postcode" : "11523",
+											"Country" : "Greece"
+										},
+										"Rooms" : {
+											"Room" : [{
+													"Type" : "Single",
+													"Price" : {
+														"Adult" : 180.00,
+														"Child" : 180.00
+													}
+												}, {
+													"Type" : "Twin",
+													"Price" : {
+														"Adult" : 105.00,
+														"Child" : 105.00
+													}
+												}
+											]
+										}
+									}
+								]
+							},
+							"MiscellaneousProducts" : {
+								"MiscellaneousProduct" : [{
+										"Code" : "CGSPAU9",
+										"Category" : "Gold Seal Protection",
+										"Name" : "Gold Seal Protection",
+										"Price" : {
+											"Adult" : 99.00,
+											"Child" : 99.00
+										}
+									}
+								]
+							}
+						}
+					}, {
+						"DepartureCode" : "13I15a",
+						"AvailabilityStatus" : "Available",
+						"StartDateTime" : "2015-09-13T00:00:00",
+						"Month" : 9,
+						"EndDateTime" : "2015-09-18T00:00:00",
+						"DateRangeIncludesTravelTime" : false,
+						"DefiniteDeparture" : true,
+						"Notes" : "",
+						"TourRules" : {
+							"Passengers" : {
+								"Passenger" : [{
+										"Type" : "Adult",
+										"AgeFrom" : 18,
+										"AgeTo" : 35
+									}
+								]
+							},
+							"Rooms" : {
+								"Room" : [{
+										"OccupancyRule" : {
+											"MaximumAdults" : 1,
+											"MaximumPassengers" : 1,
+											"MinimumAdults" : 1,
+											"MinimumPassengers" : 1,
+											"MinimumPayingAdults" : 1
+										},
+										"Price" : {
+											"Adult" : {
+												"Base" : 1310.00,
+												"Combined" : 1600.00
+											},
+											"Child" : {
+												"Base" : 1310.00,
+												"Combined" : 1310.00
+											}
+										},
+										"Type" : "Single"
+									}, {
+										"OccupancyRule" : {
+											"MaximumAdults" : 2,
+											"MaximumPassengers" : 2,
+											"MinimumAdults" : 2,
+											"MinimumPassengers" : 2,
+											"MinimumPayingAdults" : 2
+										},
+										"Price" : {
+											"Adult" : {
+												"Base" : 1125.00,
+												"Combined" : 1415.00
+											},
+											"Child" : {
+												"Base" : 1125.00,
+												"Combined" : 1125.00
+											}
+										},
+										"Type" : "Twin"
+									}, {
+										"OccupancyRule" : {
+											"MaximumAdults" : 2,
+											"MaximumPassengers" : 2,
+											"MinimumAdults" : 1,
+											"MinimumPassengers" : 1,
+											"MinimumPayingAdults" : 1
+										},
+										"Price" : {
+											"Adult" : {
+												"Base" : 1125.00,
+												"Combined" : 1415.00
+											},
+											"Child" : {
+												"Base" : 1125.00,
+												"Combined" : 1125.00
+											}
+										},
+										"Type" : "TwinShare"
+									}, {
+										"OccupancyRule" : {
+											"MaximumAdults" : 4,
+											"MaximumPassengers" : 4,
+											"MinimumAdults" : 4,
+											"MinimumPassengers" : 4,
+											"MinimumPayingAdults" : 4
+										},
+										"Price" : {
+											"Adult" : {
+												"Base" : 845.00,
+												"Combined" : 1135.00
+											},
+											"Child" : {
+												"Base" : 845.00,
+												"Combined" : 845.00
+											}
+										},
+										"Type" : "Quad"
+									}, {
+										"OccupancyRule" : {
+											"MaximumAdults" : 4,
+											"MaximumPassengers" : 4,
+											"MinimumAdults" : 1,
+											"MinimumPassengers" : 1,
+											"MinimumPayingAdults" : 1
+										},
+										"Price" : {
+											"Adult" : {
+												"Base" : 845.00,
+												"Combined" : 1135.00
+											},
+											"Child" : {
+												"Base" : 845.00,
+												"Combined" : 845.00
+											}
+										},
+										"Type" : "QuadShare"
+									}
+								]
+							},
+							"CombinedIncludedCharges" : {
+								"MandatoryMiscellaneousProducts" : {
+									"MiscellaneousProduct" : [{
+											"Code" : "CLOUISC",
+											"Category" : "Voucher Only",
+											"Name" : "Celestyal Cruise Information",
+											"Price" : {
+												"Adult" : 0.00,
+												"Child" : 0.00
+											}
+										}
+									]
+								},
+								"PortTax" : {
+									"Price" : {
+										"Adult" : 290.00,
+										"Child" : 0.00
+									}
+								}
+							},
+							"PriceIsIndicative" : false,
+							"IsEligibleForFrequentTravellerDiscount" : false,
+							"CanSearchForFlights" : false
+						},
+						"AssociatedProducts" : {
+							"AccommodationProducts" : {
+								"AccommodationProduct" : [{
+										"Type" : "PreAccommodation",
+										"Code" : "CATPRS0",
+										"Name" : "President Hotel",
+										"Address" : {
+											"Line1" : "43 Kifissias Avenue",
+											"City" : "Athens",
+											"Region" : "Attiki",
+											"Postcode" : "11523",
+											"Country" : "Greece"
+										},
+										"Rooms" : {
+											"Room" : [{
+													"Type" : "Single",
+													"Price" : {
+														"Adult" : 180.00,
+														"Child" : 180.00
+													}
+												}, {
+													"Type" : "Twin",
+													"Price" : {
+														"Adult" : 105.00,
+														"Child" : 105.00
+													}
+												}
+											]
+										}
+									}, {
+										"Type" : "PostAccommodation",
+										"Code" : "CATPRS0",
+										"Name" : "President Hotel",
+										"Address" : {
+											"Line1" : "43 Kifissias Avenue",
+											"City" : "Athens",
+											"Region" : "Attiki",
+											"Postcode" : "11523",
+											"Country" : "Greece"
+										},
+										"Rooms" : {
+											"Room" : [{
+													"Type" : "Single",
+													"Price" : {
+														"Adult" : 180.00,
+														"Child" : 180.00
+													}
+												}, {
+													"Type" : "Twin",
+													"Price" : {
+														"Adult" : 105.00,
+														"Child" : 105.00
+													}
+												}
+											]
+										}
+									}
+								]
+							},
+							"MiscellaneousProducts" : {
+								"MiscellaneousProduct" : [{
+										"Code" : "CGSPAU9",
+										"Category" : "Gold Seal Protection",
+										"Name" : "Gold Seal Protection",
+										"Price" : {
+											"Adult" : 99.00,
+											"Child" : 99.00
+										}
+									}
+								]
+							}
+						}
+					}, {
+						"DepartureCode" : "20I15a",
+						"AvailabilityStatus" : "Available",
+						"StartDateTime" : "2015-09-20T00:00:00",
+						"Month" : 9,
+						"EndDateTime" : "2015-09-25T00:00:00",
+						"DateRangeIncludesTravelTime" : false,
+						"DefiniteDeparture" : true,
+						"Notes" : "",
+						"TourRules" : {
+							"Passengers" : {
+								"Passenger" : [{
+										"Type" : "Adult",
+										"AgeFrom" : 18,
+										"AgeTo" : 35
+									}
+								]
+							},
+							"Rooms" : {
+								"Room" : [{
+										"OccupancyRule" : {
+											"MaximumAdults" : 1,
+											"MaximumPassengers" : 1,
+											"MinimumAdults" : 1,
+											"MinimumPassengers" : 1,
+											"MinimumPayingAdults" : 1
+										},
+										"Price" : {
+											"Adult" : {
+												"Base" : 1310.00,
+												"Combined" : 1600.00
+											},
+											"Child" : {
+												"Base" : 1310.00,
+												"Combined" : 1310.00
+											}
+										},
+										"Type" : "Single"
+									}, {
+										"OccupancyRule" : {
+											"MaximumAdults" : 2,
+											"MaximumPassengers" : 2,
+											"MinimumAdults" : 2,
+											"MinimumPassengers" : 2,
+											"MinimumPayingAdults" : 2
+										},
+										"Price" : {
+											"Adult" : {
+												"Base" : 1125.00,
+												"Combined" : 1415.00
+											},
+											"Child" : {
+												"Base" : 1125.00,
+												"Combined" : 1125.00
+											}
+										},
+										"Type" : "Twin"
+									}, {
+										"OccupancyRule" : {
+											"MaximumAdults" : 2,
+											"MaximumPassengers" : 2,
+											"MinimumAdults" : 1,
+											"MinimumPassengers" : 1,
+											"MinimumPayingAdults" : 1
+										},
+										"Price" : {
+											"Adult" : {
+												"Base" : 1125.00,
+												"Combined" : 1415.00
+											},
+											"Child" : {
+												"Base" : 1125.00,
+												"Combined" : 1125.00
+											}
+										},
+										"Type" : "TwinShare"
+									}, {
+										"OccupancyRule" : {
+											"MaximumAdults" : 4,
+											"MaximumPassengers" : 4,
+											"MinimumAdults" : 4,
+											"MinimumPassengers" : 4,
+											"MinimumPayingAdults" : 4
+										},
+										"Price" : {
+											"Adult" : {
+												"Base" : 845.00,
+												"Combined" : 1135.00
+											},
+											"Child" : {
+												"Base" : 845.00,
+												"Combined" : 845.00
+											}
+										},
+										"Type" : "Quad"
+									}, {
+										"OccupancyRule" : {
+											"MaximumAdults" : 4,
+											"MaximumPassengers" : 4,
+											"MinimumAdults" : 1,
+											"MinimumPassengers" : 1,
+											"MinimumPayingAdults" : 1
+										},
+										"Price" : {
+											"Adult" : {
+												"Base" : 845.00,
+												"Combined" : 1135.00
+											},
+											"Child" : {
+												"Base" : 845.00,
+												"Combined" : 845.00
+											}
+										},
+										"Type" : "QuadShare"
+									}
+								]
+							},
+							"CombinedIncludedCharges" : {
+								"MandatoryMiscellaneousProducts" : {
+									"MiscellaneousProduct" : [{
+											"Code" : "CLOUISC",
+											"Category" : "Voucher Only",
+											"Name" : "Celestyal Cruise Information",
+											"Price" : {
+												"Adult" : 0.00,
+												"Child" : 0.00
+											}
+										}
+									]
+								},
+								"PortTax" : {
+									"Price" : {
+										"Adult" : 290.00,
+										"Child" : 0.00
+									}
+								}
+							},
+							"PriceIsIndicative" : false,
+							"IsEligibleForFrequentTravellerDiscount" : false,
+							"CanSearchForFlights" : false
+						},
+						"AssociatedProducts" : {
+							"AccommodationProducts" : {
+								"AccommodationProduct" : [{
+										"Type" : "PreAccommodation",
+										"Code" : "CATPRS0",
+										"Name" : "President Hotel",
+										"Address" : {
+											"Line1" : "43 Kifissias Avenue",
+											"City" : "Athens",
+											"Region" : "Attiki",
+											"Postcode" : "11523",
+											"Country" : "Greece"
+										},
+										"Rooms" : {
+											"Room" : [{
+													"Type" : "Single",
+													"Price" : {
+														"Adult" : 180.00,
+														"Child" : 180.00
+													}
+												}, {
+													"Type" : "Twin",
+													"Price" : {
+														"Adult" : 105.00,
+														"Child" : 105.00
+													}
+												}
+											]
+										}
+									}, {
+										"Type" : "PostAccommodation",
+										"Code" : "CATPRS0",
+										"Name" : "President Hotel",
+										"Address" : {
+											"Line1" : "43 Kifissias Avenue",
+											"City" : "Athens",
+											"Region" : "Attiki",
+											"Postcode" : "11523",
+											"Country" : "Greece"
+										},
+										"Rooms" : {
+											"Room" : [{
+													"Type" : "Single",
+													"Price" : {
+														"Adult" : 180.00,
+														"Child" : 180.00
+													}
+												}, {
+													"Type" : "Twin",
+													"Price" : {
+														"Adult" : 105.00,
+														"Child" : 105.00
+													}
+												}
+											]
+										}
+									}
+								]
+							},
+							"MiscellaneousProducts" : {
+								"MiscellaneousProduct" : [{
+										"Code" : "CGSPAU9",
+										"Category" : "Gold Seal Protection",
+										"Name" : "Gold Seal Protection",
+										"Price" : {
+											"Adult" : 99.00,
+											"Child" : 99.00
+										}
+									}
+								]
+							}
+						}
+					}, {
+						"DepartureCode" : "27I15a",
+						"AvailabilityStatus" : "Available",
+						"StartDateTime" : "2015-09-27T00:00:00",
+						"Month" : 9,
+						"EndDateTime" : "2015-10-02T00:00:00",
+						"DateRangeIncludesTravelTime" : false,
+						"DefiniteDeparture" : true,
+						"Notes" : "",
+						"TourRules" : {
+							"Passengers" : {
+								"Passenger" : [{
+										"Type" : "Adult",
+										"AgeFrom" : 18,
+										"AgeTo" : 35
+									}
+								]
+							},
+							"Rooms" : {
+								"Room" : [{
+										"OccupancyRule" : {
+											"MaximumAdults" : 1,
+											"MaximumPassengers" : 1,
+											"MinimumAdults" : 1,
+											"MinimumPassengers" : 1,
+											"MinimumPayingAdults" : 1
+										},
+										"Price" : {
+											"Adult" : {
+												"Base" : 1310.00,
+												"Combined" : 1600.00
+											},
+											"Child" : {
+												"Base" : 1310.00,
+												"Combined" : 1310.00
+											}
+										},
+										"Type" : "Single"
+									}, {
+										"OccupancyRule" : {
+											"MaximumAdults" : 2,
+											"MaximumPassengers" : 2,
+											"MinimumAdults" : 2,
+											"MinimumPassengers" : 2,
+											"MinimumPayingAdults" : 2
+										},
+										"Price" : {
+											"Adult" : {
+												"Base" : 1125.00,
+												"Combined" : 1415.00
+											},
+											"Child" : {
+												"Base" : 1125.00,
+												"Combined" : 1125.00
+											}
+										},
+										"Type" : "Twin"
+									}, {
+										"OccupancyRule" : {
+											"MaximumAdults" : 2,
+											"MaximumPassengers" : 2,
+											"MinimumAdults" : 1,
+											"MinimumPassengers" : 1,
+											"MinimumPayingAdults" : 1
+										},
+										"Price" : {
+											"Adult" : {
+												"Base" : 1125.00,
+												"Combined" : 1415.00
+											},
+											"Child" : {
+												"Base" : 1125.00,
+												"Combined" : 1125.00
+											}
+										},
+										"Type" : "TwinShare"
+									}, {
+										"OccupancyRule" : {
+											"MaximumAdults" : 4,
+											"MaximumPassengers" : 4,
+											"MinimumAdults" : 4,
+											"MinimumPassengers" : 4,
+											"MinimumPayingAdults" : 4
+										},
+										"Price" : {
+											"Adult" : {
+												"Base" : 845.00,
+												"Combined" : 1135.00
+											},
+											"Child" : {
+												"Base" : 845.00,
+												"Combined" : 845.00
+											}
+										},
+										"Type" : "Quad"
+									}, {
+										"OccupancyRule" : {
+											"MaximumAdults" : 4,
+											"MaximumPassengers" : 4,
+											"MinimumAdults" : 1,
+											"MinimumPassengers" : 1,
+											"MinimumPayingAdults" : 1
+										},
+										"Price" : {
+											"Adult" : {
+												"Base" : 845.00,
+												"Combined" : 1135.00
+											},
+											"Child" : {
+												"Base" : 845.00,
+												"Combined" : 845.00
+											}
+										},
+										"Type" : "QuadShare"
+									}
+								]
+							},
+							"CombinedIncludedCharges" : {
+								"MandatoryMiscellaneousProducts" : {
+									"MiscellaneousProduct" : [{
+											"Code" : "CLOUISC",
+											"Category" : "Voucher Only",
+											"Name" : "Celestyal Cruise Information",
+											"Price" : {
+												"Adult" : 0.00,
+												"Child" : 0.00
+											}
+										}
+									]
+								},
+								"PortTax" : {
+									"Price" : {
+										"Adult" : 290.00,
+										"Child" : 0.00
+									}
+								}
+							},
+							"PriceIsIndicative" : false,
+							"IsEligibleForFrequentTravellerDiscount" : false,
+							"CanSearchForFlights" : false
+						},
+						"AssociatedProducts" : {
+							"AccommodationProducts" : {
+								"AccommodationProduct" : [{
+										"Type" : "PreAccommodation",
+										"Code" : "CATPRS0",
+										"Name" : "President Hotel",
+										"Address" : {
+											"Line1" : "43 Kifissias Avenue",
+											"City" : "Athens",
+											"Region" : "Attiki",
+											"Postcode" : "11523",
+											"Country" : "Greece"
+										},
+										"Rooms" : {
+											"Room" : [{
+													"Type" : "Single",
+													"Price" : {
+														"Adult" : 180.00,
+														"Child" : 180.00
+													}
+												}, {
+													"Type" : "Twin",
+													"Price" : {
+														"Adult" : 105.00,
+														"Child" : 105.00
+													}
+												}
+											]
+										}
+									}, {
+										"Type" : "PostAccommodation",
+										"Code" : "CATPRS0",
+										"Name" : "President Hotel",
+										"Address" : {
+											"Line1" : "43 Kifissias Avenue",
+											"City" : "Athens",
+											"Region" : "Attiki",
+											"Postcode" : "11523",
+											"Country" : "Greece"
+										},
+										"Rooms" : {
+											"Room" : [{
+													"Type" : "Single",
+													"Price" : {
+														"Adult" : 180.00,
+														"Child" : 180.00
+													}
+												}, {
+													"Type" : "Twin",
+													"Price" : {
+														"Adult" : 105.00,
+														"Child" : 105.00
+													}
+												}
+											]
+										}
+									}
+								]
+							},
+							"MiscellaneousProducts" : {
+								"MiscellaneousProduct" : [{
+										"Code" : "CGSPAU9",
+										"Category" : "Gold Seal Protection",
+										"Name" : "Gold Seal Protection",
+										"Price" : {
+											"Adult" : 99.00,
+											"Child" : 99.00
+										}
+									}
+								]
+							}
+						}
+					}, {
+						"DepartureCode" : "04J15a",
+						"AvailabilityStatus" : "Available",
+						"StartDateTime" : "2015-10-04T00:00:00",
+						"Month" : 10,
+						"EndDateTime" : "2015-10-09T00:00:00",
+						"DateRangeIncludesTravelTime" : false,
+						"DefiniteDeparture" : true,
+						"Notes" : "",
+						"TourRules" : {
+							"Passengers" : {
+								"Passenger" : [{
+										"Type" : "Adult",
+										"AgeFrom" : 18,
+										"AgeTo" : 35
+									}
+								]
+							},
+							"Rooms" : {
+								"Room" : [{
+										"OccupancyRule" : {
+											"MaximumAdults" : 1,
+											"MaximumPassengers" : 1,
+											"MinimumAdults" : 1,
+											"MinimumPassengers" : 1,
+											"MinimumPayingAdults" : 1
+										},
+										"Price" : {
+											"Adult" : {
+												"Base" : 1310.00,
+												"Combined" : 1600.00
+											},
+											"Child" : {
+												"Base" : 1310.00,
+												"Combined" : 1310.00
+											}
+										},
+										"Type" : "Single"
+									}, {
+										"OccupancyRule" : {
+											"MaximumAdults" : 2,
+											"MaximumPassengers" : 2,
+											"MinimumAdults" : 2,
+											"MinimumPassengers" : 2,
+											"MinimumPayingAdults" : 2
+										},
+										"Price" : {
+											"Adult" : {
+												"Base" : 1125.00,
+												"Combined" : 1415.00
+											},
+											"Child" : {
+												"Base" : 1125.00,
+												"Combined" : 1125.00
+											}
+										},
+										"Type" : "Twin"
+									}, {
+										"OccupancyRule" : {
+											"MaximumAdults" : 2,
+											"MaximumPassengers" : 2,
+											"MinimumAdults" : 1,
+											"MinimumPassengers" : 1,
+											"MinimumPayingAdults" : 1
+										},
+										"Price" : {
+											"Adult" : {
+												"Base" : 1125.00,
+												"Combined" : 1415.00
+											},
+											"Child" : {
+												"Base" : 1125.00,
+												"Combined" : 1125.00
+											}
+										},
+										"Type" : "TwinShare"
+									}, {
+										"OccupancyRule" : {
+											"MaximumAdults" : 4,
+											"MaximumPassengers" : 4,
+											"MinimumAdults" : 4,
+											"MinimumPassengers" : 4,
+											"MinimumPayingAdults" : 4
+										},
+										"Price" : {
+											"Adult" : {
+												"Base" : 845.00,
+												"Combined" : 1135.00
+											},
+											"Child" : {
+												"Base" : 845.00,
+												"Combined" : 845.00
+											}
+										},
+										"Type" : "Quad"
+									}, {
+										"OccupancyRule" : {
+											"MaximumAdults" : 4,
+											"MaximumPassengers" : 4,
+											"MinimumAdults" : 1,
+											"MinimumPassengers" : 1,
+											"MinimumPayingAdults" : 1
+										},
+										"Price" : {
+											"Adult" : {
+												"Base" : 845.00,
+												"Combined" : 1135.00
+											},
+											"Child" : {
+												"Base" : 845.00,
+												"Combined" : 845.00
+											}
+										},
+										"Type" : "QuadShare"
+									}
+								]
+							},
+							"CombinedIncludedCharges" : {
+								"MandatoryMiscellaneousProducts" : {
+									"MiscellaneousProduct" : [{
+											"Code" : "CLOUISC",
+											"Category" : "Voucher Only",
+											"Name" : "Celestyal Cruise Information",
+											"Price" : {
+												"Adult" : 0.00,
+												"Child" : 0.00
+											}
+										}
+									]
+								},
+								"PortTax" : {
+									"Price" : {
+										"Adult" : 290.00,
+										"Child" : 0.00
+									}
+								}
+							},
+							"PriceIsIndicative" : false,
+							"IsEligibleForFrequentTravellerDiscount" : false,
+							"CanSearchForFlights" : false
+						},
+						"AssociatedProducts" : {
+							"AccommodationProducts" : {
+								"AccommodationProduct" : [{
+										"Type" : "PreAccommodation",
+										"Code" : "CATPRS0",
+										"Name" : "President Hotel",
+										"Address" : {
+											"Line1" : "43 Kifissias Avenue",
+											"City" : "Athens",
+											"Region" : "Attiki",
+											"Postcode" : "11523",
+											"Country" : "Greece"
+										},
+										"Rooms" : {
+											"Room" : [{
+													"Type" : "Single",
+													"Price" : {
+														"Adult" : 180.00,
+														"Child" : 180.00
+													}
+												}, {
+													"Type" : "Twin",
+													"Price" : {
+														"Adult" : 105.00,
+														"Child" : 105.00
+													}
+												}
+											]
+										}
+									}, {
+										"Type" : "PostAccommodation",
+										"Code" : "CATPRS0",
+										"Name" : "President Hotel",
+										"Address" : {
+											"Line1" : "43 Kifissias Avenue",
+											"City" : "Athens",
+											"Region" : "Attiki",
+											"Postcode" : "11523",
+											"Country" : "Greece"
+										},
+										"Rooms" : {
+											"Room" : [{
+													"Type" : "Single",
+													"Price" : {
+														"Adult" : 180.00,
+														"Child" : 180.00
+													}
+												}, {
+													"Type" : "Twin",
+													"Price" : {
+														"Adult" : 105.00,
+														"Child" : 105.00
+													}
+												}
+											]
+										}
+									}
+								]
+							},
+							"MiscellaneousProducts" : {
+								"MiscellaneousProduct" : [{
+										"Code" : "CGSPAU9",
+										"Category" : "Gold Seal Protection",
+										"Name" : "Gold Seal Protection",
+										"Price" : {
+											"Adult" : 99.00,
+											"Child" : 99.00
+										}
+									}
+								]
+							}
+						}
+					}, {
+						"DepartureCode" : "11J15a",
+						"AvailabilityStatus" : "Available",
+						"StartDateTime" : "2015-10-11T00:00:00",
+						"Month" : 10,
+						"EndDateTime" : "2015-10-16T00:00:00",
+						"DateRangeIncludesTravelTime" : false,
+						"DefiniteDeparture" : true,
+						"Notes" : "",
+						"TourRules" : {
+							"Passengers" : {
+								"Passenger" : [{
+										"Type" : "Adult",
+										"AgeFrom" : 18,
+										"AgeTo" : 35
+									}
+								]
+							},
+							"Rooms" : {
+								"Room" : [{
+										"OccupancyRule" : {
+											"MaximumAdults" : 1,
+											"MaximumPassengers" : 1,
+											"MinimumAdults" : 1,
+											"MinimumPassengers" : 1,
+											"MinimumPayingAdults" : 1
+										},
+										"Price" : {
+											"Adult" : {
+												"Base" : 1280.00,
+												"Combined" : 1570.00
+											},
+											"Child" : {
+												"Base" : 1280.00,
+												"Combined" : 1280.00
+											}
+										},
+										"Type" : "Single"
+									}, {
+										"OccupancyRule" : {
+											"MaximumAdults" : 2,
+											"MaximumPassengers" : 2,
+											"MinimumAdults" : 2,
+											"MinimumPassengers" : 2,
+											"MinimumPayingAdults" : 2
+										},
+										"Price" : {
+											"Adult" : {
+												"Base" : 1095.00,
+												"Combined" : 1385.00
+											},
+											"Child" : {
+												"Base" : 1095.00,
+												"Combined" : 1095.00
+											}
+										},
+										"Type" : "Twin"
+									}, {
+										"OccupancyRule" : {
+											"MaximumAdults" : 2,
+											"MaximumPassengers" : 2,
+											"MinimumAdults" : 1,
+											"MinimumPassengers" : 1,
+											"MinimumPayingAdults" : 1
+										},
+										"Price" : {
+											"Adult" : {
+												"Base" : 1095.00,
+												"Combined" : 1385.00
+											},
+											"Child" : {
+												"Base" : 1095.00,
+												"Combined" : 1095.00
+											}
+										},
+										"Type" : "TwinShare"
+									}, {
+										"OccupancyRule" : {
+											"MaximumAdults" : 4,
+											"MaximumPassengers" : 4,
+											"MinimumAdults" : 4,
+											"MinimumPassengers" : 4,
+											"MinimumPayingAdults" : 4
+										},
+										"Price" : {
+											"Adult" : {
+												"Base" : 825.00,
+												"Combined" : 1115.00
+											},
+											"Child" : {
+												"Base" : 825.00,
+												"Combined" : 825.00
+											}
+										},
+										"Type" : "Quad"
+									}, {
+										"OccupancyRule" : {
+											"MaximumAdults" : 4,
+											"MaximumPassengers" : 4,
+											"MinimumAdults" : 1,
+											"MinimumPassengers" : 1,
+											"MinimumPayingAdults" : 1
+										},
+										"Price" : {
+											"Adult" : {
+												"Base" : 825.00,
+												"Combined" : 1115.00
+											},
+											"Child" : {
+												"Base" : 825.00,
+												"Combined" : 825.00
+											}
+										},
+										"Type" : "QuadShare"
+									}
+								]
+							},
+							"CombinedIncludedCharges" : {
+								"MandatoryMiscellaneousProducts" : {
+									"MiscellaneousProduct" : [{
+											"Code" : "CLOUISC",
+											"Category" : "Voucher Only",
+											"Name" : "Celestyal Cruise Information",
+											"Price" : {
+												"Adult" : 0.00,
+												"Child" : 0.00
+											}
+										}
+									]
+								},
+								"PortTax" : {
+									"Price" : {
+										"Adult" : 290.00,
+										"Child" : 0.00
+									}
+								}
+							},
+							"PriceIsIndicative" : false,
+							"IsEligibleForFrequentTravellerDiscount" : false,
+							"CanSearchForFlights" : false
+						},
+						"AssociatedProducts" : {
+							"AccommodationProducts" : {
+								"AccommodationProduct" : [{
+										"Type" : "PreAccommodation",
+										"Code" : "CATPRS0",
+										"Name" : "President Hotel",
+										"Address" : {
+											"Line1" : "43 Kifissias Avenue",
+											"City" : "Athens",
+											"Region" : "Attiki",
+											"Postcode" : "11523",
+											"Country" : "Greece"
+										},
+										"Rooms" : {
+											"Room" : [{
+													"Type" : "Single",
+													"Price" : {
+														"Adult" : 180.00,
+														"Child" : 180.00
+													}
+												}, {
+													"Type" : "Twin",
+													"Price" : {
+														"Adult" : 105.00,
+														"Child" : 105.00
+													}
+												}
+											]
+										}
+									}, {
+										"Type" : "PostAccommodation",
+										"Code" : "CATPRS0",
+										"Name" : "President Hotel",
+										"Address" : {
+											"Line1" : "43 Kifissias Avenue",
+											"City" : "Athens",
+											"Region" : "Attiki",
+											"Postcode" : "11523",
+											"Country" : "Greece"
+										},
+										"Rooms" : {
+											"Room" : [{
+													"Type" : "Single",
+													"Price" : {
+														"Adult" : 180.00,
+														"Child" : 180.00
+													}
+												}, {
+													"Type" : "Twin",
+													"Price" : {
+														"Adult" : 105.00,
+														"Child" : 105.00
+													}
+												}
+											]
+										}
+									}
+								]
+							},
+							"MiscellaneousProducts" : {
+								"MiscellaneousProduct" : [{
+										"Code" : "CGSPAU9",
+										"Category" : "Gold Seal Protection",
+										"Name" : "Gold Seal Protection",
+										"Price" : {
+											"Adult" : 99.00,
+											"Child" : 99.00
+										}
+									}
+								]
+							}
+						}
+					}
+				],
+				"PricesRange" : {
+					"SingleRoom" : {
+						"PriceFrom" : 1570.00,
+						"PriceTo" : 1640.00
+					},
+					"TwinRoom" : {
+						"PriceFrom" : 1385.00,
+						"PriceTo" : 1455.00
+					},
+					"TwinShareRoom" : {
+						"PriceFrom" : 1385.00,
+						"PriceTo" : 1455.00
+					},
+					"TripleRoom" : {
+						"PriceFrom" : 0,
+						"PriceTo" : 0
+					},
+					"TripleShareRoom" : {
+						"PriceFrom" : 0,
+						"PriceTo" : 0
+					},
+					"QuadRoom" : {
+						"PriceFrom" : 1115.00,
+						"PriceTo" : 1165.00
+					},
+					"QuadShareRoom" : {
+						"PriceFrom" : 1115.00,
+						"PriceTo" : 1165.00
+					}
+				}
+			}
+		}
+	}
+}

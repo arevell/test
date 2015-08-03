@@ -1,0 +1,56 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans     
+        http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+        http://www.springframework.org/schema/context 
+        http://www.springframework.org/schema/context/spring-context-3.0.xsd
+        http://www.springframework.org/schema/tx
+		http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
+  
+    <context:component-scan base-package="com.ttc.ch2.hibernate" />
+    
+    <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
+    	<property name="driverClassName" value="${datasource.driver}"/>
+    	<property name="url" value="${datasource.url}"/>
+    	<property name="username" value="${datasource.user}"/>
+    	<property name="password" value="${datasource.password}"/>    	
+    	<!-- <property name="defaultAutoCommit" value="true" /> -->
+		<property name="initialSize" value="8" />
+		<property name="maxTotal" value="20" />
+		<property name="maxIdle" value="10" />
+		<property name="maxWaitMillis" value="10000" />
+		<property name="minIdle" value="1" />
+		<property name="testOnBorrow" value="false" />
+		<property name="testOnReturn" value="false" />
+		<property name="testWhileIdle" value="true" />
+		<property name="timeBetweenEvictionRunsMillis" value="300000" />
+		<!--  property name="jmxName" value="Catalina:name=DataSourceTest.main" /-->
+		<property name="validationQuery" value="select 1 from dual" />
+     </bean>
+ 
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="configLocation">
+            <value>classpath:hibernate.cfg.xml</value>
+        </property>
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">${datasource.dialect}</prop>
+                <prop key="hibernate.show_sql">true</prop>    
+        		<prop key="hibernate.format_sql">true</prop>
+        		<prop key="hibernate.use_sql_comments">false</prop>                 
+				<!-- <prop key="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory</prop> -->
+            </props> 
+        </property>
+    </bean>
+ 
+    <tx:annotation-driven transaction-manager="transactionManager"/> 
+    <bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>   	
+</beans>

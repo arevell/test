@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zk>
+	<preference>
+		<name>org.zkoss.zk.ui.WebApp.name</name>
+		<value>Tour Content Hub 2</value>
+	</preference>
+		
+	<system-config>
+    	<label-location>/WEB-INF/labels/main.properties</label-location>
+    	<label-location>/WEB-INF/labels/base.properties</label-location>
+    	<label-location>/WEB-INF/labels/jobs.properties</label-location>
+    	<label-location>/WEB-INF/labels/audit.properties</label-location>
+    	<label-location>/WEB-INF/labels/menu.properties</label-location>
+    	<label-location>/WEB-INF/labels/messages.properties</label-location>
+    	<label-location>/WEB-INF/labels/tour.properties</label-location>
+    	<label-location>/WEB-INF/labels/users.properties</label-location>
+    	<label-location>/WEB-INF/labels/details.properties</label-location>
+    	<label-location>/WEB-INF/labels/auth.properties</label-location>
+    	<label-location>/WEB-INF/labels/processmgr.properties</label-location>
+    	<label-location>/WEB-INF/labels/health.properties</label-location>
+	</system-config>
+	
+	<system-config>
+		<max-upload-size>31457280</max-upload-size>
+	</system-config>
+	
+<!--	<library-property>
+    <name>org.zkoss.theme.preferred</name>
+    <value>myttestthem</value>
+	</library-property>-->
+</zk>

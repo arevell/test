@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<response-header-mapper>
+  <mapping url="(.*)">
+    <default>
+      <response-headers>
+        <header key="X-XSS-Protection" value="1; mode=block"/>
+        <header key="X-Content-Type-Options" value="nosniff"/>
+        <header key="Pragma" value="no-cache"/>
+        <header key="Cache-Control" value="no-cache, no-store, must-revalidate, private"/>
+      </response-headers>
+    </default>
+  </mapping>
+</response-header-mapper>

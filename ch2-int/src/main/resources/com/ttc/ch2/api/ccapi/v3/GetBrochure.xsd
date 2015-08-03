@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema
+	xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:xmime="http://www.w3.org/2005/05/xmlmime"
+	xmlns:v3="http://www.ttc.com/ch2/api/ccapi/v3"
+	targetNamespace="http://www.ttc.com/ch2/api/ccapi/v3"
+	elementFormDefault="qualified"
+>
+	<xs:include schemaLocation="Messages.xsd" />
+
+	<xs:element name="GetBrochureRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="securityKey" type="xs:string" />
+				<xs:element name="title" type="xs:string" minOccurs="0" />
+				<xs:element name="brandCode" type="xs:string" />
+				<xs:element name="sellingCompanyCode" type="xs:string" />
+				<xs:element name="agentText" type="xs:string" minOccurs="0" />
+				<xs:element name="agentImage" type="xs:string" minOccurs="0" />
+				<xs:element name="tour" type="xs:string" maxOccurs="unbounded" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="GetBrochureResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="messageContext" type="v3:MessageContext" />
+				<xs:element name="successful" type="xs:boolean" />
+				<xs:element name="fileName" type="xs:string" />
+				<xs:element name="fileData" type="xs:base64Binary" xmime:expectedContentTypes="application/pdf" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+</xs:schema>

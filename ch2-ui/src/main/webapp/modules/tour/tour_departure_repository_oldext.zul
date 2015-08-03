@@ -1,0 +1,35 @@
+<?page title="Central Repository - tour departure" contentType="text/html;charset=UTF-8"?>
+
+<zk >	
+<include src="/common/init.zul"/>
+			        <panel class="tour_fix" id="panel1"   border="rounded+"  width="100%" height="100%" self="@{define(mainContent)}" apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init(TourDepartureRepositoryOldExt)" >
+			        	<caption label="${labels.tour.tour_departure_repository.group_box.oldVersion}" vflex="true" hflex="true" sclass="panel_title" >
+                            <include src="/common/menuhelp.zul"/>
+                        </caption>	
+			            <panelchildren style="overflow: auto">	   
+			            	<separator />	
+							<label value="User: ${vm.user}" class="hightlight"/>         				            			        	
+							<separator />										
+							    <grid model="@bind(vm.listModel)" emptyMessage="${labels.common.empty_result_list}" onPaging="@command('onPagingList')" vflex="true" mold="paging" paginal="${paginTable}" if="${vm.hasPermissionToViewOldList}" >
+							        <columns>
+							            <column hflex="min">${labels.common.col.no}</column>
+							            <column hflex="true"  sort="auto(tourCode)" sortDirection="ascending" >${labels.tour.tour_repository.col.tourCode}</column>
+							            <column hflex="true"  sort="auto(oldTourDepartureXMLSize)">${labels.tour.tour_repository.col.size}</column>
+							            <column hflex="true" align="center" sort="auto(tourDepartureModified)">${labels.tour.tour_repository.col.lastModified}</column>					            
+							        </columns>										        
+						         <template name="model" >				         				
+					                <row>
+					                <zscript><![CDATA[					                     																				                  
+											String restLink=vm.generateLink(each);
+										]]></zscript>					                
+					                	<label value="${ (vm.listModel.activePage * vm.listModel.pageSize)+  forEachStatus.index + 1}" />
+										<a label="@load(each.tourCode)" href="${restLink}" />
+					                    <label value="@load(each.oldTourDepartureXMLSize) @converter('com.ttc.ch2.ui.moduls.tour.common.SizeConvert')" />
+					                    <label value="@load(each.tourDepartureModified) @converter('formatedDate',format={default_date_time_format})" />			                    
+					                </row>
+		            			</template>				     
+						    </grid>
+							<paging id="paginTable1" onPaging="@command('onPagingList')" totalSize="@bind(vm.listModel.totalSize)" pageSize="@bind(vm.listModel.pageSize)" activePage="@bind(vm.listModel.activePage)"  if="${vm.hasPermissionToViewOldList}" />										
+			            </panelchildren>
+			         </panel>	    
+</zk>

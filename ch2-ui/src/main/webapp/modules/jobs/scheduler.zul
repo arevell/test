@@ -1,0 +1,260 @@
+<?init class="org.zkoss.zk.ui.util.Composition" arg0="/tpl/MainTpl.zul"?>
+<?import com.ttc.common.params.ParamsUtils?>
+<zk>
+    <zscript><![CDATA[					          
+    		import javax.servlet.http.HttpServletRequest;
+			import org.zkoss.zk.ui.Executions;
+
+			int index=0;		
+			HttpServletRequest request = (HttpServletRequest) Executions.getCurrent().getNativeRequest();
+			String tab = request.getParameter("tab");
+			if(tab!=null){
+				index=Integer.parseInt(tab);
+				if(index<0 || index>1){
+				index=0;
+				}
+			}
+               
+																																													                  										                  									
+	]]></zscript>
+<tabbox class="tour_fix" id="tb" width="100%" height="100%"  self="@{define(mainContent)}" onCreate="self.setSelectedIndex(index)">
+		    <tabs id="tabs">
+		    	<tab id="A" label="${labels.jobs.refresh.main_panel_title}" />
+		    	<tab id="B" label="${labels.jobs.scheduler.main_panel_title}" />		  		
+		    </tabs>
+		    <tabpanels>		      
+        <tabpanel>
+	        <panel class="scheduler" border="rounded+" height="100%" width="100%"  apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init(DepartureRefresh)"   xmlns:h="native">      
+		        <panelchildren style="overflow: auto">		        		        		        				
+		        				<vlayout>
+		        				<div>
+			        				<hlayout>			        				
+		        					<grid id="snapshotGridId"  model="@load(vm.statusRows)" emptyMessage="${labels.common.empty_result_list}" hflex="true">
+		        					  <auxhead sclass="category-center">
+					            			<auxheader label="${labels.jobs.scheduler.group_box_for_current_jobs}" colspan="5" rowspan="1" />
+					        		  </auxhead>		
+		        					<columns>							        
+		        						<column hflex="min">${labels.common.col.no}</column>
+							            <column width="80px">${labels.jobs.scheduler.col.process.brand_code}</column>
+							            <column width="60px">${labels.jobs.scheduler.col.process.progress}</column>
+							            <column hflex="true">${labels.jobs.scheduler.col.process.msg}</column>
+							            <column hflex="true">${labels.jobs.scheduler.col.process.time}</column>
+							        </columns>							        
+							         <template name="model">
+						                <row>
+						                	<label value="${forEachStatus.index + 1}" />
+						                    <label value="@load(each.brandCode)" />
+						                    <label value="@load(each.progress)" />
+						                    <label value="@load(each.msg)" />                     
+						                    <label value="@load(each.dateUpdate)  @converter('formatedDate',format={default_date_time_format})" />
+						                </row>
+			            			</template>		
+		        					</grid>	
+			        		        						        				
+			        				</hlayout>
+			        				<hbox  align="left" width="100%">									        		        						        				    			        									        						
+				        						<button id="pbRefresh" label="${labels.jobs.scheduler.component.pb_refresh}" href="${SCHEDULER}" autodisable="self,pbRefresh,submitForm" mold="trendy" />
+				        				</hbox>
+		        				</div>		        						        						        				
+		        				<div>
+		        					<grid model="@load(vm.rows)" emptyMessage="${labels.common.empty_result_list}">		
+		        					<auxhead sclass="category-center">
+					            			<auxheader label="${labels.jobs.scheduler.group_box_for_job_status}" colspan="7" rowspan="1" />
+					        		  </auxhead>        					
+		        					<columns>
+							            <column hflex="min">${labels.common.col.no}</column>
+							            <column hflex="1">${labels.jobs.scheduler.col.job_name}</column>
+							            <column hflex="1">${labels.jobs.scheduler.col.job_group_name}</column>
+							            <column hflex="2">${labels.jobs.scheduler.col.user}</column>
+							            <column hflex="2">${labels.jobs.scheduler.col.job_status}</column>
+							            <column hflex="2">${labels.jobs.scheduler.col.job_next_fire}</column>
+							            <column hflex="1">${labels.common.col.operation}</column>
+							        </columns>							        
+							         <template name="model">
+							             <zscript><![CDATA[					                     
+											String pbStyle=each.isNeedReset() ? "color:red;font-weight:bold" :"";	
+											boolean pbDisabled=vm.isDisableAllButtons() || each.isPbDisabled(); 																																								                  										                  									
+										]]></zscript>	
+						                <row>
+						                	<label value="${forEachStatus.index + 1}" />
+						                    <label value="@load(each.jobName)" />
+						                    <label value="@load(each.jobGroupName)" />
+						                    <label value="@load(each.whoScheduled)" />             
+						                    <label value="@load(each.statusJob)" />           
+						                    <label value="@load(each.nextFireTime)  @converter('formatedDate',format={default_date_time_format})" />
+						                    <hlayout>
+							                    <button  id="pbReset_${each.brandCode}" label="@load(each.pbOperationTitle)" onClick="@command('stopJob',element=each)" autodisable="@load(each.listButtons)" mold="trendy" disabled="${pbDisabled}" style="${pbStyle}"/>
+						                    </hlayout>           
+						                </row>
+			            			</template>									     
+									</grid>	
+								</div>
+							
+								<hbox width="100%" widths="50%,50%"  align="center">
+									<div/>
+			        				<hbox width="100%" pack="right" align="right" 
+			        				    form="@id('fx') @load(vm.form) @save(vm.form, before='changeJobTime')"
+			        					validationMessages="@id('vmsgs')">			        						
+			        						${labels.jobs.scheduler.component.lbx_brand}
+			        					  	<combobox id="brandComboBox" readonly="true" value="${labels.common.combobox.empty_value}" autodrop="true" mold="rounded" buttonVisible="true"
+			                						model="@load(fx.brands)" selectedItem="@bind(fx.selectedBrand)"	 >
+							             		<template name="model">
+							                        <comboitem label="@load(each.brandName)" value="@load(each)"/>
+							                    </template>
+                	 		    			</combobox>	
+                	 		    					        					
+			        				 	<label value="${labels.jobs.scheduler.component.lbx_chg_time}" />
+			        				 	<datebox value="@bind(fx.chgTime)" format="yyyy/MM/dd hh:mm a" width="150px" />
+			        				 	<label class="error"  value="@load(vmsgs['chgTime'])" />			        				 	
+			        					<button  id="submitForm" label="${labels.jobs.scheduler.component.pb_chg_time}" onClick="@command('changeJobTime')" autodisable="self,pbRefresh,pbStop,pbStart,submitForm" mold="trendy" disabled="@load(vm.disableAllButtons)" />
+			        				</hbox>
+								</hbox>
+								
+						
+					    <grid   model="@bind(vm.listModel)" emptyMessage="${labels.common.empty_result_list}"
+					    onPaging="@command('onPagingList')" hflex="true"  mold="paging"  paginal="${paginTable}"  
+					    	form="@id('fx') @load(vm.quartzJobHistoryForm) @save(vm.quartzJobHistoryForm, before='changeFilter')">
+					        <auxhead sclass="category-center">
+					            <auxheader label="${labels.jobs.scheduler.group_box}" colspan="8" rowspan="1" />
+					        </auxhead>		            				        				        				        				        
+				        		<columns>
+									<column hflex="min">${labels.common.col.no}</column>
+									<column hflex="true">${labels.jobs.scheduler.col.job_history_name}</column>
+									<column hflex="true">${labels.jobs.scheduler.col.job_history_group_name}</column>
+									<column hflex="true" sort="auto(startDate)" sortDirection="descending" >${labels.jobs.scheduler.col.job_start}</column>
+									<column hflex="true" sort="auto(executionTime)">${labels.jobs.scheduler.col.job_execution_time}</column>
+									<column hflex="true" sort="auto(executedBy)">${labels.jobs.scheduler.col.job_who_executed}</column>
+									<column hflex="true" sort="auto(status)">${labels.jobs.scheduler.col.job_history_status}</column>
+									<column hflex="true">${labels.jobs.scheduler.col.job_comments}</column>
+								</columns>											
+							<auxhead>
+					        	<auxheader colspan="1"/>
+					        	<auxheader colspan="1">
+	                				<image src="/img/funnel.png" />
+	                				<textbox instant="true" width="100px" value="@bind(fx.uiName)" onChange="@command('changeFilter')"  constraint="/^.{0,60}$/: ${labels.common.field.lenght.tolong}"/>
+            					</auxheader>
+            					<auxheader colspan="1">
+	                				<image src="/img/funnel.png" />
+	                				<textbox instant="true" width="100px" value="@bind(fx.jobGrName)" onChange="@command('changeFilter')"  constraint="/^.{0,60}$/: ${labels.common.field.lenght.tolong}"/>
+            					</auxheader>
+	            				<auxheader colspan="1">
+	                				<image src="/img/funnel.png" />
+	                				<datebox value="@bind(fx.startDate)" format="yyyy/MM/dd hh:mm a" width="150px" onChange="@command('changeFilter')"/>
+	            				</auxheader>
+	            				<auxheader colspan="1"/>
+	            				<auxheader colspan="1">
+	                				<image src="/img/funnel.png" />
+	                				<textbox instant="true" width="100px" value="@bind(fx.executedBy)" onChange="@command('changeFilter')"  constraint="/^.{0,40}$/: ${labels.common.field.lenght.tolong}" />
+            					</auxheader>
+	            				<auxheader colspan="1">
+            								<combobox id="statusComboBox" readonly="true" value="${labels.common.combobox.empty_value}" 
+								  					model="@load(fx.statusItems)" selectedItem="@bind(fx.statusSelectedValue)" onSelect="@command('changeFilter')">
+								              <template name="model">
+									               <comboitem label="@load(each)"/>
+								              </template>
+											</combobox>	
+            					</auxheader>
+            					<auxheader colspan="1"/>
+            				 </auxhead>		  		        				        									        
+				         <template name="model" >				         				
+			                <row>
+			                <zscript><![CDATA[					                     
+									String loc_params=ParamsUtils.getInstance().addParam("id", each.getId()).encodeAllParams();									
+									String executionTime=com.ttc.ch2.common.DateHelper.calculateTime(each.getExecutionTime(), com.ttc.ch2.common.DateHelper.CalculateTimePattern.HMS);																							                  										                  																																										                  										                  								
+							]]></zscript>			                
+			                	<label value="${ (vm.listModel.activePage * vm.listModel.pageSize)+  forEachStatus.index + 1}" />
+			                    <label value="${each.quartzJob.uiName}" />
+			                    <label value="@load(each.quartzJob.groupName)" />			                    
+			                    <label value="@load(each.startDate)  @converter('formatedDate',format={default_date_time_format})"/>
+			                    <label value="${executionTime}" />
+			                    <label value="@load(each.executedBy)" />
+			                    <label value="@load(each.status)" />
+			                    <a label="${labels.jobs.scheduler.col.link}" href="${JOB_DETAILS}?param=${loc_params}"/>			                                     		                   
+			                </row>
+            			</template>				     
+				    </grid>
+					<paging id="paginTable" onPaging="@command('onPagingList')" totalSize="@bind(vm.listModel.totalSize)" pageSize="@bind(vm.listModel.pageSize)" activePage="@bind(vm.listModel.activePage)" />
+					</vlayout>				        			
+		         </panelchildren>
+	         </panel>
+	      </tabpanel>
+	      
+	         <tabpanel>
+          
+          <panel class="scheduler" border="rounded+" height="100%" width="100%"  apply="org.zkoss.bind.BindComposer" viewModel="@id('vm2') @init(SchedulerDetails)" xmlns:h="native">     
+		        <panelchildren style="overflow: auto">		        		        		        				
+		        				<vlayout>			        				
+		        				<grid>	
+			        						<rows>    					        							
+			        							<row>		        			
+			        								<hlayout><label value="${labels.jobs.scheduler.property.scheduler_name}:" style="font-weight:bold"/><label value="@load(vm2.schedulerVO.schedulerName)" /></hlayout>		        									        								        						
+			        							</row>		        									        							
+			        							<row>		        			
+													<hlayout><label value="${labels.jobs.scheduler.property.scheduler_status}:" style="font-weight:bold"/><label value="@load(vm2.schedulerVO.status)" /></hlayout>        									        								        						
+			        							</row>		        									        							
+			        							<row>
+													<hlayout><label value="${labels.jobs.scheduler.property.scheduler_strat_date}:" style="font-weight:bold"/><label value="@load(vm2.schedulerVO.startDate)  @converter('formatedDate',format={default_date_time_format})" /></hlayout>        									        								        						
+			        							</row>
+			        							<row>
+													<hlayout>
+													 <label value="Data source:" style="font-weight:bold"/>
+													 <radiogroup id="sv1" >
+														 <radio id="rb1" selected="@load(vm2.schedulerVO.selectedHabs)" label="HABS"   onCheck="@command('changeDirection',element='HABS')"  />
+	                									 <radio id="rb2" selected="@load(vm2.schedulerVO.selectedTropics)" label="TROPICS" onCheck="@command('changeDirection',element='TROPICS')"  />
+                									 </radiogroup>													
+													</hlayout>        									        								        						
+			        							</row>		        									        							
+			        						</rows>
+			        				</grid>	
+			        			<hbox  align="left" width="100%">									        		        						        				    			        									        						
+				        						<button id="pbRefreshV2" label="${labels.jobs.scheduler.component.pb_refresh}" href="${SCHEDULER}?tab=1" autodisable="self,pbRefresh" mold="trendy" />
+				        		</hbox>				        					        					        					        						        						        			
+		        				<div>
+		        					<grid model="@load(vm2.rows)" emptyMessage="${labels.common.empty_result_list}">		
+		        					<auxhead sclass="category-center">
+					            			<auxheader label="${labels.jobs.scheduler.group_box_for_job_status}" colspan="6" rowspan="1" />
+					        		  </auxhead>        					
+		        					<columns>
+							            <column hflex="min">${labels.common.col.no}</column>
+							            <column hflex="2">${labels.jobs.scheduler.col.job_name}</column>
+							            <column hflex="2">${labels.jobs.scheduler.col.job_group_name}</column>
+							            <column hflex="1">${labels.jobs.scheduler.col.user}</column>
+							            <column hflex="1">${labels.jobs.scheduler.col.job_status}</column>
+							            <column hflex="1">${labels.jobs.scheduler.col.job_next_fire}</column>
+							        </columns>							        
+							         <template name="model">											
+						                <row>
+						                	<label value="${forEachStatus.index + 1}" />
+						                    <label value="@load(each.jobName)" />
+						                    <label value="@load(each.jobGroupName)" />
+						                    <label value="@load(each.whoScheduled)" />             
+						                    <label value="@load(each.statusJob)" />           
+						                    <label value="@load(each.nextFireTime)  @converter('formatedDate',format={default_date_time_format})" />						                          
+						                </row>
+			            			</template>									     
+									</grid>	
+									
+									<zscript><![CDATA[					                     
+											boolean show=vm2.getActiveSchedulerThread().size()>0;																			                  										                  									
+																																	                  										                  									
+									]]></zscript>																
+									<div if="${show}">
+									<h:br/>
+									<h:br/>					        			
+				        			<label value="Threads related with scheduler:" style="font-weight:bold"/>
+				        			<h:br/>					        							        						        			
+				        			<zk forEach="${vm2.activeSchedulerThread}">
+				        				<div><label value="${each}" style="font-weight:bold"/></div>
+									</zk>
+				        			<h:br/>
+				        			<h:br/>	
+									</div>
+								</div>
+					</vlayout>				        			
+		         </panelchildren>
+	         </panel>
+          </tabpanel>
+     
+    </tabpanels>
+	</tabbox>	
+</zk>

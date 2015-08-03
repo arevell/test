@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="79pt"
+   height="99pt"
+   viewBox="0 0 79 99"
+   version="1.1"
+   id="svg2490"
+   sodipodi:version="0.32"
+   inkscape:version="0.46"
+   sodipodi:docname="offers2.svg"
+   inkscape:output_extension="org.inkscape.output.svg.inkscape">
+  <metadata
+     id="metadata2499">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs2497">
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="0 : 61.875 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_z="98.75 : 61.875 : 1"
+       inkscape:persp3d-origin="49.375 : 41.25 : 1"
+       id="perspective2501" />
+  </defs>
+  <sodipodi:namedview
+     inkscape:window-height="722"
+     inkscape:window-width="800"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     guidetolerance="10.0"
+     gridtolerance="10.0"
+     objecttolerance="10.0"
+     borderopacity="1.0"
+     bordercolor="#666666"
+     pagecolor="#ffffff"
+     id="base"
+     showgrid="false"
+     inkscape:zoom="3.7333333"
+     inkscape:cx="49.375"
+     inkscape:cy="61.875"
+     inkscape:window-x="1746"
+     inkscape:window-y="367"
+     inkscape:current-layer="svg2490" />
+  <path
+     d="M 0,0 L 8.6371518,0 C 11.685831,3.8400001 14.762396,7.6533333 17.825018,11.481212 C 18.064358,11.701818 18.178218,12.106667 17.887758,12.33697 C 14.855344,16.206061 11.927495,20.169697 8.8532549,24.000001 L 0,24.000001 L 0,0 z"
+     id="path2492"
+     style="fill:#fe0000" />
+  <path
+     d="M 8.6371518,0 L 18.357142,0 L 18.357142,24.000001 L 8.8532549,24.000001 C 11.927495,20.169697 14.855344,16.206061 17.887758,12.33697 C 18.178218,12.106667 18.064358,11.701818 17.825018,11.481212 C 14.762396,7.6533333 11.685831,3.8400001 8.6371518,0 z"
+     id="path2494"
+     style="fill:#fdb813" />
+</svg>

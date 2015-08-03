@@ -1,0 +1,77 @@
+<?init class="org.zkoss.zk.ui.util.Composition" arg0="/tpl/MainTpl.zul"?>
+<?import com.ttc.common.params.ParamsUtils?>
+<zk>
+	        <panel class="scheduler" border="rounded+" height="100%" width="100%" self="@{define(mainContent)}" apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init(HealthDetails)"   xmlns:h="native">
+	         <caption label="${labels.health.page.title}" sclass="panel_title" />	       
+		        <panelchildren style="overflow: auto">		        		        		        				
+		        				<vlayout>
+		        				<div>
+			        				<hlayout>
+			        				<grid width="700px">	
+			        						<columns>
+			        							<column width="250px" >Parameter</column>
+			        							<column width="70px">Status</column>
+			        							<column >Description</column>
+			        						</columns>
+			        						<rows>    					        							
+			        							<row>		        			
+			        								<label value="${labels.health.label.es.par}:" style="font-weight:bold"/>
+			        								<image src="../../img/tick.png" if="${vm.elasticSearchOK == 'true'}"/>
+			        								<image src="../../img/cross.png" if="${vm.elasticSearchOK == 'false'}"/>
+			        								<label value="${labels.health.label.es.desc}" />		        									        								        						
+			        							</row>		        									        							
+			        							<row>		        			
+													<label value="${labels.health.label.temp.par}:" style="font-weight:bold"/>
+													<image src="../../img/tick.png" if="${vm.tempDirOK == 'true'}"/>
+			        								<image src="../../img/cross.png" if="${vm.tempDirOK == 'false'}"/>    
+			        								<label value="${labels.health.label.temp.desc}"/>    									        								        						
+			        							</row>		        									        							
+			        							<row>
+													<label value="${labels.health.label.dbcoding.par}:" style="font-weight:bold"/>
+													<image src="../../img/tick.png" if="${vm.DBCodingSetOK == 'true'}"/>
+			        								<image src="../../img/cross.png" if="${vm.DBCodingSetOK == 'false'}"/>    
+			        								<label value="${labels.health.label.dbcoding.desc}" />    									        								        						
+			        							</row>		        									        							
+			        							<row>
+													<label value="${labels.health.label.cluster.par}:" style="font-weight:bold"/>
+													<image src="../../img/tick.png" if="${vm.clusterStateOK == 'true'}"/>
+			        								<image src="../../img/cross.png" if="${vm.clusterStateOK == 'false'}"/>  
+			        								<label value="${labels.health.label.cluster.desc}" />      									        								        						
+			        							</row>
+			        							<row>
+													<label value="${labels.health.label.tropics.par}:" style="font-weight:bold"/>
+													<image src="../../img/tick.png" if="${vm.tropicsConnectivityOK == 'true'}"/>
+			        								<image src="../../img/cross.png" if="${vm.tropicsConnectivityOK == 'false'}"/>
+			        								<label value="${labels.health.label.tropics.desc}" />        									        								        						
+			        							</row>
+			        							<row>
+													<label value="${labels.health.label.CH1Upload.par}:" style="font-weight:bold"/>
+													<image src="../../img/tick.png" if="${vm.CH1UploadConnectionOK == 'true'}"/>
+			        								<image src="../../img/cross.png" if="${vm.CH1UploadConnectionOK == 'false'}"/>
+			        								<label value="${labels.health.label.CH1Upload.desc}" />        									        								        						
+			        							</row>
+			        							<row>
+													<label value="${labels.health.label.CH1Download.par}:" style="font-weight:bold"/>
+													<image src="../../img/tick.png" if="${vm.CH1DownloadConnectionOK == 'true'}"/>
+			        								<image src="../../img/cross.png" if="${vm.CH1DownloadConnectionOK == 'false'}"/>
+			        								<label value="${labels.health.label.CH1Download.desc}" />        									        								        						
+			        							</row>
+			        							<row>
+													<label value="${labels.health.label.tours.par}:" style="font-weight:bold"/>
+													<image src="../../img/tick.png" if="${vm.matchingTIandTD > 0}"/>
+			        								<image src="../../img/cross.png" if="${vm.matchingTIandTD == 0}"/>     
+			        								<label value="${labels.health.label.tours.desc}" />   									        								        						
+			        							</row>
+			        						</rows>
+			        				</grid>			        						        		        						        				
+			        				</hlayout>
+			        				<hbox  align="left" width="100%">									        		        						        				    			        									        						
+				        				<button id="pbRefresh" label="${labels.health.label.button}" onClick="@command('refreshStatus')" />
+				        			</hbox>
+				        			<h:br/>
+				        			<h:br/>				        						        			
+		        				</div>		        						        						        				
+					</vlayout>				        			
+		         </panelchildren>
+	         </panel>	
+</zk>

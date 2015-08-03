@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:xmime="http://www.w3.org/2005/05/xmlmime"
+    xmlns:v3="http://www.ttc.com/ch2/api/ccapi/v3"
+    targetNamespace="http://www.ttc.com/ch2/api/ccapi/v3"
+    elementFormDefault="qualified"
+>
+
+    <xs:include schemaLocation="Messages.xsd" />   
+
+	<xs:element name="GetTourDataUploadStatusRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="securityKey" type="xs:string" maxOccurs="1" minOccurs="1"/>
+				<xs:element name="brandCode" type="xs:string" maxOccurs="1" minOccurs="1"/>
+				<xs:element name="fileName" type="xs:string" maxOccurs="1" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="GetTourDataUploadStatusResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="messageContext" type="v3:MessageContext" />
+				<xs:element name="successful" type="xs:boolean" />
+				<xs:element name="currentBrandStatus" type="v3:CurrentBrandStatusType" maxOccurs="1" minOccurs="1" />
+				<xs:element name="uploadFileStatus"  type="v3:UploadFileStatusType" maxOccurs="1" minOccurs="0" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+
+	<xs:complexType name="CurrentBrandStatusType">
+    	<xs:sequence>
+    		<xs:element name="snapshot" type="v3:SnapshotType" maxOccurs="1" minOccurs="0"/>
+    	</xs:sequence>
+    	<xs:attribute name="brandStatus" type="xs:string" use="required"/>
+    </xs:complexType>
+    
+    
+
+    <xs:complexType name="SnapshotType">
+    	<xs:sequence>
+    		<xs:element name="fileName" type="xs:string" maxOccurs="1" minOccurs="0"/>
+    		<xs:element name="fileNameDesc" type="xs:string" maxOccurs="1" minOccurs="0"/>
+    		<xs:element name="message" type="xs:string" maxOccurs="1" minOccurs="0"/>
+    		<xs:element name="typeMsg" type="xs:string" maxOccurs="1" minOccurs="0"/>
+    		<xs:element name="countFile" type="xs:integer" maxOccurs="1" minOccurs="0"/>
+    		<xs:element name="brandCode" type="xs:string" maxOccurs="1" minOccurs="1"/>
+    		<xs:element name="dateUpdate" type="xs:dateTime" maxOccurs="1" minOccurs="1"/>
+    		<xs:element name="noProcessingFile" type="xs:integer" maxOccurs="1" minOccurs="0"></xs:element>
+    	</xs:sequence>
+    </xs:complexType>
+    
+    <xs:complexType name="UploadFileStatusType">    	    	
+    	<xs:sequence>
+    		<xs:element name="fileName" type="xs:string" maxOccurs="1" minOccurs="1"/>
+    	</xs:sequence>
+    	<xs:attribute name="fileStatus" type="xs:string" use="required" />
+    </xs:complexType>
+
+</xs:schema>

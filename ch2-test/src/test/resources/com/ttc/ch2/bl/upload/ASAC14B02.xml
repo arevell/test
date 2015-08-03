@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TourInfo xmlns="http://www.ttc.com/ch2/api/ccapi/v3/TourInfo/2014/01/3.0" BrandCode="BV" CMSId="BV_WEB" Duration="11" TourCode="ASAC14B02">
+   <TourName>Discover Australia</TourName>
+   <CataloguedTour>
+      <Code>ASACL2</Code>
+      <Name>Fake Name:ASACL2</Name>
+   </CataloguedTour>
+   <SellingCompanies>
+      <SellingCompany CurrencyCode="USD" Code="BVUSAS">
+         <Brochure>
+            <Code>BVSPUS13F</Code>
+            <Name>Worldwide Guided Vacations</Name>
+         </Brochure>
+         <TourCategories>
+            <TourCategory Name="TourStyles">
+               <CategoryValue>Guided Vacations</CategoryValue>
+            </TourCategory>
+         </TourCategories>
+      </SellingCompany>
+   </SellingCompanies>
+   <TourVariationDefiners>
+      <OperatingProduct>
+         <Code>FAKE0</Code>
+         <ContractingSeason>FakeCntrSeason0</ContractingSeason>
+         <Category>FAKECT0</Category>
+         <Classification>FKCLS1</Classification>
+         <StandardName>STDNAME1</StandardName>
+      </OperatingProduct>
+      <IncludedSubProducts>
+         <IncludedSubProduct>
+            <Code>SUB1</Code>
+            <Name>Some Sub product</Name>
+            <Category>SUBCAT1</Category>
+            <ServiceType>Free drinks</ServiceType>
+         </IncludedSubProduct>
+      </IncludedSubProducts>
+      <RoomTypes>
+         <RoomType Type="TWIN" Sellable="true"/>
+      </RoomTypes>
+      <StartCity>
+         <Name>London</Name>
+         <Airports>
+            <Airport>
+               <IATACode>GB</IATACode>
+               <Name>Heathrow</Name>
+               <City>London</City>
+               <Region>London area</Region>
+               <Country>England</Country>
+               <DefaultForCity>false</DefaultForCity>
+            </Airport>
+         </Airports>
+      </StartCity>
+      <EndCity>
+         <Name>London</Name>
+         <Airports>
+            <Airport>
+               <IATACode>GB</IATACode>
+               <Name>Heathrow</Name>
+               <City>London</City>
+               <Region>London area</Region>
+               <Country>England</Country>
+               <DefaultForCity>false</DefaultForCity>
+            </Airport>
+         </Airports>
+      </EndCity>
+      <IsTourPackage>false</IsTourPackage>
+   </TourVariationDefiners>
+   <ContinentsVisited>
+      <Continent>
+         <Code>AUST</Code>
+         <Name>South Pacific</Name>
+      </Continent>
+   </ContinentsVisited>
+   <CountriesVisited>
+      <Country>
+         <Code>AU</Code>
+         <Name>Australia</Name>
+         <ContinentCode>AUST</ContinentCode>
+      </Country>
+   </CountriesVisited>
+   <LocationsVisited>
+      <Location CountryCode="AU" Name="Cairns"/>
+      <Location CountryCode="AU" Name="Uluru"/>
+      <Location CountryCode="AU" Name="Sydney"/>
+   </LocationsVisited>
+   <Description>Sightseeing, TESTNOESC: special features TESTESC: &amp; and scenic highlights as indicated in the itinerary, including admission charges. Headsets for sightseeing so you can easily hear your guide's commentary. Optional Experiences are offered so you can include even more.</Description>
+   <Assets>
+      <Images>
+         <Image Name="route_map" Width="300" Height="300" Type="map" Url="http://www.brendanvacations.com/umbraco/brendanvacations/media/ASACB02-feed_route_map-Discover-Australia-sm.jpg"/>
+         <Image Name="route_map" Width="600" Height="600" Type="map" Url="http://www.brendanvacations.com/umbraco/brendanvacations/media/ASACB02-feed_route_map_large-Discover-Australia-lg.jpg"/>
+         <Image Name="primary_image" Width="125" Height="125" Type="photo" Url="http://www.brendanvacations.com/umbraco/brendanvacations/media/ASACB02-primary_image-discover-australia-australia-5.jpg"/>
+         <Image Name="primary_image" Width="531" Height="531" Type="photo" Url="http://www.brendanvacations.com/umbraco/brendanvacations/media/ASACB02-secondary_image-discover-australia-australia-6.jpg"/>
+         <Image Name="secondary_image" Width="125" Height="125" Type="photo" Url="http://www.brendanvacations.com/umbraco/brendanvacations/media/ASACB02-photo_01_small-discover-australia-australia-7.jpg"/>
+         <Image Name="secondary_image" Width="531" Height="531" Type="photo" Url="http://www.brendanvacations.com/umbraco/brendanvacations/media/ASACB02-photo_02_large-discover-australia-australia-8.jpg"/>
+      </Images>
+   </Assets>
+   <Itinerary>
+      <ItinerarySegment Duration="1" StartDay="1">
+         <Title>Depart from the USA</Title>
+         <Text>You will fly over the International Date Line on your way to Sydney, Australia.</Text>
+         <Accommodation>None</Accommodation>
+      </ItinerarySegment>
+      <ItinerarySegment Duration="1" StartDay="2">
+         <Title>En Route</Title>
+         <Text>You will fly over the International Date Line on your way to Sydney, Australia.</Text>
+         <Accommodation>None</Accommodation>
+      </ItinerarySegment>
+      <ItinerarySegment Duration="1" StartDay="3">
+         <Title>Arrive in Sydney, Australia</Title>
+         <Text>Upon arrival in Sydney you will be transferred to your hotel (flights to arrive prior to 12 p.m.). This afternoon enjoy a tour of the Sydney Opera House with a Local Expert. Then board a Captain Cook Sunset Cruise for a Welcome Reception and dinner. You’ll cruise past magnificent waterfront homes, beaches and parklands, plus the Sydney Harbour Bridge and Opera House.</Text>
+         <Accommodation>Four Points by Sheraton</Accommodation>
+      </ItinerarySegment>
+      <ItinerarySegment Duration="1" StartDay="4">
+         <Title>Sydney Sightseeing</Title>
+         <Text>This morning, board a coach to see the Royal Botanic Gardens and Mrs. Macquarie’s Chair on the way to famous Bondi Beach for an iconic Australian experience. You’ll be greeted by a local surf lifesaver before a Be My Guest lunch at an Aussie institution, the Returned Servicemen’s Club, with its views over the Pacific Ocean. Your host will take you on an exclusive tour through Australia’s oldest surf lifesaving club to learn about the history of Bondi and surf lifesaving. When you return to the city you’ll have the opportunity to discover Australia’s national gemstone – the opal. Or, if you want to see Sydney from above, take the climb of your life with the optional Sydney Harbour Bridge “BridgeClimb.”</Text>
+         <Accommodation>Four Points by Sheraton</Accommodation>
+      </ItinerarySegment>
+      <ItinerarySegment Duration="1" StartDay="5">
+         <Title>Sydney At Leisure</Title>
+         <Text>Spend a whole day in Sydney seeing the sights of your choice. Perhaps take an optional excursion to view the Three Sisters in the Blue Mountains and Jenolan Caves or to travel to the Hunter Valley, New South Wales’ premier wine growing region, for a wineries tour.</Text>
+         <Accommodation>Four Points by Sheraton</Accommodation>
+      </ItinerarySegment>
+      <ItinerarySegment Duration="1" StartDay="6">
+         <Title>Sydney / Uluru (Ayers Rock)</Title>
+         <Text>Fly to Ayers Rock, then on to the Ayers Rock Resort, an Authentic Accommodation. Late this afternoon you’ll travel to the Uluru sunset viewing area. Witness the striking color changes of Uluru at sunset while enjoying a complimentary glass of sparkling wine.</Text>
+         <Accommodation>Desert Gardens Hotel</Accommodation>
+      </ItinerarySegment>
+      <ItinerarySegment Duration="1" StartDay="7">
+         <Title>Kata Tjuta (The Olgas)</Title>
+         <Text>Rise early this morning to experience sunrise at Uluru. Then travel by coach to its base where your guide will escort you on a walk to the Mutitjulu Waterhole and tell Aboriginal stories to give you a Unique Insight into the area. Then visit the Uluru-Kata Tjuta Cultural Centre. This afternoon travel to Kata Tjuta (the Olgas), where you will walk through the Walpa Gorge. Later, enjoy complimentary sparkling wine as the sun sets at Kata Tjuta.</Text>
+         <Accommodation>Desert Gardens Hotel</Accommodation>
+      </ItinerarySegment>
+      <ItinerarySegment Duration="1" StartDay="8">
+         <Title>Uluru (Ayers Rock) / Cairns</Title>
+         <Text>Join an Aboriginal artist for a presentation of Western Desert Art, a Local Specialty. The Anangu artist will introduce you to their culture, then you will create your own painting, a great memento of your experience. Finally, transfer to the airport for your flight to Cairns.</Text>
+         <Accommodation>Hilton Hotel</Accommodation>
+      </ItinerarySegment>
+      <ItinerarySegment Duration="1" StartDay="9">
+         <Title>Great Barrier Reef Cruise</Title>
+         <Text>Encounter unique Australian animals at the Cairns Wildlife Dome. Then cruise aboard a high-speed catamaran to the Great Barrier Reef. After a reef education presentation by a Local Expert, snorkel in the underwater paradise, (equipment provided), visit the underwater observatory and take a ride in the semi-submersible vessel. Enjoy a tropical buffet Regional Meal before returning to Cairns. This evening visit the Cairns Night Markets, a Local Specialty, for the chance to purchase some arts and crafts souvenirs.</Text>
+         <Accommodation>Hilton Hotel</Accommodation>
+      </ItinerarySegment>
+      <ItinerarySegment Duration="1" StartDay="10">
+         <Title>Cairns At Leisure</Title>
+         <Text>Enjoy a whole day free in this tropical city. Perhaps take an optional ride on the famous Kuranda Railway for a breathtaking journey to the village of Kuranda, returning to the lowlands by the Skyrail Cableway above the Barron Gorge National Park. There are plenty of options to choose from. This evening join your Travel Director and newfound friends for a Farewell Dinner.</Text>
+         <Accommodation>Hilton Hotel</Accommodation>
+      </ItinerarySegment>
+      <ItinerarySegment Duration="1" StartDay="11">
+         <Title>Depart Cairns</Title>
+         <Text>After breakfast, you will be transferred to Cairns Airport, where your vacation ends.</Text>
+         <Accommodation>None</Accommodation>
+      </ItinerarySegment>
+   </Itinerary>
+   <WhatsIncluded>
+      <Section>
+         <Title>Your Travel Includes:</Title>
+         <Text>
+            <ul>
+               <li>Airport transfers in Sydney on Day 3 and Cairns on Day 11 for guests who have advised Brendan of their flight details</li>
+               <li>All airport transfers during your guided vacation as indicated in the itinerary</li>
+               <li>Twin-bedded rooms in hotels listed or similar; hotel taxes, service charges and tips for baggage handling</li>
+               <li>8 hot buffet breakfasts; 2 lunches, including a Be My Guest lunch and a Regional Lunch; and 2 dinners including a Welcome Reception with dinner and a Farewell Dinner</li>
+               <li>Services of a professional Travel Director</li>
+               <li>Luxury air-conditioned motorcoach</li>
+               <li>Sightseeing, special features and scenic highlights as indicated in the itinerary, including admission charges</li>
+               <li>Portfolio of travel documents</li>
+            </ul>
+         </Text>
+      </Section>
+   </WhatsIncluded>
+   <Highlights>
+      <Section>
+         <Text>Vacation Highlights Include:<br/>
+            <ul>
+               <li>Sydney</li>
+               <li>Uluru</li>
+               <li>Cairns</li>
+            </ul>Countries visited:<ul>
+               <li>Australia</li>
+            </ul>
+         </Text>
+      </Section>
+   </Highlights>
+</TourInfo>

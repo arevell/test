@@ -1,0 +1,351 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2008 rel. 2 sp1 (http://www.altova.com) by Trafalgar MGMT Services (Trafalgar MGMT Services) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ti="http://www.ttc.com/ch2/api/ccapi/v3/TourInfo/2014/01/3.0" targetNamespace="http://www.ttc.com/ch2/api/ccapi/v3/TourInfo/2014/01/3.0" elementFormDefault="qualified">
+	<xs:include schemaLocation="location_lists.2.xsd"/>
+	<xs:element name="TourInfo">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="TourName" type="ti:string"/>
+				<xs:element name="CataloguedTour" type="ti:CataloguedTour"/>
+				<xs:element name="SellingCompanies" type="ti:SellingCompanies"/>
+				<xs:element name="TourVariationDefiners" type="ti:TourVariationDefiners"/>
+				<xs:element name="ContinentsVisited" type="ti:ContinentsVisited"/>
+				<xs:element name="CountriesVisited" type="ti:CountriesVisited"/>
+				<xs:element name="LocationsVisited" type="ti:LocationsVisited"/>
+				<xs:element name="Description" type="ti:string"/>
+				<xs:element name="Assets" type="ti:Assets"/>
+				<xs:element name="Itinerary" type="ti:Itinerary"/>
+				<xs:element name="WhatsIncluded" type="ti:WhatsIncluded" minOccurs="0"/>
+				<xs:element name="Highlights" type="ti:Highlights" minOccurs="0"/>
+				<xs:element name="AirportTransfers" type="ti:AirportTransfers" minOccurs="0"/>
+				<xs:element name="Notes" type="ti:Notes" minOccurs="0"/>
+				<xs:element name="AdditionalInfo" type="ti:AdditionalInfo" minOccurs="0"/>
+			</xs:sequence>
+			<xs:attribute name="BrandCode" type="xs:NMTOKEN" use="required"/>
+			<xs:attribute name="CMSId" type="xs:NMTOKEN" use="required"/>
+			<xs:attribute name="CMSTourId" type="xs:NMTOKEN" use="optional"/>
+			<xs:attribute name="Duration" type="xs:integer" use="required"/>
+			<xs:attribute name="TourCode" type="xs:NMTOKEN" use="required"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:simpleType name="string">
+		<xs:annotation>
+			<xs:documentation>
+				Requires string to be trimmed and not empty
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="\S+(\s+\S+)*"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ratiostring">
+		<xs:annotation>
+			<xs:documentation>
+				Requires string in ratio format
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="(\d+):(\d+)"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="CataloguedTour">
+		<xs:sequence>
+			<xs:element name="Code" type="xs:NMTOKEN"/>
+			<xs:element name="Name" type="ti:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="SellingCompanies">
+		<xs:sequence>
+			<xs:element name="SellingCompany" type="ti:SellingCompany" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="SellingCompany">
+		<xs:sequence>
+			<xs:element name="Brochure" type="ti:Brochure" maxOccurs="unbounded"/>
+			<xs:element name="TermsAndConditionsLinkURL" type="xs:anyURI" minOccurs="0"/>
+			<xs:element name="TourCategories" type="ti:TourCategories"/>
+			<xs:element name="MarketingFlags" type="ti:MarketingFlags" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="CurrencyCode" type="xs:NMTOKEN" use="required"/>
+		<xs:attribute name="Code" type="xs:NMTOKEN" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="Brochure">
+		<xs:sequence>
+			<xs:element name="Code" type="xs:NMTOKEN"/>
+			<xs:element name="Name" type="ti:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="TourCategories">
+		<xs:sequence>
+			<xs:element name="TourCategory" type="ti:TourCategory" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="TourCategory">
+		<xs:sequence>
+			<xs:element name="CategoryValue" type="ti:string" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attribute name="Name" type="xs:NMTOKEN" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="MarketingFlags">
+		<xs:sequence>
+			<xs:element name="MarketingPriority" type="ti:string" minOccurs="0"/>
+			<xs:element name="MostPopular" type="xs:boolean" minOccurs="0"/>
+			<xs:element name="KeywordsPhrases" type="ti:KeywordsPhrases" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="KeywordsPhrases">
+		<xs:sequence>
+			<xs:element name="Text" type="ti:Text" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Text" mixed="true">
+		<xs:choice minOccurs="0" maxOccurs="unbounded">
+			<xs:element name="values" type="xs:string" />
+			<xs:element name="a" type="ti:a" />
+			<xs:element ref="ti:br" />
+			<xs:element name="strong" type="ti:strong" />
+			<xs:element name="ul" type="ti:ul" />
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="a" mixed="true">
+		<xs:simpleContent>
+			<xs:extension base="xs:string">
+				<xs:attribute name="href" type="xs:anyURI" use="required"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="strong" mixed="true">
+		<xs:simpleContent>
+			<xs:extension base="xs:string">
+				
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:element name="br">
+		<xs:complexType/>
+	</xs:element>
+	<xs:complexType name="ul">
+		<xs:sequence>
+			<xs:element name="li" type="ti:li" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="li" mixed="true">
+		<xs:choice minOccurs="0" maxOccurs="unbounded">
+			<xs:element name="values" type="xs:string" />
+			<xs:element name="a" type="ti:a"/>
+			<xs:element name="strong" type="ti:strong"/>
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="TourVariationDefiners">
+		<xs:sequence>
+			<xs:element name="OperatingProduct" type="ti:OperatingProduct"/>
+			<xs:element name="IncludedSubProducts" type="ti:IncludedSubProducts" minOccurs="0"/>
+			<xs:element name="RoomTypes" type="ti:RoomTypes"/>
+			<xs:element name="StartCity" type="ti:City"/>
+			<xs:element name="EndCity" type="ti:City"/>
+			<xs:element name="IsTourPackage" type="xs:boolean"/>
+			<xs:element name="IncludedCruiseCabinType" type="ti:string" minOccurs="0"/>
+			<xs:element name="AdditionalDefiners" type="ti:AdditionalDefiners" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="OperatingProduct">
+		<xs:sequence>
+			<xs:element name="Code" type="ti:string"/>
+			<xs:element name="ContractingSeason" type="ti:string"/>
+			<xs:element name="Category" type="ti:string"/>
+			<xs:element name="Classification" type="ti:string"/>
+			<xs:element name="StandardName" type="ti:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="IncludedSubProducts">
+		<xs:sequence>
+			<xs:element name="IncludedSubProduct" type="ti:IncludedSubProduct" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="IncludedSubProduct">
+		<xs:sequence>
+			<xs:element name="Code" type="ti:string"/>
+			<xs:element name="Name" type="ti:string"/>
+			<xs:element name="Category" type="ti:string"/>
+			<xs:element name="ServiceType" type="ti:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="RoomTypes">
+		<xs:sequence>
+			<xs:element name="RoomType" type="ti:RoomType" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="RoomType">
+		<xs:attribute name="Type" type="ti:string" use="required"/>
+		<xs:attribute name="Sellable" type="xs:boolean" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="City">
+		<xs:sequence>
+			<xs:element name="Name" type="ti:string"/>
+			<xs:element name="Airports" type="ti:Airports" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Airports">
+		<xs:sequence>
+			<xs:element name="Airport" type="ti:Airport" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Airport">
+		<xs:sequence>
+			<xs:element name="IATACode" type="ti:string"/>
+			<xs:element name="Name" type="ti:string"/>
+			<xs:element name="City" type="ti:string"/>
+			<xs:element name="Region" type="ti:string"/>
+			<xs:element name="Country" type="ti:string"/>
+			<xs:element name="DefaultForCity" type="xs:boolean"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ContinentsVisited">
+		<xs:sequence>
+			<xs:element name="Continent" type="ti:Continent" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Continent">
+		<xs:sequence>
+			<xs:element name="Code" type="ti:ContinentCode"/>
+			<xs:element name="Name" type="ti:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="CountriesVisited">
+		<xs:sequence>
+			<xs:element name="Country" type="ti:Country" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Country">
+		<xs:sequence>
+			<xs:element name="Code" type="ti:ISO3166CountryCode"/>
+			<xs:element name="Name" type="ti:string"/>
+			<xs:element name="ContinentCode" type="ti:ContinentCode"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="LocationsVisited">
+		<xs:sequence>
+			<xs:element name="Location" type="ti:Location" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Location">
+		<xs:attribute name="CountryCode" type="ti:ISO3166CountryCode" use="required"/>
+		<xs:attribute name="Name" type="ti:string" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="Assets">
+		<xs:sequence>
+			<xs:element name="Images" type="ti:Images"/>
+			<xs:element name="Videos" type="ti:Videos" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Images">
+		<xs:sequence>
+			<xs:element name="Image" type="ti:Image" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Image">
+		<xs:attribute name="Name" type="xs:NMTOKEN" use="required"/>
+		<xs:attribute name="Caption" type="ti:string" use="optional"/>
+		<xs:attribute name="Width" type="xs:integer" use="required"/>
+		<xs:attribute name="Height" type="xs:integer" use="required"/>
+		<xs:attribute name="Type" type="xs:NMTOKEN" use="required"/>
+		<xs:attribute name="Url" type="xs:anyURI" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="Videos">
+		<xs:sequence>
+			<xs:element name="Video" type="ti:Video" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Video">
+		<xs:attribute name="Name" type="xs:NMTOKEN" use="required"/>
+		<xs:attribute name="Caption" type="ti:string" use="optional"/>
+		<xs:attribute name="AspectRatio" type="ti:ratiostring" use="required"/>
+		<xs:attribute name="Type" type="xs:NMTOKEN" use="required"/>
+		<xs:attribute name="Url" type="xs:anyURI" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="Itinerary">
+		<xs:sequence>
+			<xs:element name="ItinerarySegment" type="ti:ItinerarySegment" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ItinerarySegment">
+		<xs:sequence>
+			<xs:element name="Title" type="ti:string"/>
+			<xs:element name="Text" type="ti:Text" minOccurs="0"/>
+			<xs:element name="Accommodation" type="ti:string" minOccurs="0"/>
+			<xs:element name="Meals" type="ti:Meals" minOccurs="0"/>
+			<xs:element name="LocationsVisited" type="ti:LocationsVisited" minOccurs="0"/>
+			<xs:element name="OptionalExtras" type="ti:OptionalExtras" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="Duration" type="xs:integer" use="required"/>
+		<xs:attribute name="StartDay" type="xs:integer" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="Meals">
+		<xs:sequence>
+			<xs:element name="Meal" type="ti:Meal" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Meal">
+		<xs:sequence>
+			<xs:element name="Type" type="ti:string"/>
+			<xs:element name="Number" type="xs:integer"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="OptionalExtras">
+		<xs:sequence>
+			<xs:element name="Extra" type="ti:Extra" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Extra">
+		<xs:sequence>
+			<xs:element name="Code" type="ti:string"/>
+			<xs:element name="Price" type="ti:Price" maxOccurs="unbounded"/>
+			<xs:element name="Section" type="ti:Section" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Price">
+		<xs:sequence>
+			<xs:element name="PassengerType" type="ti:string"/>
+			<xs:element name="CurrencyCode" type="ti:string"/>
+			<xs:element name="AmountFrom" type="xs:decimal" minOccurs="0"/>
+			<xs:element name="AmountTo" type="xs:decimal" minOccurs="0"/>
+			<xs:element name="Notes" type="ti:Notes" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Section">
+		<xs:sequence>
+			<xs:element name="Title" type="ti:string" minOccurs="0"/>
+			<xs:element name="Text" type="ti:Text"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="WhatsIncluded">
+		<xs:sequence>
+			<xs:element name="Section" type="ti:Section" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Highlights">
+		<xs:sequence>
+			<xs:element name="Section" type="ti:Section" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="AirportTransfers">
+		<xs:sequence>
+			<xs:element name="Section" type="ti:Section" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Notes">
+		<xs:sequence>
+			<xs:element name="Section" type="ti:Section" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="AdditionalDefiners">
+		<xs:sequence>
+			<xs:element name="Section" type="ti:Section" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="AdditionalInfo">
+		<xs:sequence>
+			<xs:element name="Section" type="ti:Section" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

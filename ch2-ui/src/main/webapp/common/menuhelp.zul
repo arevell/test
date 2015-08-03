@@ -1,0 +1,9 @@
+<zk>
+    <menubar >
+        <menu label="${labels.menu.help.caption}" >
+            <menupopup >
+                <menuitem label="${labels.menu.help.thirdpartiesguide}" href="/help/CH2_API_User_Guide.pdf" target="_blank"/>
+            </menupopup>
+        </menu>
+    </menubar>      				
+</zk>

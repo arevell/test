@@ -1,0 +1,64 @@
+<zk>
+<include src="/common/init.zul"/>
+<hbox class="top_menu" style="width:100%;"  apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init(MenuControler)">
+<cell style="width:30%" align="left">
+			<menubar id="usermenubar" width="100%">
+					
+					<menuseparator if="@load(vm.brandRole)"/>
+					<menu label="Content Hub" if="${vm.brandRole}">
+						<menupopup>
+							<menuitem label="${labels.menu.brand.upload}" href="${UPDATE_TOUR_INFO}"/>																
+							<menuitem label="${labels.menu.brand.crti}" href="${TOUR_INFO_REPOSITORY}"/>			
+							<menuitem label="${labels.menu.brand.crtd}" href="${TOUR_DEPARTURE_REPOSITORY}"/>								
+							<menuitem label="${labels.menu.brand.easyview}" href="${TOUR_MATCH_STATUS_HTML}"/>			
+							<menuitem label="${labels.menu.brand.fc}" href="${FILE_COLLECT}"/>																																					
+						</menupopup>
+					</menu>
+					<menuseparator  if="${vm.brandRole}"/>
+					<menuitem label="Messages" href="${MESSAGE_LIST}" />							
+					<menuseparator  if="${vm.adminRole}"/>
+					<menu label="Administration" if="${vm.adminRole}">
+						<menupopup>
+							<menuitem label="${labels.menu.adm.upload}" href="${UPDATE_TOUR_INFO}"/>
+							<menuitem label="${labels.menu.adm.audit}" href="${AUDIT}" />					
+							<menuitem label="${labels.menu.adm.scheduler}" href="${SCHEDULER}" />						
+							<menuitem label="${labels.menu.adm.userui}" href="${OPERATOR_LIST}"/>												
+							<menuitem label="${labels.menu.adm.userccapi}" href="${OPERATOR_CCAPI_LIST}"/>													
+							<menuitem label="${labels.processmgr.panel.main_panel_title}" href="${DIR_SWITCHER}"/>													
+							<menuitem label="${labels.menu.adm.health}" href="${HEALTH_CHECKER}"/>													
+						</menupopup>
+					</menu>		
+		            <menu label="${labels.menu.help.caption}" >
+		                <menupopup>
+		                    <menuitem label="${labels.menu.help.adminguide}" if="${vm.adminRole}" href="/help/CH2_Admin_Guide.pdf" target="_blank"/>
+		                    <menuitem label="${labels.menu.help.userguide}" href="/help/CH2_UI_User_Guide.pdf" target="_blank"/>
+		                    <menuitem label="${labels.menu.help.brandsguide}" href="/help/CH2_API_User_Guide_Brands.pdf"  target="_blank"/>
+		                    <menuitem label="${labels.menu.help.thirdpartiesguide}" if="${vm.adminRole}" href="/help/CH2_API_User_Guide.pdf" target="_blank"/>
+		                </menupopup>
+		            </menu>	
+			</menubar>
+</cell>
+<cell style="padding:5px 0px 0 0;width:65%" align="right">
+	 			<hbox pack="right" style="width:100%;" apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init(MenuControler)">
+			    		<label value="${labels.menu.comment.welcome} ${vm.login} |"  style="color:#c0d3f7"/> 
+			        	<label value="${labels.menu.comment.env} ${vm.enviroment} |" style="color:#c0d3f7" />
+			        	<label value="${labels.menu.comment.node} ${sys_node} |" style="color:#c0d3f7" />
+			        	<label value="${labels.menu.comment.version} ${sys_version} |" style="color:#c0d3f7" />
+			        	<label value="${labels.menu.comment.date} ${sys_date}" style="color:#c0d3f7" /> 
+			    </hbox>
+			 </cell>
+<cell style="width:5%" align="right">
+	<menubar id="label bar" width="100%"  sclass="mymenu">	
+			<menu label="User" >
+				<menupopup>
+					<menuitem label="${labels.menu.sys.logout}" href="${LOGOUT}"/>
+					<menuitem label="${labels.menu.sys.chgpswd}" href="${CHGPSWD}"  if="${vm.userNotLDAP}"/>
+				</menupopup>
+			</menu>				
+	</menubar>
+</cell>
+</hbox>			
+
+
+			      				
+</zk>

@@ -1,0 +1,645 @@
+{
+      "aggtours" : {
+        "properties" : {
+          "CataloguedTourCode" : {
+            "type" : "string"
+          },
+          "CataloguedTourName" : {
+            "type" : "string"
+          },
+          "ToursList" : {
+            "type" : "nested",
+            "properties" : {
+              "TourDeparturesSimp" : {
+                "properties" : {
+                  "OnlineBookable" : {
+                    "type" : "boolean"
+                  },
+                  "OperatingProductCode" : {
+                    "type" : "string"
+                  },
+                  "SellingCompany" : {
+                    "properties" : {
+                      "Code" : {
+                        "type" : "string"
+                      },
+                      "CurrencyCode" : {
+                        "type" : "string"
+                      },
+                      "Departures" : {
+                        "properties" : {
+                          "Departure" : {
+                            "type" : "nested",
+                            "properties" : {
+                              "AssociatedProducts" : {
+                                "properties" : {
+                                  "AccommodationProducts" : {
+                                    "properties" : {
+                                      "AccommodationProduct" : {
+                                        "properties" : {
+                                          "Address" : {
+                                            "properties" : {
+                                              "City" : {
+                                                "type" : "string"
+                                              },
+                                              "Country" : {
+                                                "type" : "string"
+                                              },
+                                              "Line1" : {
+                                                "type" : "string"
+                                              },
+                                              "Postcode" : {
+                                                "type" : "string"
+                                              },
+                                              "Region" : {
+                                                "type" : "string"
+                                              }
+                                            }
+                                          },
+                                          "Code" : {
+                                            "type" : "string"
+                                          },
+                                          "Name" : {
+                                            "type" : "string"
+                                          },
+                                          "Rooms" : {
+                                            "properties" : {
+                                              "Room" : {
+                                                "properties" : {
+                                                  "Price" : {
+                                                    "properties" : {
+                                                      "Adult" : {
+                                                        "type" : "double"
+                                                      },
+                                                      "Child" : {
+                                                        "type" : "double"
+                                                      }
+                                                    }
+                                                  },
+                                                  "Type" : {
+                                                    "type" : "string"
+                                                  }
+                                                }
+                                              }
+                                            }
+                                          },
+                                          "Type" : {
+                                            "type" : "string"
+                                          }
+                                        }
+                                      }
+                                    }
+                                  },
+                                  "MiscellaneousProducts" : {
+                                    "properties" : {
+                                      "MiscellaneousProduct" : {
+                                        "properties" : {
+                                          "Category" : {
+                                            "type" : "string"
+                                          },
+                                          "Code" : {
+                                            "type" : "string"
+                                          },
+                                          "Name" : {
+                                            "type" : "string"
+                                          },
+                                          "Price" : {
+                                            "properties" : {
+                                              "Adult" : {
+                                                "type" : "double"
+                                              },
+                                              "Child" : {
+                                                "type" : "double"
+                                              }
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              },
+                              "AvailabilityStatus" : {
+                                "type" : "string"
+                              },
+                              "DateRangeIncludesTravelTime" : {
+                                "type" : "boolean"
+                              },
+                              "DefiniteDeparture" : {
+                                "type" : "boolean"
+                              },
+                              "DepartureCode" : {
+                                "type" : "string"
+                              },
+                              "EndDateTime" : {
+                                "type" : "date",
+                                "format" : "dateOptionalTime"
+                              },
+                              "Month" : {
+                                "type" : "long"
+                              },
+                              "Notes" : {
+                                "type" : "string"
+                              },
+                              "StartDateTime" : {
+                                "type" : "date",
+                                "format" : "dateOptionalTime"
+                              },
+                              "TourRules" : {
+                                "properties" : {
+                                  "CanSearchForFlights" : {
+                                    "type" : "boolean"
+                                  },
+                                  "CombinedIncludedCharges" : {
+                                    "properties" : {
+                                      "MandatoryMiscellaneousProducts" : {
+                                        "properties" : {
+                                          "MiscellaneousProduct" : {
+                                            "properties" : {
+                                              "Category" : {
+                                                "type" : "string"
+                                              },
+                                              "Code" : {
+                                                "type" : "string"
+                                              },
+                                              "Name" : {
+                                                "type" : "string"
+                                              },
+                                              "Price" : {
+                                                "properties" : {
+                                                  "Adult" : {
+                                                    "type" : "double"
+                                                  },
+                                                  "Child" : {
+                                                    "type" : "double"
+                                                  }
+                                                }
+                                              }
+                                            }
+                                          }
+                                        }
+                                      },
+                                      "PortTax" : {
+                                        "properties" : {
+                                          "Price" : {
+                                            "properties" : {
+                                              "Adult" : {
+                                                "type" : "double"
+                                              },
+                                              "Child" : {
+                                                "type" : "double"
+                                              }
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
+                                  },
+                                  "IsEligibleForFrequentTravellerDiscount" : {
+                                    "type" : "boolean"
+                                  },
+                                  "Passengers" : {
+                                    "properties" : {
+                                      "Passenger" : {
+                                        "properties" : {
+                                          "AgeFrom" : {
+                                            "type" : "long"
+                                          },
+                                          "AgeTo" : {
+                                            "type" : "long"
+                                          },
+                                          "Type" : {
+                                            "type" : "string"
+                                          }
+                                        }
+                                      }
+                                    }
+                                  },
+                                  "PriceIsIndicative" : {
+                                    "type" : "boolean"
+                                  },
+                                  "Rooms" : {
+                                    "properties" : {
+                                      "Room" : {
+                                        "type" : "nested",
+                                        "properties" : {
+                                          "OccupancyRule" : {
+                                            "properties" : {
+                                              "MaximumAdults" : {
+                                                "type" : "long"
+                                              },
+                                              "MaximumPassengers" : {
+                                                "type" : "long"
+                                              },
+                                              "MinimumAdults" : {
+                                                "type" : "long"
+                                              },
+                                              "MinimumPassengers" : {
+                                                "type" : "long"
+                                              },
+                                              "MinimumPayingAdults" : {
+                                                "type" : "long"
+                                              }
+                                            }
+                                          },
+                                          "Price" : {
+                                            "properties" : {
+                                              "Adult" : {
+                                                "properties" : {
+                                                  "Base" : {
+                                                    "type" : "double"
+                                                  },
+                                                  "Combined" : {
+                                                    "type" : "double"
+                                                  }
+                                                }
+                                              },
+                                              "Child" : {
+                                                "properties" : {
+                                                  "Base" : {
+                                                    "type" : "double"
+                                                  },
+                                                  "Combined" : {
+                                                    "type" : "double"
+                                                  }
+                                                }
+                                              }
+                                            }
+                                          },
+                                          "Type" : {
+                                            "type" : "string"
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          },
+                          "PricesRange" : {
+                            "properties" : {
+                              "QuadRoom" : {
+                                "properties" : {
+                                  "PriceFrom" : {
+                                    "type" : "double"
+                                  },
+                                  "PriceTo" : {
+                                    "type" : "double"
+                                  }
+                                }
+                              },
+                              "QuadShareRoom" : {
+                                "properties" : {
+                                  "PriceFrom" : {
+                                    "type" : "double"
+                                  },
+                                  "PriceTo" : {
+                                    "type" : "double"
+                                  }
+                                }
+                              },
+                              "SingleRoom" : {
+                                "properties" : {
+                                  "PriceFrom" : {
+                                    "type" : "double"
+                                  },
+                                  "PriceTo" : {
+                                    "type" : "double"
+                                  }
+                                }
+                              },
+                              "TripleRoom" : {
+                                "properties" : {
+                                  "PriceFrom" : {
+                                    "type" : "long"
+                                  },
+                                  "PriceTo" : {
+                                    "type" : "long"
+                                  }
+                                }
+                              },
+                              "TripleShareRoom" : {
+                                "properties" : {
+                                  "PriceFrom" : {
+                                    "type" : "long"
+                                  },
+                                  "PriceTo" : {
+                                    "type" : "long"
+                                  }
+                                }
+                              },
+                              "TwinRoom" : {
+                                "properties" : {
+                                  "PriceFrom" : {
+                                    "type" : "double"
+                                  },
+                                  "PriceTo" : {
+                                    "type" : "double"
+                                  }
+                                }
+                              },
+                              "TwinShareRoom" : {
+                                "properties" : {
+                                  "PriceFrom" : {
+                                    "type" : "double"
+                                  },
+                                  "PriceTo" : {
+                                    "type" : "double"
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "InventoryBrochureCode" : {
+                        "type" : "string"
+                      }
+                    }
+                  },
+                  "TourCode" : {
+                    "type" : "string"
+                  }
+                }
+              },
+              "TourInfoSimp" : {
+                "properties" : {
+                  "Assets" : {
+                    "properties" : {
+                      "Images" : {
+                        "properties" : {
+                          "Image" : {
+                            "properties" : {
+                              "Caption" : {
+                                "type" : "string"
+                              },
+                              "Height" : {
+                                "type" : "long"
+                              },
+                              "Name" : {
+                                "type" : "string"
+                              },
+                              "Type" : {
+                                "type" : "string"
+                              },
+                              "Url" : {
+                                "type" : "string"
+                              },
+                              "Width" : {
+                                "type" : "long"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "BrandCode" : {
+                    "type" : "string"
+                  },
+                  "CMSId" : {
+                    "type" : "string"
+                  },
+                  "CataloguedTour" : {
+                    "properties" : {
+                      "Code" : {
+                        "type" : "string"
+                      },
+                      "Name" : {
+                        "type" : "string"
+                      }
+                    }
+                  },
+                  "ContinentsVisited" : {
+                    "properties" : {
+                      "Continent" : {
+                        "properties" : {
+                          "Code" : {
+                            "type" : "string"
+                          },
+                          "Name" : {
+                            "type" : "string"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "CountriesVisited" : {
+                    "properties" : {
+                      "Country" : {
+                        "properties" : {
+                          "Code" : {
+                            "type" : "string",
+                            "index" : "not_analyzed"
+                          },
+                          "ContinentCode" : {
+                            "type" : "string",
+                            "index" : "not_analyzed"
+                          },
+                          "Name" : {
+                            "type" : "string"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "Description" : {
+                    "type" : "string"
+                  },
+                  "Duration" : {
+                    "type" : "long"
+                  },
+                  "LocationsVisited" : {
+                    "properties" : {
+                      "Location" : {
+                        "properties" : {
+                          "CountryCode" : {
+                            "type" : "string"
+                          },
+                          "Name" : {
+                            "type" : "string"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "SellingCompanies" : {
+                    "properties" : {
+                      "SellingCompany" : {
+                        "properties" : {
+                          "Brochure" : {
+                            "properties" : {
+                              "Code" : {
+                                "type" : "string"
+                              },
+                              "Name" : {
+                                "type" : "string"
+                              }
+                            }
+                          },
+                          "Code" : {
+                            "type" : "string"
+                          },
+                          "CurrencyCode" : {
+                            "type" : "string"
+                          },
+                          "TourCategories" : {
+                            "properties" : {
+                              "TourCategory" : {
+                                "properties" : {
+                                  "CategoryValue" : {
+                                    "type" : "string",
+                                    "index" : "not_analyzed"
+                                  },
+                                  "Name" : {
+                                    "type" : "string",
+                                    "index" : "not_analyzed"
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "TourCode" : {
+                    "type" : "string"
+                  },
+                  "TourName" : {
+                    "type" : "string"
+                  },
+                  "TourVariationDefiners" : {
+                    "properties" : {
+                      "EndCity" : {
+                        "properties" : {
+                          "Airports" : {
+                            "properties" : {
+                              "Airport" : {
+                                "properties" : {
+                                  "City" : {
+                                    "type" : "string"
+                                  },
+                                  "Country" : {
+                                    "type" : "string"
+                                  },
+                                  "DefaultForCity" : {
+                                    "type" : "boolean"
+                                  },
+                                  "IATACode" : {
+                                    "type" : "string"
+                                  },
+                                  "Name" : {
+                                    "type" : "string"
+                                  },
+                                  "Region" : {
+                                    "type" : "string"
+                                  }
+                                }
+                              }
+                            }
+                          },
+                          "Name" : {
+                            "type" : "string"
+                          }
+                        }
+                      },
+                      "IncludedSubProducts" : {
+                        "properties" : {
+                          "IncludedSubProduct" : {
+                            "properties" : {
+                              "Category" : {
+                                "type" : "string"
+                              },
+                              "Code" : {
+                                "type" : "string"
+                              },
+                              "Name" : {
+                                "type" : "string"
+                              },
+                              "ServiceType" : {
+                                "type" : "string"
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "IsTourPackage" : {
+                        "type" : "boolean"
+                      },
+                      "OperatingProduct" : {
+                        "properties" : {
+                          "Category" : {
+                            "type" : "string"
+                          },
+                          "Classification" : {
+                            "type" : "string"
+                          },
+                          "Code" : {
+                            "type" : "string"
+                          },
+                          "ContractingSeason" : {
+                            "type" : "string"
+                          },
+                          "StandardName" : {
+                            "type" : "string"
+                          }
+                        }
+                      },
+                      "RoomTypes" : {
+                        "properties" : {
+                          "RoomType" : {
+                            "properties" : {
+                              "Sellable" : {
+                                "type" : "boolean"
+                              },
+                              "Type" : {
+                                "type" : "string"
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "StartCity" : {
+                        "properties" : {
+                          "Airports" : {
+                            "properties" : {
+                              "Airport" : {
+                                "properties" : {
+                                  "City" : {
+                                    "type" : "string"
+                                  },
+                                  "Country" : {
+                                    "type" : "string"
+                                  },
+                                  "DefaultForCity" : {
+                                    "type" : "boolean"
+                                  },
+                                  "IATACode" : {
+                                    "type" : "string"
+                                  },
+                                  "Name" : {
+                                    "type" : "string"
+                                  },
+                                  "Region" : {
+                                    "type" : "string"
+                                  }
+                                }
+                              }
+                            }
+                          },
+                          "Name" : {
+                            "type" : "string"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+}

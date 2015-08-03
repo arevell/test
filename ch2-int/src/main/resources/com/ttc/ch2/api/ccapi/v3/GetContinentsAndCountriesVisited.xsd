@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:v3="http://www.ttc.com/ch2/api/ccapi/v3"
+    targetNamespace="http://www.ttc.com/ch2/api/ccapi/v3"
+    elementFormDefault="qualified"
+>
+
+    <xs:include schemaLocation="Messages.xsd" />   
+    
+	<xs:element name="GetContinentsAndCountriesVisitedRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="securityKey" type="xs:string" />
+				<xs:element name="continent" type="xs:string" minOccurs="0" />
+				<xs:element name="sellingCompanies" type="xs:string" maxOccurs="unbounded" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+    
+	<xs:element name="GetContinentsAndCountriesVisitedResponse">
+		<xs:complexType>
+			<xs:sequence>
+                <xs:element minOccurs="0" name="messageContext" type="v3:MessageContext"/>
+				<xs:element name="successful" type="xs:boolean" />
+				<xs:element name="continentsAndCountries" type="v3:ContinentAndCountries" maxOccurs="unbounded" />
+                
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="ContinentAndCountries">
+		<xs:sequence>
+			<xs:element name="continent" type="xs:string" />
+			<xs:element name="countries" type="xs:string" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+
+</xs:schema>

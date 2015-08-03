@@ -1,0 +1,65 @@
+<?init class="org.zkoss.zk.ui.util.Composition" arg0="/tpl/MainTpl.zul"?>
+<?page title="Easy view" contentType="text/html;charset=UTF-8"?>
+<?import com.ttc.ch2.ui.moduls.tour.common.TourMatchingHtmlRenderer?>
+<?import com.ttc.ch2.ui.common.config.Ch2URIs?>
+<zk>    
+	        <panel class="tour_match" id="panel" border="rounded+"  width="100%" height="100%" 
+	        	self="@{define(mainContent)}" apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init(TourMatchStatus)">	        
+	         <caption id="captionPanel" label="${labels.contenthub.tour_match_status.main_panel_title} - ${vm.selectedBrandName}" sclass="panel_title" />	        	
+		        <panelchildren style="overflow: auto">
+		        <space bar="false" />
+		        
+		        
+		        
+		         	<groupbox id="grp1" closable="true" mold='3d'  width="100%" form="@id('fx') @load(vm.filter) @save(vm.filter, before='onSearch')" xmlns:h="native">
+					 		<h:table>
+							<h:tr>
+								<h:td><label value="${labels.tour.tour_repository.tour_code_name_label}:"/></h:td>
+								<h:td><textbox instant="true"  value="@bind(fx.tourCode)"  onOK="@command('onSearch')"  constraint="/^.{0,10}$/: ${labels.common.field.lenght.tolong}"/></h:td>
+								<h:td><label value="${labels.contenthub.tour_match_status.brand_name_label}" if="${vm.brandListSize > 1}" /></h:td>
+								<h:td><combobox id="brandComboBox" readonly="true" value="${labels.common.combobox.empty_value}" autodrop="true" mold="rounded" buttonVisible="true"
+                							model="@load(vm.chooseBrand)" selectedItem="@bind(vm.brandFilterAsString)"  if="${vm.brandListSize > 1}" onSelect="@command('changeFilter')">
+				                    <template name="model">
+				                        <comboitem label="@load(each)"/>
+				                    </template>
+                	 				</combobox>
+                	 			</h:td>
+                	 			
+                	 			<h:td align="top"><button  label="${labels.common.pb_search}" onClick="@command('onSearch')" autodisable="self" mold="trendy" /></h:td>
+                	 			<h:td><button onClick="@command('onClear')" label="${labels.common.pb_clear}" autodisable="self" mold="trendy" /></h:td>
+                	 			<h:td><label value="${labels.contenthub.tour_match_status.brand_name_label} ${vm.onlyOneBrandName}" if="${vm.brandListSize == 1}" /></h:td>
+							</h:tr>							
+							</h:table>			        		
+		        	</groupbox>
+		        	
+		        	
+		        	
+		        	
+		        	<separator />	
+        			<zscript>
+	    					String htmlTable=new TourMatchingHtmlRenderer().render(Ch2URIs.TOUR_MATCH_STATUS_HTML,TourMatchStatus.getRows(),vm.getSortCondition().getDirection());
+	    					String brandCode=vm.getFilter().getBrands().iterator().next().getCode();
+	    					String tourDataWindowBaseUrl=Ch2URIs.TOUR_MATCH_STATUS_HTML_VIEW.getPathWithAppName(vm.getPathApp())+"?brandCode="+brandCode; 
+							String brochureEngineBaseUrl=Ch2URIs.BROCHURE_ENGINE.getPathWithAppName(vm.getPathApp())+"?brandCode="+brandCode;
+							
+	    			</zscript>	
+		        	 <html>
+		        	 <![CDATA[
+						 <script language="JavaScript">
+									function openTourDataWindow(id) {							
+									var url = "${tourDataWindowBaseUrl}&id="+id+"&zk=true";
+									window.open(url,'','height=700,width=1000,toolbar=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes ,modal=yes');
+									return false;
+									}
+									function openTourDataWindowPdf(tourCode) {									
+									var url = "${brochureEngineBaseUrl}&tour=" + tourCode+"&zk=true";
+									window.open(url,'','height=700,width=1000,toolbar=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes ,modal=yes');
+									return false;
+									}
+						</script>		        	 
+		        	  ${htmlTable}		        	  
+		        	  ]]>		        	  
+		        	   </html>   	 				
+		         </panelchildren>
+	         </panel>	 	
+</zk>

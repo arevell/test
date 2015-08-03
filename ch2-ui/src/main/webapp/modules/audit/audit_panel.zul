@@ -1,0 +1,267 @@
+<?init class="org.zkoss.zk.ui.util.Composition" arg0="/tpl/MainTpl.zul"?>
+<zk> 								 
+<panel class="scheduler" border="rounded+" height="100%" width="100%" self="@{define(mainContent)}" xmlns:h="native" >
+    <caption label="${labels.audit.audit_panel.main_panel_title}" sclass="panel_title" />  
+    <panelchildren>
+    <vlayout>
+ 	 <hbox  widths="33%,33%,33%" width="100%">
+ 	 
+     <!-- 
+	 	  <panel  border="rounded+" height="230px" width="100%"
+              apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init(AuditDetails)" 
+          >
+			        <panelchildren style="overflow: auto">		  
+                        <vlayout >
+          
+                            <grid   model="@bind(vm.loggings)" emptyMessage="${labels.common.empty_result_list}"
+                                onPaging="@command('onPagingList')" mold="paging" paginal="${loggingsPaging}"
+                                sizedByContent="true"
+                            >
+                                <auxhead sclass="category-center">
+                                    <auxheader label="${labels.audit.loggings.caption}" colspan="4" rowspan="1" />
+                                </auxhead>
+                                <columns sizable="true">
+                                    <column hflex="min">${labels.common.col.no}</column>
+                                    <column hflex="4">${labels.audit.loggings.begin}</column>
+                                    <column hflex="3">${labels.audit.loggings.user}</column>
+                                    <column hflex="4">${labels.audit.loggings.address}</column>
+                                </columns>           
+                                 <template name="model" >
+                                    <row height="10px">
+                                        <cell height="12px"><label style="font-size:8px;" value="${ (vm.loggings.activePage * vm.loggings.pageSize)+  forEachStatus.index + 1}" /></cell>
+                                        <cell height="12px"><label style="font-size:8px;" value="@load(each.start)  @converter('formatedDate',format='yy/MM/dd HH:mm:ss')" /></cell>
+                                        <cell height="12px"><label style="font-size:8px;" value="@load(each.user)" /></cell>
+                                        <cell height="12px"><label style="font-size:8px;" value="@load(each.address)" /></cell>
+                                    </row>
+                                </template>                  
+                            </grid>                 
+                            <paging id="loggingsPaging" onPaging="@command('onPagingLoggings')" totalSize="@bind(vm.loggings.totalSize)" pageSize="@bind(vm.loggings.pageSize)" activePage="@bind(vm.loggings.activePage)" />                                                       
+                        </vlayout>      		        
+			         </panelchildren>
+		         </panel>
+           -->       
+	 	  <panel  border="rounded+" height="230px" width="100%"
+              apply="com.ttc.ch2.ui.moduls.audit.MetricsComposer"
+          >
+			        <panelchildren style="overflow: auto">		  
+                        <vlayout >
+                            <grid id="metricsGrid"  emptyMessage="${labels.common.empty_result_list}" sizedByContent="true" >
+                                <auxhead sclass="category-center">
+                                    <auxheader id="metricsHead" label="${labels.audit.metrics.caption}" colspan="4" rowspan="1" >
+                                        <listbox mold="select" id="metricsSelect" onSelect="">
+                                            <listitem label="${labels.audit.metrics.metric.uptime}" value="UPTIME" selected="true"/>                                            
+                                            <listitem label="${labels.audit.metrics.metric.threadcount}" value="threadcount"/>                                            
+                                            <listitem label="--" disabled="true" />
+                                            <listitem label="${labels.audit.metrics.metric.process_cpu_load}" value="PROCESS_CPU_LOAD" />                                            
+                                            <listitem label="${labels.audit.metrics.metric.system_cpu_load}" value="SYSTEM_CPU_LOAD" />                                                                   
+                                            <listitem label="--" disabled="true" />
+                                            <listitem label="${labels.audit.metrics.metric.memphysicaltotal}" value="MEMPHYSICALTOTAL" />                                            
+                                            <listitem label="${labels.audit.metrics.metric.memphusicalusedperc}" value="MEMPHYSICALUSEDPERC" />                                            
+                                            <listitem label="${labels.audit.metrics.metric.memvirtualcommitted}" value="MEMVIRTUALCOMMITTED" />                                            
+                                            <listitem label="${labels.audit.metrics.metric.memevirtualcommitedusedperc}" value="MEMVIRTUALCOMMITEDUSEDPERC" />                                            
+                                            <listitem label="--" disabled="true" />
+                                            <listitem label="${labels.audit.metrics.metric.swapspacefree}" value="SWAPSPACEFREE" />                                            
+                                            <listitem label="${labels.audit.metrics.metric.swapdpacetotal}" value="SWAPSPACETOTAL" />                                            
+                                            <listitem label="${labels.audit.metrics.metric.swapsapceusedperc}" value="SWAPUSEDPERC" />
+                                        </listbox>
+                                        <listbox mold="select" id="metricsPeriod">
+                                            <listitem label="${labels.audit.metrics.period_24h}" value="H24" selected="true"/>
+                                            <listitem label="${labels.audit.metrics.period_7d}"  value="D7" />
+                                            <listitem label="${labels.audit.metrics.period_1m}" value="M1" />
+                                        </listbox>
+                                    </auxheader>
+                                </auxhead>
+                                <auxhead id="calendarHead" />
+                                <columns sizable="true">
+                                    <column hflex="min">${labels.common.col.no}</column>
+                                    <column hflex="4">${labels.audit.metrics.host}</column>
+                                </columns>
+                                <rows/>                  
+                            </grid>                 
+                        </vlayout>      		        
+			         </panelchildren>
+		         </panel>
+             </hbox>
+          <panel  border="rounded+" height="450px" width="100%"
+              apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init(EventsDetails)" 
+          >         
+                <panelchildren style="overflow: auto">        
+                    <vlayout >
+                        <grid   model="@bind(vm.auditEvents)" emptyMessage="${labels.common.empty_result_list}"
+                            onPaging="@command('onPagingAuditEvents')" mold="paging" paginal="${auditEventsPaging}"
+                            sizedByContent="true"
+                        >
+                                <auxhead sclass="category-center">
+                                    <auxheader label="${labels.audit.auditEvents.caption}" colspan="7" rowspan="1"  valign="bottom">
+                                         <combobox readonly="true" selectedItem="@bind(vm.eventsPeriod)"  onSelect="@command('onPeriodEvents')" >
+                                            <comboitem label="${labels.audit.metrics.period_24h}" value="H24" />
+                                            <comboitem label="${labels.audit.metrics.period_7d}"  value="D7"  />
+                                            <comboitem label="${labels.audit.metrics.period_1m}" value="M1"   />
+                                        </combobox>     
+                                        <button label="Refresh" onClick="@command('onFilterEvents')" mold="trendy"/>                      
+                                    </auxheader>
+                                </auxhead>
+                                <columns sizable="true">
+                                    <column>${labels.common.col.no}</column>
+                                    <column>${labels.audit.event.timestamp}</column>
+                                    <column width="200px">${labels.audit.event.user}</column>
+                                    <column>${labels.audit.event.action}</column>
+                                    <column width="200px">${labels.audit.event.function}</column>
+                                    <column>${labels.audit.event.execution}</column>
+                                    <column width="200px">${labels.audit.event.host}</column>
+                                </columns>    
+                                <auxhead>
+                                    <auxheader colspan="2"/>
+                                    <auxheader sclass="z-column" >
+                                        <combobox id="eventsUserCombox" value="@bind(vm.eventsUserFilter)" model="@load(vm.eventsUserComboxModel)" width="100%"
+                                            onSelect="@command('onFilterEvents')" 
+                                        >
+                                            <template name="model">
+                                                <comboitem label="@load(each)" />
+                                            </template>
+                                        </combobox>
+                                    </auxheader>
+                                    <auxheader >
+                                        <combobox id="eventsActionCombox" value="@bind(vm.eventsActionFilter)" model="@load(vm.eventsActionComboxModel)" width="100%"
+                                            onSelect="@command('onFilterEvents')" 
+                                        >
+                                            <template name="model">
+                                                <comboitem label="@load(each)" />
+                                            </template>
+                                        </combobox>
+                                    </auxheader>
+                                    <auxheader >
+                                        <combobox id="eventsFunctionCombox" value="@bind(vm.eventsFunctionFilter)" model="@load(vm.eventsFunctionComboxModel)" width="100%"
+                                            onSelect="@command('onFilterEvents')" 
+                                        >
+                                            <template name="model">
+                                                <comboitem label="@load(each)" />
+                                            </template>
+                                        </combobox>
+                                    </auxheader>
+                                    <auxheader />
+                                    <auxheader >
+                                        <combobox id="eventsHostCombox" value="@bind(vm.eventsHostFilter)" model="@load(vm.eventsHostComboxModel)" width="100%"
+                                            onSelect="@command('onFilterEvents')" 
+                                        >
+                                            <template name="model">
+                                                <comboitem label="@load(each)" />
+                                            </template>
+                                        </combobox>
+                                    </auxheader>
+                                </auxhead>       
+                                 <template name="model" >
+                                    <row height="8px">
+                                        <cell><label sclass="audit_font" value="${ (vm.auditEvents.activePage * vm.auditEvents.pageSize)+  forEachStatus.index + 1}" /></cell>
+                                        <cell><label sclass="audit_font" value="@load(each.timestamp)  @converter('formatedDate',format='yy/MM/dd HH:mm:ss')" /></cell>
+                                        <cell><label sclass="audit_font" value="@load(each.user)" /></cell>
+                                        <cell><label sclass="audit_font" value="@load(each.action)" /></cell>
+                                        <cell><label sclass="audit_font" value="@load(each.object)" /></cell>
+                                        <cell align="right"><label sclass="audit_font" value="@load(each.executionTime)" /></cell>
+                                        <cell><label sclass="audit_font" value="@load(each.host)" /></cell>
+                                    </row>
+                                </template>
+                            </grid>
+                            <paging id="auditEventsPaging" onPaging="@command('onPagingAuditEvents')" totalSize="@bind(vm.auditEvents.totalSize)" pageSize="@bind(vm.auditEvents.pageSize)" activePage="@bind(vm.auditEvents.activePage)" />    
+                    </vlayout>
+                </panelchildren>                                                   
+           </panel>
+           
+           <panel  border="rounded+" height="350px" width="100%"
+              apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init(FunctionsDetails)" 
+           >
+                    <panelchildren style="overflow: auto">        
+                        <vlayout >
+                            <grid   model="@bind(vm.functions)" emptyMessage="${labels.common.empty_result_list}"
+                                onPaging="@command('onPagingList')" mold="paging" paginal="${functionsPaging}"
+                                sizedByContent="true"
+                            >
+                                <auxhead sclass="category-center">
+                                    <auxheader label="${labels.audit.functions.caption}" colspan="9" >
+                                        <combobox readonly="true" selectedItem="@bind(vm.functionsPeriod)"  onSelect="@command('onPeriodFunctions')" >
+                                            <comboitem label="${labels.audit.metrics.period_24h}" value="H24" />
+                                            <comboitem label="${labels.audit.metrics.period_7d}"  value="D7"  />
+                                            <comboitem label="${labels.audit.metrics.period_1m}" value="M1"   />
+                                        </combobox>       
+                                        <button label="Refresh" onClick="@command('onFilterFunctions')" mold="trendy" />                                 
+                                    </auxheader>
+                                </auxhead>
+                                <columns sizable="true">
+                                    <column>${labels.common.col.no}</column>
+                                    <column><label value="${labels.audit.functions.user}" /></column>
+                                    <column>${labels.audit.functions.action}</column>
+                                    <column>${labels.audit.functions.function}</column>
+                                    <column>${labels.audit.functions.sellingCompanies_brand}</column>
+                                    <column>${labels.audit.functions.count}</column>
+                                    <column>${labels.audit.functions.ipCount}</column>
+                                    <column>${labels.audit.functions.et.avg}</column>
+                                    <column>${labels.audit.functions.et.max}</column>
+                                </columns>           
+                                <auxhead>
+                                    <auxheader/>
+                                    <auxheader >
+                                        <combobox id="functionsUserCombox" value="@bind(vm.functionsUserFilter)" model="@load(vm.functionsUserComboxModel)"  width="100%"
+                                            onSelect="@command('onFilterFunctions')" 
+                                        >
+                                            <template name="model">
+                                                <comboitem label="@load(each)" />
+                                            </template>
+                                        </combobox>
+                                    </auxheader>
+                                    <auxheader >
+                                        <combobox id="functionsActionCombox" value="@bind(vm.functionsActionFilter)" model="@load(vm.functionsActionComboxModel)"  width="100%"
+                                            onSelect="@command('onFilterFunctions')" 
+                                        >
+                                            <template name="model">
+                                                <comboitem label="@load(each)" />
+                                            </template>
+                                        </combobox>
+                                    </auxheader>
+                                    <auxheader >
+                                        <combobox id="functionsFunctionCombox" value="@bind(vm.functionsFunctionFilter)" model="@load(vm.functionsFunctionComboxModel)"  width="100%"
+                                            onSelect="@command('onFilterFunctions')" 
+                                        >
+                                            <template name="model">
+                                                <comboitem label="@load(each)" />
+                                            </template>
+                                        </combobox>
+                                    </auxheader>
+                                    <auxheader/>
+                                    <auxheader colspan="4" align="center">
+                                    <!-- 
+                                    <hlayout valign="bottom">
+                                        <label value="${labels.audit.functions.host}"/>
+                                        <combobox id="functionsHostCombox" value="@bind(vm.functionsHostFilter)" model="@load(vm.functionsHostComboxModel)" 
+                                            onSelect="@command('onFilterFunctions')" 
+                                        >
+                                            <template name="model">
+                                                <comboitem label="@load(each)" />
+                                            </template>
+                                        </combobox>
+                                    </hlayout>
+                                     -->
+                                    </auxheader>
+                                </auxhead>
+                                 <template name="model" >
+                                    <row>
+                                        <cell ><label sclass="audit_font" value="${ (vm.functions.activePage * vm.functions.pageSize)+  forEachStatus.index + 1}" /></cell>
+                                        <cell width="200px"><label sclass="audit_font" value="@load(each.user)"   /></cell>
+                                        <cell><label sclass="audit_font" value="@load(each.action)" /></cell>
+                                        <cell width="200px"><label sclass="audit_font" value="@load(each.object)" /></cell>
+                                        <cell><label sclass="audit_font" value="@load(each.sc)" /></cell>
+                                        <cell align="right"><label sclass="audit_font" value="@load(each.count)" /></cell>
+                                        <cell align="right"><label sclass="audit_font" value="@load(each.ipCount)" /></cell>
+                                        <cell align="right"><label sclass="audit_font" value="@load(each.avgEt)" /></cell>
+                                        <cell align="right"><label sclass="audit_font" value="@load(each.maxEt)" /></cell>
+                                    </row>
+                                </template>                  
+                            </grid>                 
+                            <paging id="functionsPaging" onPaging="@command('onPagingFunctions')" totalSize="@bind(vm.functions.totalSize)" pageSize="@bind(vm.functions.pageSize)" activePage="@bind(vm.functions.activePage)" />                                                       
+                        </vlayout>                      
+                     </panelchildren>
+                 </panel>  
+                
+             </vlayout>
+        </panelchildren>
+    </panel>             
+</zk>

@@ -1,0 +1,226 @@
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+  xmlns:beans="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+  xmlns:sws="http://www.springframework.org/schema/web-services"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+           http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.1.xsd
+           http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+           http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+           http://www.springframework.org/schema/web-services http://www.springframework.org/schema/web-services/web-services-2.0.xsd"
+           >
+           
+	<global-method-security secured-annotations="enabled" authentication-manager-ref="ch2AuthenticationManager" pre-post-annotations="enabled">
+		<!-- AspectJ pointcut expression that locates our "post" method and applies security that way
+		<protect-pointcut expression="execution(* bigbank.*Service.post*(..))" access="ROLE_TELLER"/>
+		-->
+	</global-method-security>
+		
+	<authentication-manager id="ch2AuthenticationManager" alias="ch2AuthenticationManager">	
+		<authentication-provider ref="tokenProvider" />
+		<authentication-provider ref="guiProvider" />
+<!-- 		<authentication-provider ref="noMd5Provider" /> -->
+	<authentication-provider ref="ldapAuthenticationProvider" />
+	</authentication-manager>
+	
+
+   <beans:bean id="loggerListener" class="org.springframework.security.access.event.LoggerListener" />
+   <beans:bean id="loginHandler"  name="loginHandler" class="com.ttc.ch2.ui.moduls.auth.LoginHandler"/>   
+   <beans:bean id="logoutHandler"  name="logoutHandler" class="com.ttc.ch2.ui.moduls.auth.LogoutHandler">
+  		<beans:property name="urlLogoutSucces" value="/logout.htm"/>
+   </beans:bean>
+   
+   <beans:bean id="loginFailHandler" class="com.ttc.ch2.ui.moduls.auth.LoginFailHandler">
+    <beans:property name="exceptionMappings">  
+        <beans:props>
+        	<beans:prop key="org.springframework.security.authentication.BadCredentialsException">/login.htm?error=1</beans:prop>
+        	<beans:prop key="org.springframework.security.core.userdetails.UsernameNotFoundException">/login.htm?error=2</beans:prop>
+        	<beans:prop key="org.springframework.security.core.AuthenticationException">/login.htm?error=3</beans:prop>
+        	<beans:prop key="org.springframework.security.access.AccessDeniedException">/login.htm?error=4</beans:prop>        	        	            	        
+        </beans:props>  
+    </beans:property>
+   </beans:bean>
+   
+   <!-- http pattern="/help/**" security="none" /-->
+   <http pattern="/css/**" security="none" />
+   <http pattern="/img/**" security="none" />
+   <http pattern="/base/**" security="none" />
+   
+   <!-- 
+   <http pattern="/modules/auth/login.zul**" security="none" />   
+   <http pattern="/zkau/**js**" security="none" />
+   <http pattern="/zkau/**img**" security="none" />
+   <http pattern="/zkau/**css**" security="none" />
+   <http pattern="/zkau/web**" security="none" />
+    -->
+   
+	<http auto-config="false" create-session="never" use-expressions="true" entry-point-ref="tokenAuthenticationEntryPoint" pattern="/tour_departure/**" authentication-manager-ref="ch2AuthenticationManager">		
+		<intercept-url pattern="/tour_departure/**" access="hasRole('ROLE_CCAPI')"/> 
+		<intercept-url pattern="/tour_departure/**.xml*" access="hasRole('ROLE_CCAPI')"/> 
+		<custom-filter position="PRE_AUTH_FILTER" ref="tokenPreAuthenticatedProcessingFilter" />
+		<!-- <custom-filter position="FIRST" ref="invalidateZkossSession" /> -->
+		<custom-filter position="LAST" ref="redirectFilter" />		
+		<access-denied-handler error-page="/base/access_denied.htm"/> 
+	</http>
+		
+ 	<http auto-config="false"  create-session="never" use-expressions="true" entry-point-ref="tokenAuthenticationEntryPoint" pattern="/tour_info/**" authentication-manager-ref="ch2AuthenticationManager">		
+		<intercept-url pattern="/tour_info/**" access="hasRole('ROLE_CCAPI')"/> 
+		<intercept-url pattern="/tour_info/**.xml*" access="hasRole('ROLE_CCAPI')"/> 
+		<custom-filter position="PRE_AUTH_FILTER" ref="tokenPreAuthenticatedProcessingFilter" />
+		<!-- <custom-filter position="FIRST" ref="invalidateZkossSession" /> -->
+		<custom-filter position="LAST" ref="redirectFilter" />			
+		<access-denied-handler error-page="/base/access_denied.htm"/> 	
+	</http>
+ 
+	<http auto-config="false" create-session="never" use-expressions="true"  entry-point-ref="tokenAuthenticationEntryPoint" pattern="/outgoing_archives/**" authentication-manager-ref="ch2AuthenticationManager">
+		<intercept-url pattern="/outgoing_archives/**" access="hasRole('ROLE_CCAPI')"/>		
+		<custom-filter position="PRE_AUTH_FILTER" ref="tokenPreAuthenticatedProcessingFilter" />
+		<!-- <custom-filter position="FIRST" ref="invalidateZkossSession" /> -->
+		<custom-filter position="LAST" ref="redirectFilter" />
+		<access-denied-handler error-page="/base/access_denied.htm"/> 
+	</http>
+
+	<http auto-config="false" create-session="never" use-expressions="true" entry-point-ref="tokenAuthenticationEntryPoint" pattern="/brochure_engine/**" authentication-manager-ref="ch2AuthenticationManager">
+		<intercept-url pattern="/brochure_engine/**" access="hasRole('ROLE_CCAPI')"/>
+		<custom-filter position="PRE_AUTH_FILTER" ref="tokenPreAuthenticatedProcessingFilter" />
+		<custom-filter position="LAST" ref="redirectFilter" />
+		<!-- <custom-filter position="FIRST" ref="invalidateZkossSession" /> -->
+		<access-denied-handler error-page="/base/access_denied.htm"/> 
+	</http> 
+
+	<!--  http auto-config="false" create-session="never" use-expressions="true" entry-point-ref="tokenAuthenticationEntryPoint" pattern="/help/**" authentication-manager-ref="ch2AuthenticationManager">
+		<intercept-url pattern="/help/**" access="hasRole('ROLE_CCAPI')"/>
+		<custom-filter position="PRE_AUTH_FILTER" ref="tokenPreAuthenticatedProcessingFilter" />
+		<custom-filter position="LAST" ref="redirectFilter" />
+		
+		<access-denied-handler error-page="/base/access_denied.htm"/> 
+	</http-->
+
+	<http auto-config='true' authentication-manager-ref="ch2AuthenticationManager" use-expressions="true"  >     	
+	   	<!-- <intercept-url pattern="/modules/auth/login.zul*" requires-channel="https"/> -->
+	   	<intercept-url pattern="/modules/auth/login.zul" access="permitAll"/>     	    		  	
+	  	<intercept-url pattern="/modules/auth/j_security_check" access="permitAll"/> 	  	
+	  	<intercept-url pattern="/modules/auth/access_denied.zul" access="isAuthenticated()"/> 
+	  	<intercept-url pattern="/modules/auth/logout_success.zul" access="permitAll"/> 
+	  	<intercept-url pattern="/modules/auth/chgPswd.zul" access="isAuthenticated()"/> 		  	 		  	 
+	  	<intercept-url pattern="/common/**" access="hasAnyRole('ROLE_BRAND','ROLE_ADMIN')"/>
+	  	<intercept-url pattern="/help/**" access="isAuthenticated()"/>
+	  	
+	  	<!-- <intercept-url pattern="/modules/brochure/**" access="hasRole('ROLE_BRAND')" /> -->
+	  	<intercept-url pattern="/modules/messages/**" access="hasAnyRole('ROLE_BRAND','ROLE_ADMIN')" />  		  	 
+	  	<intercept-url pattern="/modules/audit/**" access="hasRole('ROLE_ADMIN')" />  
+	  	<intercept-url pattern="/modules/jobs/**" access="hasRole('ROLE_ADMIN')" />  
+	  	<intercept-url pattern="/modules/processmgr/**" access="hasRole('ROLE_ADMIN')" />  
+	  	<intercept-url pattern="/modules/users/**" access="hasRole('ROLE_ADMIN')" />
+	  	<intercept-url pattern="/modules/tour/upload_tour_info.zul" access="hasAnyRole('ROLE_BRAND','ROLE_ADMIN')"/>
+	  	<intercept-url pattern="/modules/tour/upload**" access="hasRole('ROLE_BRAND')" />
+	  	
+	  	
+	  	<!-- <intercept-url pattern="/modules/tour/**" access="hasRole('ROLE_BRAND')"/>	 -->  	
+	  	<intercept-url pattern="/modules/tour/modules/tour/tour_match_status_view.htm**" access="hasRole('ROLE_BRAND')"/>	  	
+	  	<intercept-url pattern="/modules/tour/tour_match_status_html.zul**" access="hasRole('ROLE_BRAND')"/>
+	  	<intercept-url pattern="/modules/tour/tour_info_repository.zul**" access="hasRole('ROLE_BRAND')"/>
+	  	<intercept-url pattern="/modules/tour/tour_departure_repository.zul**" access="hasRole('ROLE_BRAND')"/>
+	  	<intercept-url pattern="/modules/tour/file_collect.zul**" access="hasRole('ROLE_BRAND')"/>
+	  	<intercept-url pattern="/modules/brochure/view.htm**" access="hasRole('ROLE_BRAND')"/>
+	  		  	
+	  	<intercept-url pattern="/modules/tour/tour_info_repository_newext.zul**" access="hasRole('ROLE_CCAPI')" />
+	  	<intercept-url pattern="/modules/tour/tour_info_repository_oldext.zul**" access="hasRole('ROLE_CCAPI')" />
+	  	<intercept-url pattern="/modules/tour/tour_departure_repository_oldext.zul**" access="hasRole('ROLE_CCAPI')" />
+	  	<intercept-url pattern="/modules/tour/tour_departure_repository_newext.zul**" access="hasRole('ROLE_CCAPI')" />
+	  	<intercept-url pattern="/modules/tour/file_collect_oldext.zul**" access="hasRole('ROLE_CCAPI')" />
+	  	<intercept-url pattern="/modules/tour/file_collect_newext.zul**" access="hasRole('ROLE_CCAPI')" />
+	  	
+	  	<intercept-url pattern="/zkau/**" access="isAuthenticated()"/>
+	  	  	  	
+	  	<!-- <intercept-url pattern="/zkau/view**" access="isAuthenticated()"/>   
+	  	<intercept-url pattern="/zkau/**js**" access="isAuthenticated()"/>   
+	  	<intercept-url pattern="/zkau/**img**" access="none"/>   
+	  	<intercept-url pattern="/zkau/**css**" access="isAuthenticated()"/>   
+	  	<intercept-url pattern="/zkau/web**" access="isAuthenticated()"/> -->   
+	     
+	  	<!-- 
+	  	<session-management session-fixation-protection="newSession" 
+	  	session-authentication-error-url="/base/error.zul" 
+	  	invalid-session-url="/base/invalid_session.zul" >
+	  		<concurrency-control max-sessions="1" />
+	  	</session-management>-->
+	  	
+	  	<session-management session-fixation-protection="newSession" session-authentication-error-url="/base/error.zul">	
+	  		<concurrency-control max-sessions="1" />
+	  	</session-management>
+	  	
+	  	<!-- default-target-url="/modules/tour/upload_tour_info.zul"  always-use-default-target="true"-->
+	    <form-login login-page='/login.htm' 	       
+	    authentication-success-handler-ref="loginHandler"
+	    authentication-failure-handler-ref="loginFailHandler"   
+	    login-processing-url="/modules/auth/j_security_check" />
+    	<!-- <logout invalidate-session="true" logout-success-url="/modules/auth/logout_success.zul" logout-url="/modules/auth/j_spring_security_logout" delete-cookies="JSESSIONID"/>-->    	
+    	<logout  invalidate-session="false" delete-cookies="JSESSIONID"  success-handler-ref="logoutHandler"  logout-url="/modules/auth/j_spring_security_logout"/>
+    	<access-denied-handler error-page="/base/access_denied.htm"/> 
+    	<custom-filter position="LAST" ref="firstLoginFilter" />   	
+    	<!-- <custom-filter position="FIRST" ref="loginRedirect" /> -->
+	    <!-- <logout  invalidate-session="false" logout-success-url="/modules/auth/logout_success.zul"  logout-url="/modules/auth/j_spring_security_logout"/> -->    	
+	</http>
+	
+	<beans:bean id="tokenAuthenticationEntryPoint"  class="com.ttc.ch2.ui.common.security.TokenAuthenticationEntryPoint"/>
+		
+	<beans:bean id="tokenPreAuthenticatedProcessingFilter" class="com.ttc.ch2.ui.common.security.TokenPreAuthenticatedProcessingFilter">
+    	 <beans:property name="authenticationManager" ref="ch2AuthenticationManager" />
+	</beans:bean>
+		
+ 	<beans:bean id="tokenProvider" class="com.ttc.ch2.ui.common.security.TokenAuthenticationProvider" />
+ 	<beans:bean id="guiProvider" class="com.ttc.ch2.ui.common.security.GuiAuthenticationProvider" />
+ 	<beans:bean id="noMd5Provider" class="com.ttc.ch2.ui.common.security.NoMd5AuthenticationProvider" />
+ 	<beans:bean id="ldapAuthenticationProvider" class="com.ttc.ch2.ui.common.security.LdapAuthenticationProvider">
+		<beans:property name="convertSubErrorCodesToExceptions"	value="true" />
+		<!-- <beans:property name="authoritiesMapper" ref="LdapAuthoritiesMapper" /> -->
+		<beans:property name="userDetailsContextMapper" ref="ChLdapUserDetailsMapper" />
+	</beans:bean>
+	<!-- <beans:bean id="LdapAuthoritiesMapper" class="com.ttc.ch2.ui.common.security.LdapAuthoritiesMapper" /> -->
+	<beans:bean id="ChLdapUserDetailsMapper" class="com.ttc.ch2.ui.common.security.ChLdapUserDetailsMapper" />
+ 	 	
+ 	<beans:bean id="invalidateZkossSession" class="com.ttc.ch2.ui.common.InvalidSessionFromZkoss"/>
+ 	<!-- <beans:bean id="loginRedirect" class="com.ttc.ch2.ui.common.LoginRedirect"/> -->
+ 	
+ 		
+ 	<beans:bean id="redirectFilter" class="com.ttc.ch2.ui.common.security.AfterLoginRedirect"/>
+ 
+ 	
+ 	<beans:bean id="firstLoginFilter" class="com.ttc.ch2.ui.common.security.FirstLoginFilter"/> 
+ 	 	 		
+	<beans:bean id="accessDecisionManager" class="org.springframework.security.access.vote.AffirmativeBased">
+		<beans:property name="decisionVoters">
+			<beans:list>
+				 <beans:bean class="com.ttc.ch2.ui.common.security.ZkauVoter" />
+			</beans:list>
+		</beans:property>
+	</beans:bean>
+	
+	<sws:interceptors>		
+		<beans:bean id="loggingInterceptor" class="org.springframework.ws.server.endpoint.interceptor.PayloadLoggingInterceptor" />
+		<beans:bean id="dbLoggingInterceptor" class="com.ttc.ch2.api.ccapi.LogToDbInterceptor" />		
+		<beans:bean id="validatingInterceptor" class="org.springframework.ws.soap.server.endpoint.interceptor.PayloadValidatingInterceptor">
+    		<beans:property name="schemas">
+    			<beans:list>
+    					<beans:value>classpath:/com/ttc/ch2/api/ccapi/v3/all-v3-schemas.xsd</beans:value>
+    					<beans:value>classpath:/com/ttc/ch2/api/ccapi/v1/all-v1-schemas.xsd</beans:value>
+    			</beans:list>
+    		</beans:property>
+    		<beans:property name="validateRequest" value="true"/>
+    		<beans:property name="validateResponse" value="false"/>
+		</beans:bean>
+		<beans:bean id="authInterceptor" class="com.ttc.ch2.api.ccapi.TokenAuthInterceptor" />
+		<!-- <sws:payloadRoot namespaceUri="http://contenthub.travcorp.com/tour_data/2010/11/1.0">
+			<beans:bean id="authInterceptorV1A" class="com.ttc.ch2.api.ccapi.TokenAuthInterceptor" />
+		</sws:payloadRoot>
+		<sws:payloadRoot namespaceUri="http://CCAPI.TravelCorp.com/">
+			<beans:bean id="authInterceptorV1B" class="com.ttc.ch2.api.ccapi.TokenAuthInterceptor" />
+		</sws:payloadRoot>
+		<sws:payloadRoot namespaceUri="http://www.ttc.com/ch2/api/ccapi/v3">
+			<beans:bean id="authInterceptorV3" class="com.ttc.ch2.api.ccapi.TokenAuthInterceptor" />
+		</sws:payloadRoot>
+		 -->
+	</sws:interceptors>
+		
+</beans:beans>

@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<project name="ch2-api">
+
+    <target name="prepare_enunciate">
+      <echo message="Copying missing classes for Enunciate plugin..."/>
+      <copy todir="${basedir}/target/enunciate/generate/java-client/java/com/ttc/ch2/api/ccapi/v3/tourinfo/_2014/_01/_3" flatten="true">
+        <resources>
+           <file file="${basedir}/src/main/resources/META-INF/Br.java"/>
+        </resources>
+      </copy>	
+      <echo message="Copying finished"/>	
+    </target>
+
+</project>

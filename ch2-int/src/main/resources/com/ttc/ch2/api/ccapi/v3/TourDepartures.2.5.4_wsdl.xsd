@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2008 rel. 2 sp1 (http://www.altova.com) by Trafalgar MGMT Services (Trafalgar MGMT Services) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:td="http://www.ttc.com/ch2/api/ccapi/v3/TourDepartures/2013/09/2.5.4" targetNamespace="http://www.ttc.com/ch2/api/ccapi/v3/TourDepartures/2013/09/2.5.4" elementFormDefault="qualified">
+	<xs:element name="TourDepartures" type="td:TourDeparturesType"/>
+	<xs:complexType name="PriceType">
+		<xs:sequence>
+			<xs:element name="Adult" type="xs:decimal"/>
+			<xs:element name="Child" type="xs:decimal"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="RoomPriceType">
+		<xs:sequence>
+			<xs:element name="Adult">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Base" type="xs:decimal"/>
+						<xs:element name="Combined" type="xs:decimal"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="Child">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Base" type="xs:decimal"/>
+						<xs:element name="Combined" type="xs:decimal"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="FoodFundType">
+		<xs:sequence>
+			<xs:element name="Price" type="td:PriceType"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="MiscellaneousProductType">
+		<xs:sequence>
+			<xs:element name="Code" type="td:string"/>
+			<xs:element name="Category" type="td:string"/>
+			<xs:element name="Name" type="td:string"/>
+			<xs:element name="Price" type="td:PriceType"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="MandatoryMiscellaneousProductsType">
+		<xs:sequence>
+			<xs:element name="MiscellaneousProduct" type="td:MiscellaneousProductType" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="PortTaxType">
+		<xs:sequence>
+			<xs:element name="Price" type="td:PriceType"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="SurchargeType">
+		<xs:sequence>
+			<xs:element name="Price" type="td:PriceType"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="SurchargesType">
+		<xs:sequence>
+			<xs:element name="Surcharge" type="td:SurchargeType" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="CombinedIncludedChargesType">
+		<xs:sequence>
+			<xs:element name="FoodFund" type="td:FoodFundType" minOccurs="0"/>
+			<xs:element name="MandatoryMiscellaneousProducts" type="td:MandatoryMiscellaneousProductsType" minOccurs="0"/>
+			<xs:element name="PortTax" type="td:PortTaxType" minOccurs="0"/>
+			<xs:element name="Surcharges" type="td:SurchargesType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="PassengerType">
+		<xs:sequence>
+			<xs:element name="Type" type="td:PassengerTypeType"/>
+			<xs:element name="AgeFrom" type="xs:byte"/>
+			<xs:element name="AgeTo" type="xs:byte"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="PassengersType">
+		<xs:sequence>
+			<xs:element name="Passenger" type="td:PassengerType" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="OccupancyRuleType">
+		<xs:sequence>
+			<xs:element name="MaximumAdults" type="xs:short"/>
+			<xs:element name="MaximumPassengers" type="xs:short"/>
+			<xs:element name="MinimumAdults" type="xs:short"/>
+			<xs:element name="MinimumPassengers" type="xs:short"/>
+			<xs:element name="MinimumPayingAdults" type="xs:short"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="RoomType">
+		<xs:sequence>
+			<xs:element name="OccupancyRule" type="td:OccupancyRuleType"/>
+			<xs:element name="Price" type="td:RoomPriceType"/>
+			<xs:element name="Type" type="td:RoomTypeCodeType"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="RoomsType">
+		<xs:sequence>
+			<xs:element name="Room" type="td:RoomType" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ProductRoomType">
+		<xs:sequence>
+			<xs:element name="Type" type="td:RoomTypeCodeType"/>
+			<xs:element name="Price" type="td:PriceType"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ProductRoomsType">
+		<xs:sequence>
+			<xs:element name="Room" type="td:ProductRoomType" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="DiscountType">
+		<xs:sequence>
+			<xs:element name="Code" type="td:string"/>
+			<xs:element name="Type" type="td:string"/>
+			<xs:element name="Basis" type="td:string"/>
+			<xs:element name="Amount" type="xs:decimal"/>
+			<xs:element name="IsPercentage" type="xs:boolean"/>
+			<xs:element name="PaymentDueDate" type="xs:dateTime" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="DiscountsType">
+		<xs:sequence>
+			<xs:element name="Discount" type="td:DiscountType" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="TourRulesType">
+		<xs:sequence>
+			<xs:element name="Passengers" type="td:PassengersType"/>
+			<xs:element name="Rooms" type="td:RoomsType"/>
+			<xs:element name="CombinedIncludedCharges" type="td:CombinedIncludedChargesType" minOccurs="0"/>
+			<xs:element name="PriceIsIndicative" type="xs:boolean"/>
+			<xs:element name="Discounts" type="td:DiscountsType" minOccurs="0"/>
+			<xs:element name="IsEligibleForFrequentTravellerDiscount" type="xs:boolean"/>
+			<xs:element name="CanSearchForFlights" type="xs:boolean"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="AddressType">
+		<xs:sequence>
+			<xs:element name="Line1" type="td:string"/>
+			<xs:element name="Line2" type="td:string" minOccurs="0"/>
+			<xs:element name="Line3" type="td:string" minOccurs="0"/>
+			<xs:element name="City" type="td:string"/>
+			<xs:element name="Region" type="td:string"/>
+			<xs:element name="Postcode" type="td:string"/>
+			<xs:element name="Country" type="td:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="AccommodationProductType">
+		<xs:sequence>
+			<xs:element name="Code" type="td:string"/>
+			<xs:element name="Name" type="td:string"/>
+			<xs:element name="Address" type="td:AddressType"/>
+			<xs:element name="Rooms" type="td:ProductRoomsType"/>
+		</xs:sequence>
+		<xs:attribute name="Type" type="td:AccommodationProductTypeCodeType" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="AccommodationProductsType">
+		<xs:sequence>
+			<xs:element name="AccommodationProduct" type="td:AccommodationProductType" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="MiscellaneousProductsType">
+		<xs:sequence>
+			<xs:element name="MiscellaneousProduct" type="td:MiscellaneousProductType" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="AssociatedProductsType">
+		<xs:sequence>
+			<xs:element name="AccommodationProducts" type="td:AccommodationProductsType" minOccurs="0"/>
+			<xs:element name="MiscellaneousProducts" type="td:MiscellaneousProductsType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Notes" mixed="true">
+		<xs:sequence>
+			<xs:element name="text" type="td:string" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="br" minOccurs="0" maxOccurs="unbounded">
+				<xs:complexType/>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="DepartureType">
+		<xs:sequence>
+			<xs:element name="DepartureCode" type="td:string"/>
+			<xs:element name="AvailabilityStatus" type="td:AvailabilityStatusType"/>
+			<xs:element name="StartDateTime" type="xs:dateTime"/>
+			<xs:element name="EndDateTime" type="xs:dateTime"/>
+			<xs:element name="DateRangeIncludesTravelTime" type="xs:boolean"/>
+			<xs:element name="DefiniteDeparture" type="xs:boolean"/>
+			<xs:element name="Notes" type="td:Notes" minOccurs="0"/>
+			<xs:element name="TourRules" type="td:TourRulesType"/>
+			<xs:element name="AssociatedProducts" type="td:AssociatedProductsType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="DeparturesType">
+		<xs:sequence>
+			<xs:element name="Departure" type="td:DepartureType" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="SellingCompanyType">
+		<xs:sequence>
+			<xs:element name="Departures" type="td:DeparturesType"/>
+		</xs:sequence>
+		<xs:attribute name="Code" type="td:string" use="required"/>
+		<xs:attribute name="CurrencyCode" type="td:string" use="required"/>
+		<xs:attribute name="InventoryBrochureCode" type="td:string" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="SellingCompaniesType">
+		<xs:sequence>
+			<xs:element name="SellingCompany" type="td:SellingCompanyType" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="TourDeparturesType">
+		<xs:sequence>
+			<xs:element name="OperatingProductCode" type="td:string"/>
+			<xs:element name="SellingCompanies" type="td:SellingCompaniesType"/>
+		</xs:sequence>
+		<xs:attribute name="TourCode" type="td:string" use="required"/>
+		<xs:attribute name="OnlineBookable" type="xs:boolean" use="required"/>
+	</xs:complexType>
+	<!-- Enumerations -->
+	<xs:simpleType name="string">
+		<xs:annotation>
+			<xs:documentation>
+        Requires string to be trimmed and not empty
+      </xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="\S+(\s+\S+)*"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="AvailabilityStatusType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="OnRequest"/>
+			<xs:enumeration value="Available"/>
+			<xs:enumeration value="Closed"/>
+			<xs:enumeration value="Cancelled"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="RoomTypeCodeType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Single"/>
+			<xs:enumeration value="Twin"/>
+			<xs:enumeration value="TwinShare"/>
+			<xs:enumeration value="Triple"/>
+			<xs:enumeration value="TripleShare"/>
+			<xs:enumeration value="Quad"/>
+			<xs:enumeration value="QuadShare"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="AccommodationProductTypeCodeType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="PreAccommodation"/>
+			<xs:enumeration value="PostAccommodation"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="PassengerTypeType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Adult"/>
+			<xs:enumeration value="Child"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

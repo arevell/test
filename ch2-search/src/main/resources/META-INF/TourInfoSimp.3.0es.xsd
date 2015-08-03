@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2008 rel. 2 sp1 (http://www.altova.com) by Trafalgar MGMT Services (Trafalgar MGMT Services) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:alpha="http://schema.ch2.ttc.com/TourInfoSimp/2014/01/3.0" targetNamespace="http://schema.ch2.ttc.com/TourInfoSimp/2014/01/3.0" elementFormDefault="qualified">
+	<xs:include schemaLocation="location_lists.2.xsd"/>
+	<xs:element name="TourInfoSimp">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="TourName" type="alpha:string"/>
+				<xs:element name="CataloguedTour" type="alpha:CataloguedTour"/>
+				<xs:element name="SellingCompanies" type="alpha:SellingCompanies"/>
+				<xs:element name="TourVariationDefiners" type="alpha:TourVariationDefiners"/>
+				<xs:element name="ContinentsVisited" type="alpha:ContinentsVisited"/>
+				<xs:element name="CountriesVisited" type="alpha:CountriesVisited"/>
+				<xs:element name="LocationsVisited" type="alpha:LocationsVisited"/>
+				<xs:element name="Description" type="alpha:string"/>
+				<xs:element name="Assets" type="alpha:Assets"/>
+				<xs:element name="Itinerary" type="alpha:Itinerary"/>
+				<xs:element name="WhatsIncluded" type="alpha:WhatsIncluded" minOccurs="0"/>
+				<xs:element name="Highlights" type="alpha:Highlights" minOccurs="0"/>
+				<xs:element name="AirportTransfers" type="alpha:AirportTransfers" minOccurs="0"/>
+				<xs:element name="Notes" type="alpha:Notes" minOccurs="0"/>
+				<xs:element name="AdditionalInfo" type="alpha:AdditionalInfo" minOccurs="0"/>
+			</xs:sequence>
+			<xs:attribute name="BrandCode" type="xs:NMTOKEN" use="required"/>
+			<xs:attribute name="CMSId" type="xs:NMTOKEN" use="required"/>
+			<xs:attribute name="CMSTourId" type="xs:NMTOKEN" use="optional"/>
+			<xs:attribute name="Duration" type="xs:integer" use="required"/>
+			<xs:attribute name="TourCode" type="xs:NMTOKEN" use="required"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:simpleType name="string">
+		<xs:annotation>
+			<xs:documentation>
+				Requires string to be trimmed and not empty
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="\S+(\s+\S+)*"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ratiostring">
+		<xs:annotation>
+			<xs:documentation>
+				Requires string in ratio format
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="(\d+):(\d+)"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="CataloguedTour">
+		<xs:sequence>
+			<xs:element name="Code" type="xs:NMTOKEN"/>
+			<xs:element name="Name" type="alpha:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="SellingCompanies">
+		<xs:sequence>
+			<xs:element name="SellingCompany" type="alpha:SellingCompany" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="SellingCompany">
+		<xs:sequence>
+			<xs:element name="Brochure" type="alpha:Brochure" maxOccurs="unbounded"/>
+			<xs:element name="TermsAndConditionsLinkURL" type="xs:anyURI" minOccurs="0"/>
+			<xs:element name="TourCategories" type="alpha:TourCategories"/>
+			<xs:element name="MarketingFlags" type="alpha:MarketingFlags" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="CurrencyCode" type="xs:NMTOKEN" use="required"/>
+		<xs:attribute name="Code" type="xs:NMTOKEN" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="Brochure">
+		<xs:sequence>
+			<xs:element name="Code" type="xs:NMTOKEN"/>
+			<xs:element name="Name" type="alpha:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="TourCategories">
+		<xs:sequence>
+			<xs:element name="TourCategory" type="alpha:TourCategory" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="TourCategory">
+		<xs:sequence>
+			<xs:element name="CategoryValue" type="alpha:string" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attribute name="Name" type="xs:NMTOKEN" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="MarketingFlags">
+		<xs:sequence>
+			<xs:element name="MarketingPriority" type="alpha:string" minOccurs="0"/>
+			<xs:element name="MostPopular" type="xs:boolean" minOccurs="0"/>
+			<xs:element name="KeywordsPhrases" type="alpha:KeywordsPhrases" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="KeywordsPhrases">
+		<xs:sequence>
+			<xs:element name="Text" type="xs:string" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="TourVariationDefiners">
+		<xs:sequence>
+			<xs:element name="OperatingProduct" type="alpha:OperatingProduct"/>
+			<xs:element name="IncludedSubProducts" type="alpha:IncludedSubProducts" minOccurs="0"/>
+			<xs:element name="RoomTypes" type="alpha:RoomTypes"/>
+			<xs:element name="StartCity" type="alpha:City"/>
+			<xs:element name="EndCity" type="alpha:City"/>
+			<xs:element name="IsTourPackage" type="xs:boolean"/>
+			<xs:element name="IncludedCruiseCabinType" type="alpha:string" minOccurs="0"/>
+			<xs:element name="AdditionalDefiners" type="alpha:AdditionalDefiners" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="OperatingProduct">
+		<xs:sequence>
+			<xs:element name="Code" type="alpha:string"/>
+			<xs:element name="ContractingSeason" type="alpha:string"/>
+			<xs:element name="Category" type="alpha:string"/>
+			<xs:element name="Classification" type="alpha:string"/>
+			<xs:element name="StandardName" type="alpha:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="IncludedSubProducts">
+		<xs:sequence>
+			<xs:element name="IncludedSubProduct" type="alpha:IncludedSubProduct" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="IncludedSubProduct">
+		<xs:sequence>
+			<xs:element name="Code" type="alpha:string"/>
+			<xs:element name="Name" type="alpha:string"/>
+			<xs:element name="Category" type="alpha:string"/>
+			<xs:element name="ServiceType" type="alpha:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="RoomTypes">
+		<xs:sequence>
+			<xs:element name="RoomType" type="alpha:RoomType" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="RoomType">
+		<xs:attribute name="Type" type="alpha:string" use="required"/>
+		<xs:attribute name="Sellable" type="xs:boolean" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="City">
+		<xs:sequence>
+			<xs:element name="Name" type="alpha:string"/>
+			<xs:element name="Airports" type="alpha:Airports"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Airports">
+		<xs:sequence>
+			<xs:element name="Airport" type="alpha:Airport" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Airport">
+		<xs:sequence>
+			<xs:element name="IATACode" type="alpha:string"/>
+			<xs:element name="Name" type="alpha:string"/>
+			<xs:element name="City" type="alpha:string"/>
+			<xs:element name="Region" type="alpha:string"/>
+			<xs:element name="Country" type="alpha:string"/>
+			<xs:element name="DefaultForCity" type="xs:boolean"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ContinentsVisited">
+		<xs:sequence>
+			<xs:element name="Continent" type="alpha:Continent" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Continent">
+		<xs:sequence>
+			<xs:element name="Code" type="alpha:ContinentCode"/>
+			<xs:element name="Name" type="alpha:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="CountriesVisited">
+		<xs:sequence>
+			<xs:element name="Country" type="alpha:Country" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Country">
+		<xs:sequence>
+			<xs:element name="Code" type="alpha:ISO3166CountryCode"/>
+			<xs:element name="Name" type="alpha:string"/>
+			<xs:element name="ContinentCode" type="alpha:ContinentCode"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="LocationsVisited">
+		<xs:sequence>
+			<xs:element name="Location" type="alpha:Location" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Location">
+		<xs:attribute name="CountryCode" type="alpha:ISO3166CountryCode" use="required"/>
+		<xs:attribute name="Name" type="alpha:string" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="Assets">
+		<xs:sequence>
+			<xs:element name="Images" type="alpha:Images"/>
+			<xs:element name="Videos" type="alpha:Videos" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Images">
+		<xs:sequence>
+			<xs:element name="Image" type="alpha:Image" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Image">
+		<xs:attribute name="Name" type="xs:NMTOKEN" use="required"/>
+		<xs:attribute name="Caption" type="alpha:string" use="optional"/>
+		<xs:attribute name="Width" type="xs:integer" use="required"/>
+		<xs:attribute name="Height" type="xs:integer" use="required"/>
+		<xs:attribute name="Type" type="xs:NMTOKEN" use="required"/>
+		<xs:attribute name="Url" type="xs:anyURI" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="Videos">
+		<xs:sequence>
+			<xs:element name="Video" type="alpha:Video" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Video">
+		<xs:attribute name="Name" type="xs:NMTOKEN" use="required"/>
+		<xs:attribute name="Caption" type="alpha:string" use="optional"/>
+		<xs:attribute name="AspectRatio" type="alpha:ratiostring" use="required"/>
+		<xs:attribute name="Type" type="xs:NMTOKEN" use="required"/>
+		<xs:attribute name="Url" type="xs:anyURI" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="Itinerary">
+		<xs:sequence>
+			<xs:element name="ItinerarySegment" type="alpha:ItinerarySegment" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ItinerarySegment">
+		<xs:sequence>
+			<xs:element name="Title" type="alpha:string"/>
+			<xs:element name="Text" type="xs:string" minOccurs="0"/>
+			<xs:element name="Accommodation" type="alpha:string" minOccurs="0"/>
+			<xs:element name="Meals" type="alpha:Meals" minOccurs="0"/>
+			<xs:element name="LocationsVisited" type="alpha:LocationsVisited" minOccurs="0"/>
+			<xs:element name="OptionalExtras" type="alpha:OptionalExtras" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="Duration" type="xs:integer" use="required"/>
+		<xs:attribute name="StartDay" type="xs:integer" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="Meals">
+		<xs:sequence>
+			<xs:element name="Meal" type="alpha:Meal" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Meal">
+		<xs:sequence>
+			<xs:element name="Type" type="alpha:string"/>
+			<xs:element name="Number" type="xs:integer"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="OptionalExtras">
+		<xs:sequence>
+			<xs:element name="Extra" type="alpha:Extra" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Extra">
+		<xs:sequence>
+			<xs:element name="Code" type="alpha:string"/>
+			<xs:element name="Price" type="alpha:Price" maxOccurs="unbounded"/>
+			<xs:element name="Section" type="alpha:Section" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Price">
+		<xs:sequence>
+			<xs:element name="PassengerType" type="alpha:string"/>
+			<xs:element name="CurrencyCode" type="alpha:string"/>
+			<xs:element name="AmountFrom" type="xs:decimal" minOccurs="0"/>
+			<xs:element name="AmountTo" type="xs:decimal" minOccurs="0"/>
+			<xs:element name="Notes" type="alpha:Notes" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Section">
+		<xs:sequence>
+			<xs:element name="Title" type="alpha:string" minOccurs="0"/>
+			<xs:element name="Text" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="WhatsIncluded">
+		<xs:sequence>
+			<xs:element name="Section" type="alpha:Section" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Highlights">
+		<xs:sequence>
+			<xs:element name="Section" type="alpha:Section" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="AirportTransfers">
+		<xs:sequence>
+			<xs:element name="Section" type="alpha:Section" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Notes">
+		<xs:sequence>
+			<xs:element name="Section" type="alpha:Section" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="AdditionalDefiners">
+		<xs:sequence>
+			<xs:element name="Section" type="alpha:Section" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="AdditionalInfo">
+		<xs:sequence>
+			<xs:element name="Section" type="alpha:Section" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

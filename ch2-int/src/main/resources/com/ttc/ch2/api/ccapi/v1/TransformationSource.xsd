@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:ti="http://www.ttsl.com/TourInfo/2010/08/2.4"
+	xmlns:mvdi="http://www.ttsl.com/MarketVariationDepartureInfo/2010/09/1.1"
+	targetNamespace="http://www.ttc.com/ch2/api/ccapi/v1"
+	elementFormDefault="qualified">
+
+	<xs:import schemaLocation="TourInfo.2.4.xsd" namespace="http://www.ttsl.com/TourInfo/2010/08/2.4" />
+	<xs:import schemaLocation="MarketVariationDepartureInfo.1.1.xsd" namespace="http://www.ttsl.com/MarketVariationDepartureInfo/2010/09/1.1"/>
+	
+	<xs:element name="TransformationSource">
+		<xs:complexType>
+			<xs:sequence>	
+				<xs:element ref="ti:TourInfo" />
+				<xs:element ref="mvdi:MarketVariationDepartureInfo" />
+			</xs:sequence>
+			<xs:attribute name="BrandCode" type="xs:string" />
+			<xs:attribute name="SellingCompanyCode" type="xs:string" />
+		</xs:complexType>
+	</xs:element>
+
+</xs:schema>

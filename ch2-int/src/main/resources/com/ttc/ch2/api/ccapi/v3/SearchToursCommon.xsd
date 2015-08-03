@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+	xmlns:v3="http://www.ttc.com/ch2/api/ccapi/v3"
+	targetNamespace="http://www.ttc.com/ch2/api/ccapi/v3" elementFormDefault="qualified">
+	
+	<xs:complexType name="SearchToursBaseRequest">
+			<xs:sequence>
+				<xs:element name="securityKey" type="xs:string" />
+				<xs:element name="sellingCompanies" type="xs:string" minOccurs="1" maxOccurs="unbounded" />
+				<xs:element name="continentCodes" type="xs:string" minOccurs="0" />
+				<xs:element name="countryCodes" type="xs:string" minOccurs="0" />
+				<xs:element name="durationFrom" type="xs:integer" minOccurs="0" />
+				<xs:element name="durationTo" type="xs:integer" minOccurs="0" />
+				<xs:element name="months" type="xs:string" minOccurs="0" />
+				<xs:element name="keywordsAndPhrases" type="xs:string" minOccurs="0" maxOccurs="unbounded" />
+				<xs:element name="preferedRoomType" minOccurs="0" type="xs:string" />
+				<xs:element name="priceFrom" type="xs:double" minOccurs="0" />
+				<xs:element name="priceTo" type="xs:double" minOccurs="0" />
+				<xs:element name="firstRecordNumber" type="xs:integer" />
+				<xs:element name="numberOfRecords" type="xs:integer" />
+				<xs:element name="orderBy" type="xs:string" minOccurs="0" />
+				<xs:element name="orderDirection" type="xs:string" minOccurs="0" />
+			</xs:sequence>
+	</xs:complexType>
+
+</xs:schema>

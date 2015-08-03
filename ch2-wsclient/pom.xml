@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.ttc.ch2</groupId>
+    <artifactId>ch2-wsclient</artifactId>
+    <version>HABS.159-SNAPSHOT</version>
+    <name>CH2 Web Services API Client Definition</name>
+    <properties>
+        <project.build.sourceEncoding>ISO-8859-1</project.build.sourceEncoding>
+    </properties>
+    <profiles>
+        <profile>
+            <id>development</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <ch2.server.host>lonwk0412</ch2.server.host>
+                <ch2.server.port>7777</ch2.server.port>  
+            </properties>
+        </profile>
+        <profile>
+            <id>continous-integration</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <ch2.server.host>londevch02</ch2.server.host>
+                <ch2.server.port>7777</ch2.server.port>  
+            </properties>
+        </profile> 
+    </profiles>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>jaxws-maven-plugin</artifactId>
+                <version>1.12</version>
+                <executions>
+                    <execution>
+                        <id>ch2WS</id>
+                        <goals>
+                            <goal>wsimport</goal>
+                        </goals>
+                        <configuration>
+     						
+                            <sourceDestDir>${basedir}/src/main/java</sourceDestDir>
+                            <wsdlUrls>
+                                <wsdlUrl>
+                                    http://${ch2.server.host}:${ch2.server.port}/ch2-ui/ccapi/v3/CCAPIv3.wsdl
+                                </wsdlUrl>
+                            </wsdlUrls>
+                            <verbose>true</verbose>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>ch2WSv1</id>
+                        <goals>
+                            <goal>wsimport</goal>
+                        </goals>
+                        <configuration>
+     						
+                            <sourceDestDir>${basedir}/src/main/java</sourceDestDir>
+                            <wsdlUrls>
+                                <wsdlUrl>
+                                    http://${ch2.server.host}:${ch2.server.port}/ch2-ui/ccapi/v1/CCAPIv1.wsdl
+                                </wsdlUrl>
+                            </wsdlUrls>
+                            <verbose>true</verbose>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.6</source>
+                    <target>1.6</target>
+                    <encoding>${project.build.sourceEncoding}</encoding>
+                </configuration>
+            </plugin>
+
+        </plugins>
+    </build>
+
+</project>

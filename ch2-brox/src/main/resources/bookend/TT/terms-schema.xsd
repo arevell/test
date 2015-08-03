@@ -1,0 +1,159 @@
+<?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="terms">
+		<xs:complexType>
+			<xs:choice maxOccurs="unbounded" minOccurs="2">
+				<xs:element ref="Title" />
+				<xs:element ref="Section1" />
+			</xs:choice>
+			<xs:attribute name="currency_symbol" type="xs:string" />
+			<xs:attribute name="papersize" type="xs:string" />
+			<xs:attribute name="dateFormat" type="xs:string" />
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Title" type="xs:string"/>
+	<xs:element name="Section1">
+		<xs:complexType>
+			<xs:choice maxOccurs="unbounded" minOccurs="1">
+				<xs:element ref="Title" />
+				<xs:element ref="Section2" />
+				<xs:element ref="Image" />
+			</xs:choice>
+			<xs:anyAttribute />
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Section2">
+		<xs:complexType>
+			<xs:choice maxOccurs="unbounded">
+				<xs:element ref="Title" />
+				<xs:element ref="Text" />
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Text">
+		<xs:complexType  mixed="true">
+			<xs:choice maxOccurs="unbounded" minOccurs="0">
+				<xs:element ref="strong" />
+				<xs:element ref="p" />
+				<xs:element ref="div" />
+				<xs:element ref="a" />
+				<xs:element ref="br" />
+				<xs:element ref="ul" />
+				<xs:element ref="ol" />
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="text">
+		<xs:complexType  mixed="true">
+			<xs:choice maxOccurs="unbounded" minOccurs="0">
+				<xs:element ref="strong" />
+				<xs:element ref="i" />
+				<xs:element ref="p" />
+				<xs:element ref="div" />
+				<xs:element ref="a" />
+				<xs:element ref="br" />
+				<xs:element ref="ul" />
+				<xs:element ref="ol" />
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="div">
+		<xs:complexType  mixed="true">
+			<xs:choice maxOccurs="unbounded" minOccurs="0">
+				<xs:element ref="strong" />
+				<xs:element ref="i" />
+				<xs:element ref="p" />
+				<xs:element ref="div" />
+				<xs:element ref="a" />
+				<xs:element ref="br" />
+				<xs:element ref="ul" />
+				<xs:element ref="ol" />
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="strong">
+		<xs:complexType  mixed="true">
+			<xs:choice maxOccurs="unbounded" minOccurs="0">
+				<xs:element ref="i" />
+				<xs:element ref="a" />
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="i">
+		<xs:complexType  mixed="true">
+			<xs:choice maxOccurs="unbounded" minOccurs="0">
+				<xs:element ref="strong" />
+				<xs:element ref="a" />
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="a">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="xs:string">
+					<xs:attribute name="href" type="xs:string" />
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="p">
+		<xs:complexType  mixed="true">
+			<xs:choice maxOccurs="unbounded" minOccurs="0">
+				<xs:element ref="strong" />
+				<xs:element ref="i" />
+				<xs:element ref="a" />
+				<xs:element ref="br" />
+				<xs:element ref="ul" />
+				<xs:element ref="ol" />
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="br">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+  				<xs:length value="0"/>
+  			</xs:restriction>
+ 		</xs:simpleType>
+	</xs:element>
+	<xs:element name="ul">
+		<xs:complexType>
+			<xs:choice maxOccurs="unbounded" minOccurs="1">
+				<xs:element ref="li" />
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="ol">
+		<xs:complexType>
+			<xs:choice maxOccurs="unbounded" minOccurs="1">
+				<xs:element ref="li" />
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="li">
+		<xs:complexType  mixed="true">
+			<xs:choice maxOccurs="unbounded" minOccurs="0">
+				<xs:element ref="strong" />
+				<xs:element ref="p" />
+				<xs:element ref="div" />
+				<xs:element ref="a" />
+				<xs:element ref="br" />
+				<xs:element ref="ul" />
+				<xs:element ref="ol" />
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="ti">
+		<xs:complexType  mixed="true">
+			<xs:choice maxOccurs="unbounded" minOccurs="0">
+				<xs:element ref="strong" />
+				<xs:element ref="p" />
+				<xs:element ref="div" />
+				<xs:element ref="a" />
+				<xs:element ref="br" />
+				<xs:element ref="ul" />
+				<xs:element ref="ol" />
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Image" type="xs:string"/>
+</xs:schema>

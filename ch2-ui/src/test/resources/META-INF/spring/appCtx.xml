@@ -1,0 +1,33 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans     
+        http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+        http://www.springframework.org/schema/context 
+        http://www.springframework.org/schema/context/spring-context-3.0.xsd
+        http://www.springframework.org/schema/tx
+		http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
+ 
+ 	<context:property-placeholder location="classpath:/META-INF/spring/ch2mainTest.properties"/>
+  	
+ 	<import resource="classpath:/META-INF/spring/daoCtx.xml" /> 	
+ 	<import resource="classpath:/META-INF/spring/quartzCtx.xml" />
+ 	<import resource="classpath:/META-INF/spring/blCtx.xml" />
+ 	<import resource="classpath:/META-INF/spring/searchCtx.xml" />
+ 	<import resource="classpath:/META-INF/spring/broxCtx.xml" />
+ 	<import resource="securityCtx.xml" /> 	
+     
+	<context:annotation-config />	
+    <context:component-scan base-package="com.ttc.ch2.ui" />
+    
+    <!--   For zkoss aspects dont work correctly - zkoss cant find method that was annotated   
+    <aop:aspectj-autoproxy />
+ 	<bean id="logAspect" class="com.ttc.common.aspects.EnterExitLogAspect" />
+     -->
+    <!-- <bean id="authService" class="org.pu.zkos.sample01.moduls.auth.Service"/> --> 
+    <!--  <bean id="oprList" class="org.pu.zkos.sample01.moduls.auth.OperatorList"/> --> 
+</beans>

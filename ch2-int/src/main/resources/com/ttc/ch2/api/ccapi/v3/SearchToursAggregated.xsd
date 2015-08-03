@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+	xmlns:v3="http://www.ttc.com/ch2/api/ccapi/v3" 
+	xmlns:ti="http://www.ttc.com/ch2/api/ccapi/v3/TourInfo/2014/01/3.0"
+	xmlns:td="http://www.ttc.com/ch2/api/ccapi/v3/TourDepartures/2013/09/2.5.4"
+	xmlns:stb="http://www.ttc.com/ch2/api/ccapi/v3/stb"
+	targetNamespace="http://www.ttc.com/ch2/api/ccapi/v3" elementFormDefault="qualified">
+	<xs:import schemaLocation="TourInfo.3.0_wsdl.xsd" namespace="http://www.ttc.com/ch2/api/ccapi/v3/TourInfo/2014/01/3.0" />
+	<xs:import schemaLocation="TourDepartures.2.5.4_wsdl.xsd" namespace="http://www.ttc.com/ch2/api/ccapi/v3/TourDepartures/2013/09/2.5.4"/>
+	<xs:include schemaLocation="SearchToursCommon.xsd" />	
+    <xs:include schemaLocation="Messages.xsd" />   
+	<xs:element name="SearchToursAggregatedRequest">
+    	<xs:complexType>
+	 		<xs:complexContent>	
+    			<xs:extension base="v3:SearchToursBaseRequest" />
+    		</xs:complexContent>
+    	</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="SearchToursAggregatedResponse">
+		<xs:complexType>
+			<xs:sequence>
+                <xs:element minOccurs="0" name="messageContext" type="v3:MessageContext"/>
+				<xs:element name="successful" type="xs:boolean" />
+				<xs:element name="totalRecords" type="xs:integer" minOccurs="0" />
+				<xs:element name="numberOfRecords" type="xs:integer" minOccurs="0" />
+				<xs:element name="subsetReturned" type="xs:string" minOccurs="0" />
+				<xs:element name="searchAggregatedResults" type="v3:SearchAggregatedResults" maxOccurs="unbounded" minOccurs="0" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:complexType name="SearchAggregatedResults">
+		<xs:sequence>
+			<xs:element name="cataloguedTourCode" type="xs:string" minOccurs="0" />
+			<xs:element name="cataloguedTourName" type="xs:string" minOccurs="0" />
+			<xs:element name="searchAggregatedSubResults" type="v3:SearchAggregatedSubResults" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="SearchAggregatedSubResults">
+		<xs:sequence>
+			<xs:element name="tourCode" type="xs:string" />
+			<xs:element name="tourName" type="xs:string" />
+			<xs:element name="sellingCompanyCode" type="xs:string" />
+			<xs:element name="priceFrom" type="xs:double" />
+			<xs:element name="priceTo" type="xs:double" />
+			<xs:element name="brochureCode" type="xs:string" />
+			<xs:element name="brochureName" type="xs:string" />
+			<xs:element name="marketingFlags" type="ti:MarketingFlags" minOccurs="0" />
+			<xs:element name="highlights" type="ti:Highlights" minOccurs="0" />
+			<xs:element name="assets" type="ti:Assets" minOccurs="0" />
+			<xs:element name="continentsVisited" type="ti:ContinentsVisited" />
+			<xs:element name="countriesVisited" type="ti:CountriesVisited" />
+			<xs:element name="earlyPaymentDiscountAvailable" type="xs:boolean" />
+			<xs:element name="definiteDeparturesAvailable" type="xs:boolean" />
+			<xs:element name="duration" type="xs:integer" />
+			<xs:element name="accommodations" type="xs:string" minOccurs="0" maxOccurs="unbounded" />
+			<xs:element name="startCity" type="xs:string" />
+			<xs:element name="airportsStartCity" type="xs:string" minOccurs="0"/>
+			<xs:element name="endCity" type="xs:string" />
+			<xs:element name="airportsEndCity" type="xs:string" minOccurs="0"/>
+			<xs:element name="sellableRoomTypes" type="ti:RoomTypes"  />
+			<xs:element name="operatingProductCode" type="xs:string" />
+			<xs:element name="contractingSeason" type="xs:string" />
+			<xs:element name="earliestDepartureStartDate" type="xs:date" />
+			<xs:element name="latestDepartureStartDate" type="xs:date" />
+			<xs:element name="includedSubProducts" type="ti:IncludedSubProducts" minOccurs="0" />
+			<xs:element name="includedCruiseCabinType" type="xs:string" minOccurs="0" />
+			<xs:element name="additionalDefiners" type="ti:AdditionalDefiners" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+
+</xs:schema>
